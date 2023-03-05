@@ -1,1 +1,3 @@
 ﻿Temporary file to sync folder structure
+
+Testing addition for initial commit of new branch.
