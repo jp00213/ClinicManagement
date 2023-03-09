@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\ClinicManagementDBConnection.cs" />
     <Compile Include="UserControls\CreateAppointmentUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -87,8 +88,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="DAL\Temporary.txt" />
-    <Content Include="DB\Temporary.txt" />
+    <Content Include="DB\cs6232-g1_schema.sql" />
     <Content Include="Model\Temporary.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
