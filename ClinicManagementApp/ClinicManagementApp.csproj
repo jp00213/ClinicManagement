@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\ClinicManagementDBConnection.cs" />
+    <Compile Include="Model\Appointment.cs" />
+    <Compile Include="Model\Patient.cs" />
+    <Compile Include="Model\Person.cs" />
     <Compile Include="UserControls\CreateAppointmentUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -70,6 +73,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\CreateAppointmentUserControl.resx">
+      <DependentUpon>CreateAppointmentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </EmbeddedResource>

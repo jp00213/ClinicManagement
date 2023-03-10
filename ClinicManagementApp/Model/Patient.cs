@@ -1,0 +1,27 @@
+﻿namespace ClinicManagementApp.Model
+{
+    /// <summary>
+    /// The Patient model class.
+    /// </summary>
+    public class Patient : Person
+    {
+        public int PatientID { get; set; }
+
+        /// <summary>
+        /// Patient constructor.
+        /// </summary>
+        public Patient()
+        {
+
+        }
+
+        /// <summary>
+        /// Patient constructor.
+        /// </summary>
+        /// <param name="patientID"> recordID of an person</param>
+        public Patient(int patientID)
+        {
+            this.PatientID = patientID;
+        }
+    }
+}
