@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.nurseTabControl = new System.Windows.Forms.TabControl();
-            this.registerTabPage = new System.Windows.Forms.TabPage();
             this.UpdateTabPage = new System.Windows.Forms.TabPage();
             this.ViewTabPage = new System.Windows.Forms.TabPage();
             this.CreateTabPage = new System.Windows.Forms.TabPage();
             this.DocumentTabPage = new System.Windows.Forms.TabPage();
             this.LabsTabPage = new System.Windows.Forms.TabPage();
+            this.registerTabPage = new System.Windows.Forms.TabPage();
+            this.createAppointmentUserControl1 = new ClinicManagementApp.UserControls.CreateAppointmentUserControl();
             this.nurseTabControl.SuspendLayout();
+            this.CreateTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // nurseTabControl
@@ -47,86 +49,97 @@
             this.nurseTabControl.Controls.Add(this.DocumentTabPage);
             this.nurseTabControl.Controls.Add(this.LabsTabPage);
             this.nurseTabControl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.nurseTabControl.Location = new System.Drawing.Point(0, 83);
-            this.nurseTabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nurseTabControl.Location = new System.Drawing.Point(0, 71);
+            this.nurseTabControl.Margin = new System.Windows.Forms.Padding(4);
             this.nurseTabControl.Name = "nurseTabControl";
             this.nurseTabControl.SelectedIndex = 0;
-            this.nurseTabControl.Size = new System.Drawing.Size(1014, 555);
+            this.nurseTabControl.Size = new System.Drawing.Size(862, 630);
             this.nurseTabControl.TabIndex = 0;
-            // 
-            // registerTabPage
-            // 
-            this.registerTabPage.Location = new System.Drawing.Point(4, 27);
-            this.registerTabPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.registerTabPage.Name = "registerTabPage";
-            this.registerTabPage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.registerTabPage.Size = new System.Drawing.Size(1006, 524);
-            this.registerTabPage.TabIndex = 0;
-            this.registerTabPage.Text = "Register Patient";
-            this.registerTabPage.UseVisualStyleBackColor = true;
             // 
             // UpdateTabPage
             // 
-            this.UpdateTabPage.Location = new System.Drawing.Point(4, 22);
-            this.UpdateTabPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UpdateTabPage.Location = new System.Drawing.Point(4, 27);
+            this.UpdateTabPage.Margin = new System.Windows.Forms.Padding(4);
             this.UpdateTabPage.Name = "UpdateTabPage";
-            this.UpdateTabPage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.UpdateTabPage.Size = new System.Drawing.Size(1458, 693);
+            this.UpdateTabPage.Padding = new System.Windows.Forms.Padding(4);
+            this.UpdateTabPage.Size = new System.Drawing.Size(854, 638);
             this.UpdateTabPage.TabIndex = 1;
             this.UpdateTabPage.Text = "Update Patient";
             this.UpdateTabPage.UseVisualStyleBackColor = true;
             // 
             // ViewTabPage
             // 
-            this.ViewTabPage.Location = new System.Drawing.Point(4, 22);
-            this.ViewTabPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ViewTabPage.Location = new System.Drawing.Point(4, 27);
+            this.ViewTabPage.Margin = new System.Windows.Forms.Padding(4);
             this.ViewTabPage.Name = "ViewTabPage";
-            this.ViewTabPage.Size = new System.Drawing.Size(1458, 693);
+            this.ViewTabPage.Size = new System.Drawing.Size(854, 638);
             this.ViewTabPage.TabIndex = 2;
             this.ViewTabPage.Text = "View Patient";
             this.ViewTabPage.UseVisualStyleBackColor = true;
             // 
             // CreateTabPage
             // 
-            this.CreateTabPage.Location = new System.Drawing.Point(4, 22);
-            this.CreateTabPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CreateTabPage.Controls.Add(this.createAppointmentUserControl1);
+            this.CreateTabPage.Location = new System.Drawing.Point(4, 27);
+            this.CreateTabPage.Margin = new System.Windows.Forms.Padding(4);
             this.CreateTabPage.Name = "CreateTabPage";
-            this.CreateTabPage.Size = new System.Drawing.Size(1458, 693);
+            this.CreateTabPage.Size = new System.Drawing.Size(854, 599);
             this.CreateTabPage.TabIndex = 3;
             this.CreateTabPage.Text = "Create Appointment";
             this.CreateTabPage.UseVisualStyleBackColor = true;
             // 
             // DocumentTabPage
             // 
-            this.DocumentTabPage.Location = new System.Drawing.Point(4, 22);
-            this.DocumentTabPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DocumentTabPage.Location = new System.Drawing.Point(4, 27);
+            this.DocumentTabPage.Margin = new System.Windows.Forms.Padding(4);
             this.DocumentTabPage.Name = "DocumentTabPage";
-            this.DocumentTabPage.Size = new System.Drawing.Size(1458, 693);
+            this.DocumentTabPage.Size = new System.Drawing.Size(854, 638);
             this.DocumentTabPage.TabIndex = 4;
             this.DocumentTabPage.Text = "Document Visit";
             this.DocumentTabPage.UseVisualStyleBackColor = true;
             // 
             // LabsTabPage
             // 
-            this.LabsTabPage.Location = new System.Drawing.Point(4, 22);
-            this.LabsTabPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LabsTabPage.Location = new System.Drawing.Point(4, 27);
+            this.LabsTabPage.Margin = new System.Windows.Forms.Padding(4);
             this.LabsTabPage.Name = "LabsTabPage";
-            this.LabsTabPage.Size = new System.Drawing.Size(1458, 693);
+            this.LabsTabPage.Size = new System.Drawing.Size(854, 638);
             this.LabsTabPage.TabIndex = 5;
             this.LabsTabPage.Text = "Labs";
             this.LabsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // registerTabPage
+            // 
+            this.registerTabPage.Location = new System.Drawing.Point(4, 27);
+            this.registerTabPage.Margin = new System.Windows.Forms.Padding(4);
+            this.registerTabPage.Name = "registerTabPage";
+            this.registerTabPage.Padding = new System.Windows.Forms.Padding(4);
+            this.registerTabPage.Size = new System.Drawing.Size(854, 638);
+            this.registerTabPage.TabIndex = 0;
+            this.registerTabPage.Text = "Register Patient";
+            this.registerTabPage.UseVisualStyleBackColor = true;
+            // 
+            // createAppointmentUserControl1
+            // 
+            this.createAppointmentUserControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createAppointmentUserControl1.Location = new System.Drawing.Point(14, 4);
+            this.createAppointmentUserControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.createAppointmentUserControl1.Name = "createAppointmentUserControl1";
+            this.createAppointmentUserControl1.Size = new System.Drawing.Size(836, 586);
+            this.createAppointmentUserControl1.TabIndex = 0;
             // 
             // MainDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1014, 638);
+            this.ClientSize = new System.Drawing.Size(862, 701);
             this.Controls.Add(this.nurseTabControl);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainDashboard";
             this.Text = "Form1";
             this.nurseTabControl.ResumeLayout(false);
+            this.CreateTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -134,12 +147,13 @@
         #endregion
 
         private System.Windows.Forms.TabControl nurseTabControl;
-        private System.Windows.Forms.TabPage registerTabPage;
         private System.Windows.Forms.TabPage UpdateTabPage;
         private System.Windows.Forms.TabPage ViewTabPage;
         private System.Windows.Forms.TabPage CreateTabPage;
         private System.Windows.Forms.TabPage DocumentTabPage;
         private System.Windows.Forms.TabPage LabsTabPage;
+        private System.Windows.Forms.TabPage registerTabPage;
+        private UserControls.CreateAppointmentUserControl createAppointmentUserControl1;
     }
 }
 
