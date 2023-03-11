@@ -18,7 +18,7 @@
         /// <summary>
         /// Patient constructor.
         /// </summary>
-        /// <param name="patientID"> recordID of an person</param>
+        /// <param name="patientID"> patientID of an patient</param>
         public Patient(int patientID)
         {
             this.PatientID = patientID;
