@@ -68,5 +68,52 @@ namespace ClinicManagementApp.DAL
             }
             return patients;
         }
+
+        /// <summary>
+        /// Get a patient from the database source.
+        /// </summary>
+        /// <returns>a patient object based on patientID</returns>
+        /// <param name="patientID"> first name of patient</param>
+        public Patient GetPatientByID(int patientID)
+        {
+            Patient patient = new Patient();
+
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string selectStatement =
+                "SELECT * " +
+                "FROM Patient pa " +
+                "JOIN person pe " +
+                "ON pa.recordID = pe.recordID " +
+                "WHERE pa.patientID = @patientID";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            selectCommand.Parameters.Add("@patientID", System.Data.SqlDbType.Int);
+            selectCommand.Parameters["@patientID"].Value = patientID;
+
+            using (selectCommand)
+            {
+                connection.Open();
+                using (SqlDataReader reader = selectCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        patient = new Patient
+                        {
+                            RecordID = (int)(reader)["recordID"],
+                            LastName = (string)(reader)["lastName"],
+                            FirstName = (string)(reader)["firstName"],
+                            DateOfBirth = (DateTime)(reader)["birthday"],
+                            AddressStreet = (string)(reader)["addressStreet"],
+                            City = (string)(reader)["city"],
+                            State = (string)(reader)["state"],
+                            Zip = (string)(reader)["zip"],
+                            Phone = (string)(reader)["phoneNumber"],
+                            PatientID = (int)(reader)["patientID"]
+                        };
+                    }
+                }
+            }
+            return patient;
+        }
     }
 }

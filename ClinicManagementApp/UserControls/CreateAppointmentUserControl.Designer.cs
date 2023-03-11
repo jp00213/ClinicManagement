@@ -55,11 +55,6 @@
             this.reasonTextBox = new System.Windows.Forms.TextBox();
             this.dobDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.patientDataGridView = new System.Windows.Forms.DataGridView();
-            this.patientIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.appointmentDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.addressStreetTextBox = new System.Windows.Forms.TextBox();
             this.cityTextBox = new System.Windows.Forms.TextBox();
@@ -70,6 +65,11 @@
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.stateTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             addressStreetLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
@@ -84,6 +84,87 @@
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // addressStreetLabel
+            // 
+            addressStreetLabel.AutoSize = true;
+            addressStreetLabel.Location = new System.Drawing.Point(426, 235);
+            addressStreetLabel.Name = "addressStreetLabel";
+            addressStreetLabel.Size = new System.Drawing.Size(109, 18);
+            addressStreetLabel.TabIndex = 41;
+            addressStreetLabel.Text = "Address Street:";
+            // 
+            // cityLabel
+            // 
+            cityLabel.AutoSize = true;
+            cityLabel.Location = new System.Drawing.Point(426, 265);
+            cityLabel.Name = "cityLabel";
+            cityLabel.Size = new System.Drawing.Size(37, 18);
+            cityLabel.TabIndex = 43;
+            cityLabel.Text = "City:";
+            // 
+            // dateOfBirthLabel
+            // 
+            dateOfBirthLabel.AutoSize = true;
+            dateOfBirthLabel.Location = new System.Drawing.Point(71, 329);
+            dateOfBirthLabel.Name = "dateOfBirthLabel";
+            dateOfBirthLabel.Size = new System.Drawing.Size(97, 18);
+            dateOfBirthLabel.TabIndex = 45;
+            dateOfBirthLabel.Text = "Date Of Birth:";
+            // 
+            // firstNameLabel
+            // 
+            firstNameLabel.AutoSize = true;
+            firstNameLabel.Location = new System.Drawing.Point(71, 292);
+            firstNameLabel.Name = "firstNameLabel";
+            firstNameLabel.Size = new System.Drawing.Size(85, 18);
+            firstNameLabel.TabIndex = 47;
+            firstNameLabel.Text = "First Name:";
+            // 
+            // lastNameLabel
+            // 
+            lastNameLabel.AutoSize = true;
+            lastNameLabel.Location = new System.Drawing.Point(71, 262);
+            lastNameLabel.Name = "lastNameLabel";
+            lastNameLabel.Size = new System.Drawing.Size(84, 18);
+            lastNameLabel.TabIndex = 49;
+            lastNameLabel.Text = "Last Name:";
+            // 
+            // patientIDLabel
+            // 
+            patientIDLabel.AutoSize = true;
+            patientIDLabel.Location = new System.Drawing.Point(71, 232);
+            patientIDLabel.Name = "patientIDLabel";
+            patientIDLabel.Size = new System.Drawing.Size(75, 18);
+            patientIDLabel.TabIndex = 51;
+            patientIDLabel.Text = "Patient ID:";
+            // 
+            // phoneLabel
+            // 
+            phoneLabel.AutoSize = true;
+            phoneLabel.Location = new System.Drawing.Point(71, 358);
+            phoneLabel.Name = "phoneLabel";
+            phoneLabel.Size = new System.Drawing.Size(55, 18);
+            phoneLabel.TabIndex = 53;
+            phoneLabel.Text = "Phone:";
+            // 
+            // stateLabel
+            // 
+            stateLabel.AutoSize = true;
+            stateLabel.Location = new System.Drawing.Point(426, 295);
+            stateLabel.Name = "stateLabel";
+            stateLabel.Size = new System.Drawing.Size(46, 18);
+            stateLabel.TabIndex = 57;
+            stateLabel.Text = "State:";
+            // 
+            // zipLabel
+            // 
+            zipLabel.AutoSize = true;
+            zipLabel.Location = new System.Drawing.Point(426, 325);
+            zipLabel.Name = "zipLabel";
+            zipLabel.Size = new System.Drawing.Size(32, 18);
+            zipLabel.TabIndex = 59;
+            zipLabel.Text = "Zip:";
             // 
             // fNameLabel
             // 
@@ -255,8 +336,105 @@
             this.patientDataGridView.Location = new System.Drawing.Point(127, 110);
             this.patientDataGridView.Name = "patientDataGridView";
             this.patientDataGridView.ReadOnly = true;
+            this.patientDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.patientDataGridView.Size = new System.Drawing.Size(565, 92);
             this.patientDataGridView.TabIndex = 39;
+            this.patientDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PatientDataGridView_CellClick);
+            // 
+            // appointmentDateTimePicker
+            // 
+            this.appointmentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.appointmentDateTimePicker.Location = new System.Drawing.Point(186, 440);
+            this.appointmentDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.appointmentDateTimePicker.Name = "appointmentDateTimePicker";
+            this.appointmentDateTimePicker.Size = new System.Drawing.Size(122, 24);
+            this.appointmentDateTimePicker.TabIndex = 40;
+            // 
+            // addressStreetTextBox
+            // 
+            this.addressStreetTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "AddressStreet", true));
+            this.addressStreetTextBox.Location = new System.Drawing.Point(541, 232);
+            this.addressStreetTextBox.Name = "addressStreetTextBox";
+            this.addressStreetTextBox.ReadOnly = true;
+            this.addressStreetTextBox.Size = new System.Drawing.Size(200, 24);
+            this.addressStreetTextBox.TabIndex = 42;
+            // 
+            // cityTextBox
+            // 
+            this.cityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "City", true));
+            this.cityTextBox.Location = new System.Drawing.Point(541, 262);
+            this.cityTextBox.Name = "cityTextBox";
+            this.cityTextBox.ReadOnly = true;
+            this.cityTextBox.Size = new System.Drawing.Size(200, 24);
+            this.cityTextBox.TabIndex = 44;
+            // 
+            // dateOfBirthDateTimePicker
+            // 
+            this.dateOfBirthDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.patientBindingSource, "DateOfBirth", true));
+            this.dateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(186, 325);
+            this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
+            this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(200, 24);
+            this.dateOfBirthDateTimePicker.TabIndex = 46;
+            this.dateOfBirthDateTimePicker.ValueChanged += new System.EventHandler(this.DateOfBirthDateTimePicker_ValueChanged);
+            // 
+            // firstNameTextBox
+            // 
+            this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "FirstName", true));
+            this.firstNameTextBox.Location = new System.Drawing.Point(186, 289);
+            this.firstNameTextBox.Name = "firstNameTextBox";
+            this.firstNameTextBox.ReadOnly = true;
+            this.firstNameTextBox.Size = new System.Drawing.Size(200, 24);
+            this.firstNameTextBox.TabIndex = 48;
+            // 
+            // lastNameTextBox
+            // 
+            this.lastNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "LastName", true));
+            this.lastNameTextBox.Location = new System.Drawing.Point(186, 259);
+            this.lastNameTextBox.Name = "lastNameTextBox";
+            this.lastNameTextBox.ReadOnly = true;
+            this.lastNameTextBox.Size = new System.Drawing.Size(200, 24);
+            this.lastNameTextBox.TabIndex = 50;
+            // 
+            // patientIDTextBox
+            // 
+            this.patientIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "PatientID", true));
+            this.patientIDTextBox.Location = new System.Drawing.Point(186, 229);
+            this.patientIDTextBox.Name = "patientIDTextBox";
+            this.patientIDTextBox.ReadOnly = true;
+            this.patientIDTextBox.Size = new System.Drawing.Size(200, 24);
+            this.patientIDTextBox.TabIndex = 52;
+            // 
+            // phoneTextBox
+            // 
+            this.phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "Phone", true));
+            this.phoneTextBox.Location = new System.Drawing.Point(186, 355);
+            this.phoneTextBox.Name = "phoneTextBox";
+            this.phoneTextBox.ReadOnly = true;
+            this.phoneTextBox.Size = new System.Drawing.Size(200, 24);
+            this.phoneTextBox.TabIndex = 54;
+            // 
+            // stateTextBox
+            // 
+            this.stateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "State", true));
+            this.stateTextBox.Location = new System.Drawing.Point(541, 292);
+            this.stateTextBox.Name = "stateTextBox";
+            this.stateTextBox.ReadOnly = true;
+            this.stateTextBox.Size = new System.Drawing.Size(200, 24);
+            this.stateTextBox.TabIndex = 58;
+            // 
+            // zipTextBox
+            // 
+            this.zipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "Zip", true));
+            this.zipTextBox.Location = new System.Drawing.Point(541, 322);
+            this.zipTextBox.Name = "zipTextBox";
+            this.zipTextBox.ReadOnly = true;
+            this.zipTextBox.Size = new System.Drawing.Size(200, 24);
+            this.zipTextBox.TabIndex = 60;
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(ClinicManagementApp.Model.Patient);
             // 
             // patientIDDataGridViewTextBoxColumn
             // 
@@ -285,182 +463,6 @@
             this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "DateOfBirth";
             this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
             this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(ClinicManagementApp.Model.Patient);
-            // 
-            // appointmentDateTimePicker
-            // 
-            this.appointmentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.appointmentDateTimePicker.Location = new System.Drawing.Point(186, 440);
-            this.appointmentDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.appointmentDateTimePicker.Name = "appointmentDateTimePicker";
-            this.appointmentDateTimePicker.Size = new System.Drawing.Size(122, 24);
-            this.appointmentDateTimePicker.TabIndex = 40;
-            // 
-            // addressStreetLabel
-            // 
-            addressStreetLabel.AutoSize = true;
-            addressStreetLabel.Location = new System.Drawing.Point(426, 235);
-            addressStreetLabel.Name = "addressStreetLabel";
-            addressStreetLabel.Size = new System.Drawing.Size(109, 18);
-            addressStreetLabel.TabIndex = 41;
-            addressStreetLabel.Text = "Address Street:";
-            // 
-            // addressStreetTextBox
-            // 
-            this.addressStreetTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "AddressStreet", true));
-            this.addressStreetTextBox.Enabled = false;
-            this.addressStreetTextBox.Location = new System.Drawing.Point(541, 232);
-            this.addressStreetTextBox.Name = "addressStreetTextBox";
-            this.addressStreetTextBox.Size = new System.Drawing.Size(200, 24);
-            this.addressStreetTextBox.TabIndex = 42;
-            // 
-            // cityLabel
-            // 
-            cityLabel.AutoSize = true;
-            cityLabel.Location = new System.Drawing.Point(426, 265);
-            cityLabel.Name = "cityLabel";
-            cityLabel.Size = new System.Drawing.Size(37, 18);
-            cityLabel.TabIndex = 43;
-            cityLabel.Text = "City:";
-            // 
-            // cityTextBox
-            // 
-            this.cityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "City", true));
-            this.cityTextBox.Enabled = false;
-            this.cityTextBox.Location = new System.Drawing.Point(541, 262);
-            this.cityTextBox.Name = "cityTextBox";
-            this.cityTextBox.Size = new System.Drawing.Size(200, 24);
-            this.cityTextBox.TabIndex = 44;
-            // 
-            // dateOfBirthLabel
-            // 
-            dateOfBirthLabel.AutoSize = true;
-            dateOfBirthLabel.Location = new System.Drawing.Point(71, 329);
-            dateOfBirthLabel.Name = "dateOfBirthLabel";
-            dateOfBirthLabel.Size = new System.Drawing.Size(97, 18);
-            dateOfBirthLabel.TabIndex = 45;
-            dateOfBirthLabel.Text = "Date Of Birth:";
-            // 
-            // dateOfBirthDateTimePicker
-            // 
-            this.dateOfBirthDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.patientBindingSource, "DateOfBirth", true));
-            this.dateOfBirthDateTimePicker.Enabled = false;
-            this.dateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(186, 325);
-            this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
-            this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(200, 24);
-            this.dateOfBirthDateTimePicker.TabIndex = 46;
-            // 
-            // firstNameLabel
-            // 
-            firstNameLabel.AutoSize = true;
-            firstNameLabel.Location = new System.Drawing.Point(71, 292);
-            firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new System.Drawing.Size(85, 18);
-            firstNameLabel.TabIndex = 47;
-            firstNameLabel.Text = "First Name:";
-            // 
-            // firstNameTextBox
-            // 
-            this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "FirstName", true));
-            this.firstNameTextBox.Enabled = false;
-            this.firstNameTextBox.Location = new System.Drawing.Point(186, 289);
-            this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(200, 24);
-            this.firstNameTextBox.TabIndex = 48;
-            // 
-            // lastNameLabel
-            // 
-            lastNameLabel.AutoSize = true;
-            lastNameLabel.Location = new System.Drawing.Point(71, 262);
-            lastNameLabel.Name = "lastNameLabel";
-            lastNameLabel.Size = new System.Drawing.Size(84, 18);
-            lastNameLabel.TabIndex = 49;
-            lastNameLabel.Text = "Last Name:";
-            // 
-            // lastNameTextBox
-            // 
-            this.lastNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "LastName", true));
-            this.lastNameTextBox.Enabled = false;
-            this.lastNameTextBox.Location = new System.Drawing.Point(186, 259);
-            this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(200, 24);
-            this.lastNameTextBox.TabIndex = 50;
-            // 
-            // patientIDLabel
-            // 
-            patientIDLabel.AutoSize = true;
-            patientIDLabel.Location = new System.Drawing.Point(71, 232);
-            patientIDLabel.Name = "patientIDLabel";
-            patientIDLabel.Size = new System.Drawing.Size(75, 18);
-            patientIDLabel.TabIndex = 51;
-            patientIDLabel.Text = "Patient ID:";
-            // 
-            // patientIDTextBox
-            // 
-            this.patientIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "PatientID", true));
-            this.patientIDTextBox.Enabled = false;
-            this.patientIDTextBox.Location = new System.Drawing.Point(186, 229);
-            this.patientIDTextBox.Name = "patientIDTextBox";
-            this.patientIDTextBox.Size = new System.Drawing.Size(200, 24);
-            this.patientIDTextBox.TabIndex = 52;
-            // 
-            // phoneLabel
-            // 
-            phoneLabel.AutoSize = true;
-            phoneLabel.Location = new System.Drawing.Point(71, 358);
-            phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new System.Drawing.Size(55, 18);
-            phoneLabel.TabIndex = 53;
-            phoneLabel.Text = "Phone:";
-            // 
-            // phoneTextBox
-            // 
-            this.phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "Phone", true));
-            this.phoneTextBox.Enabled = false;
-            this.phoneTextBox.Location = new System.Drawing.Point(186, 355);
-            this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(200, 24);
-            this.phoneTextBox.TabIndex = 54;
-            // 
-            // stateLabel
-            // 
-            stateLabel.AutoSize = true;
-            stateLabel.Location = new System.Drawing.Point(426, 295);
-            stateLabel.Name = "stateLabel";
-            stateLabel.Size = new System.Drawing.Size(46, 18);
-            stateLabel.TabIndex = 57;
-            stateLabel.Text = "State:";
-            // 
-            // stateTextBox
-            // 
-            this.stateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "State", true));
-            this.stateTextBox.Enabled = false;
-            this.stateTextBox.Location = new System.Drawing.Point(541, 292);
-            this.stateTextBox.Name = "stateTextBox";
-            this.stateTextBox.Size = new System.Drawing.Size(200, 24);
-            this.stateTextBox.TabIndex = 58;
-            // 
-            // zipLabel
-            // 
-            zipLabel.AutoSize = true;
-            zipLabel.Location = new System.Drawing.Point(426, 325);
-            zipLabel.Name = "zipLabel";
-            zipLabel.Size = new System.Drawing.Size(32, 18);
-            zipLabel.TabIndex = 59;
-            zipLabel.Text = "Zip:";
-            // 
-            // zipTextBox
-            // 
-            this.zipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "Zip", true));
-            this.zipTextBox.Enabled = false;
-            this.zipTextBox.Location = new System.Drawing.Point(541, 322);
-            this.zipTextBox.Name = "zipTextBox";
-            this.zipTextBox.Size = new System.Drawing.Size(200, 24);
-            this.zipTextBox.TabIndex = 60;
             // 
             // appointmentBindingSource
             // 
