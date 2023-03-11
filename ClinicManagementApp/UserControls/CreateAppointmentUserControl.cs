@@ -62,7 +62,7 @@ namespace ClinicManagementApp.UserControls
         {
             if(patient != null)
             {
-                this.dateOfBirthDateTimePicker.Value = this.patient.DateOfBirth;
+                this.dateOfBirthDateTimePicker.Value = this.patient.DateOfBirth.Date;
             }
         }
 
