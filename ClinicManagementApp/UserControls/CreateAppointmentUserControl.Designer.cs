@@ -50,8 +50,6 @@
             this.reasonLabel = new System.Windows.Forms.Label();
             this.fNameTextBox = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.doctorTextBox = new System.Windows.Forms.TextBox();
-            this.TimeTextBox = new System.Windows.Forms.TextBox();
             this.reasonTextBox = new System.Windows.Forms.TextBox();
             this.dobDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.patientDataGridView = new System.Windows.Forms.DataGridView();
@@ -65,6 +63,8 @@
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.stateTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
+            this.timeComboBox = new System.Windows.Forms.ComboBox();
+            this.doctorComboBox = new System.Windows.Forms.ComboBox();
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patientIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -290,20 +290,6 @@
             this.textBox1.Size = new System.Drawing.Size(154, 24);
             this.textBox1.TabIndex = 23;
             // 
-            // doctorTextBox
-            // 
-            this.doctorTextBox.Location = new System.Drawing.Point(185, 405);
-            this.doctorTextBox.Name = "doctorTextBox";
-            this.doctorTextBox.Size = new System.Drawing.Size(200, 24);
-            this.doctorTextBox.TabIndex = 29;
-            // 
-            // TimeTextBox
-            // 
-            this.TimeTextBox.Location = new System.Drawing.Point(185, 474);
-            this.TimeTextBox.Name = "TimeTextBox";
-            this.TimeTextBox.Size = new System.Drawing.Size(193, 24);
-            this.TimeTextBox.TabIndex = 31;
-            // 
             // reasonTextBox
             // 
             this.reasonTextBox.Location = new System.Drawing.Point(518, 407);
@@ -343,12 +329,14 @@
             // 
             // appointmentDateTimePicker
             // 
+            this.appointmentDateTimePicker.CustomFormat = "MM-dd-yyyy";
             this.appointmentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.appointmentDateTimePicker.Location = new System.Drawing.Point(186, 440);
             this.appointmentDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.appointmentDateTimePicker.Name = "appointmentDateTimePicker";
             this.appointmentDateTimePicker.Size = new System.Drawing.Size(122, 24);
             this.appointmentDateTimePicker.TabIndex = 40;
+            this.appointmentDateTimePicker.ValueChanged += new System.EventHandler(this.AppointmentDateTimePicker_ValueChanged);
             // 
             // addressStreetTextBox
             // 
@@ -432,6 +420,23 @@
             this.zipTextBox.Size = new System.Drawing.Size(200, 24);
             this.zipTextBox.TabIndex = 60;
             // 
+            // timeComboBox
+            // 
+            this.timeComboBox.FormattingEnabled = true;
+            this.timeComboBox.Location = new System.Drawing.Point(185, 472);
+            this.timeComboBox.Name = "timeComboBox";
+            this.timeComboBox.Size = new System.Drawing.Size(193, 26);
+            this.timeComboBox.TabIndex = 61;
+            // 
+            // doctorComboBox
+            // 
+            this.doctorComboBox.FormattingEnabled = true;
+            this.doctorComboBox.Location = new System.Drawing.Point(186, 401);
+            this.doctorComboBox.Name = "doctorComboBox";
+            this.doctorComboBox.Size = new System.Drawing.Size(192, 26);
+            this.doctorComboBox.TabIndex = 62;
+            this.doctorComboBox.ValueMemberChanged += new System.EventHandler(this.DoctorComboBox_ValueMemberChanged);
+            // 
             // patientBindingSource
             // 
             this.patientBindingSource.DataSource = typeof(ClinicManagementApp.Model.Patient);
@@ -472,6 +477,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.doctorComboBox);
+            this.Controls.Add(this.timeComboBox);
             this.Controls.Add(addressStreetLabel);
             this.Controls.Add(this.addressStreetTextBox);
             this.Controls.Add(cityLabel);
@@ -494,8 +501,6 @@
             this.Controls.Add(this.patientDataGridView);
             this.Controls.Add(this.dobDateTimePicker);
             this.Controls.Add(this.reasonTextBox);
-            this.Controls.Add(this.TimeTextBox);
-            this.Controls.Add(this.doctorTextBox);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.fNameTextBox);
             this.Controls.Add(this.reasonLabel);
@@ -533,8 +538,6 @@
         private System.Windows.Forms.Label reasonLabel;
         private System.Windows.Forms.TextBox fNameTextBox;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox doctorTextBox;
-        private System.Windows.Forms.TextBox TimeTextBox;
         private System.Windows.Forms.TextBox reasonTextBox;
         private System.Windows.Forms.DateTimePicker dobDateTimePicker;
         private System.Windows.Forms.DataGridView patientDataGridView;
@@ -554,5 +557,7 @@
         private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.BindingSource appointmentBindingSource;
+        private System.Windows.Forms.ComboBox timeComboBox;
+        private System.Windows.Forms.ComboBox doctorComboBox;
     }
 }
