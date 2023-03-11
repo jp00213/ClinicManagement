@@ -2,9 +2,6 @@
 using ClinicManagementApp.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicManagementApp.Controller
 {
@@ -34,5 +31,12 @@ namespace ClinicManagementApp.Controller
         {
             return this._patientDAL.GetPatientByNameDOB(firstName, lastName, dob);
         }
+
+        /// <summary>
+        /// Get a patient from the database source.
+        /// </summary>
+        /// <returns>a patient object based on patientID</returns>
+        /// <param name="patientID"> first name of patient</param>
+        public Patient GetPatientByID(int patientID) => this._patientDAL.GetPatientByID(patientID);
     }
 }
