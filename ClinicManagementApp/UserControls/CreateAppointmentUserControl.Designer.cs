@@ -422,6 +422,7 @@
             // 
             // timeComboBox
             // 
+            this.timeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.timeComboBox.FormattingEnabled = true;
             this.timeComboBox.Location = new System.Drawing.Point(185, 472);
             this.timeComboBox.Name = "timeComboBox";
@@ -430,6 +431,7 @@
             // 
             // doctorComboBox
             // 
+            this.doctorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.doctorComboBox.FormattingEnabled = true;
             this.doctorComboBox.Location = new System.Drawing.Point(186, 401);
             this.doctorComboBox.Name = "doctorComboBox";
