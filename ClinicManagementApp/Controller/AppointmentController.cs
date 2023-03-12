@@ -1,4 +1,5 @@
 ﻿using ClinicManagementApp.DAL;
+using ClinicManagementApp.Model;
 using System;
 using System.Collections.Generic;
 
@@ -35,5 +36,12 @@ namespace ClinicManagementApp.Controller
         {
             return _appointmentDAL.GetAppointmentTimeOptionsByDateAndDoctor(date, doctorID);
         }
+
+        /// <summary>
+        /// Add Appointment to the database source.
+        /// </summary>
+        /// <returns>AppointmentID of new appointment added</returns>
+        /// <param name="appointment"> appointment to Add to database</param>
+        public int AddAppointment(Appointment appointment) => this._appointmentDAL.AddAppointment(appointment);
     }
 }

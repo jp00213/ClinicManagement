@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicManagementApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -78,6 +79,47 @@ namespace ClinicManagementApp.DAL
                 }
             }
             return timeOptions;
+        }
+
+        /// <summary>
+        /// Add Appointment to the database source.
+        /// </summary>
+        /// <returns>AppointmentID of new appointment added</returns>
+        /// <param name="appointment"> appointment to Add to database</param>
+        public int AddAppointment(Appointment appointment)
+        {
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string insertStatement =
+                "INSERT INTO appointment " +
+                "(patientID, doctorID, appointmentDatetime, reason)" +
+                "VALUES (@patientID, @doctorID, @appointmentDatetime, @reason)";
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+
+            insertCommand.Parameters.Add("@patientID", System.Data.SqlDbType.Int);
+            insertCommand.Parameters["@patientID"].Value = appointment.PatientID;
+
+            insertCommand.Parameters.Add("@doctorID", System.Data.SqlDbType.Int);
+            insertCommand.Parameters["@doctorID"].Value = appointment.DoctorID;
+
+            insertCommand.Parameters.Add("@appointmentDatetime", System.Data.SqlDbType.DateTime);
+            insertCommand.Parameters["@appointmentDatetime"].Value = appointment.AppointmentDatetime;
+
+            insertCommand.Parameters.Add("@reason", System.Data.SqlDbType.VarChar);
+            insertCommand.Parameters["@reason"].Value = appointment.Reason;
+
+            using (insertCommand)
+            {
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+                string selectStatement =
+                    "SELECT IDENT_CURRENT('appointment') FROM appointment";
+                SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+                using (selectCommand)
+                {
+                    int appointmentID = Convert.ToInt32(selectCommand.ExecuteScalar());
+                    return appointmentID;
+                }
+            }
         }
 
     }

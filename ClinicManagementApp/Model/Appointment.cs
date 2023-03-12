@@ -31,7 +31,7 @@ namespace ClinicManagementApp.Model
         /// <param name="reason"> reason for appointment</param>
         public Appointment(int appointmentID, int patientID, int doctorID, DateTime appointmentDatetime, string reason)
         {
-            _ = Reason ?? throw new ArgumentNullException("Reason cannot be null");
+            _ = reason ?? throw new ArgumentNullException("Reason cannot be null");
 
             this.AppointmentID = appointmentID;
             this.PatientID = patientID;
