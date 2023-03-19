@@ -115,5 +115,161 @@ namespace ClinicManagementApp.DAL
             }
             return patient;
         }
+
+        /// <summary>
+        /// Get patient by last and first name per search requirement
+        /// </summary>
+        /// <param name="firstNameIn">first name of patient</param>
+        /// <param name="lastNameIn">last name of patient</param>
+        /// <returns>patient list</returns>
+        public List<Patient> GetPatientByLastAndFirstName(string firstNameIn, string lastNameIn)
+        {
+            List<Patient> patients = new List<Patient>();
+            Patient patient = new Patient();
+
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string selectStatement =
+                "SELECT * " +
+                "FROM Patient a " +
+                "JOIN Person e " +
+                "ON a.recordID = e.recordID " +
+                "WHERE e.firstName = @firstName " +
+                "AND e.lastName = @lastName ";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            selectCommand.Parameters.AddWithValue("@firstName", firstNameIn);
+            selectCommand.Parameters.AddWithValue("@lastName", lastNameIn);
+
+            using (selectCommand)
+            {
+                connection.Open();
+                using (SqlDataReader reader = selectCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        patient = new Patient
+                        {
+                            RecordID = (int)(reader)["recordID"],
+                            LastName = (string)(reader)["lastName"],
+                            FirstName = (string)(reader)["firstName"],
+                            DateOfBirth = (DateTime)(reader)["birthday"],
+                            AddressStreet = (string)(reader)["addressStreet"],
+                            City = (string)(reader)["city"],
+                            State = (string)(reader)["state"],
+                            Zip = (string)(reader)["zip"],
+                            Phone = (string)(reader)["phoneNumber"],
+                            PatientID = (int)(reader)["patientID"]
+                        };
+                        patients.Add(patient);
+                    }
+                }
+            }
+            return patients;
+
+        }
+
+        /// <summary>
+        /// Get patient by last name and birthday per search requirement
+        /// </summary>
+        /// <param name="lastNameIn">last name of patient</param>
+        /// <param name="dobIn">birthday of patient</param>
+        /// <returns>patient list</returns>
+        public List<Patient> GetPatientByLastNameAndDOB(string lastNameIn, DateTime dobIn)
+        {
+            List<Patient> patients = new List<Patient>();
+            Patient patient = new Patient();
+
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string selectStatement =
+                "SELECT * " +
+                "FROM Patient a " +
+                "JOIN Person e " +
+                "ON a.recordID = e.recordID " +
+                "WHERE e.lastName = @lastName " +
+                "AND e.birthday = @dob ";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            selectCommand.Parameters.AddWithValue("@firstName", lastNameIn);
+            selectCommand.Parameters.AddWithValue("@dob", dobIn);
+
+            using (selectCommand)
+            {
+                connection.Open();
+                using (SqlDataReader reader = selectCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        patient = new Patient
+                        {
+                            RecordID = (int)(reader)["recordID"],
+                            LastName = (string)(reader)["lastName"],
+                            FirstName = (string)(reader)["firstName"],
+                            DateOfBirth = (DateTime)(reader)["birthday"],
+                            AddressStreet = (string)(reader)["addressStreet"],
+                            City = (string)(reader)["city"],
+                            State = (string)(reader)["state"],
+                            Zip = (string)(reader)["zip"],
+                            Phone = (string)(reader)["phoneNumber"],
+                            PatientID = (int)(reader)["patientID"]
+                        };
+                        patients.Add(patient);
+                    }
+                }
+            }
+            return patients;
+        }
+
+        /// <summary>
+        /// Get patient by DOB per search requirement
+        /// </summary>
+        /// <param name="dobIn">birthday of patient</param>
+        /// <returns>patient list</returns>
+        public List<Patient> GetPatientByDobOnly(DateTime dobIn)
+        {
+            List<Patient> patients = new List<Patient>();
+            Patient patient = new Patient();
+
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string selectStatement =
+                "SELECT * " +
+                "FROM Patient a " +
+                "JOIN Person e " +
+                "ON a.recordID = e.recordID " +
+                "WHERE e.birthday = @dob ";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            selectCommand.Parameters.AddWithValue("@dob",dobIn);
+           
+            using (selectCommand)
+            {
+                connection.Open();
+                using (SqlDataReader reader = selectCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        patient = new Patient
+                        {
+                            RecordID = (int)(reader)["recordID"],
+                            LastName = (string)(reader)["lastName"],
+                            FirstName = (string)(reader)["firstName"],
+                            DateOfBirth = (DateTime)(reader)["birthday"],
+                            AddressStreet = (string)(reader)["addressStreet"],
+                            City = (string)(reader)["city"],
+                            State = (string)(reader)["state"],
+                            Zip = (string)(reader)["zip"],
+                            Phone = (string)(reader)["phoneNumber"],
+                            PatientID = (int)(reader)["patientID"]
+                        };
+                        patients.Add(patient);
+                    }
+                }
+            }
+            return patients;
+        }
+
     }
+
 }
