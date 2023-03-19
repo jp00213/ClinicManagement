@@ -29,6 +29,15 @@
         private void InitializeComponent()
         {
             this.searchPatientPanel = new System.Windows.Forms.Panel();
+            this.patientIDShow = new System.Windows.Forms.Label();
+            this.messageBox = new System.Windows.Forms.Label();
+            this.patientListView = new System.Windows.Forms.ListView();
+            this.patientIDHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lastNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.firstNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dobHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clearButton = new System.Windows.Forms.Button();
+            this.patientSearchButton = new System.Windows.Forms.Button();
             this.dobDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
@@ -40,15 +49,6 @@
             this.firstAndLastNameRadio = new System.Windows.Forms.RadioButton();
             this.searchOptionaLabel = new System.Windows.Forms.Label();
             this.searchTitle = new System.Windows.Forms.Label();
-            this.patientSearchButton = new System.Windows.Forms.Button();
-            this.clearButton = new System.Windows.Forms.Button();
-            this.patientListView = new System.Windows.Forms.ListView();
-            this.patientIDHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lastNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.firstNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.dobHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.messageBox = new System.Windows.Forms.Label();
-            this.patientIDShow = new System.Windows.Forms.Label();
             this.searchPatientPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,6 +76,90 @@
             this.searchPatientPanel.Size = new System.Drawing.Size(565, 174);
             this.searchPatientPanel.TabIndex = 0;
             // 
+            // patientIDShow
+            // 
+            this.patientIDShow.AutoSize = true;
+            this.patientIDShow.Location = new System.Drawing.Point(205, 15);
+            this.patientIDShow.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.patientIDShow.Name = "patientIDShow";
+            this.patientIDShow.Size = new System.Drawing.Size(31, 13);
+            this.patientIDShow.TabIndex = 11;
+            this.patientIDShow.Text = "--123";
+            // 
+            // messageBox
+            // 
+            this.messageBox.AutoSize = true;
+            this.messageBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.messageBox.Location = new System.Drawing.Point(414, 33);
+            this.messageBox.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.messageBox.Name = "messageBox";
+            this.messageBox.Size = new System.Drawing.Size(0, 13);
+            this.messageBox.TabIndex = 10;
+            // 
+            // patientListView
+            // 
+            this.patientListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.patientIDHeader,
+            this.lastNameHeader,
+            this.firstNameHeader,
+            this.dobHeader});
+            this.patientListView.HideSelection = false;
+            this.patientListView.Location = new System.Drawing.Point(33, 70);
+            this.patientListView.Margin = new System.Windows.Forms.Padding(2);
+            this.patientListView.Name = "patientListView";
+            this.patientListView.Size = new System.Drawing.Size(521, 88);
+            this.patientListView.TabIndex = 9;
+            this.patientListView.UseCompatibleStateImageBehavior = false;
+            this.patientListView.View = System.Windows.Forms.View.Details;
+            this.patientListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.patientListView_MouseClick);
+            // 
+            // patientIDHeader
+            // 
+            this.patientIDHeader.Text = "PatientID";
+            this.patientIDHeader.Width = 190;
+            // 
+            // lastNameHeader
+            // 
+            this.lastNameHeader.Text = "Last Name";
+            this.lastNameHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lastNameHeader.Width = 223;
+            // 
+            // firstNameHeader
+            // 
+            this.firstNameHeader.Text = "First name";
+            this.firstNameHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.firstNameHeader.Width = 211;
+            // 
+            // dobHeader
+            // 
+            this.dobHeader.Text = "DOB";
+            this.dobHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.dobHeader.Width = 127;
+            // 
+            // clearButton
+            // 
+            this.clearButton.BackColor = System.Drawing.SystemColors.Control;
+            this.clearButton.Location = new System.Drawing.Point(497, 49);
+            this.clearButton.Margin = new System.Windows.Forms.Padding(2);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(50, 18);
+            this.clearButton.TabIndex = 16;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = false;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
+            // patientSearchButton
+            // 
+            this.patientSearchButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.patientSearchButton.Location = new System.Drawing.Point(417, 49);
+            this.patientSearchButton.Margin = new System.Windows.Forms.Padding(2);
+            this.patientSearchButton.Name = "patientSearchButton";
+            this.patientSearchButton.Size = new System.Drawing.Size(77, 18);
+            this.patientSearchButton.TabIndex = 8;
+            this.patientSearchButton.Text = "Search";
+            this.patientSearchButton.UseVisualStyleBackColor = false;
+            this.patientSearchButton.Click += new System.EventHandler(this.patientSearchButton_Click);
+            // 
             // dobDateTimePicker
             // 
             this.dobDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -86,6 +170,7 @@
             this.dobDateTimePicker.Name = "dobDateTimePicker";
             this.dobDateTimePicker.Size = new System.Drawing.Size(135, 20);
             this.dobDateTimePicker.TabIndex = 7;
+            this.dobDateTimePicker.ValueChanged += new System.EventHandler(this.dobDateTimePicker_ValueChanged);
             // 
             // lastNameTextBox
             // 
@@ -94,6 +179,7 @@
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(120, 20);
             this.lastNameTextBox.TabIndex = 5;
+            this.lastNameTextBox.TextChanged += new System.EventHandler(this.lastNameTextBox_TextChanged);
             // 
             // firstNameTextBox
             // 
@@ -102,6 +188,7 @@
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(121, 20);
             this.firstNameTextBox.TabIndex = 4;
+            this.firstNameTextBox.TextChanged += new System.EventHandler(this.firstNameTextBox_TextChanged);
             // 
             // dobLabel
             // 
@@ -147,6 +234,7 @@
             this.dobRadio.TabStop = true;
             this.dobRadio.Text = "DOB";
             this.dobRadio.UseVisualStyleBackColor = true;
+            this.dobRadio.CheckedChanged += new System.EventHandler(this.dobRadio_CheckedChanged);
             // 
             // lastDOBRadio
             // 
@@ -159,6 +247,7 @@
             this.lastDOBRadio.TabStop = true;
             this.lastDOBRadio.Text = "Last Name and DOB";
             this.lastDOBRadio.UseVisualStyleBackColor = true;
+            this.lastDOBRadio.CheckedChanged += new System.EventHandler(this.lastDOBRadio_CheckedChanged);
             // 
             // firstAndLastNameRadio
             // 
@@ -171,6 +260,7 @@
             this.firstAndLastNameRadio.TabStop = true;
             this.firstAndLastNameRadio.Text = "First and Last Name";
             this.firstAndLastNameRadio.UseVisualStyleBackColor = true;
+            this.firstAndLastNameRadio.CheckedChanged += new System.EventHandler(this.firstAndLastNameRadio_CheckedChanged);
             // 
             // searchOptionaLabel
             // 
@@ -192,87 +282,6 @@
             this.searchTitle.Size = new System.Drawing.Size(172, 16);
             this.searchTitle.TabIndex = 0;
             this.searchTitle.Text = "View Patient Information";
-            // 
-            // patientSearchButton
-            // 
-            this.patientSearchButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.patientSearchButton.Location = new System.Drawing.Point(417, 49);
-            this.patientSearchButton.Margin = new System.Windows.Forms.Padding(2);
-            this.patientSearchButton.Name = "patientSearchButton";
-            this.patientSearchButton.Size = new System.Drawing.Size(77, 18);
-            this.patientSearchButton.TabIndex = 8;
-            this.patientSearchButton.Text = "Search";
-            this.patientSearchButton.UseVisualStyleBackColor = false;
-            // 
-            // clearButton
-            // 
-            this.clearButton.BackColor = System.Drawing.SystemColors.Control;
-            this.clearButton.Location = new System.Drawing.Point(497, 49);
-            this.clearButton.Margin = new System.Windows.Forms.Padding(2);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(50, 18);
-            this.clearButton.TabIndex = 16;
-            this.clearButton.Text = "Search";
-            this.clearButton.UseVisualStyleBackColor = false;
-            // 
-            // patientListView
-            // 
-            this.patientListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.patientIDHeader,
-            this.lastNameHeader,
-            this.firstNameHeader,
-            this.dobHeader});
-            this.patientListView.HideSelection = false;
-            this.patientListView.Location = new System.Drawing.Point(33, 70);
-            this.patientListView.Margin = new System.Windows.Forms.Padding(2);
-            this.patientListView.Name = "patientListView";
-            this.patientListView.Size = new System.Drawing.Size(521, 88);
-            this.patientListView.TabIndex = 9;
-            this.patientListView.UseCompatibleStateImageBehavior = false;
-            this.patientListView.View = System.Windows.Forms.View.Details;
-            // 
-            // patientIDHeader
-            // 
-            this.patientIDHeader.Text = "PatientID";
-            this.patientIDHeader.Width = 190;
-            // 
-            // lastNameHeader
-            // 
-            this.lastNameHeader.Text = "Last Name";
-            this.lastNameHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.lastNameHeader.Width = 223;
-            // 
-            // firstNameHeader
-            // 
-            this.firstNameHeader.Text = "First name";
-            this.firstNameHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.firstNameHeader.Width = 211;
-            // 
-            // dobHeader
-            // 
-            this.dobHeader.Text = "DOB";
-            this.dobHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.dobHeader.Width = 127;
-            // 
-            // messageBox
-            // 
-            this.messageBox.AutoSize = true;
-            this.messageBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.messageBox.Location = new System.Drawing.Point(414, 33);
-            this.messageBox.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.messageBox.Name = "messageBox";
-            this.messageBox.Size = new System.Drawing.Size(0, 13);
-            this.messageBox.TabIndex = 10;
-            // 
-            // patientIDShow
-            // 
-            this.patientIDShow.AutoSize = true;
-            this.patientIDShow.Location = new System.Drawing.Point(205, 15);
-            this.patientIDShow.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.patientIDShow.Name = "patientIDShow";
-            this.patientIDShow.Size = new System.Drawing.Size(31, 13);
-            this.patientIDShow.TabIndex = 11;
-            this.patientIDShow.Text = "--123";
             // 
             // SearchPatientUserControl
             // 

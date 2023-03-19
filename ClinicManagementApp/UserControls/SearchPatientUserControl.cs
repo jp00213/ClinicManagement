@@ -87,5 +87,123 @@ namespace ClinicManagementApp.UserControls
                 this.messageBox.Text = "No patient found.";
             }
         }
+
+        private void patientSearchButton_Click(object sender, EventArgs e)
+        {
+            if((firstAndLastNameRadio.Checked == true) && (this.firstNameTextBox.Text == string.Empty) || (string.IsNullOrEmpty(this.lastNameTextBox.Text)))
+                { 
+                this.messageBox.Text = "Both First and Last Name cannot be empty.";
+                return;
+            }
+            else if (lastDOBRadio.Checked == true)
+            {
+                if (string.IsNullOrEmpty(this.lastNameTextBox.Text))
+                {
+                    this.messageBox.Text = "Last Name cannot be empty.";
+                    return;
+                }
+            }
+            this.LoadPatientListView(this.firstNameTextBox.Text, this.lastNameTextBox.Text, this.dobDateTimePicker.Value);
+        }
+
+        private void TextBoxValidation()
+        {
+            if ((firstAndLastNameRadio.Checked == true) && (this.firstNameTextBox.Text == string.Empty) && (string.IsNullOrEmpty(this.lastNameTextBox.Text)))
+            {
+                this.messageBox.Text = "First and Last Name cannot be empty.";
+            }
+            else if (lastDOBRadio.Checked == true)
+            {
+                if (string.IsNullOrEmpty(this.lastNameTextBox.Text))
+                {
+                    this.messageBox.Text = "Last Name cannot be empty.";
+                }
+            }
+        }
+
+        private void patientListView_MouseClick(object sender, MouseEventArgs e)
+        {
+            patientIDShow.Text = patientListView.SelectedItems[0].SubItems[0].Text;
+            this._controlNumber.PatientID = int.Parse(patientIDShow.Text);
+            // 5. event - event trigger
+            this.OnNumberchanged(EventArgs.Empty);
+        }
+
+        // 3. event - return current patientID
+        protected virtual void OnNumberchanged(EventArgs e)
+        {
+            PatientNumberChanged?.Invoke(this, e);
+        }
+
+        // 4. event - return current patientID
+        public string getCurrentpatientID()
+        {
+            return this._controlNumber.PatientID.ToString();
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            this.SetDefaultPageSetting();
+        }
+
+        private void firstAndLastNameRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            ClearAllBoxValue();
+            dobLabel.Hide();
+            dobDateTimePicker.Hide();
+            firstNameLabel.Show();
+            firstNameTextBox.Show();
+            lastNameLabel.Show(); 
+            lastNameTextBox.Show();
+            this.patientSearchButton.Visible = true;
+        }
+
+        private void lastDOBRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            ClearAllBoxValue();
+            firstNameLabel.Hide();
+            firstNameTextBox.Hide();
+            lastNameLabel.Show();
+            lastNameTextBox.Show();
+            dobDateTimePicker.Value = DateTime.Now.Date;
+            dobLabel.Show();
+            dobDateTimePicker.Show();
+            this.patientSearchButton.Visible = true;
+        }
+
+        private void dobRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            ClearAllBoxValue();
+            firstNameLabel.Hide();
+            firstNameTextBox.Hide();
+            lastNameLabel.Hide();
+            lastNameTextBox.Hide();
+            dobLabel.Show();
+            dobDateTimePicker.Show();
+            this.patientSearchButton.Visible = true;             
+        }
+
+        private void ClearAllBoxValue()
+        {
+            firstNameTextBox.Text = string.Empty;
+            lastNameTextBox.Text = string.Empty;
+            dobDateTimePicker.Value = DateTime.Now.Date;
+            this.messageBox.Text = "";
+        }
+
+        private void firstNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.messageBox.Text = "";
+        }
+
+        private void lastNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.messageBox.Text = "";
+        }
+
+        private void dobDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            this.messageBox.Text = "";
+        }
     }
 }
