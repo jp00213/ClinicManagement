@@ -89,6 +89,9 @@
     <EmbeddedResource Include="UserControls\CreateAppointmentUserControl.resx">
       <DependentUpon>CreateAppointmentUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SearchPatientUserControl.resx">
+      <DependentUpon>SearchPatientUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </EmbeddedResource>
