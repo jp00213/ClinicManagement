@@ -63,6 +63,12 @@
     <Compile Include="UserControls\CreateAppointmentUserControl.Designer.cs">
       <DependentUpon>CreateAppointmentUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SearchPatientUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SearchPatientUserControl.Designer.cs">
+      <DependentUpon>SearchPatientUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
