@@ -90,7 +90,7 @@ namespace ClinicManagementApp.UserControls
 
         private void patientSearchButton_Click(object sender, EventArgs e)
         {
-            if((firstAndLastNameRadio.Checked == true) && (this.firstNameTextBox.Text == string.Empty) || (string.IsNullOrEmpty(this.lastNameTextBox.Text)))
+            if ((firstAndLastNameRadio.Checked == true) && ((this.firstNameTextBox.Text == string.Empty) || (string.IsNullOrEmpty(this.lastNameTextBox.Text))))
                 { 
                 this.messageBox.Text = "Both First and Last Name cannot be empty.";
                 return;
