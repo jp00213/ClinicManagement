@@ -174,7 +174,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(227, 3);
+            this.button1.Location = new System.Drawing.Point(38, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -183,7 +183,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(364, 3);
+            this.button2.Location = new System.Drawing.Point(152, 5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
@@ -192,7 +192,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(499, 3);
+            this.button3.Location = new System.Drawing.Point(264, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 2;
@@ -216,6 +216,7 @@
             this.currentPatientIDLabel.Size = new System.Drawing.Size(18, 18);
             this.currentPatientIDLabel.TabIndex = 1;
             this.currentPatientIDLabel.Text = "--";
+            this.currentPatientIDLabel.TextChanged += new System.EventHandler(this.currentPatientIDLabel_TextChanged);
             // 
             // searchPatientUserControl1
             // 
