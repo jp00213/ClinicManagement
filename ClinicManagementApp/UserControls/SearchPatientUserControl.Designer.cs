@@ -103,6 +103,7 @@
             this.lastNameHeader,
             this.firstNameHeader,
             this.dobHeader});
+            this.patientListView.FullRowSelect = true;
             this.patientListView.HideSelection = false;
             this.patientListView.Location = new System.Drawing.Point(0, 70);
             this.patientListView.Margin = new System.Windows.Forms.Padding(2);
