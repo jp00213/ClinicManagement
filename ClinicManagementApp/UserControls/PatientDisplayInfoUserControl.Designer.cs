@@ -221,6 +221,7 @@
             this.patientIDTextBox.Name = "patientIDTextBox";
             this.patientIDTextBox.Size = new System.Drawing.Size(67, 13);
             this.patientIDTextBox.TabIndex = 1;
+            this.patientIDTextBox.TextChanged += new System.EventHandler(this.patientIDTextBox_TextChanged);
             // 
             // PatientDisplayInfoUserControl
             // 
