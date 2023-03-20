@@ -191,7 +191,7 @@ namespace ClinicManagementApp.DAL
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
 
-            selectCommand.Parameters.AddWithValue("@firstName", lastNameIn);
+            selectCommand.Parameters.AddWithValue("@lastName", lastNameIn);
             selectCommand.Parameters.AddWithValue("@dob", dobIn);
 
             using (selectCommand)

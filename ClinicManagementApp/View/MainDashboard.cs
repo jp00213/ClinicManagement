@@ -16,5 +16,23 @@ namespace ClinicManagementApp
         {
             InitializeComponent();
         }
+
+        private void searchPatientUserControl1_PatientNumberChanged(object sender, EventArgs e)
+        {
+            this.currentPatientIDLabel.Text = searchPatientUserControl1.getCurrentpatientID();
+        }
+
+
+        public string ID
+        {
+            get { return this.currentPatientIDLabel.Text; }
+        }
+
+
+
+
+
+
+
     }
 }

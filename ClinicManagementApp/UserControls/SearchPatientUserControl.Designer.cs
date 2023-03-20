@@ -73,18 +73,18 @@
             this.searchPatientPanel.Location = new System.Drawing.Point(3, 0);
             this.searchPatientPanel.Margin = new System.Windows.Forms.Padding(2);
             this.searchPatientPanel.Name = "searchPatientPanel";
-            this.searchPatientPanel.Size = new System.Drawing.Size(565, 174);
+            this.searchPatientPanel.Size = new System.Drawing.Size(666, 174);
             this.searchPatientPanel.TabIndex = 0;
             // 
             // patientIDShow
             // 
             this.patientIDShow.AutoSize = true;
-            this.patientIDShow.Location = new System.Drawing.Point(205, 15);
+            this.patientIDShow.Location = new System.Drawing.Point(182, 15);
             this.patientIDShow.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.patientIDShow.Name = "patientIDShow";
-            this.patientIDShow.Size = new System.Drawing.Size(31, 13);
+            this.patientIDShow.Size = new System.Drawing.Size(13, 13);
             this.patientIDShow.TabIndex = 11;
-            this.patientIDShow.Text = "--123";
+            this.patientIDShow.Text = "--";
             // 
             // messageBox
             // 
@@ -104,10 +104,10 @@
             this.firstNameHeader,
             this.dobHeader});
             this.patientListView.HideSelection = false;
-            this.patientListView.Location = new System.Drawing.Point(33, 70);
+            this.patientListView.Location = new System.Drawing.Point(0, 70);
             this.patientListView.Margin = new System.Windows.Forms.Padding(2);
             this.patientListView.Name = "patientListView";
-            this.patientListView.Size = new System.Drawing.Size(521, 88);
+            this.patientListView.Size = new System.Drawing.Size(554, 88);
             this.patientListView.TabIndex = 9;
             this.patientListView.UseCompatibleStateImageBehavior = false;
             this.patientListView.View = System.Windows.Forms.View.Details;
@@ -139,7 +139,7 @@
             // clearButton
             // 
             this.clearButton.BackColor = System.Drawing.SystemColors.Control;
-            this.clearButton.Location = new System.Drawing.Point(497, 49);
+            this.clearButton.Location = new System.Drawing.Point(452, 49);
             this.clearButton.Margin = new System.Windows.Forms.Padding(2);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(50, 18);
@@ -151,7 +151,7 @@
             // patientSearchButton
             // 
             this.patientSearchButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.patientSearchButton.Location = new System.Drawing.Point(417, 49);
+            this.patientSearchButton.Location = new System.Drawing.Point(371, 49);
             this.patientSearchButton.Margin = new System.Windows.Forms.Padding(2);
             this.patientSearchButton.Name = "patientSearchButton";
             this.patientSearchButton.Size = new System.Drawing.Size(77, 18);
@@ -163,7 +163,7 @@
             // dobDateTimePicker
             // 
             this.dobDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dobDateTimePicker.Location = new System.Drawing.Point(279, 48);
+            this.dobDateTimePicker.Location = new System.Drawing.Point(232, 51);
             this.dobDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.dobDateTimePicker.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
             this.dobDateTimePicker.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
@@ -174,7 +174,7 @@
             // 
             // lastNameTextBox
             // 
-            this.lastNameTextBox.Location = new System.Drawing.Point(157, 49);
+            this.lastNameTextBox.Location = new System.Drawing.Point(119, 51);
             this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(120, 20);
@@ -183,7 +183,7 @@
             // 
             // firstNameTextBox
             // 
-            this.firstNameTextBox.Location = new System.Drawing.Point(33, 49);
+            this.firstNameTextBox.Location = new System.Drawing.Point(2, 51);
             this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(121, 20);
@@ -194,7 +194,7 @@
             // 
             this.dobLabel.AutoSize = true;
             this.dobLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.dobLabel.Location = new System.Drawing.Point(279, 34);
+            this.dobLabel.Location = new System.Drawing.Point(231, 33);
             this.dobLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dobLabel.Name = "dobLabel";
             this.dobLabel.Size = new System.Drawing.Size(136, 13);
@@ -205,7 +205,7 @@
             // 
             this.lastNameLabel.AutoSize = true;
             this.lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.lastNameLabel.Location = new System.Drawing.Point(172, 33);
+            this.lastNameLabel.Location = new System.Drawing.Point(142, 36);
             this.lastNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(67, 13);
@@ -216,7 +216,7 @@
             // 
             this.firstNameLabel.AutoSize = true;
             this.firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.firstNameLabel.Location = new System.Drawing.Point(56, 33);
+            this.firstNameLabel.Location = new System.Drawing.Point(26, 36);
             this.firstNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(67, 13);
@@ -290,7 +290,7 @@
             this.Controls.Add(this.searchPatientPanel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SearchPatientUserControl";
-            this.Size = new System.Drawing.Size(555, 266);
+            this.Size = new System.Drawing.Size(693, 260);
             this.searchPatientPanel.ResumeLayout(false);
             this.searchPatientPanel.PerformLayout();
             this.ResumeLayout(false);
