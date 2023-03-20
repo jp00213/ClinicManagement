@@ -79,7 +79,7 @@
             // patientIDShow
             // 
             this.patientIDShow.AutoSize = true;
-            this.patientIDShow.Location = new System.Drawing.Point(182, 15);
+            this.patientIDShow.Location = new System.Drawing.Point(159, 13);
             this.patientIDShow.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.patientIDShow.Name = "patientIDShow";
             this.patientIDShow.Size = new System.Drawing.Size(13, 13);
@@ -105,10 +105,10 @@
             this.dobHeader});
             this.patientListView.FullRowSelect = true;
             this.patientListView.HideSelection = false;
-            this.patientListView.Location = new System.Drawing.Point(0, 70);
+            this.patientListView.Location = new System.Drawing.Point(5, 70);
             this.patientListView.Margin = new System.Windows.Forms.Padding(2);
             this.patientListView.Name = "patientListView";
-            this.patientListView.Size = new System.Drawing.Size(554, 88);
+            this.patientListView.Size = new System.Drawing.Size(519, 71);
             this.patientListView.TabIndex = 9;
             this.patientListView.UseCompatibleStateImageBehavior = false;
             this.patientListView.View = System.Windows.Forms.View.Details;
@@ -140,10 +140,10 @@
             // clearButton
             // 
             this.clearButton.BackColor = System.Drawing.SystemColors.Control;
-            this.clearButton.Location = new System.Drawing.Point(452, 49);
+            this.clearButton.Location = new System.Drawing.Point(474, 46);
             this.clearButton.Margin = new System.Windows.Forms.Padding(2);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(50, 18);
+            this.clearButton.Size = new System.Drawing.Size(50, 20);
             this.clearButton.TabIndex = 16;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = false;
@@ -152,10 +152,10 @@
             // patientSearchButton
             // 
             this.patientSearchButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.patientSearchButton.Location = new System.Drawing.Point(371, 49);
+            this.patientSearchButton.Location = new System.Drawing.Point(393, 46);
             this.patientSearchButton.Margin = new System.Windows.Forms.Padding(2);
             this.patientSearchButton.Name = "patientSearchButton";
-            this.patientSearchButton.Size = new System.Drawing.Size(77, 18);
+            this.patientSearchButton.Size = new System.Drawing.Size(77, 20);
             this.patientSearchButton.TabIndex = 8;
             this.patientSearchButton.Text = "Search";
             this.patientSearchButton.UseVisualStyleBackColor = false;
@@ -164,7 +164,7 @@
             // dobDateTimePicker
             // 
             this.dobDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dobDateTimePicker.Location = new System.Drawing.Point(232, 51);
+            this.dobDateTimePicker.Location = new System.Drawing.Point(254, 46);
             this.dobDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.dobDateTimePicker.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
             this.dobDateTimePicker.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
@@ -175,7 +175,7 @@
             // 
             // lastNameTextBox
             // 
-            this.lastNameTextBox.Location = new System.Drawing.Point(119, 51);
+            this.lastNameTextBox.Location = new System.Drawing.Point(130, 46);
             this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(120, 20);
@@ -184,7 +184,7 @@
             // 
             // firstNameTextBox
             // 
-            this.firstNameTextBox.Location = new System.Drawing.Point(2, 51);
+            this.firstNameTextBox.Location = new System.Drawing.Point(5, 46);
             this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(121, 20);
@@ -194,40 +194,40 @@
             // dobLabel
             // 
             this.dobLabel.AutoSize = true;
-            this.dobLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.dobLabel.Location = new System.Drawing.Point(231, 33);
+            this.dobLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.dobLabel.Location = new System.Drawing.Point(263, 31);
             this.dobLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dobLabel.Name = "dobLabel";
-            this.dobLabel.Size = new System.Drawing.Size(136, 13);
+            this.dobLabel.Size = new System.Drawing.Size(169, 17);
             this.dobLabel.TabIndex = 17;
             this.dobLabel.Text = "DOB: year/month/date";
             // 
             // lastNameLabel
             // 
             this.lastNameLabel.AutoSize = true;
-            this.lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.lastNameLabel.Location = new System.Drawing.Point(142, 36);
+            this.lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.lastNameLabel.Location = new System.Drawing.Point(159, 31);
             this.lastNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lastNameLabel.Name = "lastNameLabel";
-            this.lastNameLabel.Size = new System.Drawing.Size(67, 13);
+            this.lastNameLabel.Size = new System.Drawing.Size(85, 17);
             this.lastNameLabel.TabIndex = 16;
             this.lastNameLabel.Text = "Last Name";
             // 
             // firstNameLabel
             // 
             this.firstNameLabel.AutoSize = true;
-            this.firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.firstNameLabel.Location = new System.Drawing.Point(26, 36);
+            this.firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.firstNameLabel.Location = new System.Drawing.Point(36, 31);
             this.firstNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(67, 13);
+            this.firstNameLabel.Size = new System.Drawing.Size(86, 17);
             this.firstNameLabel.TabIndex = 1;
             this.firstNameLabel.Text = "First Name";
             // 
             // dobRadio
             // 
             this.dobRadio.AutoSize = true;
-            this.dobRadio.Location = new System.Drawing.Point(507, 12);
+            this.dobRadio.Location = new System.Drawing.Point(480, 12);
             this.dobRadio.Margin = new System.Windows.Forms.Padding(2);
             this.dobRadio.Name = "dobRadio";
             this.dobRadio.Size = new System.Drawing.Size(48, 17);
@@ -240,7 +240,7 @@
             // lastDOBRadio
             // 
             this.lastDOBRadio.AutoSize = true;
-            this.lastDOBRadio.Location = new System.Drawing.Point(381, 12);
+            this.lastDOBRadio.Location = new System.Drawing.Point(353, 12);
             this.lastDOBRadio.Margin = new System.Windows.Forms.Padding(2);
             this.lastDOBRadio.Name = "lastDOBRadio";
             this.lastDOBRadio.Size = new System.Drawing.Size(123, 17);
@@ -253,7 +253,7 @@
             // firstAndLastNameRadio
             // 
             this.firstAndLastNameRadio.AutoSize = true;
-            this.firstAndLastNameRadio.Location = new System.Drawing.Point(259, 12);
+            this.firstAndLastNameRadio.Location = new System.Drawing.Point(230, 12);
             this.firstAndLastNameRadio.Margin = new System.Windows.Forms.Padding(2);
             this.firstAndLastNameRadio.Name = "firstAndLastNameRadio";
             this.firstAndLastNameRadio.Size = new System.Drawing.Size(119, 17);
@@ -266,7 +266,7 @@
             // searchOptionaLabel
             // 
             this.searchOptionaLabel.AutoSize = true;
-            this.searchOptionaLabel.Location = new System.Drawing.Point(199, 14);
+            this.searchOptionaLabel.Location = new System.Drawing.Point(168, 12);
             this.searchOptionaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.searchOptionaLabel.Name = "searchOptionaLabel";
             this.searchOptionaLabel.Size = new System.Drawing.Size(58, 13);
@@ -277,7 +277,7 @@
             // 
             this.searchTitle.AutoSize = true;
             this.searchTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchTitle.Location = new System.Drawing.Point(8, 12);
+            this.searchTitle.Location = new System.Drawing.Point(13, 11);
             this.searchTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.searchTitle.Name = "searchTitle";
             this.searchTitle.Size = new System.Drawing.Size(172, 16);

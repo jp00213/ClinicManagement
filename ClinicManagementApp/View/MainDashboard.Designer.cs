@@ -44,6 +44,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.currentPatientIDLabel = new System.Windows.Forms.Label();
             this.searchPatientUserControl1 = new ClinicManagementApp.UserControls.SearchPatientUserControl();
+            this.patientDisplayInfoUserControl1 = new ClinicManagementApp.UserControls.PatientDisplayInfoUserControl();
             this.createAppointmentUserControl1 = new ClinicManagementApp.UserControls.CreateAppointmentUserControl();
             this.nurseTabControl.SuspendLayout();
             this.ViewTabPage.SuspendLayout();
@@ -110,6 +111,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.searchPatientUserControl1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.patientDisplayInfoUserControl1, 0, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(-4, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -172,7 +174,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(168, 4);
+            this.button1.Location = new System.Drawing.Point(227, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -181,7 +183,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(270, 4);
+            this.button2.Location = new System.Drawing.Point(364, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
@@ -190,7 +192,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(361, 3);
+            this.button3.Location = new System.Drawing.Point(499, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 2;
@@ -222,7 +224,14 @@
             this.searchPatientUserControl1.Name = "searchPatientUserControl1";
             this.searchPatientUserControl1.Size = new System.Drawing.Size(826, 215);
             this.searchPatientUserControl1.TabIndex = 2;
-            this.searchPatientUserControl1.PatientNumberChanged += new System.EventHandler(this.searchPatientUserControl1_PatientNumberChanged);
+            // 
+            // patientDisplayInfoUserControl1
+            // 
+            this.patientDisplayInfoUserControl1.Location = new System.Drawing.Point(4, 292);
+            this.patientDisplayInfoUserControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.patientDisplayInfoUserControl1.Name = "patientDisplayInfoUserControl1";
+            this.patientDisplayInfoUserControl1.Size = new System.Drawing.Size(824, 269);
+            this.patientDisplayInfoUserControl1.TabIndex = 3;
             // 
             // createAppointmentUserControl1
             // 
@@ -274,6 +283,7 @@
         private System.Windows.Forms.Label currentPatientIDLabel;
         private System.Windows.Forms.Label label1;
         private UserControls.SearchPatientUserControl searchPatientUserControl1;
+        private UserControls.PatientDisplayInfoUserControl patientDisplayInfoUserControl1;
     }
 }
 
