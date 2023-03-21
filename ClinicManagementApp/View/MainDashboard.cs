@@ -30,11 +30,35 @@ namespace ClinicManagementApp
         private void currentPatientIDLabel_TextChanged_1(object sender, EventArgs e)
         {
             this.patientDisplayInfoUserControl1.ID = ID;
+            this.patientVisitListUserControl1.ID = ID;
+            this.patientAppointmentListUserControl1.ID = ID;
         }
 
         private void searchPatientUserControl1_PatientNumberChanged(object sender, EventArgs e)
         {
             this.currentPatientIDLabel.Text = searchPatientUserControl1.getCurrentpatientID();
+        }
+
+        private void patientInfoButton_Click(object sender, EventArgs e)
+        {
+            patientDisplayInfoUserControl1.Show();
+            patientAppointmentListUserControl1.Hide();
+            patientVisitListUserControl1.Hide();
+            
+        }
+
+        private void patientAppointmentButton_Click(object sender, EventArgs e)
+        {
+            patientDisplayInfoUserControl1.Hide();
+            patientAppointmentListUserControl1.Show();
+            patientVisitListUserControl1.Hide();
+        }
+
+        private void patientVisitButton_Click(object sender, EventArgs e)
+        {
+            patientDisplayInfoUserControl1.Hide();
+            patientAppointmentListUserControl1.Hide();
+            patientVisitListUserControl1.Show();
         }
     }
 }
