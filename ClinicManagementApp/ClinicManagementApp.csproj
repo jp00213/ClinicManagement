@@ -63,6 +63,12 @@
     <Compile Include="UserControls\CreateAppointmentUserControl.Designer.cs">
       <DependentUpon>CreateAppointmentUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\PatientAppointmentListUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PatientAppointmentListUserControl.Designer.cs">
+      <DependentUpon>PatientAppointmentListUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\PatientDisplayInfoUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\CreateAppointmentUserControl.resx">
       <DependentUpon>CreateAppointmentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PatientAppointmentListUserControl.resx">
+      <DependentUpon>PatientAppointmentListUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PatientDisplayInfoUserControl.resx">
       <DependentUpon>PatientDisplayInfoUserControl.cs</DependentUpon>
