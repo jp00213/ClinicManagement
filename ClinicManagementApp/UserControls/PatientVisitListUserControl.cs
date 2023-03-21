@@ -11,14 +11,14 @@ using System.Windows.Forms;
 namespace ClinicManagementApp.UserControls
 {
     /// <summary>
-    /// this class manages usercontrol for viewing patient appointment schedules
+    /// this class manages usercontrol for viewing patient visit information
     /// </summary>
-    public partial class PatientAppointmentListUserControl : UserControl
+    public partial class PatientVisitListUserControl : UserControl
     {
         /// <summary>
         /// create constructors
         /// </summary>
-        public PatientAppointmentListUserControl()
+        public PatientVisitListUserControl()
         {
             InitializeComponent();
         }
