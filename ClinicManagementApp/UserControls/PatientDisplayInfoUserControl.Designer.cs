@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.patientIDLabel = new System.Windows.Forms.Label();
             this.lastNameLabel = new System.Windows.Forms.Label();
-            this.firstNameLabel = new System.Windows.Forms.Label();
+            this.firstNameLabel1 = new System.Windows.Forms.Label();
             this.dobLabel = new System.Windows.Forms.Label();
             this.phoneLabel = new System.Windows.Forms.Label();
             this.addressLabel = new System.Windows.Forms.Label();
@@ -79,15 +79,15 @@
             this.lastNameLabel.TabIndex = 4;
             this.lastNameLabel.Text = "Last Name:";
             // 
-            // firstNameLabel
+            // firstNameLabel1
             // 
-            this.firstNameLabel.AutoSize = true;
-            this.firstNameLabel.Location = new System.Drawing.Point(30, 77);
-            this.firstNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(60, 13);
-            this.firstNameLabel.TabIndex = 4;
-            this.firstNameLabel.Text = "First Name:";
+            this.firstNameLabel1.AutoSize = true;
+            this.firstNameLabel1.Location = new System.Drawing.Point(30, 77);
+            this.firstNameLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.firstNameLabel1.Name = "firstNameLabel1";
+            this.firstNameLabel1.Size = new System.Drawing.Size(60, 13);
+            this.firstNameLabel1.TabIndex = 4;
+            this.firstNameLabel1.Text = "First Name:";
             // 
             // dobLabel
             // 
@@ -242,7 +242,7 @@
             this.Controls.Add(this.addressLabel);
             this.Controls.Add(this.phoneLabel);
             this.Controls.Add(this.dobLabel);
-            this.Controls.Add(this.firstNameLabel);
+            this.Controls.Add(this.firstNameLabel1);
             this.Controls.Add(this.lastNameLabel);
             this.Controls.Add(this.patientIDLabel);
             this.Controls.Add(this.label1);
@@ -258,7 +258,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label patientIDLabel;
         private System.Windows.Forms.Label lastNameLabel;
-        private System.Windows.Forms.Label firstNameLabel;
+        private System.Windows.Forms.Label firstNameLabel1;
         private System.Windows.Forms.Label dobLabel;
         private System.Windows.Forms.Label phoneLabel;
         private System.Windows.Forms.Label addressLabel;

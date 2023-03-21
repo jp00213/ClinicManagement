@@ -216,7 +216,7 @@
             this.currentPatientIDLabel.Size = new System.Drawing.Size(18, 18);
             this.currentPatientIDLabel.TabIndex = 1;
             this.currentPatientIDLabel.Text = "--";
-            this.currentPatientIDLabel.TextChanged += new System.EventHandler(this.currentPatientIDLabel_TextChanged);
+            this.currentPatientIDLabel.TextChanged += new System.EventHandler(this.currentPatientIDLabel_TextChanged_1);
             // 
             // searchPatientUserControl1
             // 
@@ -225,6 +225,7 @@
             this.searchPatientUserControl1.Name = "searchPatientUserControl1";
             this.searchPatientUserControl1.Size = new System.Drawing.Size(826, 215);
             this.searchPatientUserControl1.TabIndex = 2;
+            this.searchPatientUserControl1.PatientNumberChanged += new System.EventHandler(this.searchPatientUserControl1_PatientNumberChanged);
             // 
             // patientDisplayInfoUserControl1
             // 

@@ -36,7 +36,7 @@ namespace ClinicManagementApp.UserControls
         {
             this.thePatient = this._patientController.GetPatientByID(int.Parse(this.patientIDTextBox.Text));
             this.lastNametextBox.Text = this.thePatient.LastName;
-            this.firstNameLabel.Text = this.thePatient.FirstName;
+            this.firstNametextBox.Text = this.thePatient.FirstName;
             this.dobTextBox.Text = this.thePatient.DateOfBirth.ToShortDateString();
             this.phoneTextBox.Text = Regex.Replace(this.thePatient.Phone, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3");
             this.addressTextBox.Text = this.thePatient.AddressStreet;
@@ -44,5 +44,6 @@ namespace ClinicManagementApp.UserControls
             this.stateTextBox.Text = this.thePatient.State;
             this.zipTextBox.Text = this.thePatient.Zip;
         }
+
     }
 }
