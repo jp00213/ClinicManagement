@@ -33,25 +33,25 @@
             this.UpdateTabPage = new System.Windows.Forms.TabPage();
             this.ViewTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.patientVisitButton = new System.Windows.Forms.Button();
+            this.patientAppointmentButton = new System.Windows.Forms.Button();
+            this.patientInfoButton = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.currentPatientIDLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.CreateTabPage = new System.Windows.Forms.TabPage();
             this.DocumentTabPage = new System.Windows.Forms.TabPage();
             this.LabsTabPage = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.currentPatientIDLabel = new System.Windows.Forms.Label();
             this.searchPatientUserControl1 = new ClinicManagementApp.UserControls.SearchPatientUserControl();
             this.patientDisplayInfoUserControl1 = new ClinicManagementApp.UserControls.PatientDisplayInfoUserControl();
             this.createAppointmentUserControl1 = new ClinicManagementApp.UserControls.CreateAppointmentUserControl();
             this.nurseTabControl.SuspendLayout();
             this.ViewTabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.CreateTabPage.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.CreateTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // nurseTabControl
@@ -122,6 +122,74 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(855, 596);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.patientVisitButton);
+            this.panel1.Controls.Add(this.patientAppointmentButton);
+            this.panel1.Controls.Add(this.patientInfoButton);
+            this.panel1.Location = new System.Drawing.Point(3, 254);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(826, 31);
+            this.panel1.TabIndex = 0;
+            // 
+            // patientVisitButton
+            // 
+            this.patientVisitButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.patientVisitButton.Location = new System.Drawing.Point(485, 0);
+            this.patientVisitButton.Name = "patientVisitButton";
+            this.patientVisitButton.Size = new System.Drawing.Size(167, 32);
+            this.patientVisitButton.TabIndex = 5;
+            this.patientVisitButton.Text = "Patient Visit";
+            this.patientVisitButton.UseVisualStyleBackColor = false;
+            // 
+            // patientAppointmentButton
+            // 
+            this.patientAppointmentButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.patientAppointmentButton.Location = new System.Drawing.Point(312, 0);
+            this.patientAppointmentButton.Name = "patientAppointmentButton";
+            this.patientAppointmentButton.Size = new System.Drawing.Size(167, 32);
+            this.patientAppointmentButton.TabIndex = 4;
+            this.patientAppointmentButton.Text = "Patient Appointment";
+            this.patientAppointmentButton.UseVisualStyleBackColor = false;
+            // 
+            // patientInfoButton
+            // 
+            this.patientInfoButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.patientInfoButton.Location = new System.Drawing.Point(139, 0);
+            this.patientInfoButton.Name = "patientInfoButton";
+            this.patientInfoButton.Size = new System.Drawing.Size(167, 32);
+            this.patientInfoButton.TabIndex = 3;
+            this.patientInfoButton.Text = "Patient Info";
+            this.patientInfoButton.UseVisualStyleBackColor = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.currentPatientIDLabel);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(826, 24);
+            this.panel2.TabIndex = 1;
+            // 
+            // currentPatientIDLabel
+            // 
+            this.currentPatientIDLabel.AutoSize = true;
+            this.currentPatientIDLabel.Location = new System.Drawing.Point(149, 4);
+            this.currentPatientIDLabel.Name = "currentPatientIDLabel";
+            this.currentPatientIDLabel.Size = new System.Drawing.Size(18, 18);
+            this.currentPatientIDLabel.TabIndex = 1;
+            this.currentPatientIDLabel.Text = "--";
+            this.currentPatientIDLabel.TextChanged += new System.EventHandler(this.currentPatientIDLabel_TextChanged_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(20, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 18);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Current Patient #:";
+            // 
             // CreateTabPage
             // 
             this.CreateTabPage.Controls.Add(this.createAppointmentUserControl1);
@@ -152,71 +220,6 @@
             this.LabsTabPage.TabIndex = 5;
             this.LabsTabPage.Text = "Labs";
             this.LabsTabPage.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(3, 254);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(826, 31);
-            this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.currentPatientIDLabel);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(826, 24);
-            this.panel2.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(38, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(152, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(264, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 18);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Current Patient #:";
-            // 
-            // currentPatientIDLabel
-            // 
-            this.currentPatientIDLabel.AutoSize = true;
-            this.currentPatientIDLabel.Location = new System.Drawing.Point(149, 4);
-            this.currentPatientIDLabel.Name = "currentPatientIDLabel";
-            this.currentPatientIDLabel.Size = new System.Drawing.Size(18, 18);
-            this.currentPatientIDLabel.TabIndex = 1;
-            this.currentPatientIDLabel.Text = "--";
-            this.currentPatientIDLabel.TextChanged += new System.EventHandler(this.currentPatientIDLabel_TextChanged_1);
             // 
             // searchPatientUserControl1
             // 
@@ -258,10 +261,10 @@
             this.nurseTabControl.ResumeLayout(false);
             this.ViewTabPage.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.CreateTabPage.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.CreateTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -278,9 +281,9 @@
         private UserControls.CreateAppointmentUserControl createAppointmentUserControl1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button patientVisitButton;
+        private System.Windows.Forms.Button patientAppointmentButton;
+        private System.Windows.Forms.Button patientInfoButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label currentPatientIDLabel;
         private System.Windows.Forms.Label label1;
