@@ -34,8 +34,8 @@
             this.ViewTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.patientVisitListUserControl1 = new ClinicManagementApp.UserControls.PatientVisitListUserControl();
             this.patientAppointmentListUserControl1 = new ClinicManagementApp.UserControls.PatientAppointmentListUserControl();
+            this.patientVisitListUserControl1 = new ClinicManagementApp.UserControls.PatientVisitListUserControl();
             this.patientVisitButton = new System.Windows.Forms.Button();
             this.patientAppointmentButton = new System.Windows.Forms.Button();
             this.patientInfoButton = new System.Windows.Forms.Button();
@@ -126,8 +126,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.patientVisitListUserControl1);
             this.panel1.Controls.Add(this.patientAppointmentListUserControl1);
+            this.panel1.Controls.Add(this.patientVisitListUserControl1);
             this.panel1.Controls.Add(this.patientVisitButton);
             this.panel1.Controls.Add(this.patientAppointmentButton);
             this.panel1.Controls.Add(this.patientInfoButton);
@@ -136,6 +136,14 @@
             this.panel1.Size = new System.Drawing.Size(826, 31);
             this.panel1.TabIndex = 0;
             // 
+            // patientAppointmentListUserControl1
+            // 
+            this.patientAppointmentListUserControl1.Location = new System.Drawing.Point(9, 38);
+            this.patientAppointmentListUserControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.patientAppointmentListUserControl1.Name = "patientAppointmentListUserControl1";
+            this.patientAppointmentListUserControl1.Size = new System.Drawing.Size(788, 280);
+            this.patientAppointmentListUserControl1.TabIndex = 6;
+            // 
             // patientVisitListUserControl1
             // 
             this.patientVisitListUserControl1.Location = new System.Drawing.Point(9, 38);
@@ -143,14 +151,6 @@
             this.patientVisitListUserControl1.Name = "patientVisitListUserControl1";
             this.patientVisitListUserControl1.Size = new System.Drawing.Size(816, 296);
             this.patientVisitListUserControl1.TabIndex = 7;
-            // 
-            // patientAppointmentListUserControl1
-            // 
-            this.patientAppointmentListUserControl1.Location = new System.Drawing.Point(9, 38);
-            this.patientAppointmentListUserControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.patientAppointmentListUserControl1.Name = "patientAppointmentListUserControl1";
-            this.patientAppointmentListUserControl1.Size = new System.Drawing.Size(838, 296);
-            this.patientAppointmentListUserControl1.TabIndex = 6;
             // 
             // patientVisitButton
             // 
@@ -202,7 +202,7 @@
             this.currentPatientIDLabel.Size = new System.Drawing.Size(18, 18);
             this.currentPatientIDLabel.TabIndex = 1;
             this.currentPatientIDLabel.Text = "--";
-            this.currentPatientIDLabel.TextChanged += new System.EventHandler(this.currentPatientIDLabel_TextChanged_1);
+            this.currentPatientIDLabel.TextChanged += new System.EventHandler(this.currentPatientIDLabel_TextChanged);
             // 
             // label1
             // 
@@ -227,7 +227,7 @@
             this.patientDisplayInfoUserControl1.Location = new System.Drawing.Point(4, 292);
             this.patientDisplayInfoUserControl1.Margin = new System.Windows.Forms.Padding(4);
             this.patientDisplayInfoUserControl1.Name = "patientDisplayInfoUserControl1";
-            this.patientDisplayInfoUserControl1.Size = new System.Drawing.Size(824, 269);
+            this.patientDisplayInfoUserControl1.Size = new System.Drawing.Size(825, 295);
             this.patientDisplayInfoUserControl1.TabIndex = 3;
             // 
             // CreateTabPage

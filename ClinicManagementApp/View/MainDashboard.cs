@@ -26,14 +26,6 @@ namespace ClinicManagementApp
             get { return this.currentPatientIDLabel.Text; }
         }
 
-
-        private void currentPatientIDLabel_TextChanged_1(object sender, EventArgs e)
-        {
-            this.patientDisplayInfoUserControl1.ID = ID;
-            this.patientVisitListUserControl1.ID = ID;
-            this.patientAppointmentListUserControl1.ID = ID;
-        }
-
         private void searchPatientUserControl1_PatientNumberChanged(object sender, EventArgs e)
         {
             this.currentPatientIDLabel.Text = searchPatientUserControl1.getCurrentpatientID();
@@ -44,7 +36,6 @@ namespace ClinicManagementApp
             patientDisplayInfoUserControl1.Show();
             patientAppointmentListUserControl1.Hide();
             patientVisitListUserControl1.Hide();
-            
         }
 
         private void patientAppointmentButton_Click(object sender, EventArgs e)
@@ -59,6 +50,17 @@ namespace ClinicManagementApp
             patientDisplayInfoUserControl1.Hide();
             patientAppointmentListUserControl1.Hide();
             patientVisitListUserControl1.Show();
+
+        }
+
+        private void currentPatientIDLabel_TextChanged(object sender, EventArgs e)
+        {
+            this.patientDisplayInfoUserControl1.ID = ID;
+            this.patientVisitListUserControl1.ID = ID;
+            this.patientAppointmentListUserControl1.ID = ID;
         }
     }
+
+
+    
 }
