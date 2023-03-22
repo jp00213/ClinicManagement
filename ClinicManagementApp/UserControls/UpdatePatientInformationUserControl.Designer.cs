@@ -56,6 +56,8 @@
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.updatePatientLabel = new System.Windows.Forms.Label();
             this.dateOfBirthLabel = new System.Windows.Forms.Label();
+            this.nurseNameLabel = new System.Windows.Forms.Label();
+            this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.patientSearchDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,90 +128,90 @@
             // patientIDLabel
             // 
             this.patientIDLabel.AutoSize = true;
-            this.patientIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.patientIDLabel.Location = new System.Drawing.Point(99, 330);
             this.patientIDLabel.Name = "patientIDLabel";
-            this.patientIDLabel.Size = new System.Drawing.Size(74, 16);
+            this.patientIDLabel.Size = new System.Drawing.Size(71, 18);
             this.patientIDLabel.TabIndex = 7;
             this.patientIDLabel.Text = "Patient ID";
             // 
             // lastNameResultsLabel
             // 
             this.lastNameResultsLabel.AutoSize = true;
-            this.lastNameResultsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameResultsLabel.Location = new System.Drawing.Point(92, 370);
+            this.lastNameResultsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lastNameResultsLabel.Location = new System.Drawing.Point(90, 369);
             this.lastNameResultsLabel.Name = "lastNameResultsLabel";
-            this.lastNameResultsLabel.Size = new System.Drawing.Size(81, 16);
+            this.lastNameResultsLabel.Size = new System.Drawing.Size(80, 18);
             this.lastNameResultsLabel.TabIndex = 8;
             this.lastNameResultsLabel.Text = "Last Name";
             // 
             // firstNameResultsLabel
             // 
             this.firstNameResultsLabel.AutoSize = true;
-            this.firstNameResultsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameResultsLabel.Location = new System.Drawing.Point(91, 412);
+            this.firstNameResultsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firstNameResultsLabel.Location = new System.Drawing.Point(89, 412);
             this.firstNameResultsLabel.Name = "firstNameResultsLabel";
-            this.firstNameResultsLabel.Size = new System.Drawing.Size(82, 16);
+            this.firstNameResultsLabel.Size = new System.Drawing.Size(81, 18);
             this.firstNameResultsLabel.TabIndex = 9;
             this.firstNameResultsLabel.Text = "First Name";
             // 
             // DOBlabel
             // 
             this.DOBlabel.AutoSize = true;
-            this.DOBlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DOBlabel.Location = new System.Drawing.Point(79, 454);
+            this.DOBlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DOBlabel.Location = new System.Drawing.Point(77, 454);
             this.DOBlabel.Name = "DOBlabel";
-            this.DOBlabel.Size = new System.Drawing.Size(94, 16);
+            this.DOBlabel.Size = new System.Drawing.Size(93, 18);
             this.DOBlabel.TabIndex = 10;
             this.DOBlabel.Text = "Date Of Birth";
             // 
             // phoneLabel
             // 
             this.phoneLabel.AutoSize = true;
-            this.phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneLabel.Location = new System.Drawing.Point(102, 502);
+            this.phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phoneLabel.Location = new System.Drawing.Point(119, 501);
             this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(51, 16);
+            this.phoneLabel.Size = new System.Drawing.Size(51, 18);
             this.phoneLabel.TabIndex = 11;
             this.phoneLabel.Text = "Phone";
             // 
             // addressLabel
             // 
             this.addressLabel.AutoSize = true;
-            this.addressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addressLabel.Location = new System.Drawing.Point(407, 330);
             this.addressLabel.Name = "addressLabel";
-            this.addressLabel.Size = new System.Drawing.Size(65, 16);
+            this.addressLabel.Size = new System.Drawing.Size(62, 18);
             this.addressLabel.TabIndex = 12;
             this.addressLabel.Text = "Address";
             // 
             // cityLabel
             // 
             this.cityLabel.AutoSize = true;
-            this.cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityLabel.Location = new System.Drawing.Point(407, 373);
+            this.cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cityLabel.Location = new System.Drawing.Point(411, 371);
             this.cityLabel.Name = "cityLabel";
-            this.cityLabel.Size = new System.Drawing.Size(33, 16);
+            this.cityLabel.Size = new System.Drawing.Size(33, 18);
             this.cityLabel.TabIndex = 13;
             this.cityLabel.Text = "City";
             // 
             // stateLabel
             // 
             this.stateLabel.AutoSize = true;
-            this.stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateLabel.Location = new System.Drawing.Point(407, 412);
+            this.stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stateLabel.Location = new System.Drawing.Point(411, 410);
             this.stateLabel.Name = "stateLabel";
-            this.stateLabel.Size = new System.Drawing.Size(43, 16);
+            this.stateLabel.Size = new System.Drawing.Size(42, 18);
             this.stateLabel.TabIndex = 14;
             this.stateLabel.Text = "State";
             // 
             // zipLabel
             // 
             this.zipLabel.AutoSize = true;
-            this.zipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.zipLabel.Location = new System.Drawing.Point(411, 455);
             this.zipLabel.Name = "zipLabel";
-            this.zipLabel.Size = new System.Drawing.Size(29, 16);
+            this.zipLabel.Size = new System.Drawing.Size(28, 18);
             this.zipLabel.TabIndex = 15;
             this.zipLabel.Text = "Zip";
             // 
@@ -307,9 +309,32 @@
             this.dateOfBirthLabel.TabIndex = 27;
             this.dateOfBirthLabel.Text = "DOB";
             // 
+            // nurseNameLabel
+            // 
+            this.nurseNameLabel.AutoSize = true;
+            this.nurseNameLabel.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nurseNameLabel.Location = new System.Drawing.Point(583, 18);
+            this.nurseNameLabel.Name = "nurseNameLabel";
+            this.nurseNameLabel.Size = new System.Drawing.Size(87, 19);
+            this.nurseNameLabel.TabIndex = 28;
+            this.nurseNameLabel.Text = "Nurse Name";
+            // 
+            // logoutLinkLabel
+            // 
+            this.logoutLinkLabel.AutoSize = true;
+            this.logoutLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logoutLinkLabel.Location = new System.Drawing.Point(684, 18);
+            this.logoutLinkLabel.Name = "logoutLinkLabel";
+            this.logoutLinkLabel.Size = new System.Drawing.Size(48, 16);
+            this.logoutLinkLabel.TabIndex = 29;
+            this.logoutLinkLabel.TabStop = true;
+            this.logoutLinkLabel.Text = "Logout";
+            // 
             // UpdatePatientInformationUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.logoutLinkLabel);
+            this.Controls.Add(this.nurseNameLabel);
             this.Controls.Add(this.dateOfBirthLabel);
             this.Controls.Add(this.updatePatientLabel);
             this.Controls.Add(this.zipTextBox);
@@ -376,5 +401,7 @@
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.Label updatePatientLabel;
         private System.Windows.Forms.Label dateOfBirthLabel;
+        private System.Windows.Forms.Label nurseNameLabel;
+        private System.Windows.Forms.LinkLabel logoutLinkLabel;
     }
 }

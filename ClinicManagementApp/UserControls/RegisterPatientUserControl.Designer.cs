@@ -47,6 +47,8 @@
             this.cityTextBox = new System.Windows.Forms.TextBox();
             this.stateTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
+            this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.nurseNameLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // clearButton
@@ -217,9 +219,32 @@
             this.zipTextBox.Size = new System.Drawing.Size(227, 20);
             this.zipTextBox.TabIndex = 18;
             // 
+            // logoutLinkLabel
+            // 
+            this.logoutLinkLabel.AutoSize = true;
+            this.logoutLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logoutLinkLabel.Location = new System.Drawing.Point(679, 16);
+            this.logoutLinkLabel.Name = "logoutLinkLabel";
+            this.logoutLinkLabel.Size = new System.Drawing.Size(48, 16);
+            this.logoutLinkLabel.TabIndex = 19;
+            this.logoutLinkLabel.TabStop = true;
+            this.logoutLinkLabel.Text = "Logout";
+            // 
+            // nurseNameLabel
+            // 
+            this.nurseNameLabel.AutoSize = true;
+            this.nurseNameLabel.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nurseNameLabel.Location = new System.Drawing.Point(574, 13);
+            this.nurseNameLabel.Name = "nurseNameLabel";
+            this.nurseNameLabel.Size = new System.Drawing.Size(99, 20);
+            this.nurseNameLabel.TabIndex = 20;
+            this.nurseNameLabel.Text = "Nurse Name";
+            // 
             // RegisterPatientUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.nurseNameLabel);
+            this.Controls.Add(this.logoutLinkLabel);
             this.Controls.Add(this.zipTextBox);
             this.Controls.Add(this.stateTextBox);
             this.Controls.Add(this.cityTextBox);
@@ -267,5 +292,7 @@
         private System.Windows.Forms.TextBox cityTextBox;
         private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.TextBox zipTextBox;
+        private System.Windows.Forms.LinkLabel logoutLinkLabel;
+        private System.Windows.Forms.Label nurseNameLabel;
     }
 }
