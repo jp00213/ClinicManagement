@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ClinicManagementApp.Controller;
+using System;
 using System.Windows.Forms;
 
 namespace ClinicManagementApp.View
 {
     public partial class LoginForm : Form
     {
+        private AccountController _accountController;
+
         public LoginForm()
         {
             InitializeComponent();
+            this._accountController = new AccountController();
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            if (this.usernameTextBox.Text == "jane" && this.passwordTextBox.Text == "test1234")
+            if (this._accountController.IsUsernamePasswordCorrect(this.usernameTextBox.Text, this.passwordTextBox.Text))
             {
                 this.Hide();
                 using (Form mainWindow = new MainDashboard())
@@ -27,7 +24,7 @@ namespace ClinicManagementApp.View
                     DialogResult result = mainWindow.ShowDialog(this);
                 }
             }
-            else { this.errorMessageLabel.Text = "invalid username/password"; }
+            else { this.errorMessageLabel.Text = "Invalid username/password"; }
         }
 
         private void usernameTextBox_TextChanged(object sender, EventArgs e)
