@@ -43,5 +43,35 @@ namespace ClinicManagementApp.Controller
         /// <returns>AppointmentID of new appointment added</returns>
         /// <param name="appointment"> appointment to Add to database</param>
         public int AddAppointment(Appointment appointment) => this._appointmentDAL.AddAppointment(appointment);
+
+        /// <summary>
+        /// Get future Appointment by ID
+        /// </summary>
+        /// <param name="patientIDIn">patient ID</param>
+        /// <returns>future appointment</returns>
+        public List<AppointmentWithDrName> GetApppointmentsByID_NowOn(int patientIDIn)
+        {
+            return _appointmentDAL.GetAppointmentsByID_NowOn(patientIDIn);
+        }
+
+        /// <summary>
+        /// Get past Appointment by ID
+        /// </summary>
+        /// <param name="patientIDIn">patient ID</param>
+        /// <returns>past appointment</returns>
+        public List<AppointmentWithDrName> GetAppointmentID_Past(int patientIDIn)
+        {
+            return _appointmentDAL.GetAppointmentsByID_Past(patientIDIn);
+        }
+
+        /// <summary>
+        /// Get appointment by ID
+        /// </summary>
+        /// <param name="appointmentIDIn">appointment ID</param>
+        /// <returns>appointment</returns>
+        public AppointmentWithDrName GetAppointmentByID(int appointmentIDIn)
+        {
+            return _appointmentDAL.GetAppointmentsByID(appointmentIDIn);
+        }
     }
 }
