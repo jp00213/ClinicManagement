@@ -175,7 +175,7 @@ namespace ClinicManagementApp.UserControls
             }
         }
 
-        private void setPastPatientAppointmentDetail()
+        private void setPastPatientAppointmentDetails()
         {
             if (pastAppointmentNumberTextBox.Text != "")
             {
@@ -190,7 +190,31 @@ namespace ClinicManagementApp.UserControls
         private void showFutureRadioButton_Click(object sender, EventArgs e)
         {
             appointmentTableLayout.RowStyles[1].Height = 0;
-            appointmentTableLayout.Rowstyles[0].Height = 1;
+            appointmentTableLayout.RowStyles[0].Height = 1;
+        }
+
+        private void pastAppointmentRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            appointmentTableLayout.RowStyles[0].Height = 0;
+            appointmentTableLayout.RowStyles[1].Height = 1;
+        }
+
+        private void ClearAllFutureAppointmentDetails()
+        {
+            this.theFutureAppointmentNumberTextBox.Text = string.Empty;
+            this.doctorName.Text = "";
+            this.reasonTextArea.Text = "";
+            this.appointmentDateTimePicker.CustomFormat = "yyyy / MM / dd";
+            this.appointmentDateTimePicker.Value = DateTime.Now;
+            this.tempTime.Text = "";
+        }
+
+        private void ClearAllPastAppointmentDetails()
+        {
+            this.pastAppointmentNumberTextBox.Text = string.Empty;
+            this.pastAppointmentDoctorName.Text = "";
+            this.pastAppointmentDateTextBox.Text = "";
+            this.pastAppointmentReasonTextArea.Text = "";
         }
     }
 }

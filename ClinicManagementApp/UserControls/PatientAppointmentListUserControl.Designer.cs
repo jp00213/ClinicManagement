@@ -30,7 +30,7 @@
         {
             this.patientIDLabel = new System.Windows.Forms.Label();
             this.patientIDTextBox = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.appointmentTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.FutureAppointmentPanel = new System.Windows.Forms.Panel();
             this.futureAppointmentMessageLabel = new System.Windows.Forms.Label();
             this.newTimeLabel = new System.Windows.Forms.Label();
@@ -64,7 +64,7 @@
             this.showFutureRadioButton = new System.Windows.Forms.RadioButton();
             this.pastAppointmentRadioButton = new System.Windows.Forms.RadioButton();
             this.AppoinmentUserControlLabel = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.appointmentTableLayout.SuspendLayout();
             this.FutureAppointmentPanel.SuspendLayout();
             this.pastAppointmentPanel.SuspendLayout();
             this.SuspendLayout();
@@ -89,19 +89,19 @@
             this.patientIDTextBox.TabIndex = 3;
             this.patientIDTextBox.TextChanged += new System.EventHandler(this.patientIDTextBox_TextChanged);
             // 
-            // tableLayoutPanel1
+            // appointmentTableLayout
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.FutureAppointmentPanel, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pastAppointmentPanel, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 39);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(589, 469);
-            this.tableLayoutPanel1.TabIndex = 6;
+            this.appointmentTableLayout.ColumnCount = 1;
+            this.appointmentTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.appointmentTableLayout.Controls.Add(this.FutureAppointmentPanel, 0, 0);
+            this.appointmentTableLayout.Controls.Add(this.pastAppointmentPanel, 0, 1);
+            this.appointmentTableLayout.Location = new System.Drawing.Point(12, 39);
+            this.appointmentTableLayout.Name = "appointmentTableLayout";
+            this.appointmentTableLayout.RowCount = 2;
+            this.appointmentTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.appointmentTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.appointmentTableLayout.Size = new System.Drawing.Size(589, 469);
+            this.appointmentTableLayout.TabIndex = 6;
             // 
             // FutureAppointmentPanel
             // 
@@ -329,7 +329,7 @@
             // pastAppointmentReasonTextArea
             // 
             this.pastAppointmentReasonTextArea.BackColor = System.Drawing.SystemColors.Control;
-            this.pastAppointmentReasonTextArea.Location = new System.Drawing.Point(322, 74);
+            this.pastAppointmentReasonTextArea.Location = new System.Drawing.Point(322, 65);
             this.pastAppointmentReasonTextArea.Margin = new System.Windows.Forms.Padding(2);
             this.pastAppointmentReasonTextArea.Multiline = true;
             this.pastAppointmentReasonTextArea.Name = "pastAppointmentReasonTextArea";
@@ -339,7 +339,7 @@
             // pastAppointmentDateTextBox
             // 
             this.pastAppointmentDateTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.pastAppointmentDateTextBox.Location = new System.Drawing.Point(120, 122);
+            this.pastAppointmentDateTextBox.Location = new System.Drawing.Point(120, 90);
             this.pastAppointmentDateTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.pastAppointmentDateTextBox.Name = "pastAppointmentDateTextBox";
             this.pastAppointmentDateTextBox.Size = new System.Drawing.Size(135, 20);
@@ -348,7 +348,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(271, 84);
+            this.label4.Location = new System.Drawing.Point(271, 69);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
@@ -358,7 +358,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(83, 125);
+            this.label3.Location = new System.Drawing.Point(83, 97);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 13);
@@ -368,7 +368,7 @@
             // pastAppointmentDoctorName
             // 
             this.pastAppointmentDoctorName.BackColor = System.Drawing.SystemColors.Control;
-            this.pastAppointmentDoctorName.Location = new System.Drawing.Point(120, 84);
+            this.pastAppointmentDoctorName.Location = new System.Drawing.Point(120, 66);
             this.pastAppointmentDoctorName.Margin = new System.Windows.Forms.Padding(2);
             this.pastAppointmentDoctorName.Name = "pastAppointmentDoctorName";
             this.pastAppointmentDoctorName.Size = new System.Drawing.Size(135, 20);
@@ -378,7 +378,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(74, 84);
+            this.label2.Location = new System.Drawing.Point(74, 71);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
@@ -389,7 +389,7 @@
             // 
             this.pastAppointmentComboBox.DropDownWidth = 223;
             this.pastAppointmentComboBox.FormattingEnabled = true;
-            this.pastAppointmentComboBox.Location = new System.Drawing.Point(120, 49);
+            this.pastAppointmentComboBox.Location = new System.Drawing.Point(120, 40);
             this.pastAppointmentComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.pastAppointmentComboBox.Name = "pastAppointmentComboBox";
             this.pastAppointmentComboBox.Size = new System.Drawing.Size(223, 21);
@@ -400,7 +400,7 @@
             // pastAppointmentLabel
             // 
             this.pastAppointmentLabel.AutoSize = true;
-            this.pastAppointmentLabel.Location = new System.Drawing.Point(18, 52);
+            this.pastAppointmentLabel.Location = new System.Drawing.Point(18, 43);
             this.pastAppointmentLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.pastAppointmentLabel.Name = "pastAppointmentLabel";
             this.pastAppointmentLabel.Size = new System.Drawing.Size(98, 13);
@@ -451,6 +451,7 @@
             this.pastAppointmentRadioButton.TabStop = true;
             this.pastAppointmentRadioButton.Text = "Past Appointments";
             this.pastAppointmentRadioButton.UseVisualStyleBackColor = true;
+            this.pastAppointmentRadioButton.CheckedChanged += new System.EventHandler(this.pastAppointmentRadioButton_CheckedChanged);
             // 
             // AppoinmentUserControlLabel
             // 
@@ -469,13 +470,13 @@
             this.Controls.Add(this.AppoinmentUserControlLabel);
             this.Controls.Add(this.pastAppointmentRadioButton);
             this.Controls.Add(this.showFutureRadioButton);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.appointmentTableLayout);
             this.Controls.Add(this.patientIDTextBox);
             this.Controls.Add(this.patientIDLabel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PatientAppointmentListUserControl";
             this.Size = new System.Drawing.Size(615, 509);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.appointmentTableLayout.ResumeLayout(false);
             this.FutureAppointmentPanel.ResumeLayout(false);
             this.FutureAppointmentPanel.PerformLayout();
             this.pastAppointmentPanel.ResumeLayout(false);
@@ -488,7 +489,7 @@
         #endregion
         private System.Windows.Forms.Label patientIDLabel;
         private System.Windows.Forms.TextBox patientIDTextBox;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel appointmentTableLayout;
         private System.Windows.Forms.Panel FutureAppointmentPanel;
         private System.Windows.Forms.Panel pastAppointmentPanel;
         public System.Windows.Forms.RadioButton showFutureRadioButton;
