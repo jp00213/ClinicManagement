@@ -30,5 +30,6 @@ namespace ClinicManagementApp.UserControls
         {
             set { patientIDTextBox.Text = value; }
         }
+
     }
 }

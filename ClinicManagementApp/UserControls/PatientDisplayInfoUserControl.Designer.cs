@@ -55,9 +55,9 @@
             this.label1.Location = new System.Drawing.Point(30, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.Size = new System.Drawing.Size(95, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Patient Info UC";
+            this.label1.Text = "Patient Information";
             // 
             // patientIDLabel
             // 
