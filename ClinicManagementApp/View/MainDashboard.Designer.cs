@@ -33,10 +33,11 @@
             this.UpdateTabPage = new System.Windows.Forms.TabPage();
             this.ViewTabPage = new System.Windows.Forms.TabPage();
             this.CreateTabPage = new System.Windows.Forms.TabPage();
-            this.createAppointmentUserControl1 = new ClinicManagementApp.UserControls.CreateAppointmentUserControl();
             this.DocumentTabPage = new System.Windows.Forms.TabPage();
             this.LabsTabPage = new System.Windows.Forms.TabPage();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.welcomeUserLabel = new System.Windows.Forms.Label();
+            this.createAppointmentUserControl1 = new ClinicManagementApp.UserControls.CreateAppointmentUserControl();
             this.nurseTabControl.SuspendLayout();
             this.CreateTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -100,15 +101,6 @@
             this.CreateTabPage.Text = "Create Appointment";
             this.CreateTabPage.UseVisualStyleBackColor = true;
             // 
-            // createAppointmentUserControl1
-            // 
-            this.createAppointmentUserControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createAppointmentUserControl1.Location = new System.Drawing.Point(14, 4);
-            this.createAppointmentUserControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.createAppointmentUserControl1.Name = "createAppointmentUserControl1";
-            this.createAppointmentUserControl1.Size = new System.Drawing.Size(836, 586);
-            this.createAppointmentUserControl1.TabIndex = 0;
-            // 
             // DocumentTabPage
             // 
             this.DocumentTabPage.Location = new System.Drawing.Point(4, 33);
@@ -140,11 +132,32 @@
             this.logoutLinkLabel.Text = "Logout";
             this.logoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.logoutLinkLabel_LinkClicked);
             // 
+            // welcomeUserLabel
+            // 
+            this.welcomeUserLabel.AutoSize = true;
+            this.welcomeUserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.welcomeUserLabel.ForeColor = System.Drawing.Color.DarkGreen;
+            this.welcomeUserLabel.Location = new System.Drawing.Point(52, 9);
+            this.welcomeUserLabel.Name = "welcomeUserLabel";
+            this.welcomeUserLabel.Size = new System.Drawing.Size(115, 29);
+            this.welcomeUserLabel.TabIndex = 2;
+            this.welcomeUserLabel.Text = "Welcome";
+            // 
+            // createAppointmentUserControl1
+            // 
+            this.createAppointmentUserControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createAppointmentUserControl1.Location = new System.Drawing.Point(14, 4);
+            this.createAppointmentUserControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.createAppointmentUserControl1.Name = "createAppointmentUserControl1";
+            this.createAppointmentUserControl1.Size = new System.Drawing.Size(836, 586);
+            this.createAppointmentUserControl1.TabIndex = 0;
+            // 
             // MainDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(862, 701);
+            this.Controls.Add(this.welcomeUserLabel);
             this.Controls.Add(this.logoutLinkLabel);
             this.Controls.Add(this.nurseTabControl);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -171,6 +184,7 @@
         private System.Windows.Forms.TabPage registerTabPage;
         private UserControls.CreateAppointmentUserControl createAppointmentUserControl1;
         private System.Windows.Forms.LinkLabel logoutLinkLabel;
+        private System.Windows.Forms.Label welcomeUserLabel;
     }
 }
 

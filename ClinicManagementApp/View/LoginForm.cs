@@ -6,7 +6,7 @@ namespace ClinicManagementApp.View
 {
     public partial class LoginForm : Form
     {
-        private AccountController _accountController;
+        private readonly AccountController _accountController;
 
         public LoginForm()
         {
@@ -21,14 +21,14 @@ namespace ClinicManagementApp.View
                 if (this._accountController.IsUsernamePasswordCorrectForNurse(this.usernameTextBox.Text, this.passwordTextBox.Text))
                 {
                     this.Hide();
-                    using (Form mainWindow = new MainDashboard())
+                    using (Form mainWindow = new MainDashboard(this.usernameTextBox.Text))
                     {
                         DialogResult result = mainWindow.ShowDialog(this);
                     }
                 }
                 else { this.errorMessageLabel.Text = "Invalid username/password"; }
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException)
             {
                 this.errorMessageLabel.Text = "Username/password can't be blank";
             }

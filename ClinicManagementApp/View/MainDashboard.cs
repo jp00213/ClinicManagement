@@ -1,12 +1,17 @@
-﻿using System.Windows.Forms;
+﻿using ClinicManagementApp.Controller;
+using System.Windows.Forms;
 
 namespace ClinicManagementApp
 {
     public partial class MainDashboard : Form
     {
-        public MainDashboard()
+        private readonly NurseController _nurseController;
+
+        public MainDashboard(string username)
         {
             InitializeComponent();
+            this._nurseController = new NurseController();
+            this.welcomeUserLabel.Text = "Welcome " + this._nurseController.GetNurseName(username) + " (username: " + username + ")!";
         }
 
         private void logoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
