@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClinicManagementApp.Controller;
+using ClinicManagementApp.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,14 +17,30 @@ namespace ClinicManagementApp.UserControls
     /// </summary>
     public partial class PatientAppointmentListUserControl : UserControl
     {
+        private AppointmentController appointmentController;
+
         /// <summary>
         /// create constructors
         /// </summary>
         public PatientAppointmentListUserControl()
         {
             InitializeComponent();
+            this.appointmentController = new AppointmentController();
+            appointmentDateTimePicker.CustomFormat = "yyyy / MM /dd";
+            this.setTimeComboBox();
+            this.showFutureRadioButton.Checked = true;
         }
 
+        private void setTimeComboBox()
+        {
+            var item = DateTime.Today.AddHours(8); // 8:00am
+            while (item <= DateTime.Today.AddHours(20)) // 10:00pm
+            {
+                // timeComboBox.Items.Add( item.TimeOfDay.ToString(@"hh\:mm") );
+                newAppointmentComboBox.Items.Add(item.TimeOfDay.ToString(@"hh\:mm"));
+                item = item.AddMinutes(15);
+            } 
+        }
         /// <summary>
         /// setter patientID
         /// </summary>
@@ -31,5 +49,6 @@ namespace ClinicManagementApp.UserControls
             set { patientIDTextBox.Text = value; }
         }
 
+        
     }
 }

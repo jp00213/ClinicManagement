@@ -32,7 +32,7 @@
             this.patientIDTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.FutureAppointmentPanel = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.newAppointmentComboBox = new System.Windows.Forms.ComboBox();
             this.appointListComboBox = new System.Windows.Forms.ComboBox();
             this.doctorName = new System.Windows.Forms.TextBox();
             this.theFutureAppointmentNumberTextBox = new System.Windows.Forms.TextBox();
@@ -109,7 +109,7 @@
             this.FutureAppointmentPanel.Controls.Add(this.appointmentDateTimePicker);
             this.FutureAppointmentPanel.Controls.Add(this.tempTime);
             this.FutureAppointmentPanel.Controls.Add(this.dateLabel);
-            this.FutureAppointmentPanel.Controls.Add(this.comboBox1);
+            this.FutureAppointmentPanel.Controls.Add(this.newAppointmentComboBox);
             this.FutureAppointmentPanel.Controls.Add(this.appointListComboBox);
             this.FutureAppointmentPanel.Controls.Add(this.doctorName);
             this.FutureAppointmentPanel.Controls.Add(this.theFutureAppointmentNumberTextBox);
@@ -124,15 +124,15 @@
             this.FutureAppointmentPanel.Size = new System.Drawing.Size(585, 226);
             this.FutureAppointmentPanel.TabIndex = 0;
             // 
-            // comboBox1
+            // newAppointmentComboBox
             // 
-            this.comboBox1.DropDownWidth = 223;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(120, 125);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(135, 21);
-            this.comboBox1.TabIndex = 25;
+            this.newAppointmentComboBox.DropDownWidth = 223;
+            this.newAppointmentComboBox.FormattingEnabled = true;
+            this.newAppointmentComboBox.Location = new System.Drawing.Point(120, 125);
+            this.newAppointmentComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.newAppointmentComboBox.Name = "newAppointmentComboBox";
+            this.newAppointmentComboBox.Size = new System.Drawing.Size(135, 21);
+            this.newAppointmentComboBox.TabIndex = 25;
             // 
             // appointListComboBox
             // 
@@ -470,7 +470,7 @@
         private System.Windows.Forms.Label AppoinmentUserControlLabel;
         private System.Windows.Forms.TextBox doctorName;
         private System.Windows.Forms.ComboBox appointListComboBox;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox newAppointmentComboBox;
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.TextBox tempTime;
         private System.Windows.Forms.DateTimePicker appointmentDateTimePicker;
