@@ -49,7 +49,7 @@ namespace ClinicManagementApp.Controller
         /// </summary>
         /// <param name="patientIDIn">patient ID</param>
         /// <returns>future appointment</returns>
-        public List<AppointmentWithDrName> GetApppointmentsByID_NowOn(int patientIDIn)
+        public List<AppointmentWithDrName> GetAppointmentsByID_NowOn(int patientIDIn)
         {
             return _appointmentDAL.GetAppointmentsByID_NowOn(patientIDIn);
         }
@@ -59,7 +59,7 @@ namespace ClinicManagementApp.Controller
         /// </summary>
         /// <param name="patientIDIn">patient ID</param>
         /// <returns>past appointment</returns>
-        public List<AppointmentWithDrName> GetAppointmentID_Past(int patientIDIn)
+        public List<AppointmentWithDrName> GetAppointmentsByID_Past(int patientIDIn)
         {
             return _appointmentDAL.GetAppointmentsByID_Past(patientIDIn);
         }
