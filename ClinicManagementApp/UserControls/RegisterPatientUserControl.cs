@@ -16,5 +16,24 @@ namespace ClinicManagementApp.UserControls
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Clears all textboxes on page
+        /// </summary>
+        public void ResetInputFields()
+        {
+            lastNameTextBox.Clear();
+            firstNameTextBox.Clear();
+            dateOfBirthTextBox.Clear();
+            phoneTextBox.Clear();
+            addressTextBox.Clear();
+            cityTextBox.Clear();
+            stateTextBox.Clear();
+            zipTextBox.Clear();
+        }
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            ResetInputFields();
+        }
     }
 }

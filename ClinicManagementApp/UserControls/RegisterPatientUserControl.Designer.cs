@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.addPatientButton = new System.Windows.Forms.Button();
             this.patientInformationLabel = new System.Windows.Forms.Label();
             this.lastNameLabel = new System.Windows.Forms.Label();
             this.firstNameLabel = new System.Windows.Forms.Label();
@@ -49,31 +49,32 @@
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // button1
+            // clearButton
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(194, 343);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(133, 35);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = true;
+            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearButton.Location = new System.Drawing.Point(229, 343);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(133, 35);
+            this.clearButton.TabIndex = 0;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
-            // button2
+            // addPatientButton
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(378, 343);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 35);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Add Patient";
-            this.button2.UseVisualStyleBackColor = true;
+            this.addPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addPatientButton.Location = new System.Drawing.Point(471, 343);
+            this.addPatientButton.Name = "addPatientButton";
+            this.addPatientButton.Size = new System.Drawing.Size(125, 35);
+            this.addPatientButton.TabIndex = 1;
+            this.addPatientButton.Text = "Add Patient";
+            this.addPatientButton.UseVisualStyleBackColor = true;
             // 
             // patientInformationLabel
             // 
             this.patientInformationLabel.AutoSize = true;
             this.patientInformationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientInformationLabel.Location = new System.Drawing.Point(218, 32);
+            this.patientInformationLabel.Location = new System.Drawing.Point(293, 32);
             this.patientInformationLabel.Name = "patientInformationLabel";
             this.patientInformationLabel.Size = new System.Drawing.Size(210, 25);
             this.patientInformationLabel.TabIndex = 2;
@@ -84,7 +85,7 @@
             // 
             this.lastNameLabel.AutoSize = true;
             this.lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameLabel.Location = new System.Drawing.Point(32, 94);
+            this.lastNameLabel.Location = new System.Drawing.Point(74, 101);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(86, 20);
             this.lastNameLabel.TabIndex = 3;
@@ -94,7 +95,7 @@
             // 
             this.firstNameLabel.AutoSize = true;
             this.firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameLabel.Location = new System.Drawing.Point(32, 145);
+            this.firstNameLabel.Location = new System.Drawing.Point(74, 152);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(86, 20);
             this.firstNameLabel.TabIndex = 4;
@@ -104,7 +105,7 @@
             // 
             this.dateOfBirthLabel.AutoSize = true;
             this.dateOfBirthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateOfBirthLabel.Location = new System.Drawing.Point(16, 198);
+            this.dateOfBirthLabel.Location = new System.Drawing.Point(58, 205);
             this.dateOfBirthLabel.Name = "dateOfBirthLabel";
             this.dateOfBirthLabel.Size = new System.Drawing.Size(102, 20);
             this.dateOfBirthLabel.TabIndex = 5;
@@ -114,7 +115,7 @@
             // 
             this.phoneLabel.AutoSize = true;
             this.phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneLabel.Location = new System.Drawing.Point(63, 248);
+            this.phoneLabel.Location = new System.Drawing.Point(105, 255);
             this.phoneLabel.Name = "phoneLabel";
             this.phoneLabel.Size = new System.Drawing.Size(55, 20);
             this.phoneLabel.TabIndex = 6;
@@ -124,7 +125,7 @@
             // 
             this.addressLabel.AutoSize = true;
             this.addressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addressLabel.Location = new System.Drawing.Point(360, 94);
+            this.addressLabel.Location = new System.Drawing.Point(421, 98);
             this.addressLabel.Name = "addressLabel";
             this.addressLabel.Size = new System.Drawing.Size(68, 20);
             this.addressLabel.TabIndex = 7;
@@ -134,7 +135,7 @@
             // 
             this.cityLabel.AutoSize = true;
             this.cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityLabel.Location = new System.Drawing.Point(370, 145);
+            this.cityLabel.Location = new System.Drawing.Point(431, 149);
             this.cityLabel.Name = "cityLabel";
             this.cityLabel.Size = new System.Drawing.Size(35, 20);
             this.cityLabel.TabIndex = 8;
@@ -144,7 +145,7 @@
             // 
             this.stateLabel.AutoSize = true;
             this.stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateLabel.Location = new System.Drawing.Point(370, 195);
+            this.stateLabel.Location = new System.Drawing.Point(431, 199);
             this.stateLabel.Name = "stateLabel";
             this.stateLabel.Size = new System.Drawing.Size(48, 20);
             this.stateLabel.TabIndex = 9;
@@ -154,7 +155,7 @@
             // 
             this.zipLabel.AutoSize = true;
             this.zipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipLabel.Location = new System.Drawing.Point(374, 247);
+            this.zipLabel.Location = new System.Drawing.Point(435, 251);
             this.zipLabel.Name = "zipLabel";
             this.zipLabel.Size = new System.Drawing.Size(31, 20);
             this.zipLabel.TabIndex = 10;
@@ -162,64 +163,63 @@
             // 
             // lastNameTextBox
             // 
-            this.lastNameTextBox.Location = new System.Drawing.Point(125, 94);
+            this.lastNameTextBox.Location = new System.Drawing.Point(167, 101);
             this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(202, 20);
+            this.lastNameTextBox.Size = new System.Drawing.Size(228, 20);
             this.lastNameTextBox.TabIndex = 11;
             // 
             // firstNameTextBox
             // 
-            this.firstNameTextBox.Location = new System.Drawing.Point(125, 144);
+            this.firstNameTextBox.Location = new System.Drawing.Point(167, 151);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(202, 20);
+            this.firstNameTextBox.Size = new System.Drawing.Size(228, 20);
             this.firstNameTextBox.TabIndex = 12;
             // 
             // dateOfBirthTextBox
             // 
-            this.dateOfBirthTextBox.Location = new System.Drawing.Point(125, 197);
+            this.dateOfBirthTextBox.Location = new System.Drawing.Point(167, 204);
             this.dateOfBirthTextBox.Name = "dateOfBirthTextBox";
-            this.dateOfBirthTextBox.Size = new System.Drawing.Size(202, 20);
+            this.dateOfBirthTextBox.Size = new System.Drawing.Size(228, 20);
             this.dateOfBirthTextBox.TabIndex = 13;
             // 
             // phoneTextBox
             // 
-            this.phoneTextBox.Location = new System.Drawing.Point(125, 247);
+            this.phoneTextBox.Location = new System.Drawing.Point(167, 254);
             this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(202, 20);
+            this.phoneTextBox.Size = new System.Drawing.Size(228, 20);
             this.phoneTextBox.TabIndex = 14;
             // 
             // addressTextBox
             // 
-            this.addressTextBox.Location = new System.Drawing.Point(434, 94);
+            this.addressTextBox.Location = new System.Drawing.Point(495, 98);
             this.addressTextBox.Name = "addressTextBox";
-            this.addressTextBox.Size = new System.Drawing.Size(201, 20);
+            this.addressTextBox.Size = new System.Drawing.Size(227, 20);
             this.addressTextBox.TabIndex = 15;
             // 
             // cityTextBox
             // 
-            this.cityTextBox.Location = new System.Drawing.Point(434, 143);
+            this.cityTextBox.Location = new System.Drawing.Point(495, 147);
             this.cityTextBox.Name = "cityTextBox";
-            this.cityTextBox.Size = new System.Drawing.Size(201, 20);
+            this.cityTextBox.Size = new System.Drawing.Size(227, 20);
             this.cityTextBox.TabIndex = 16;
             // 
             // stateTextBox
             // 
-            this.stateTextBox.Location = new System.Drawing.Point(434, 195);
+            this.stateTextBox.Location = new System.Drawing.Point(495, 199);
             this.stateTextBox.Name = "stateTextBox";
-            this.stateTextBox.Size = new System.Drawing.Size(201, 20);
+            this.stateTextBox.Size = new System.Drawing.Size(227, 20);
             this.stateTextBox.TabIndex = 17;
             // 
             // zipTextBox
             // 
-            this.zipTextBox.Location = new System.Drawing.Point(434, 247);
+            this.zipTextBox.Location = new System.Drawing.Point(495, 251);
             this.zipTextBox.Name = "zipTextBox";
-            this.zipTextBox.Size = new System.Drawing.Size(201, 20);
+            this.zipTextBox.Size = new System.Drawing.Size(227, 20);
             this.zipTextBox.TabIndex = 18;
             // 
             // RegisterPatientUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this.zipTextBox);
             this.Controls.Add(this.stateTextBox);
             this.Controls.Add(this.cityTextBox);
@@ -237,10 +237,10 @@
             this.Controls.Add(this.firstNameLabel);
             this.Controls.Add(this.lastNameLabel);
             this.Controls.Add(this.patientInformationLabel);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.addPatientButton);
+            this.Controls.Add(this.clearButton);
             this.Name = "RegisterPatientUserControl";
-            this.Size = new System.Drawing.Size(662, 430);
+            this.Size = new System.Drawing.Size(804, 499);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,8 +248,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Button addPatientButton;
         private System.Windows.Forms.Label patientInformationLabel;
         private System.Windows.Forms.Label lastNameLabel;
         private System.Windows.Forms.Label firstNameLabel;
