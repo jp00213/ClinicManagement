@@ -17,6 +17,10 @@ namespace ClinicManagementApp
             InitializeComponent();
         }
 
+        private void searchPatientUserControl1_PatientNumberChanged(object sender, EventArgs e)
+        {
+            this.currentPatientIDLabel.Text = searchPatientUserControl1.getCurrentpatientID();
+        }
 
         /// <summary>
         /// getter current patientID selected from patientDisplayInfoUserControl
@@ -26,9 +30,11 @@ namespace ClinicManagementApp
             get { return this.currentPatientIDLabel.Text; }
         }
 
-        private void searchPatientUserControl1_PatientNumberChanged(object sender, EventArgs e)
+        private void currentPatientIDLabel_TextChanged(object sender, EventArgs e)
         {
-            this.currentPatientIDLabel.Text = searchPatientUserControl1.getCurrentpatientID();
+            this.patientDisplayInfoUserControl1.ID = ID;
+            this.patientVisitListUserControl1.ID = ID;
+            this.patientAppointmentListUserControl1.ID = ID;
         }
 
         private void patientInfoButton_Click(object sender, EventArgs e)
@@ -53,12 +59,7 @@ namespace ClinicManagementApp
 
         }
 
-        private void currentPatientIDLabel_TextChanged(object sender, EventArgs e)
-        {
-            this.patientDisplayInfoUserControl1.ID = ID;
-            this.patientVisitListUserControl1.ID = ID;
-            this.patientAppointmentListUserControl1.ID = ID;
-        }
+
     }
 
 
