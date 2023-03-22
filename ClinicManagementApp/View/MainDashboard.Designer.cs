@@ -31,12 +31,16 @@
             this.nurseTabControl = new System.Windows.Forms.TabControl();
             this.registerTabPage = new System.Windows.Forms.TabPage();
             this.UpdateTabPage = new System.Windows.Forms.TabPage();
+            this.updatePatientInformationUserControl1 = new ClinicManagementApp.UserControls.UpdatePatientInformationUserControl();
             this.ViewTabPage = new System.Windows.Forms.TabPage();
             this.CreateTabPage = new System.Windows.Forms.TabPage();
+            this.createAppointmentUserControl1 = new ClinicManagementApp.UserControls.CreateAppointmentUserControl();
             this.DocumentTabPage = new System.Windows.Forms.TabPage();
             this.LabsTabPage = new System.Windows.Forms.TabPage();
-            this.createAppointmentUserControl1 = new ClinicManagementApp.UserControls.CreateAppointmentUserControl();
+            this.registerPatientUserControl1 = new ClinicManagementApp.UserControls.RegisterPatientUserControl();
             this.nurseTabControl.SuspendLayout();
+            this.registerTabPage.SuspendLayout();
+            this.UpdateTabPage.SuspendLayout();
             this.CreateTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +62,7 @@
             // 
             // registerTabPage
             // 
+            this.registerTabPage.Controls.Add(this.registerPatientUserControl1);
             this.registerTabPage.Location = new System.Drawing.Point(4, 27);
             this.registerTabPage.Margin = new System.Windows.Forms.Padding(4);
             this.registerTabPage.Name = "registerTabPage";
@@ -69,6 +74,7 @@
             // 
             // UpdateTabPage
             // 
+            this.UpdateTabPage.Controls.Add(this.updatePatientInformationUserControl1);
             this.UpdateTabPage.Location = new System.Drawing.Point(4, 27);
             this.UpdateTabPage.Margin = new System.Windows.Forms.Padding(4);
             this.UpdateTabPage.Name = "UpdateTabPage";
@@ -77,6 +83,13 @@
             this.UpdateTabPage.TabIndex = 1;
             this.UpdateTabPage.Text = "Update Patient";
             this.UpdateTabPage.UseVisualStyleBackColor = true;
+            // 
+            // updatePatientInformationUserControl1
+            // 
+            this.updatePatientInformationUserControl1.Location = new System.Drawing.Point(28, 7);
+            this.updatePatientInformationUserControl1.Name = "updatePatientInformationUserControl1";
+            this.updatePatientInformationUserControl1.Size = new System.Drawing.Size(798, 585);
+            this.updatePatientInformationUserControl1.TabIndex = 0;
             // 
             // ViewTabPage
             // 
@@ -99,6 +112,15 @@
             this.CreateTabPage.Text = "Create Appointment";
             this.CreateTabPage.UseVisualStyleBackColor = true;
             // 
+            // createAppointmentUserControl1
+            // 
+            this.createAppointmentUserControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createAppointmentUserControl1.Location = new System.Drawing.Point(14, 4);
+            this.createAppointmentUserControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.createAppointmentUserControl1.Name = "createAppointmentUserControl1";
+            this.createAppointmentUserControl1.Size = new System.Drawing.Size(836, 586);
+            this.createAppointmentUserControl1.TabIndex = 0;
+            // 
             // DocumentTabPage
             // 
             this.DocumentTabPage.Location = new System.Drawing.Point(4, 27);
@@ -119,14 +141,12 @@
             this.LabsTabPage.Text = "Labs";
             this.LabsTabPage.UseVisualStyleBackColor = true;
             // 
-            // createAppointmentUserControl1
+            // registerPatientUserControl1
             // 
-            this.createAppointmentUserControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createAppointmentUserControl1.Location = new System.Drawing.Point(14, 4);
-            this.createAppointmentUserControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.createAppointmentUserControl1.Name = "createAppointmentUserControl1";
-            this.createAppointmentUserControl1.Size = new System.Drawing.Size(836, 586);
-            this.createAppointmentUserControl1.TabIndex = 0;
+            this.registerPatientUserControl1.Location = new System.Drawing.Point(8, 66);
+            this.registerPatientUserControl1.Name = "registerPatientUserControl1";
+            this.registerPatientUserControl1.Size = new System.Drawing.Size(804, 499);
+            this.registerPatientUserControl1.TabIndex = 0;
             // 
             // MainDashboard
             // 
@@ -140,6 +160,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clinic Management Application";
             this.nurseTabControl.ResumeLayout(false);
+            this.registerTabPage.ResumeLayout(false);
+            this.UpdateTabPage.ResumeLayout(false);
             this.CreateTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -155,6 +177,8 @@
         private System.Windows.Forms.TabPage LabsTabPage;
         private System.Windows.Forms.TabPage registerTabPage;
         private UserControls.CreateAppointmentUserControl createAppointmentUserControl1;
+        private UserControls.UpdatePatientInformationUserControl updatePatientInformationUserControl1;
+        private UserControls.RegisterPatientUserControl registerPatientUserControl1;
     }
 }
 

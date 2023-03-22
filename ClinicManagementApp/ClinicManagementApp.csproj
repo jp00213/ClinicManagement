@@ -69,6 +69,12 @@
     <Compile Include="UserControls\RegisterPatientUserControl.Designer.cs">
       <DependentUpon>RegisterPatientUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UpdatePatientInformationUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UpdatePatientInformationUserControl.Designer.cs">
+      <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RegisterPatientUserControl.resx">
       <DependentUpon>RegisterPatientUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UpdatePatientInformationUserControl.resx">
+      <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
