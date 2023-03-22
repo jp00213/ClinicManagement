@@ -34,8 +34,6 @@
             this.ViewTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.patientAppointmentListUserControl1 = new ClinicManagementApp.UserControls.PatientAppointmentListUserControl();
-            this.patientVisitListUserControl1 = new ClinicManagementApp.UserControls.PatientVisitListUserControl();
             this.patientVisitButton = new System.Windows.Forms.Button();
             this.patientAppointmentButton = new System.Windows.Forms.Button();
             this.patientInfoButton = new System.Windows.Forms.Button();
@@ -43,17 +41,21 @@
             this.currentPatientIDLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.searchPatientUserControl1 = new ClinicManagementApp.UserControls.SearchPatientUserControl();
-            this.patientDisplayInfoUserControl1 = new ClinicManagementApp.UserControls.PatientDisplayInfoUserControl();
             this.CreateTabPage = new System.Windows.Forms.TabPage();
             this.createAppointmentUserControl1 = new ClinicManagementApp.UserControls.CreateAppointmentUserControl();
             this.DocumentTabPage = new System.Windows.Forms.TabPage();
             this.LabsTabPage = new System.Windows.Forms.TabPage();
+            this.bottomPanelHoldMultipleUserControl = new System.Windows.Forms.Panel();
+            this.patientDisplayInfoUserControl1 = new ClinicManagementApp.UserControls.PatientDisplayInfoUserControl();
+            this.patientAppointmentListUserControl1 = new ClinicManagementApp.UserControls.PatientAppointmentListUserControl();
+            this.patientVisitListUserControl1 = new ClinicManagementApp.UserControls.PatientVisitListUserControl();
             this.nurseTabControl.SuspendLayout();
             this.ViewTabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.CreateTabPage.SuspendLayout();
+            this.bottomPanelHoldMultipleUserControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // nurseTabControl
@@ -96,6 +98,7 @@
             // 
             // ViewTabPage
             // 
+            this.ViewTabPage.Controls.Add(this.bottomPanelHoldMultipleUserControl);
             this.ViewTabPage.Controls.Add(this.tableLayoutPanel1);
             this.ViewTabPage.Location = new System.Drawing.Point(4, 27);
             this.ViewTabPage.Margin = new System.Windows.Forms.Padding(4);
@@ -113,44 +116,25 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.searchPatientUserControl1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.patientDisplayInfoUserControl1, 0, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(-4, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.95219F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.04781F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 307F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(855, 596);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(855, 276);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.patientAppointmentListUserControl1);
-            this.panel1.Controls.Add(this.patientVisitListUserControl1);
             this.panel1.Controls.Add(this.patientVisitButton);
             this.panel1.Controls.Add(this.patientAppointmentButton);
             this.panel1.Controls.Add(this.patientInfoButton);
-            this.panel1.Location = new System.Drawing.Point(3, 254);
+            this.panel1.Location = new System.Drawing.Point(3, 236);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(826, 31);
             this.panel1.TabIndex = 0;
-            // 
-            // patientAppointmentListUserControl1
-            // 
-            this.patientAppointmentListUserControl1.Location = new System.Drawing.Point(9, 38);
-            this.patientAppointmentListUserControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.patientAppointmentListUserControl1.Name = "patientAppointmentListUserControl1";
-            this.patientAppointmentListUserControl1.Size = new System.Drawing.Size(788, 280);
-            this.patientAppointmentListUserControl1.TabIndex = 6;
-            // 
-            // patientVisitListUserControl1
-            // 
-            this.patientVisitListUserControl1.Location = new System.Drawing.Point(9, 38);
-            this.patientVisitListUserControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.patientVisitListUserControl1.Name = "patientVisitListUserControl1";
-            this.patientVisitListUserControl1.Size = new System.Drawing.Size(816, 296);
-            this.patientVisitListUserControl1.TabIndex = 7;
             // 
             // patientVisitButton
             // 
@@ -191,7 +175,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(826, 24);
+            this.panel2.Size = new System.Drawing.Size(826, 21);
             this.panel2.TabIndex = 1;
             // 
             // currentPatientIDLabel
@@ -215,20 +199,12 @@
             // 
             // searchPatientUserControl1
             // 
-            this.searchPatientUserControl1.Location = new System.Drawing.Point(2, 32);
+            this.searchPatientUserControl1.Location = new System.Drawing.Point(2, 29);
             this.searchPatientUserControl1.Margin = new System.Windows.Forms.Padding(2);
             this.searchPatientUserControl1.Name = "searchPatientUserControl1";
-            this.searchPatientUserControl1.Size = new System.Drawing.Size(826, 215);
+            this.searchPatientUserControl1.Size = new System.Drawing.Size(826, 202);
             this.searchPatientUserControl1.TabIndex = 2;
             this.searchPatientUserControl1.PatientNumberChanged += new System.EventHandler(this.searchPatientUserControl1_PatientNumberChanged);
-            // 
-            // patientDisplayInfoUserControl1
-            // 
-            this.patientDisplayInfoUserControl1.Location = new System.Drawing.Point(4, 292);
-            this.patientDisplayInfoUserControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.patientDisplayInfoUserControl1.Name = "patientDisplayInfoUserControl1";
-            this.patientDisplayInfoUserControl1.Size = new System.Drawing.Size(825, 295);
-            this.patientDisplayInfoUserControl1.TabIndex = 3;
             // 
             // CreateTabPage
             // 
@@ -270,6 +246,38 @@
             this.LabsTabPage.Text = "Labs";
             this.LabsTabPage.UseVisualStyleBackColor = true;
             // 
+            // bottomPanelHoldMultipleUserControl
+            // 
+            this.bottomPanelHoldMultipleUserControl.Controls.Add(this.patientAppointmentListUserControl1);
+            this.bottomPanelHoldMultipleUserControl.Controls.Add(this.patientVisitListUserControl1);
+            this.bottomPanelHoldMultipleUserControl.Controls.Add(this.patientDisplayInfoUserControl1);
+            this.bottomPanelHoldMultipleUserControl.Location = new System.Drawing.Point(8, 286);
+            this.bottomPanelHoldMultipleUserControl.Name = "bottomPanelHoldMultipleUserControl";
+            this.bottomPanelHoldMultipleUserControl.Size = new System.Drawing.Size(838, 305);
+            this.bottomPanelHoldMultipleUserControl.TabIndex = 1;
+            // 
+            // patientDisplayInfoUserControl1
+            // 
+            this.patientDisplayInfoUserControl1.Location = new System.Drawing.Point(1, 4);
+            this.patientDisplayInfoUserControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.patientDisplayInfoUserControl1.Name = "patientDisplayInfoUserControl1";
+            this.patientDisplayInfoUserControl1.Size = new System.Drawing.Size(817, 297);
+            this.patientDisplayInfoUserControl1.TabIndex = 0;
+            // 
+            // patientAppointmentListUserControl1
+            // 
+            this.patientAppointmentListUserControl1.Location = new System.Drawing.Point(3, 4);
+            this.patientAppointmentListUserControl1.Name = "patientAppointmentListUserControl1";
+            this.patientAppointmentListUserControl1.Size = new System.Drawing.Size(803, 299);
+            this.patientAppointmentListUserControl1.TabIndex = 2;
+            // 
+            // patientVisitListUserControl1
+            // 
+            this.patientVisitListUserControl1.Location = new System.Drawing.Point(3, 4);
+            this.patientVisitListUserControl1.Name = "patientVisitListUserControl1";
+            this.patientVisitListUserControl1.Size = new System.Drawing.Size(832, 297);
+            this.patientVisitListUserControl1.TabIndex = 2;
+            // 
             // MainDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -288,6 +296,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.CreateTabPage.ResumeLayout(false);
+            this.bottomPanelHoldMultipleUserControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -311,9 +320,10 @@
         private System.Windows.Forms.Label currentPatientIDLabel;
         private System.Windows.Forms.Label label1;
         private UserControls.SearchPatientUserControl searchPatientUserControl1;
-        private UserControls.PatientDisplayInfoUserControl patientDisplayInfoUserControl1;
+        private System.Windows.Forms.Panel bottomPanelHoldMultipleUserControl;
         private UserControls.PatientAppointmentListUserControl patientAppointmentListUserControl1;
         private UserControls.PatientVisitListUserControl patientVisitListUserControl1;
+        private UserControls.PatientDisplayInfoUserControl patientDisplayInfoUserControl1;
     }
 }
 
