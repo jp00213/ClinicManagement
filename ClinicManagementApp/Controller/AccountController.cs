@@ -20,9 +20,26 @@ namespace ClinicManagementApp.Controller
             this._accountDAL = new AccountDAL();
         }
 
-        public Boolean IsUsernamePasswordCorrect(string user, string pass)
+        /// <summary>
+        /// Verifies if username/password match and user is a nurse
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="pass"></param>
+        /// <returns></returns>
+        public Boolean IsUsernamePasswordCorrectForNurse(string user, string pass)
         {
-            return this._accountDAL.IsUsernamePasswordCorrect(user, pass);
+            return this._accountDAL.IsUsernamePasswordCorrectForNurse(user, pass);
+        }
+
+        /// <summary>
+        /// Verifies if username/password match and user is an administrator
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="pass"></param>
+        /// <returns></returns>
+        public Boolean IsUsernamePasswordCorrectForAdministrator(string user, string pass)
+        {
+            return this._accountDAL.IsUsernamePasswordCorrectForAdministrator(user, pass);
         }
     }
 }

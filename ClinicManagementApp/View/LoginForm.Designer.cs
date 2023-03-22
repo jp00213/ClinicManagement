@@ -34,12 +34,13 @@
             this.passwordLabel = new System.Windows.Forms.Label();
             this.loginButton = new System.Windows.Forms.Button();
             this.errorMessageLabel = new System.Windows.Forms.Label();
+            this.welcomeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // usernameTextBox
             // 
             this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.usernameTextBox.Location = new System.Drawing.Point(385, 134);
+            this.usernameTextBox.Location = new System.Drawing.Point(419, 115);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(100, 29);
             this.usernameTextBox.TabIndex = 0;
@@ -48,7 +49,7 @@
             // passwordTextBox
             // 
             this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.passwordTextBox.Location = new System.Drawing.Point(385, 181);
+            this.passwordTextBox.Location = new System.Drawing.Point(419, 162);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(100, 29);
@@ -59,7 +60,7 @@
             // 
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.usernameLabel.Location = new System.Drawing.Point(256, 134);
+            this.usernameLabel.Location = new System.Drawing.Point(290, 115);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(97, 24);
             this.usernameLabel.TabIndex = 2;
@@ -69,7 +70,7 @@
             // 
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.passwordLabel.Location = new System.Drawing.Point(261, 184);
+            this.passwordLabel.Location = new System.Drawing.Point(295, 165);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(92, 24);
             this.passwordLabel.TabIndex = 3;
@@ -78,7 +79,7 @@
             // loginButton
             // 
             this.loginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.loginButton.Location = new System.Drawing.Point(333, 254);
+            this.loginButton.Location = new System.Drawing.Point(367, 235);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(104, 45);
             this.loginButton.TabIndex = 4;
@@ -91,16 +92,28 @@
             this.errorMessageLabel.AutoSize = true;
             this.errorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.errorMessageLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorMessageLabel.Location = new System.Drawing.Point(382, 356);
+            this.errorMessageLabel.Location = new System.Drawing.Point(280, 326);
             this.errorMessageLabel.Name = "errorMessageLabel";
             this.errorMessageLabel.Size = new System.Drawing.Size(0, 24);
             this.errorMessageLabel.TabIndex = 6;
+            // 
+            // welcomeLabel
+            // 
+            this.welcomeLabel.AutoSize = true;
+            this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.welcomeLabel.ForeColor = System.Drawing.Color.DarkGreen;
+            this.welcomeLabel.Location = new System.Drawing.Point(180, 47);
+            this.welcomeLabel.Name = "welcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(483, 29);
+            this.welcomeLabel.TabIndex = 7;
+            this.welcomeLabel.Text = "Welcome To The Clinic Management App";
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.welcomeLabel);
             this.Controls.Add(this.errorMessageLabel);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordLabel);
@@ -126,5 +139,6 @@
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.Label errorMessageLabel;
+        private System.Windows.Forms.Label welcomeLabel;
     }
 }

@@ -16,15 +16,26 @@ namespace ClinicManagementApp.View
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            if (this._accountController.IsUsernamePasswordCorrect(this.usernameTextBox.Text, this.passwordTextBox.Text))
+            try
             {
-                this.Hide();
-                using (Form mainWindow = new MainDashboard())
+                if (this._accountController.IsUsernamePasswordCorrectForNurse(this.usernameTextBox.Text, this.passwordTextBox.Text))
                 {
-                    DialogResult result = mainWindow.ShowDialog(this);
+                    this.Hide();
+                    using (Form mainWindow = new MainDashboard())
+                    {
+                        DialogResult result = mainWindow.ShowDialog(this);
+                    }
                 }
+                else { this.errorMessageLabel.Text = "Invalid username/password"; }
             }
-            else { this.errorMessageLabel.Text = "Invalid username/password"; }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                this.errorMessageLabel.Text = "Username/password can't be blank";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void usernameTextBox_TextChanged(object sender, EventArgs e)
