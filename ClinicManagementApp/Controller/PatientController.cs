@@ -11,6 +11,7 @@ namespace ClinicManagementApp.Controller
     public class PatientController
     {
         private readonly PatientDAL _patientDAL;
+        private PersonDAL _personDAL;
 
         /// <summary>
         /// Create a PatientController object.
@@ -18,6 +19,7 @@ namespace ClinicManagementApp.Controller
         public PatientController()
         {
             this._patientDAL = new PatientDAL();
+            this._personDAL = new PersonDAL();
         }
 
         /// <summary>
@@ -38,5 +40,18 @@ namespace ClinicManagementApp.Controller
         /// <returns>a patient object based on patientID</returns>
         /// <param name="patientID"> first name of patient</param>
         public Patient GetPatientByID(int patientID) => this._patientDAL.GetPatientByID(patientID);
+
+        public int AddPatient(Person person)
+        {
+            int personID = this.AddPerson(person);
+            return this._patientDAL.AddPatient(personID);
+        }
+
+        public int AddPerson(Person person)
+        {
+            return this._personDAL.AddPerson(person);
+        }
+
+
     }
 }
