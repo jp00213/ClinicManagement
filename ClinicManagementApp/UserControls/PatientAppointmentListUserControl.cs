@@ -26,7 +26,7 @@ namespace ClinicManagementApp.UserControls
         {
             InitializeComponent();
             this.appointmentController = new AppointmentController();
-            appointmentDateTimePicker.CustomFormat = "yyyy / MM /dd";
+            appointmentDateTimePicker.CustomFormat = "yyyy / MM / dd";
             this.setTimeComboBox();
             this.showFutureRadioButton.Checked = true;
         }
@@ -55,7 +55,7 @@ namespace ClinicManagementApp.UserControls
 
             pastAppointmentComboBox.DataSource = null;
 
-            if (this.GetFutureAppointmentCount()> 0)
+            if (this.GetFutureAppointmentCount() > 0)
             {
                 this.ClearAllFutureAppointmentDetails();
                 this.LoadFutureAppointmentComboBox();
@@ -127,7 +127,7 @@ namespace ClinicManagementApp.UserControls
             pastAppointmentComboBox.DisplayMember = "appointmentSummary";
             pastAppointmentComboBox.ValueMember = "appointmentID";
             pastAppointmentComboBox.SelectedIndex = 0;
-            pastAppointmentNumberTextBox.Text = this.appointListComboBox.SelectedValue.ToString();
+            pastAppointmentNumberTextBox.Text = this.pastAppointmentComboBox.SelectedValue.ToString();
         }
 
         private void appointListComboBox_ValueMemberChanged(object sender, EventArgs e)
@@ -138,6 +138,7 @@ namespace ClinicManagementApp.UserControls
 
         private void appointListComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            this.ClearAllFutureAppointmentDetails();
             theFutureAppointmentNumberTextBox.Text = this.appointListComboBox.SelectedValue.ToString();
         }
 

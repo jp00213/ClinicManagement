@@ -71,7 +71,7 @@ namespace ClinicManagementApp.Controller
         /// <returns>appointment</returns>
         public AppointmentWithDrName GetAppointmentByID(int appointmentIDIn)
         {
-            return _appointmentDAL.GetAppointmentsByID(appointmentIDIn);
+            return _appointmentDAL.GetAppointmentByID(appointmentIDIn);
         }
     }
 }

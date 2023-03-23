@@ -131,7 +131,7 @@ namespace ClinicManagementApp.DAL
         {
             List<AppointmentWithDrName> appointments = new List<AppointmentWithDrName>();
             string selectStatement =
-                "select d. doctorID, a.appointmentID, a.appointmentDatetime, " +
+                "select d.doctorID, a.appointmentID, a.appointmentDatetime, " +
                 "a.reason, e.lastName as doctorLastName, " +
                 "CONVERT(VARCHAR, a.appointmentDatetime, 22)  + ' - ' + 'Dr.' + ' ' + e.lastName as appointmentSummary, " +
                 "e.lastName as appointmentSummary  " +
@@ -179,8 +179,7 @@ namespace ClinicManagementApp.DAL
             string selectStatement =
                 "select d. doctorID, a.appointmentID, a.appointmentDatetime, " +
                 "a.reason, e.lastName as doctorLastName, " +
-                "CONVERT(VARCHAR, a.appointmentDatetime, 22)  + ' - ' + 'Dr.' + ' ' + e.lastName as appointmentSummary, " +
-                "e.lastName as appointmentSummary  " +
+                "CONVERT(VARCHAR, a.appointmentDatetime, 22)  + ' - ' + 'Dr.' + ' ' + e.lastName as appointmentSummary " +
                 "from appointment a, doctor d, person e " +
                 "where a.doctorID = d.doctorID " +
                 "and d.recordID = e.recordID " +
@@ -219,18 +218,15 @@ namespace ClinicManagementApp.DAL
         /// </summary>
         /// <param name="appointmentIDIn">appointment ID</param>
         /// <returns>appointment</returns>
-        public AppointmentWithDrName GetAppointmentsByID(int appointmentIDIn)
+        public AppointmentWithDrName GetAppointmentByID(int appointmentIDIn)
         {
             AppointmentWithDrName appointment = new AppointmentWithDrName();
             string selectStatement =
-                "select d. doctorID, a.appointmentID, a.appointmentDatetime, " +
-                "a.reason, e.lastName as doctorLastName, " +
-                "CONVERT(VARCHAR, a.appointmentDatetime, 22)  + ' - ' + 'Dr.' + ' ' + e.lastName as appointmentSummary, " +
-                "e.lastName as appointmentSummary  " +
-                "from appointment a, doctor d, person e " +
+                "select d.doctorID, a.appointmentID, a.appointmentDatetime,   CONVERT(VARCHAR(5), a.appointmentDatetime, 108) as shortTime  , " +
+                "a.reason, e.lastName as doctorLastName  " +
+                "from appointment a,  doctor d, person e " +
                 "where a.doctorID = d.doctorID " +
                 "and d.recordID = e.recordID " +
-                "and a.appointmentDatetime = getDate() " +
                 "and a.appointmentID = @appointmentIDIn " +
                 "order by a.appointmentID ";
 
