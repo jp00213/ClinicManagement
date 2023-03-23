@@ -38,5 +38,31 @@ namespace ClinicManagementApp.Controller
         /// <returns>a patient object based on patientID</returns>
         /// <param name="patientID"> first name of patient</param>
         public Patient GetPatientByID(int patientID) => this._patientDAL.GetPatientByID(patientID);
+
+        /// <summary>
+        /// Input check: if first and last name are empty, search by dob;
+        /// if dob is empty, search by first and last name;
+        /// if first name is empty, search by last name and dob.
+        /// </summary>
+        /// <param name="firstNameIn">first name of patient</param>
+        /// <param name="lastNameIn">last name of patient</param>
+        /// <param name="dobIn">birthday of patient</param>
+        /// <returns>patient</returns>
+        public List<Patient> GetPatientByInputsCheck(string firstNameIn, string lastNameIn, DateTime dobIn)
+        {
+            if ((firstNameIn == string.Empty) && (lastNameIn == string.Empty))
+            {
+                return this._patientDAL.GetPatientByDobOnly(dobIn);
+            }
+            else if ((firstNameIn != string.Empty) && (lastNameIn != string.Empty))
+            {
+                return this._patientDAL.GetPatientByLastAndFirstName(firstNameIn, lastNameIn);
+            }
+            else
+            {
+                return this._patientDAL.GetPatientByLastNameAndDOB(lastNameIn, dobIn);
+            }
+        }
+
     }
 }
