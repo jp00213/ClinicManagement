@@ -1,4 +1,5 @@
 ﻿using ClinicManagementApp.Controller;
+using ClinicManagementApp.DAL;
 using ClinicManagementApp.Model;
 using System;
 using System.Windows.Forms;
@@ -20,19 +21,29 @@ namespace ClinicManagementApp.UserControls
             InitializeComponent();
             this.appointmentController = new AppointmentController();
             appointmentDateTimePicker.CustomFormat = "yyyy / MM / dd";
-            this.setTimeComboBox();
+            this.SetTimeComboBox();
             this.showFutureRadioButton.Checked = true;
         }
 
-        private void setTimeComboBox()
+        private void SetTimeComboBox()
         {
-            var item = DateTime.Today.AddHours(8); // 8:00am
-            while (item <= DateTime.Today.AddHours(16)) // 5:00pm
+            if(Int32.TryParse(this.appointListComboBox.ValueMember, out int result))
             {
-                // timeComboBox.Items.Add( item.TimeOfDay.ToString(@"hh\:mm") );
-                newAppointmentComboBox.Items.Add(item.TimeOfDay.ToString(@"hh\:mm"));
-                item = item.AddMinutes(15);
+                int appointmentID = Int32.Parse(this.appointListComboBox.ValueMember);
+                Appointment appointment = appointmentController.GetAppointmentByID(appointmentID);
+                string appointmentDay = appointment.AppointmentDatetime.ToString("yyyy-MM-dd");
+
+                this.newAppointmentComboBox.DataSource = null;
+                this.newAppointmentComboBox.Items.Clear();
+                this.newAppointmentComboBox.DataSource = this.appointmentController.GetAppointmentTimeOptionsByDateAndDoctor(appointmentDay, appointment.DoctorID);
             } 
+            else
+            {
+                this.newAppointmentComboBox.DataSource = null;
+                this.newAppointmentComboBox.Items.Clear();
+                this.newAppointmentComboBox.DataSource = this.appointmentController.GetAppointmentTimeOptionsByDateAndDoctor("2900-12-31", 0);
+            }
+
         }
         /// <summary>
         /// setter patientID
@@ -223,6 +234,11 @@ namespace ClinicManagementApp.UserControls
             this.pastAppointmentDoctorName.Text = "";
             this.pastAppointmentDateTextBox.Text = "";
             this.pastAppointmentReasonTextArea.Text = "";
+        }
+
+        private void editAppointmentButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
