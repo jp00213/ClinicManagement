@@ -84,6 +84,8 @@ namespace ClinicManagementApp.UserControls
 
         private void patientSearchButton_Click(object sender, EventArgs e)
         {
+            this.SetPatientIDToZero();
+
             if ((firstAndLastNameRadio.Checked == true) && ((this.firstNameTextBox.Text == string.Empty) || (string.IsNullOrEmpty(this.lastNameTextBox.Text))))
                 { 
                 this.messageBox.Text = "Both First and Last Name cannot be empty.";
@@ -100,6 +102,13 @@ namespace ClinicManagementApp.UserControls
             this.LoadPatientListView(this.firstNameTextBox.Text, this.lastNameTextBox.Text, this.dobDateTimePicker.Value);
         }
 
+        private void SetPatientIDToZero()
+        {
+            this._controlNumber.PatientID = 0;
+            this.patientListView.Items.Clear();
+            // 5. event - event trigger
+            this.OnNumberchanged(EventArgs.Empty);
+        }
         private void TextBoxValidation()
         {
             if ((firstAndLastNameRadio.Checked == true) && (this.firstNameTextBox.Text == string.Empty) && (string.IsNullOrEmpty(this.lastNameTextBox.Text)))
@@ -121,6 +130,7 @@ namespace ClinicManagementApp.UserControls
             this._controlNumber.PatientID = int.Parse(patientIDShow.Text);
             // 5. event - event trigger
             this.OnNumberchanged(EventArgs.Empty);
+
         }
 
         // 3. event - return current patientID
@@ -137,6 +147,7 @@ namespace ClinicManagementApp.UserControls
 
         private void clearButton_Click(object sender, EventArgs e)
         {
+            SetPatientIDToZero();
             this.SetDefaultPageSetting();
         }
 

@@ -84,7 +84,7 @@
             this.patientIDShow.Name = "patientIDShow";
             this.patientIDShow.Size = new System.Drawing.Size(13, 13);
             this.patientIDShow.TabIndex = 11;
-            this.patientIDShow.Text = "--";
+            this.patientIDShow.Text = "0";
             this.patientIDShow.Visible = false;
             // 
             // messageBox

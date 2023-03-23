@@ -75,7 +75,14 @@ namespace ClinicManagementApp.UserControls
 
         private void ShowFutureNoDataFoundMessage()
         {
-            futureAppointmentMessageLabel.Text = "No records found.";
+            if (patientIDTextBox.Text != "0")
+            {
+                futureAppointmentMessageLabel.Text = "No records found.";
+            }
+            else
+            {
+                futureAppointmentMessageLabel.Text = "";
+            }
         }
 
         private void ClearFutureNoDataMessage()
@@ -85,7 +92,14 @@ namespace ClinicManagementApp.UserControls
 
         private void ShowPastNoDataFoundMessage()
         {
-            pastAppointmentMessageLabel.Text = "No records found.";
+            if (patientIDTextBox.Text != "0")
+            {
+                pastAppointmentMessageLabel.Text = "No records found.";
+            }
+            else
+            {
+                pastAppointmentMessageLabel.Text = "";
+            }    
         }
 
         private void ClearPastNoDataMessage()
