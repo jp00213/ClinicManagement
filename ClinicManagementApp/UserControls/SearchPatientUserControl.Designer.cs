@@ -91,7 +91,7 @@
             // 
             this.messageBox.AutoSize = true;
             this.messageBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.messageBox.Location = new System.Drawing.Point(414, 33);
+            this.messageBox.Location = new System.Drawing.Point(318, 0);
             this.messageBox.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.messageBox.Name = "messageBox";
             this.messageBox.Size = new System.Drawing.Size(0, 13);

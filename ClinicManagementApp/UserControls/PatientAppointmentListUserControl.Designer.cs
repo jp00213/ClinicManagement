@@ -133,7 +133,7 @@
             // 
             this.futureAppointmentMessageLabel.AutoSize = true;
             this.futureAppointmentMessageLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.futureAppointmentMessageLabel.Location = new System.Drawing.Point(120, 51);
+            this.futureAppointmentMessageLabel.Location = new System.Drawing.Point(228, 7);
             this.futureAppointmentMessageLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.futureAppointmentMessageLabel.Name = "futureAppointmentMessageLabel";
             this.futureAppointmentMessageLabel.Size = new System.Drawing.Size(0, 13);
@@ -323,7 +323,7 @@
             // 
             this.pastAppointmentMessageLabel.AutoSize = true;
             this.pastAppointmentMessageLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.pastAppointmentMessageLabel.Location = new System.Drawing.Point(120, 69);
+            this.pastAppointmentMessageLabel.Location = new System.Drawing.Point(228, 19);
             this.pastAppointmentMessageLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.pastAppointmentMessageLabel.Name = "pastAppointmentMessageLabel";
             this.pastAppointmentMessageLabel.Size = new System.Drawing.Size(0, 13);
