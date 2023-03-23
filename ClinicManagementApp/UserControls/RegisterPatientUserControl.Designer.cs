@@ -49,6 +49,7 @@
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.nurseNameLabel = new System.Windows.Forms.Label();
+            this.errorMessageLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // clearButton
@@ -240,9 +241,19 @@
             this.nurseNameLabel.TabIndex = 20;
             this.nurseNameLabel.Text = "Nurse Name";
             // 
+            // errorMessageLabel
+            // 
+            this.errorMessageLabel.AutoSize = true;
+            this.errorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorMessageLabel.Location = new System.Drawing.Point(229, 308);
+            this.errorMessageLabel.Name = "errorMessageLabel";
+            this.errorMessageLabel.Size = new System.Drawing.Size(0, 15);
+            this.errorMessageLabel.TabIndex = 21;
+            // 
             // RegisterPatientUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.errorMessageLabel);
             this.Controls.Add(this.nurseNameLabel);
             this.Controls.Add(this.logoutLinkLabel);
             this.Controls.Add(this.zipTextBox);
@@ -294,5 +305,6 @@
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.LinkLabel logoutLinkLabel;
         private System.Windows.Forms.Label nurseNameLabel;
+        private System.Windows.Forms.Label errorMessageLabel;
     }
 }
