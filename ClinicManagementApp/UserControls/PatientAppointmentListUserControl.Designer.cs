@@ -273,7 +273,7 @@
             // doctorLabel
             // 
             this.doctorLabel.AutoSize = true;
-            this.doctorLabel.Location = new System.Drawing.Point(74, 53);
+            this.doctorLabel.Location = new System.Drawing.Point(71, 53);
             this.doctorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.doctorLabel.Name = "doctorLabel";
             this.doctorLabel.Size = new System.Drawing.Size(42, 13);

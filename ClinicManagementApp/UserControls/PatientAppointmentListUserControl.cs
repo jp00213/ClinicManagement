@@ -27,7 +27,7 @@ namespace ClinicManagementApp.UserControls
         private void setTimeComboBox()
         {
             var item = DateTime.Today.AddHours(8); // 8:00am
-            while (item <= DateTime.Today.AddHours(20)) // 10:00pm
+            while (item <= DateTime.Today.AddHours(16)) // 5:00pm
             {
                 // timeComboBox.Items.Add( item.TimeOfDay.ToString(@"hh\:mm") );
                 newAppointmentComboBox.Items.Add(item.TimeOfDay.ToString(@"hh\:mm"));
