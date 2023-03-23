@@ -154,6 +154,7 @@
             this.lastNametextBox.Location = new System.Drawing.Point(103, 46);
             this.lastNametextBox.Margin = new System.Windows.Forms.Padding(2);
             this.lastNametextBox.Name = "lastNametextBox";
+            this.lastNametextBox.ReadOnly = true;
             this.lastNametextBox.Size = new System.Drawing.Size(165, 20);
             this.lastNametextBox.TabIndex = 13;
             // 
@@ -162,6 +163,7 @@
             this.firstNametextBox.Location = new System.Drawing.Point(103, 74);
             this.firstNametextBox.Margin = new System.Windows.Forms.Padding(2);
             this.firstNametextBox.Name = "firstNametextBox";
+            this.firstNametextBox.ReadOnly = true;
             this.firstNametextBox.Size = new System.Drawing.Size(165, 20);
             this.firstNametextBox.TabIndex = 14;
             // 
@@ -170,6 +172,7 @@
             this.dobTextBox.Location = new System.Drawing.Point(103, 105);
             this.dobTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.dobTextBox.Name = "dobTextBox";
+            this.dobTextBox.ReadOnly = true;
             this.dobTextBox.Size = new System.Drawing.Size(165, 20);
             this.dobTextBox.TabIndex = 15;
             // 
@@ -178,6 +181,7 @@
             this.phoneTextBox.Location = new System.Drawing.Point(103, 137);
             this.phoneTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.phoneTextBox.Name = "phoneTextBox";
+            this.phoneTextBox.ReadOnly = true;
             this.phoneTextBox.Size = new System.Drawing.Size(165, 20);
             this.phoneTextBox.TabIndex = 16;
             // 
@@ -186,6 +190,7 @@
             this.addressTextBox.Location = new System.Drawing.Point(370, 49);
             this.addressTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.addressTextBox.Name = "addressTextBox";
+            this.addressTextBox.ReadOnly = true;
             this.addressTextBox.Size = new System.Drawing.Size(165, 20);
             this.addressTextBox.TabIndex = 17;
             // 
@@ -194,6 +199,7 @@
             this.cityTextBox.Location = new System.Drawing.Point(370, 77);
             this.cityTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.cityTextBox.Name = "cityTextBox";
+            this.cityTextBox.ReadOnly = true;
             this.cityTextBox.Size = new System.Drawing.Size(165, 20);
             this.cityTextBox.TabIndex = 19;
             // 
@@ -202,6 +208,7 @@
             this.stateTextBox.Location = new System.Drawing.Point(370, 105);
             this.stateTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.stateTextBox.Name = "stateTextBox";
+            this.stateTextBox.ReadOnly = true;
             this.stateTextBox.Size = new System.Drawing.Size(165, 20);
             this.stateTextBox.TabIndex = 20;
             // 
@@ -210,6 +217,7 @@
             this.zipTextBox.Location = new System.Drawing.Point(370, 137);
             this.zipTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.zipTextBox.Name = "zipTextBox";
+            this.zipTextBox.ReadOnly = true;
             this.zipTextBox.Size = new System.Drawing.Size(165, 20);
             this.zipTextBox.TabIndex = 21;
             // 
@@ -219,6 +227,7 @@
             this.patientIDTextBox.Location = new System.Drawing.Point(103, 21);
             this.patientIDTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.patientIDTextBox.Name = "patientIDTextBox";
+            this.patientIDTextBox.ReadOnly = true;
             this.patientIDTextBox.Size = new System.Drawing.Size(67, 13);
             this.patientIDTextBox.TabIndex = 1;
             this.patientIDTextBox.TextChanged += new System.EventHandler(this.patientIDTextBox_TextChanged);

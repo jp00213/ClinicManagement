@@ -85,6 +85,7 @@
             this.patientIDTextBox.Location = new System.Drawing.Point(93, 23);
             this.patientIDTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.patientIDTextBox.Name = "patientIDTextBox";
+            this.patientIDTextBox.ReadOnly = true;
             this.patientIDTextBox.Size = new System.Drawing.Size(67, 13);
             this.patientIDTextBox.TabIndex = 3;
             this.patientIDTextBox.TextChanged += new System.EventHandler(this.patientIDTextBox_TextChanged);
@@ -233,6 +234,7 @@
             this.doctorName.Location = new System.Drawing.Point(120, 53);
             this.doctorName.Margin = new System.Windows.Forms.Padding(2);
             this.doctorName.Name = "doctorName";
+            this.doctorName.ReadOnly = true;
             this.doctorName.Size = new System.Drawing.Size(135, 20);
             this.doctorName.TabIndex = 17;
             this.doctorName.Text = "--";
@@ -243,6 +245,7 @@
             this.theFutureAppointmentNumberTextBox.Location = new System.Drawing.Point(120, 4);
             this.theFutureAppointmentNumberTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.theFutureAppointmentNumberTextBox.Name = "theFutureAppointmentNumberTextBox";
+            this.theFutureAppointmentNumberTextBox.ReadOnly = true;
             this.theFutureAppointmentNumberTextBox.Size = new System.Drawing.Size(68, 20);
             this.theFutureAppointmentNumberTextBox.TabIndex = 18;
             this.theFutureAppointmentNumberTextBox.TextChanged += new System.EventHandler(this.theFutureAppointmentNumberTextBox_TextChanged);
@@ -280,7 +283,7 @@
             // futureAppointmentLabel
             // 
             this.futureAppointmentLabel.AutoSize = true;
-            this.futureAppointmentLabel.Location = new System.Drawing.Point(9, 31);
+            this.futureAppointmentLabel.Location = new System.Drawing.Point(10, 31);
             this.futureAppointmentLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.futureAppointmentLabel.Name = "futureAppointmentLabel";
             this.futureAppointmentLabel.Size = new System.Drawing.Size(107, 13);
@@ -333,6 +336,7 @@
             this.pastAppointmentReasonTextArea.Margin = new System.Windows.Forms.Padding(2);
             this.pastAppointmentReasonTextArea.Multiline = true;
             this.pastAppointmentReasonTextArea.Name = "pastAppointmentReasonTextArea";
+            this.pastAppointmentReasonTextArea.ReadOnly = true;
             this.pastAppointmentReasonTextArea.Size = new System.Drawing.Size(178, 106);
             this.pastAppointmentReasonTextArea.TabIndex = 36;
             // 
@@ -342,6 +346,7 @@
             this.pastAppointmentDateTextBox.Location = new System.Drawing.Point(120, 90);
             this.pastAppointmentDateTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.pastAppointmentDateTextBox.Name = "pastAppointmentDateTextBox";
+            this.pastAppointmentDateTextBox.ReadOnly = true;
             this.pastAppointmentDateTextBox.Size = new System.Drawing.Size(135, 20);
             this.pastAppointmentDateTextBox.TabIndex = 35;
             // 
@@ -371,6 +376,7 @@
             this.pastAppointmentDoctorName.Location = new System.Drawing.Point(120, 66);
             this.pastAppointmentDoctorName.Margin = new System.Windows.Forms.Padding(2);
             this.pastAppointmentDoctorName.Name = "pastAppointmentDoctorName";
+            this.pastAppointmentDoctorName.ReadOnly = true;
             this.pastAppointmentDoctorName.Size = new System.Drawing.Size(135, 20);
             this.pastAppointmentDoctorName.TabIndex = 27;
             this.pastAppointmentDoctorName.Text = "--";
@@ -413,6 +419,7 @@
             this.pastAppointmentNumberTextBox.Location = new System.Drawing.Point(120, 16);
             this.pastAppointmentNumberTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.pastAppointmentNumberTextBox.Name = "pastAppointmentNumberTextBox";
+            this.pastAppointmentNumberTextBox.ReadOnly = true;
             this.pastAppointmentNumberTextBox.Size = new System.Drawing.Size(68, 20);
             this.pastAppointmentNumberTextBox.TabIndex = 20;
             this.pastAppointmentNumberTextBox.TextChanged += new System.EventHandler(this.pastAppointmentNumberTextBox_TextChanged);
