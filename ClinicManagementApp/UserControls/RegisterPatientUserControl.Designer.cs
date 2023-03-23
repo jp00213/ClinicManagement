@@ -48,8 +48,14 @@
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.nurseNameLabel = new System.Windows.Forms.Label();
-            this.errorMessageLabel = new System.Windows.Forms.Label();
+            this.lastNameErrorMessageLabel = new System.Windows.Forms.Label();
             this.dateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.firstNameErrorMessageLabel = new System.Windows.Forms.Label();
+            this.phoneErrorMessageLabel = new System.Windows.Forms.Label();
+            this.addressErrorMessageLabel = new System.Windows.Forms.Label();
+            this.cityErrorMessageLabel = new System.Windows.Forms.Label();
+            this.stateErrorMessageLabel = new System.Windows.Forms.Label();
+            this.zipErrorMessageLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // clearButton
@@ -171,6 +177,7 @@
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(228, 20);
             this.lastNameTextBox.TabIndex = 11;
+            this.lastNameTextBox.TextChanged += new System.EventHandler(this.lastNameTextBox_TextChanged);
             // 
             // firstNameTextBox
             // 
@@ -235,29 +242,91 @@
             this.nurseNameLabel.TabIndex = 20;
             this.nurseNameLabel.Text = "Nurse Name";
             // 
-            // errorMessageLabel
+            // lastNameErrorMessageLabel
             // 
-            this.errorMessageLabel.AutoSize = true;
-            this.errorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorMessageLabel.Location = new System.Drawing.Point(229, 308);
-            this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(0, 15);
-            this.errorMessageLabel.TabIndex = 21;
+            this.lastNameErrorMessageLabel.AutoSize = true;
+            this.lastNameErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lastNameErrorMessageLabel.Location = new System.Drawing.Point(164, 132);
+            this.lastNameErrorMessageLabel.Name = "lastNameErrorMessageLabel";
+            this.lastNameErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
+            this.lastNameErrorMessageLabel.TabIndex = 21;
             // 
             // dateOfBirthDateTimePicker
             // 
             this.dateOfBirthDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(166, 199);
+            this.dateOfBirthDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
             this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(228, 22);
             this.dateOfBirthDateTimePicker.TabIndex = 22;
+            this.dateOfBirthDateTimePicker.Value = new System.DateTime(2023, 3, 23, 0, 0, 0, 0);
+            // 
+            // firstNameErrorMessageLabel
+            // 
+            this.firstNameErrorMessageLabel.AutoSize = true;
+            this.firstNameErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firstNameErrorMessageLabel.Location = new System.Drawing.Point(164, 181);
+            this.firstNameErrorMessageLabel.Name = "firstNameErrorMessageLabel";
+            this.firstNameErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
+            this.firstNameErrorMessageLabel.TabIndex = 23;
+            // 
+            // phoneErrorMessageLabel
+            // 
+            this.phoneErrorMessageLabel.AutoSize = true;
+            this.phoneErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phoneErrorMessageLabel.Location = new System.Drawing.Point(164, 289);
+            this.phoneErrorMessageLabel.Name = "phoneErrorMessageLabel";
+            this.phoneErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
+            this.phoneErrorMessageLabel.TabIndex = 24;
+            // 
+            // addressErrorMessageLabel
+            // 
+            this.addressErrorMessageLabel.AutoSize = true;
+            this.addressErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addressErrorMessageLabel.Location = new System.Drawing.Point(495, 129);
+            this.addressErrorMessageLabel.Name = "addressErrorMessageLabel";
+            this.addressErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
+            this.addressErrorMessageLabel.TabIndex = 25;
+            // 
+            // cityErrorMessageLabel
+            // 
+            this.cityErrorMessageLabel.AutoSize = true;
+            this.cityErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cityErrorMessageLabel.Location = new System.Drawing.Point(495, 175);
+            this.cityErrorMessageLabel.Name = "cityErrorMessageLabel";
+            this.cityErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
+            this.cityErrorMessageLabel.TabIndex = 26;
+            // 
+            // stateErrorMessageLabel
+            // 
+            this.stateErrorMessageLabel.AutoSize = true;
+            this.stateErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stateErrorMessageLabel.Location = new System.Drawing.Point(495, 226);
+            this.stateErrorMessageLabel.Name = "stateErrorMessageLabel";
+            this.stateErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
+            this.stateErrorMessageLabel.TabIndex = 27;
+            // 
+            // zipErrorMessageLabel
+            // 
+            this.zipErrorMessageLabel.AutoSize = true;
+            this.zipErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zipErrorMessageLabel.Location = new System.Drawing.Point(495, 278);
+            this.zipErrorMessageLabel.Name = "zipErrorMessageLabel";
+            this.zipErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
+            this.zipErrorMessageLabel.TabIndex = 28;
             // 
             // RegisterPatientUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.zipErrorMessageLabel);
+            this.Controls.Add(this.stateErrorMessageLabel);
+            this.Controls.Add(this.cityErrorMessageLabel);
+            this.Controls.Add(this.addressErrorMessageLabel);
+            this.Controls.Add(this.phoneErrorMessageLabel);
+            this.Controls.Add(this.firstNameErrorMessageLabel);
             this.Controls.Add(this.dateOfBirthDateTimePicker);
-            this.Controls.Add(this.errorMessageLabel);
+            this.Controls.Add(this.lastNameErrorMessageLabel);
             this.Controls.Add(this.nurseNameLabel);
             this.Controls.Add(this.logoutLinkLabel);
             this.Controls.Add(this.zipTextBox);
@@ -307,7 +376,13 @@
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.LinkLabel logoutLinkLabel;
         private System.Windows.Forms.Label nurseNameLabel;
-        private System.Windows.Forms.Label errorMessageLabel;
+        private System.Windows.Forms.Label lastNameErrorMessageLabel;
         private System.Windows.Forms.DateTimePicker dateOfBirthDateTimePicker;
+        private System.Windows.Forms.Label firstNameErrorMessageLabel;
+        private System.Windows.Forms.Label phoneErrorMessageLabel;
+        private System.Windows.Forms.Label addressErrorMessageLabel;
+        private System.Windows.Forms.Label cityErrorMessageLabel;
+        private System.Windows.Forms.Label stateErrorMessageLabel;
+        private System.Windows.Forms.Label zipErrorMessageLabel;
     }
 }

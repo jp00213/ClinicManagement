@@ -43,12 +43,14 @@ namespace ClinicManagementApp.Controller
 
         public int AddPatient(Person person)
         {
+            if (person == null) throw new ArgumentNullException("Person cannot be null.");
             int personID = this.AddPerson(person);
             return this._patientDAL.AddPatient(personID);
         }
 
         public int AddPerson(Person person)
         {
+            if (person == null) throw new ArgumentNullException("Person cannot be null.");
             return this._personDAL.AddPerson(person);
         }
 
