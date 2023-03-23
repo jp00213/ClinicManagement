@@ -41,7 +41,6 @@
             this.zipLabel = new System.Windows.Forms.Label();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
-            this.dateOfBirthTextBox = new System.Windows.Forms.TextBox();
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.addressTextBox = new System.Windows.Forms.TextBox();
             this.cityTextBox = new System.Windows.Forms.TextBox();
@@ -50,6 +49,7 @@
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.nurseNameLabel = new System.Windows.Forms.Label();
             this.errorMessageLabel = new System.Windows.Forms.Label();
+            this.dateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // clearButton
@@ -72,6 +72,7 @@
             this.addPatientButton.TabIndex = 1;
             this.addPatientButton.Text = "Add Patient";
             this.addPatientButton.UseVisualStyleBackColor = true;
+            this.addPatientButton.Click += new System.EventHandler(this.addPatientButton_Click);
             // 
             // patientInformationLabel
             // 
@@ -108,7 +109,7 @@
             // 
             this.dateOfBirthLabel.AutoSize = true;
             this.dateOfBirthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateOfBirthLabel.Location = new System.Drawing.Point(58, 205);
+            this.dateOfBirthLabel.Location = new System.Drawing.Point(58, 201);
             this.dateOfBirthLabel.Name = "dateOfBirthLabel";
             this.dateOfBirthLabel.Size = new System.Drawing.Size(102, 20);
             this.dateOfBirthLabel.TabIndex = 5;
@@ -178,13 +179,6 @@
             this.firstNameTextBox.Size = new System.Drawing.Size(228, 20);
             this.firstNameTextBox.TabIndex = 12;
             // 
-            // dateOfBirthTextBox
-            // 
-            this.dateOfBirthTextBox.Location = new System.Drawing.Point(167, 204);
-            this.dateOfBirthTextBox.Name = "dateOfBirthTextBox";
-            this.dateOfBirthTextBox.Size = new System.Drawing.Size(228, 20);
-            this.dateOfBirthTextBox.TabIndex = 13;
-            // 
             // phoneTextBox
             // 
             this.phoneTextBox.Location = new System.Drawing.Point(167, 254);
@@ -250,9 +244,19 @@
             this.errorMessageLabel.Size = new System.Drawing.Size(0, 15);
             this.errorMessageLabel.TabIndex = 21;
             // 
+            // dateOfBirthDateTimePicker
+            // 
+            this.dateOfBirthDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(166, 199);
+            this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
+            this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(228, 22);
+            this.dateOfBirthDateTimePicker.TabIndex = 22;
+            // 
             // RegisterPatientUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.dateOfBirthDateTimePicker);
             this.Controls.Add(this.errorMessageLabel);
             this.Controls.Add(this.nurseNameLabel);
             this.Controls.Add(this.logoutLinkLabel);
@@ -261,7 +265,6 @@
             this.Controls.Add(this.cityTextBox);
             this.Controls.Add(this.addressTextBox);
             this.Controls.Add(this.phoneTextBox);
-            this.Controls.Add(this.dateOfBirthTextBox);
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(this.lastNameTextBox);
             this.Controls.Add(this.zipLabel);
@@ -297,7 +300,6 @@
         private System.Windows.Forms.Label zipLabel;
         private System.Windows.Forms.TextBox lastNameTextBox;
         private System.Windows.Forms.TextBox firstNameTextBox;
-        private System.Windows.Forms.TextBox dateOfBirthTextBox;
         private System.Windows.Forms.TextBox phoneTextBox;
         private System.Windows.Forms.TextBox addressTextBox;
         private System.Windows.Forms.TextBox cityTextBox;
@@ -306,5 +308,6 @@
         private System.Windows.Forms.LinkLabel logoutLinkLabel;
         private System.Windows.Forms.Label nurseNameLabel;
         private System.Windows.Forms.Label errorMessageLabel;
+        private System.Windows.Forms.DateTimePicker dateOfBirthDateTimePicker;
     }
 }
