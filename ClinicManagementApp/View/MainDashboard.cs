@@ -1,4 +1,5 @@
 ﻿using ClinicManagementApp.Controller;
+using System;
 using System.Windows.Forms;
 
 namespace ClinicManagementApp
@@ -11,7 +12,15 @@ namespace ClinicManagementApp
         {
             InitializeComponent();
             this._nurseController = new NurseController();
-            this.welcomeUserLabel.Text = "Welcome " + this._nurseController.GetNurseName(username) + " (username: " + username + ")!";
+            try
+            {
+                this.welcomeUserLabel.Text = "Welcome " + this._nurseController.GetNurseName(username) + " (username: " + username + ")!";
+            } 
+            catch (Exception ex)
+            {
+                this.welcomeUserLabel.Text = "Welcome unknown user!";
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void logoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
