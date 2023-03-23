@@ -37,7 +37,7 @@ namespace ClinicManagementApp.Model
         /// <param name="state"> state of person</param>
         /// <param name="zip"> zip code of person</param>
         /// <param name="phone"> phone number of person</param>
-        public Person(int recordID, string lastName, string firstName, DateTime dateOfBirth, string addressStreet, string city, string state, string zip, string phone)
+        public Person(string lastName, string firstName, DateTime dateOfBirth, string addressStreet, string city, string state, string zip, string phone)
         {
             _ = lastName ?? throw new ArgumentNullException("Last name cannot be null");
             _ = firstName ?? throw new ArgumentNullException("First name cannot be null");
@@ -47,7 +47,6 @@ namespace ClinicManagementApp.Model
             _ = zip ?? throw new ArgumentNullException("Zip cannot be null");
             _ = phone ?? throw new ArgumentNullException("Phone number cannot be null");
 
-            this.RecordID = recordID;
             this.LastName = lastName;
             this.FirstName = firstName;
             this.DateOfBirth = dateOfBirth;
