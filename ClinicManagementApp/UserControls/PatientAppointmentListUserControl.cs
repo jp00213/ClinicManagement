@@ -238,10 +238,23 @@ namespace ClinicManagementApp.UserControls
 
         private void EditAppointmentButton_Click(object sender, EventArgs e)
         {
-            this.AppointmentInfoIsEditable(true);
-            this.cancelButton.Visible = true;
-            this.saveButton.Visible = true;
-            this.SetDoctors();
+            Appointment appointment = this.appointmentController.GetAppointmentByID(int.Parse(theFutureAppointmentNumberTextBox.Text));
+
+            DateTime appointmentDate = appointment.AppointmentDatetime; // replace with your target date
+            DateTime currentDate = DateTime.Now;
+            TimeSpan timeDifference = appointmentDate - currentDate;
+
+            if (timeDifference.TotalHours > 24)
+            {
+                this.AppointmentInfoIsEditable(true);
+                this.cancelButton.Visible = true;
+                this.saveButton.Visible = true;
+                this.SetDoctors();
+            } else
+            {
+                MessageBox.Show("This appointment is within 24 hours from now and cannot be edited.");
+            }
+
         }
 
         private void AppointmentInfoIsEditable(Boolean yesOrNo)
