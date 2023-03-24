@@ -48,7 +48,23 @@ namespace ClinicManagementApp.UserControls
 
         private void updatePatientButton_Click(object sender, EventArgs e)
         {
+            string lastName = this.lastNameResultsTextBox.Text;
+            string firstName = this.firstNameResultsTextBox.Text;
+            DateTime dateOfBirth = this.dateOfBirthResultsDateTimePicker1.Value;
+            string phone = this.phoneTextBox.Text;
+            string address = this.addressTextBox.Text;
+            string city = this.cityTextBox.Text;
+            string state = this.stateTextBox.Text.ToUpper();
+            string zip = this.zipTextBox.Text;
+            Patient oldPatient = _patient;
 
+            bool success = this._patientController.UpdatePatient(oldPatient.RecordID, lastName, firstName, dateOfBirth, address, city, state, zip, phone);
+            if (success)
+            {
+                MessageBox.Show("Patient successfully updated!", "Patient Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.ResetForm();
+            }
+            
         }
 
         private void clearButton_Click(object sender, EventArgs e)

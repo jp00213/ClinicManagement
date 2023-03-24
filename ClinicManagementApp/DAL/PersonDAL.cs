@@ -61,5 +61,35 @@ namespace ClinicManagementApp.DAL
                 }
             }
         }
+
+        public bool UpdatePerson(int recordID, string lastName, string firstName, DateTime birthday, string addressStreet, string city, string state, string zip, string phone)
+        {
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string updateStatement = "UPDATE person SET " + "lastName = @newLastName, " + "firstName = @newFirstName, " + "birthday = @newBirthday, " + "addressStreet = @newAddressStreet, " + "city = @newCity, " + "state = @newState, " + "zip = @newZip, " + "phoneNumber = @newPhone " + "WHERE recordID = @oldRecordID";
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+
+            updateCommand.Parameters.AddWithValue("@oldRecordID", recordID);
+            updateCommand.Parameters.AddWithValue("@newLastName", lastName);
+            updateCommand.Parameters.AddWithValue("@newFirstName", firstName);
+            updateCommand.Parameters.AddWithValue("@newBirthday", birthday);
+            updateCommand.Parameters.AddWithValue("@newAddressStreet", addressStreet);
+            updateCommand.Parameters.AddWithValue("@newCity", city);
+            updateCommand.Parameters.AddWithValue("@newState", state);
+            updateCommand.Parameters.AddWithValue("@newZip", zip);
+            updateCommand.Parameters.AddWithValue("@newPhone", phone);
+
+            using (updateCommand)
+            {
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+                string selectStatement = "SELECT IDENT_CURRENT('person') FROM person";
+                SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+                using (selectCommand)
+                {
+                    int count = updateCommand.ExecuteNonQuery(); ;
+                    return count > 0;
+                }
+            }
+        }
     }
 }

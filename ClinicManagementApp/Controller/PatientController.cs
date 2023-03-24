@@ -54,6 +54,10 @@ namespace ClinicManagementApp.Controller
             return this._personDAL.AddPerson(person);
         }
 
+        public bool UpdatePatient(int recordID, string lastName, string firstName, DateTime birthday, string addressStreet, string city, string state, string zip, string phone)
+        {
+            return this._personDAL.UpdatePerson(recordID, lastName, firstName, birthday, addressStreet, city, state, zip, phone);
+        }
 
     }
 }

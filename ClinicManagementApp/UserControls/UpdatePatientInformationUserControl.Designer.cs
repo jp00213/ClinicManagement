@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.firstNameLabel = new System.Windows.Forms.Label();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameLabel = new System.Windows.Forms.Label();
@@ -66,6 +68,13 @@
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameErrorLabel = new System.Windows.Forms.Label();
+            this.firstNameErrorLabel = new System.Windows.Forms.Label();
+            this.phoneErrorLabel = new System.Windows.Forms.Label();
+            this.addressErrorLabel = new System.Windows.Forms.Label();
+            this.cityErrorLabel = new System.Windows.Forms.Label();
+            this.stateErrorLabel = new System.Windows.Forms.Label();
+            this.zipErrorLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientSearchDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -144,9 +153,25 @@
             this.firstNameDataGridViewTextBoxColumn,
             this.dateOfBirthDataGridViewTextBoxColumn});
             this.patientSearchDataGridView.DataSource = this.patientBindingSource;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.patientSearchDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.patientSearchDataGridView.Location = new System.Drawing.Point(112, 145);
             this.patientSearchDataGridView.Name = "patientSearchDataGridView";
             this.patientSearchDataGridView.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.patientSearchDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.patientSearchDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.patientSearchDataGridView.Size = new System.Drawing.Size(558, 150);
             this.patientSearchDataGridView.TabIndex = 6;
@@ -416,9 +441,72 @@
             this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
             this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // lastNameErrorLabel
+            // 
+            this.lastNameErrorLabel.AutoSize = true;
+            this.lastNameErrorLabel.Location = new System.Drawing.Point(176, 392);
+            this.lastNameErrorLabel.Name = "lastNameErrorLabel";
+            this.lastNameErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.lastNameErrorLabel.TabIndex = 32;
+            // 
+            // firstNameErrorLabel
+            // 
+            this.firstNameErrorLabel.AutoSize = true;
+            this.firstNameErrorLabel.Location = new System.Drawing.Point(176, 435);
+            this.firstNameErrorLabel.Name = "firstNameErrorLabel";
+            this.firstNameErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.firstNameErrorLabel.TabIndex = 33;
+            // 
+            // phoneErrorLabel
+            // 
+            this.phoneErrorLabel.AutoSize = true;
+            this.phoneErrorLabel.Location = new System.Drawing.Point(179, 481);
+            this.phoneErrorLabel.Name = "phoneErrorLabel";
+            this.phoneErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.phoneErrorLabel.TabIndex = 34;
+            // 
+            // addressErrorLabel
+            // 
+            this.addressErrorLabel.AutoSize = true;
+            this.addressErrorLabel.Location = new System.Drawing.Point(478, 350);
+            this.addressErrorLabel.Name = "addressErrorLabel";
+            this.addressErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.addressErrorLabel.TabIndex = 35;
+            // 
+            // cityErrorLabel
+            // 
+            this.cityErrorLabel.AutoSize = true;
+            this.cityErrorLabel.Location = new System.Drawing.Point(478, 392);
+            this.cityErrorLabel.Name = "cityErrorLabel";
+            this.cityErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.cityErrorLabel.TabIndex = 36;
+            // 
+            // stateErrorLabel
+            // 
+            this.stateErrorLabel.AutoSize = true;
+            this.stateErrorLabel.Location = new System.Drawing.Point(478, 434);
+            this.stateErrorLabel.Name = "stateErrorLabel";
+            this.stateErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.stateErrorLabel.TabIndex = 37;
+            // 
+            // zipErrorLabel
+            // 
+            this.zipErrorLabel.AutoSize = true;
+            this.zipErrorLabel.Location = new System.Drawing.Point(478, 480);
+            this.zipErrorLabel.Name = "zipErrorLabel";
+            this.zipErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.zipErrorLabel.TabIndex = 38;
+            // 
             // UpdatePatientInformationUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.zipErrorLabel);
+            this.Controls.Add(this.stateErrorLabel);
+            this.Controls.Add(this.cityErrorLabel);
+            this.Controls.Add(this.addressErrorLabel);
+            this.Controls.Add(this.phoneErrorLabel);
+            this.Controls.Add(this.firstNameErrorLabel);
+            this.Controls.Add(this.lastNameErrorLabel);
             this.Controls.Add(this.dateOfBirthResultsDateTimePicker1);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.logoutLinkLabel);
@@ -497,5 +585,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dateOfBirthDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.DateTimePicker dateOfBirthResultsDateTimePicker1;
+        private System.Windows.Forms.Label lastNameErrorLabel;
+        private System.Windows.Forms.Label firstNameErrorLabel;
+        private System.Windows.Forms.Label phoneErrorLabel;
+        private System.Windows.Forms.Label addressErrorLabel;
+        private System.Windows.Forms.Label cityErrorLabel;
+        private System.Windows.Forms.Label stateErrorLabel;
+        private System.Windows.Forms.Label zipErrorLabel;
     }
 }
