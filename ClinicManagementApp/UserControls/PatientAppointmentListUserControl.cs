@@ -12,6 +12,7 @@ namespace ClinicManagementApp.UserControls
     public partial class PatientAppointmentListUserControl : UserControl
     {
         private AppointmentController appointmentController;
+        private DoctorController doctorController;
 
         /// <summary>
         /// create constructors
@@ -20,9 +21,11 @@ namespace ClinicManagementApp.UserControls
         {
             InitializeComponent();
             this.appointmentController = new AppointmentController();
+            this.doctorController = new DoctorController();
             appointmentDateTimePicker.CustomFormat = "yyyy / MM / dd";
             this.SetTimeComboBox();
             this.showFutureRadioButton.Checked = true;
+            this.appointmentDateTimePicker.MinDate = DateTime.Today;
         }
 
         private void SetTimeComboBox()
@@ -33,15 +36,11 @@ namespace ClinicManagementApp.UserControls
                 Appointment appointment = appointmentController.GetAppointmentByID(appointmentID);
                 string appointmentDay = appointment.AppointmentDatetime.ToString("yyyy-MM-dd");
 
-                this.newAppointmentComboBox.DataSource = null;
-                this.newAppointmentComboBox.Items.Clear();
-                this.newAppointmentComboBox.DataSource = this.appointmentController.GetAppointmentTimeOptionsByDateAndDoctor(appointmentDay, appointment.DoctorID);
+                this.UpdateTimeOptions(appointmentDay, appointment.DoctorID);
             } 
             else
             {
-                this.newAppointmentComboBox.DataSource = null;
-                this.newAppointmentComboBox.Items.Clear();
-                this.newAppointmentComboBox.DataSource = this.appointmentController.GetAppointmentTimeOptionsByDateAndDoctor("2900-12-31", 0);
+                this.UpdateTimeOptions("2900-12-31", 0);
             }
 
         }
@@ -187,7 +186,7 @@ namespace ClinicManagementApp.UserControls
             {
                 AppointmentWithDrName appointmentDetail = this.appointmentController.GetAppointmentByID(int.Parse(theFutureAppointmentNumberTextBox.Text));
 
-                this.doctorName.Text = appointmentDetail.DoctorName.ToString();
+                this.doctorNameComboBox.Text = appointmentDetail.DoctorName.ToString();
                 this.reasonTextArea.Text = appointmentDetail.Reason.ToString();
                 this.appointmentDateTimePicker.Value = appointmentDetail.AppointmentDatetime;
                 this.tempTime.Text = appointmentDetail.TimeInString;
@@ -221,7 +220,7 @@ namespace ClinicManagementApp.UserControls
         private void ClearAllFutureAppointmentDetails()
         {
             this.theFutureAppointmentNumberTextBox.Text = string.Empty;
-            this.doctorName.Text = "";
+            this.doctorNameComboBox.Text = "";
             this.reasonTextArea.Text = "";
             this.appointmentDateTimePicker.CustomFormat = "yyyy / MM / dd";
             this.appointmentDateTimePicker.Value = DateTime.Now;
@@ -236,9 +235,38 @@ namespace ClinicManagementApp.UserControls
             this.pastAppointmentReasonTextArea.Text = "";
         }
 
-        private void editAppointmentButton_Click(object sender, EventArgs e)
+        private void EditAppointmentButton_Click(object sender, EventArgs e)
         {
+            this.doctorNameComboBox.Enabled = true;
+            this.appointmentDateTimePicker.Enabled = true;
+            this.tempTime.Enabled = true;
+            this.newAppointmentComboBox.Enabled = true;
+            this.reasonTextArea.Enabled = true;
+            this.ResetDoctors();
+        }
 
+        private void ResetDoctors()
+        {
+            try
+            {
+                this.doctorNameComboBox.DataSource = this.doctorController.GetDoctors();
+                this.doctorNameComboBox.DisplayMember = "FullName";
+                this.doctorNameComboBox.ValueMember = "DoctorID";
+                string date = this.appointmentDateTimePicker.Value.ToString("yyyy-MM-dd");
+                int doctorID = (int)this.doctorNameComboBox.SelectedValue;
+                this.UpdateTimeOptions(date, doctorID);
+            }
+            catch
+            {
+                MessageBox.Show("No doctors available for appointments.");
+            }
+        }
+
+        private void UpdateTimeOptions(string date, int doctorID)
+        {
+            this.newAppointmentComboBox.DataSource = null;
+            this.newAppointmentComboBox.Items.Clear();
+            this.newAppointmentComboBox.DataSource = this.appointmentController.GetAppointmentTimeOptionsByDateAndDoctor(date, doctorID);
         }
     }
 }
