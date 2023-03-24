@@ -2,6 +2,7 @@
 using ClinicManagementApp.DAL;
 using ClinicManagementApp.Model;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ClinicManagementApp.UserControls
@@ -184,7 +185,7 @@ namespace ClinicManagementApp.UserControls
         {
             if (theFutureAppointmentNumberTextBox.Text != "")
             {
-                AppointmentWithDrName appointmentDetail = this.appointmentController.GetAppointmentByID(int.Parse(theFutureAppointmentNumberTextBox.Text));
+                Appointment appointmentDetail = this.appointmentController.GetAppointmentByID(int.Parse(theFutureAppointmentNumberTextBox.Text));
 
                 this.doctorNameComboBox.Text = appointmentDetail.DoctorName.ToString();
                 this.reasonTextArea.Text = appointmentDetail.Reason.ToString();
@@ -197,7 +198,7 @@ namespace ClinicManagementApp.UserControls
         {
             if (pastAppointmentNumberTextBox.Text != "")
             {
-                AppointmentWithDrName appointmentDetail = this.appointmentController.GetAppointmentByID(int.Parse(pastAppointmentNumberTextBox.Text));
+                Appointment appointmentDetail = this.appointmentController.GetAppointmentByID(int.Parse(pastAppointmentNumberTextBox.Text));
 
                 pastAppointmentDoctorName.Text = appointmentDetail.DoctorName.ToString();
                 pastAppointmentDateTextBox.Text = appointmentDetail.AppointmentDatetime.ToShortDateString() + ' ' + appointmentDetail.AppointmentDatetime.ToString("HH:mm");
@@ -240,7 +241,7 @@ namespace ClinicManagementApp.UserControls
             this.AppointmentInfoIsEditable(true);
             this.cancelButton.Visible = true;
             this.saveButton.Visible = true;
-            this.ResetDoctors();
+            this.SetDoctors();
         }
 
         private void AppointmentInfoIsEditable(Boolean yesOrNo)
@@ -251,13 +252,18 @@ namespace ClinicManagementApp.UserControls
             this.reasonTextArea.Enabled = yesOrNo;
         }
 
-        private void ResetDoctors()
+        private void SetDoctors()
         {
             try
             {
-                this.doctorNameComboBox.DataSource = this.doctorController.GetDoctors();
+                Appointment appointment = this.appointmentController.GetAppointmentByID(int.Parse(theFutureAppointmentNumberTextBox.Text));
+
+                List<Doctor> doctors = this.doctorController.GetDoctors();
+                this.doctorNameComboBox.DataSource = doctors;
                 this.doctorNameComboBox.DisplayMember = "FullName";
                 this.doctorNameComboBox.ValueMember = "DoctorID";
+                int doctorIndex = doctors.FindIndex(d => d.DoctorID == appointment.DoctorID);
+                this.doctorNameComboBox.SelectedIndex = doctorIndex;
                 string date = this.appointmentDateTimePicker.Value.ToString("yyyy-MM-dd");
                 int doctorID = (int)this.doctorNameComboBox.SelectedValue;
                 this.UpdateTimeOptions(date, doctorID);
