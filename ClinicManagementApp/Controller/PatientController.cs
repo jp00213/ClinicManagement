@@ -41,6 +41,12 @@ namespace ClinicManagementApp.Controller
         /// <param name="patientID"> first name of patient</param>
         public Patient GetPatientByID(int patientID) => this._patientDAL.GetPatientByID(patientID);
 
+        /// <summary>
+        /// Adds a patients to the DB
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public int AddPatient(Person person)
         {
             if (person == null) throw new ArgumentNullException("Person cannot be null.");
@@ -48,6 +54,12 @@ namespace ClinicManagementApp.Controller
             return this._patientDAL.AddPatient(personID);
         }
 
+        /// <summary>
+        /// Adds a person to the DB
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public int AddPerson(Person person)
         {
             if (person == null) throw new ArgumentNullException("Person cannot be null.");

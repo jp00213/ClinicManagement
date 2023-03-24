@@ -1,7 +1,10 @@
 ﻿using ClinicManagementApp.Controller;
 using ClinicManagementApp.Model;
 using System;
+using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+
 
 namespace ClinicManagementApp.UserControls
 {
@@ -9,6 +12,9 @@ namespace ClinicManagementApp.UserControls
     {
         private PatientController _patientController;
         private Patient _patient;
+        /// <summary>
+        /// Initializes the User Control
+        /// </summary>
         public UpdatePatientInformationUserControl()
         {
             InitializeComponent();
@@ -48,25 +54,42 @@ namespace ClinicManagementApp.UserControls
 
         private void updatePatientButton_Click(object sender, EventArgs e)
         {
-            string lastName = this.lastNameResultsTextBox.Text;
-            string firstName = this.firstNameResultsTextBox.Text;
+            string lastName = this.lastNameResultsTextBox.Text.Trim();
+            string firstName = this.firstNameResultsTextBox.Text.Trim();
             DateTime dateOfBirth = this.dateOfBirthResultsDateTimePicker1.Value;
-            string phone = this.phoneTextBox.Text;
-            string address = this.addressTextBox.Text;
-            string city = this.cityTextBox.Text;
-            string state = this.stateTextBox.Text.ToUpper();
-            string zip = this.zipTextBox.Text;
+            string phone = this.phoneTextBox.Text.Trim();
+            string address = this.addressTextBox.Text.Trim();
+            string city = this.cityTextBox.Text.Trim();
+            string state = this.stateTextBox.Text.ToUpper().Trim();
+            string zip = this.zipTextBox.Text.Trim();
             Patient oldPatient = _patient;
 
-            bool success = this._patientController.UpdatePatient(oldPatient.RecordID, lastName, firstName, dateOfBirth, address, city, state, zip, phone);
-            if (success)
+            if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || dateOfBirth > DateTime.Now ||string.IsNullOrEmpty(address) || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || state.Length != 2 || !IsValidZipCode(zip) || !IsPhoneNumberValid(phone))
             {
-                MessageBox.Show("Patient successfully updated!", "Patient Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.ResetForm();
+                this.ShowInvalidErrorMessage();
             }
-            
+            else
+            {
+                bool success = this._patientController.UpdatePatient(oldPatient.RecordID, lastName, firstName, dateOfBirth, address, city, state, zip, phone);
+                if (success)
+                {
+                    MessageBox.Show("Patient successfully updated!", "Patient Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.ResetForm();
+                } 
+            }
+
         }
 
+        /*private bool EnteredNewInfo()
+        {
+            Person somePerson = new Person(this.lastNameResultsTextBox.Text.Trim(), this.firstNameResultsTextBox.Text.Trim(), this.dateOfBirthResultsDateTimePicker1.Value, this.addressTextBox.Text.Trim(), this.cityTextBox.Text.Trim(), this.stateTextBox.Text.Trim(), this.zipTextBox.Text.Trim(), this.phoneTextBox.Text.Trim());
+
+            if ((this._patient.LastName == this.lastNameResultsTextBox.Text.Trim() && this._patient.FirstName == this.firstNameResultsTextBox.Text.Trim() && this._patient.DateOfBirth == this.dateOfBirthResultsDateTimePicker1.Value && this._patient.Phone == this.phoneTextBox.Text.Trim() && this._patient.AddressStreet == this.addressTextBox.Text.Trim() && this._patient.City == this.cityTextBox.Text.Trim() && this._patient.State == this.stateTextBox.Text.Trim() && this._patient.Zip == this.zipTextBox.Text.Trim()))
+            {
+                return false;
+            }
+            return true;
+        }*/
         private void clearButton_Click(object sender, EventArgs e)
         {
             this.ResetForm();
@@ -83,5 +106,98 @@ namespace ClinicManagementApp.UserControls
             this.patientBindingSource.DataSource = this._patientController.GetPatientByNameDOB("", "", DateTime.Now);
             this.updatePatientButton.Enabled = false;
         }
+
+        private void ShowInvalidErrorMessage()
+        {
+            if (string.IsNullOrEmpty(lastNameResultsTextBox.Text) || string.IsNullOrWhiteSpace(lastNameResultsTextBox.Text))
+            {
+                this.lastNameErrorLabel.Text = "Please enter your last name.";
+                this.lastNameErrorLabel.ForeColor = Color.Red;
+            }
+
+            if (string.IsNullOrEmpty(firstNameResultsTextBox.Text) || string.IsNullOrWhiteSpace(firstNameResultsTextBox.Text))
+            {
+                this.firstNameErrorLabel.Text = "Please enter your first name.";
+                this.firstNameErrorLabel.ForeColor = Color.Red;
+            }
+
+            if (dateOfBirthResultsDateTimePicker1.Value > DateTime.Now)
+            {
+                this.DOBErrorLabel.Text = "DOB cannot be in the future.";
+                this.DOBErrorLabel.ForeColor = Color.Red;
+            }
+
+            if (string.IsNullOrEmpty(addressTextBox.Text) || string.IsNullOrWhiteSpace(addressTextBox.Text) || addressTextBox.Text.Length < 5)
+            {
+                this.addressErrorLabel.Text = "Please enter your full street address.";
+                this.addressErrorLabel.ForeColor = Color.Red;
+            }
+
+            if (string.IsNullOrEmpty(cityTextBox.Text) || string.IsNullOrWhiteSpace(cityTextBox.Text))
+            {
+                this.cityErrorLabel.Text = "Please enter your city.";
+                this.cityErrorLabel.ForeColor = Color.Red;
+            }
+
+            if (string.IsNullOrEmpty(stateTextBox.Text) || string.IsNullOrWhiteSpace(stateTextBox.Text) || stateTextBox.Text.Length != 2)
+            {
+                this.stateErrorLabel.Text = "Please enter your state abbreviation.";
+                this.stateErrorLabel.ForeColor = Color.Red;
+            }
+
+            if (!IsValidZipCode(zipTextBox.Text))
+            {
+                this.zipErrorLabel.Text = "Please enter a valid zipcode.";
+                this.zipErrorLabel.ForeColor = Color.Red;
+            }
+
+            if (!IsPhoneNumberValid(phoneTextBox.Text))
+            {
+                this.phoneErrorLabel.Text = "Please enter your 10 digit phone number, numbers only.";
+                this.phoneErrorLabel.ForeColor = Color.Red;
+            }
+        }
+
+        private bool IsValidZipCode(string zip)
+        {
+            string usZipRegEx = @"^\d{5}(\d{4})?$";
+
+            bool validZipCode = true;
+            if ((!Regex.Match(zip, usZipRegEx).Success))
+            {
+                validZipCode = false;
+            }
+            return validZipCode;
+        }
+
+        private bool IsPhoneNumberValid(string phoneNumber)
+        {
+            string phoneRegEx = @"^\d{10}$";
+            bool validPhoneNumber = true;
+            if (!Regex.Match(phoneNumber, phoneRegEx).Success)
+            {
+                validPhoneNumber = false;
+            }
+            return validPhoneNumber;
+        }
+
+        private void HideInvalidErrorMessages()
+        {
+            this.lastNameErrorLabel.Text = "";
+            this.firstNameErrorLabel.Text = "";
+            this.DOBErrorLabel.Text = "";
+            this.addressErrorLabel.Text = "";
+            this.phoneErrorLabel.Text = "";
+            this.cityErrorLabel.Text = "";
+            this.stateErrorLabel.Text = "";
+            this.zipErrorLabel.Text = "";
+        }
+
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.HideInvalidErrorMessages();
+        }
+
+        
     }
 }

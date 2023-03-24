@@ -61,7 +61,19 @@ namespace ClinicManagementApp.DAL
                 }
             }
         }
-
+        /// <summary>
+        ///  Updates person's info in the DB
+        /// </summary>
+        /// <param name="recordID"></param>
+        /// <param name="lastName"></param>
+        /// <param name="firstName"></param>
+        /// <param name="birthday"></param>
+        /// <param name="addressStreet"></param>
+        /// <param name="city"></param>
+        /// <param name="state"></param>
+        /// <param name="zip"></param>
+        /// <param name="phone"></param>
+        /// <returns></returns>
         public bool UpdatePerson(int recordID, string lastName, string firstName, DateTime birthday, string addressStreet, string city, string state, string zip, string phone)
         {
             SqlConnection connection = ClinicManagementDBConnection.GetConnection();

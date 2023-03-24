@@ -63,11 +63,6 @@
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.clearButton = new System.Windows.Forms.Button();
             this.dateOfBirthResultsDateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.patientIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameErrorLabel = new System.Windows.Forms.Label();
             this.firstNameErrorLabel = new System.Windows.Forms.Label();
             this.phoneErrorLabel = new System.Windows.Forms.Label();
@@ -75,6 +70,12 @@
             this.cityErrorLabel = new System.Windows.Forms.Label();
             this.stateErrorLabel = new System.Windows.Forms.Label();
             this.zipErrorLabel = new System.Windows.Forms.Label();
+            this.DOBErrorLabel = new System.Windows.Forms.Label();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.patientSearchDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -270,7 +271,7 @@
             // updatePatientButton
             // 
             this.updatePatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updatePatientButton.Location = new System.Drawing.Point(433, 533);
+            this.updatePatientButton.Location = new System.Drawing.Point(432, 543);
             this.updatePatientButton.Name = "updatePatientButton";
             this.updatePatientButton.Size = new System.Drawing.Size(187, 28);
             this.updatePatientButton.TabIndex = 16;
@@ -294,6 +295,7 @@
             this.lastNameResultsTextBox.Name = "lastNameResultsTextBox";
             this.lastNameResultsTextBox.Size = new System.Drawing.Size(186, 20);
             this.lastNameResultsTextBox.TabIndex = 18;
+            this.lastNameResultsTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // firstNameResultsTextBox
             // 
@@ -302,6 +304,7 @@
             this.firstNameResultsTextBox.Name = "firstNameResultsTextBox";
             this.firstNameResultsTextBox.Size = new System.Drawing.Size(186, 20);
             this.firstNameResultsTextBox.TabIndex = 19;
+            this.firstNameResultsTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // phoneTextBox
             // 
@@ -310,6 +313,7 @@
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(186, 20);
             this.phoneTextBox.TabIndex = 21;
+            this.phoneTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // addressTextBox
             // 
@@ -318,6 +322,7 @@
             this.addressTextBox.Name = "addressTextBox";
             this.addressTextBox.Size = new System.Drawing.Size(192, 20);
             this.addressTextBox.TabIndex = 22;
+            this.addressTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // cityTextBox
             // 
@@ -326,6 +331,7 @@
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(192, 20);
             this.cityTextBox.TabIndex = 23;
+            this.cityTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // stateTextBox
             // 
@@ -334,6 +340,7 @@
             this.stateTextBox.Name = "stateTextBox";
             this.stateTextBox.Size = new System.Drawing.Size(192, 20);
             this.stateTextBox.TabIndex = 24;
+            this.stateTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // zipTextBox
             // 
@@ -342,6 +349,7 @@
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(192, 20);
             this.zipTextBox.TabIndex = 25;
+            this.zipTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // updatePatientLabel
             // 
@@ -387,7 +395,7 @@
             // clearButton
             // 
             this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(209, 534);
+            this.clearButton.Location = new System.Drawing.Point(209, 543);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(187, 27);
             this.clearButton.TabIndex = 30;
@@ -404,6 +412,71 @@
             this.dateOfBirthResultsDateTimePicker1.Name = "dateOfBirthResultsDateTimePicker1";
             this.dateOfBirthResultsDateTimePicker1.Size = new System.Drawing.Size(186, 22);
             this.dateOfBirthResultsDateTimePicker1.TabIndex = 31;
+            // 
+            // lastNameErrorLabel
+            // 
+            this.lastNameErrorLabel.AutoSize = true;
+            this.lastNameErrorLabel.Location = new System.Drawing.Point(176, 392);
+            this.lastNameErrorLabel.Name = "lastNameErrorLabel";
+            this.lastNameErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.lastNameErrorLabel.TabIndex = 32;
+            // 
+            // firstNameErrorLabel
+            // 
+            this.firstNameErrorLabel.AutoSize = true;
+            this.firstNameErrorLabel.Location = new System.Drawing.Point(176, 435);
+            this.firstNameErrorLabel.Name = "firstNameErrorLabel";
+            this.firstNameErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.firstNameErrorLabel.TabIndex = 33;
+            // 
+            // phoneErrorLabel
+            // 
+            this.phoneErrorLabel.AutoSize = true;
+            this.phoneErrorLabel.Location = new System.Drawing.Point(176, 522);
+            this.phoneErrorLabel.Name = "phoneErrorLabel";
+            this.phoneErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.phoneErrorLabel.TabIndex = 34;
+            // 
+            // addressErrorLabel
+            // 
+            this.addressErrorLabel.AutoSize = true;
+            this.addressErrorLabel.Location = new System.Drawing.Point(478, 350);
+            this.addressErrorLabel.Name = "addressErrorLabel";
+            this.addressErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.addressErrorLabel.TabIndex = 35;
+            // 
+            // cityErrorLabel
+            // 
+            this.cityErrorLabel.AutoSize = true;
+            this.cityErrorLabel.Location = new System.Drawing.Point(478, 392);
+            this.cityErrorLabel.Name = "cityErrorLabel";
+            this.cityErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.cityErrorLabel.TabIndex = 36;
+            // 
+            // stateErrorLabel
+            // 
+            this.stateErrorLabel.AutoSize = true;
+            this.stateErrorLabel.Location = new System.Drawing.Point(478, 434);
+            this.stateErrorLabel.Name = "stateErrorLabel";
+            this.stateErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.stateErrorLabel.TabIndex = 37;
+            // 
+            // zipErrorLabel
+            // 
+            this.zipErrorLabel.AutoSize = true;
+            this.zipErrorLabel.Location = new System.Drawing.Point(478, 480);
+            this.zipErrorLabel.Name = "zipErrorLabel";
+            this.zipErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.zipErrorLabel.TabIndex = 38;
+            // 
+            // DOBErrorLabel
+            // 
+            this.DOBErrorLabel.AutoSize = true;
+            this.DOBErrorLabel.Location = new System.Drawing.Point(179, 481);
+            this.DOBErrorLabel.Name = "DOBErrorLabel";
+            this.DOBErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.DOBErrorLabel.TabIndex = 39;
+            this.DOBErrorLabel.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // patientBindingSource
             // 
@@ -441,65 +514,10 @@
             this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
             this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // lastNameErrorLabel
-            // 
-            this.lastNameErrorLabel.AutoSize = true;
-            this.lastNameErrorLabel.Location = new System.Drawing.Point(176, 392);
-            this.lastNameErrorLabel.Name = "lastNameErrorLabel";
-            this.lastNameErrorLabel.Size = new System.Drawing.Size(0, 13);
-            this.lastNameErrorLabel.TabIndex = 32;
-            // 
-            // firstNameErrorLabel
-            // 
-            this.firstNameErrorLabel.AutoSize = true;
-            this.firstNameErrorLabel.Location = new System.Drawing.Point(176, 435);
-            this.firstNameErrorLabel.Name = "firstNameErrorLabel";
-            this.firstNameErrorLabel.Size = new System.Drawing.Size(0, 13);
-            this.firstNameErrorLabel.TabIndex = 33;
-            // 
-            // phoneErrorLabel
-            // 
-            this.phoneErrorLabel.AutoSize = true;
-            this.phoneErrorLabel.Location = new System.Drawing.Point(179, 481);
-            this.phoneErrorLabel.Name = "phoneErrorLabel";
-            this.phoneErrorLabel.Size = new System.Drawing.Size(0, 13);
-            this.phoneErrorLabel.TabIndex = 34;
-            // 
-            // addressErrorLabel
-            // 
-            this.addressErrorLabel.AutoSize = true;
-            this.addressErrorLabel.Location = new System.Drawing.Point(478, 350);
-            this.addressErrorLabel.Name = "addressErrorLabel";
-            this.addressErrorLabel.Size = new System.Drawing.Size(0, 13);
-            this.addressErrorLabel.TabIndex = 35;
-            // 
-            // cityErrorLabel
-            // 
-            this.cityErrorLabel.AutoSize = true;
-            this.cityErrorLabel.Location = new System.Drawing.Point(478, 392);
-            this.cityErrorLabel.Name = "cityErrorLabel";
-            this.cityErrorLabel.Size = new System.Drawing.Size(0, 13);
-            this.cityErrorLabel.TabIndex = 36;
-            // 
-            // stateErrorLabel
-            // 
-            this.stateErrorLabel.AutoSize = true;
-            this.stateErrorLabel.Location = new System.Drawing.Point(478, 434);
-            this.stateErrorLabel.Name = "stateErrorLabel";
-            this.stateErrorLabel.Size = new System.Drawing.Size(0, 13);
-            this.stateErrorLabel.TabIndex = 37;
-            // 
-            // zipErrorLabel
-            // 
-            this.zipErrorLabel.AutoSize = true;
-            this.zipErrorLabel.Location = new System.Drawing.Point(478, 480);
-            this.zipErrorLabel.Name = "zipErrorLabel";
-            this.zipErrorLabel.Size = new System.Drawing.Size(0, 13);
-            this.zipErrorLabel.TabIndex = 38;
-            // 
             // UpdatePatientInformationUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.DOBErrorLabel);
             this.Controls.Add(this.zipErrorLabel);
             this.Controls.Add(this.stateErrorLabel);
             this.Controls.Add(this.cityErrorLabel);
@@ -592,5 +610,6 @@
         private System.Windows.Forms.Label cityErrorLabel;
         private System.Windows.Forms.Label stateErrorLabel;
         private System.Windows.Forms.Label zipErrorLabel;
+        private System.Windows.Forms.Label DOBErrorLabel;
     }
 }
