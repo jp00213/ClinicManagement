@@ -22,6 +22,7 @@ namespace ClinicManagementApp.UserControls
             this.doctorController = new DoctorController();
             this.patient = null;
             this.ResetDoctors();
+            this.appointmentDateTimePicker.MinDate = DateTime.Today;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
