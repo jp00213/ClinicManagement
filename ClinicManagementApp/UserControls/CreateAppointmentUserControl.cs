@@ -136,9 +136,13 @@ namespace ClinicManagementApp.UserControls
                 int doctorID = (int)this.doctorComboBox.SelectedValue;
                 this.UpdateTimeOptions(date, doctorID);
             }
-            catch
+            catch(NullReferenceException)
             {
-                MessageBox.Show("No doctors available for appointments.");
+                MessageBox.Show("No doctors available for appointments");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

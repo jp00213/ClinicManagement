@@ -237,12 +237,18 @@ namespace ClinicManagementApp.UserControls
 
         private void EditAppointmentButton_Click(object sender, EventArgs e)
         {
-            this.doctorNameComboBox.Enabled = true;
-            this.appointmentDateTimePicker.Enabled = true;
-            this.tempTime.Enabled = true;
-            this.newAppointmentComboBox.Enabled = true;
-            this.reasonTextArea.Enabled = true;
+            this.AppointmentInfoIsEditable(true);
+            this.cancelButton.Visible = true;
+            this.saveButton.Visible = true;
             this.ResetDoctors();
+        }
+
+        private void AppointmentInfoIsEditable(Boolean yesOrNo)
+        {
+            this.doctorNameComboBox.Enabled = yesOrNo;
+            this.appointmentDateTimePicker.Enabled = yesOrNo;
+            this.newAppointmentComboBox.Enabled = yesOrNo;
+            this.reasonTextArea.Enabled = yesOrNo;
         }
 
         private void ResetDoctors()
@@ -256,9 +262,9 @@ namespace ClinicManagementApp.UserControls
                 int doctorID = (int)this.doctorNameComboBox.SelectedValue;
                 this.UpdateTimeOptions(date, doctorID);
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("No doctors available for appointments.");
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -267,6 +273,42 @@ namespace ClinicManagementApp.UserControls
             this.newAppointmentComboBox.DataSource = null;
             this.newAppointmentComboBox.Items.Clear();
             this.newAppointmentComboBox.DataSource = this.appointmentController.GetAppointmentTimeOptionsByDateAndDoctor(date, doctorID);
+        }
+
+        private void AppointmentDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            if(this.appointmentDateTimePicker.Enabled)
+            {
+                try
+                {
+                    string date = this.appointmentDateTimePicker.Value.ToString("yyyy-MM-dd");
+                    int doctorID = (int)this.doctorNameComboBox.SelectedValue;
+                    this.UpdateTimeOptions(date, doctorID);
+                }
+                catch (NullReferenceException)
+                {
+                    MessageBox.Show("No doctors available for appointments");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            this.saveButton.Visible = false;
+            this.cancelButton.Visible = false;
+            this.AppointmentInfoIsEditable(false);
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.saveButton.Visible = false;
+            this.cancelButton.Visible = false;
+            this.AppointmentInfoIsEditable(false);
+            this.setFuturePatientAppointmentDetails();
         }
     }
 }
