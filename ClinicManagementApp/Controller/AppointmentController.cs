@@ -73,5 +73,15 @@ namespace ClinicManagementApp.Controller
         {
             return _appointmentDAL.GetAppointmentByID(appointmentIDIn);
         }
+
+        /// <summary>
+        /// Update Appointment details
+        /// </summary>
+        /// <returns>success message</returns>
+        /// <param name="appointment"> appointment object to be updated</param>
+        public string UpdateAppointment(Appointment appointment)
+        {
+            return this._appointmentDAL.UpdateAppointment(appointment);
+        }
     }
 }

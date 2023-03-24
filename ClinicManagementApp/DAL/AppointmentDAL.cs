@@ -253,5 +253,48 @@ namespace ClinicManagementApp.DAL
             }
             return appointment;
         }
+
+        /// <summary>
+        /// Update Appointment details
+        /// </summary>
+        /// <returns>success message</returns>
+        /// <param name="appointment"> appointment object to be updated</param>
+        public string UpdateAppointment(Appointment appointment)
+        {
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string insertStatement =
+                "UPDATE appointment " +
+                "SET doctorID = @doctorID, appointmentDateTime = @time, " +
+                "reason = @reason " +
+                "WHERE appointmentID = @appointmentID ";
+
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+
+            insertCommand.Parameters.Add("@doctorID", System.Data.SqlDbType.Int);
+            insertCommand.Parameters["@doctorID"].Value = appointment.DoctorID;
+
+            insertCommand.Parameters.Add("@time", System.Data.SqlDbType.DateTime);
+            insertCommand.Parameters["@time"].Value = appointment.AppointmentDatetime;
+
+            insertCommand.Parameters.Add("@reason", System.Data.SqlDbType.VarChar);
+            insertCommand.Parameters["@reason"].Value = appointment.Reason;
+
+            insertCommand.Parameters.Add("@appointmentID", System.Data.SqlDbType.Int);
+            insertCommand.Parameters["@appointmentID"].Value = appointment.AppointmentID;
+
+            using (insertCommand)
+            {
+                connection.Open();
+                int rowsAffected = insertCommand.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    return "This appointment has been updated.";
+                }
+                else
+                {
+                    return "Appointment was not updated. Please try again.";
+                }
+            }
+        }
     }
 }
