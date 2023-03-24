@@ -3,6 +3,7 @@ using ClinicManagementApp.DAL;
 using ClinicManagementApp.Model;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace ClinicManagementApp.UserControls
@@ -320,6 +321,34 @@ namespace ClinicManagementApp.UserControls
             this.saveButton.Visible = false;
             this.cancelButton.Visible = false;
             this.AppointmentInfoIsEditable(false);
+            this.UpdateAppointment();
+        }
+
+        private void UpdateAppointment()
+        {
+            string date = this.appointmentDateTimePicker.Value.ToString("yyyy-MM-dd");
+            string time = this.newAppointmentComboBox.Text;
+            int doctorID = (int)this.doctorNameComboBox.SelectedValue;
+            int appointmentID = Int32.Parse(this.theFutureAppointmentNumberTextBox.Text);
+            string reason = this.reasonTextArea.Text;
+            DateTime appointmentDateTime;
+
+            if (reason == "")
+            {
+                MessageBox.Show("Reason cannot be blank.");
+            } 
+            else if(DateTime.TryParse(date + " " + time, out appointmentDateTime))
+            {
+                Appointment editedAppointment = new Appointment(appointmentID, 0, doctorID, appointmentDateTime, reason);
+                string successMessage = this.appointmentController.UpdateAppointment(editedAppointment);
+                this.setFuturePatientAppointmentDetails();
+                MessageBox.Show(successMessage);
+            }
+            else
+            {
+                MessageBox.Show("Appointment could not be edited. Please try again.");
+            }
+
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
