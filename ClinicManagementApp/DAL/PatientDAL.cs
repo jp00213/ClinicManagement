@@ -117,6 +117,36 @@ namespace ClinicManagementApp.DAL
         }
 
         /// <summary>
+        /// Creates a new patient based on the persons record number from the person table
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns>New patients ID</returns>
+        public int AddPatient(int personID)
+        {
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string insertStatement = "INSERT INTO patient " +
+                "(recordID) VALUES (@recordID)";
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+
+            insertCommand.Parameters.Add("@recordID", System.Data.SqlDbType.Int);
+            insertCommand.Parameters["@recordID"].Value = personID;
+
+            using(insertCommand)
+            {
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+                string selectStatement = "SELECT IDENT_CURRENT('patient') FROM patient";
+                SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+                using (selectCommand)
+                {
+                    int patientID = Convert.ToInt32(selectCommand.ExecuteScalar());
+                    return patientID;
+                }
+            }
+        }
+
+
+        /// <summary>
         /// Get patient by last and first name per search requirement
         /// </summary>
         /// <param name="firstNameIn">first name of patient</param>

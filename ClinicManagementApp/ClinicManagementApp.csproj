@@ -57,6 +57,7 @@
     <Compile Include="DAL\AccountDAL.cs" />
     <Compile Include="DAL\DoctorDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
+    <Compile Include="DAL\PersonDAL.cs" />
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\AppointmentWithDrName.cs" />
     <Compile Include="Model\Doctor.cs" />
@@ -68,6 +69,19 @@
     <Compile Include="UserControls\CreateAppointmentUserControl.Designer.cs">
       <DependentUpon>CreateAppointmentUserControl.cs</DependentUpon>
     </Compile>
+
+    <Compile Include="UserControls\RegisterPatientUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RegisterPatientUserControl.Designer.cs">
+      <DependentUpon>RegisterPatientUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UpdatePatientInformationUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UpdatePatientInformationUserControl.Designer.cs">
+      <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
+
 
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -98,6 +112,7 @@
     </Compile>
     <Compile Include="UserControls\SearchPatientUserControl.Designer.cs">
       <DependentUpon>SearchPatientUserControl.cs</DependentUpon>
+
     </Compile>
     <Compile Include="View\MainDashboard.cs">
       <SubType>Form</SubType>
@@ -119,6 +134,13 @@
     <EmbeddedResource Include="UserControls\CreateAppointmentUserControl.resx">
       <DependentUpon>CreateAppointmentUserControl.cs</DependentUpon>
     </EmbeddedResource>
+
+    <EmbeddedResource Include="UserControls\RegisterPatientUserControl.resx">
+      <DependentUpon>RegisterPatientUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UpdatePatientInformationUserControl.resx">
+      <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
+
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +155,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchPatientUserControl.resx">
       <DependentUpon>SearchPatientUserControl.cs</DependentUpon>
+
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
