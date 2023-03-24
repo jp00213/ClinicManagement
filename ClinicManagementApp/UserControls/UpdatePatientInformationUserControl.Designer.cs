@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.firstNameLabel = new System.Windows.Forms.Label();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameLabel = new System.Windows.Forms.Label();
@@ -48,7 +50,6 @@
             this.patientIDTextBox = new System.Windows.Forms.TextBox();
             this.lastNameResultsTextBox = new System.Windows.Forms.TextBox();
             this.firstNameResultsTextBox = new System.Windows.Forms.TextBox();
-            this.dateOfBirthTextBox = new System.Windows.Forms.TextBox();
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.addressTextBox = new System.Windows.Forms.TextBox();
             this.cityTextBox = new System.Windows.Forms.TextBox();
@@ -58,7 +59,15 @@
             this.dateOfBirthLabel = new System.Windows.Forms.Label();
             this.nurseNameLabel = new System.Windows.Forms.Label();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.dateOfBirthResultsDateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.patientSearchDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // firstNameLabel
@@ -113,17 +122,35 @@
             this.searchButton.TabIndex = 5;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // patientSearchDataGridView
             // 
             this.patientSearchDataGridView.AllowUserToAddRows = false;
             this.patientSearchDataGridView.AllowUserToDeleteRows = false;
+            this.patientSearchDataGridView.AutoGenerateColumns = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.patientSearchDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.patientSearchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.patientSearchDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.patientIDDataGridViewTextBoxColumn,
+            this.lastNameDataGridViewTextBoxColumn,
+            this.firstNameDataGridViewTextBoxColumn,
+            this.dateOfBirthDataGridViewTextBoxColumn});
+            this.patientSearchDataGridView.DataSource = this.patientBindingSource;
             this.patientSearchDataGridView.Location = new System.Drawing.Point(112, 145);
             this.patientSearchDataGridView.Name = "patientSearchDataGridView";
             this.patientSearchDataGridView.ReadOnly = true;
+            this.patientSearchDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.patientSearchDataGridView.Size = new System.Drawing.Size(558, 150);
             this.patientSearchDataGridView.TabIndex = 6;
+            this.patientSearchDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PatientSearchDataGridView_CellClick);
             // 
             // patientIDLabel
             // 
@@ -218,15 +245,17 @@
             // updatePatientButton
             // 
             this.updatePatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updatePatientButton.Location = new System.Drawing.Point(297, 534);
+            this.updatePatientButton.Location = new System.Drawing.Point(433, 533);
             this.updatePatientButton.Name = "updatePatientButton";
             this.updatePatientButton.Size = new System.Drawing.Size(187, 28);
             this.updatePatientButton.TabIndex = 16;
             this.updatePatientButton.Text = "Update Patient";
             this.updatePatientButton.UseVisualStyleBackColor = true;
+            this.updatePatientButton.Click += new System.EventHandler(this.updatePatientButton_Click);
             // 
             // patientIDTextBox
             // 
+            this.patientIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "PatientID", true));
             this.patientIDTextBox.Location = new System.Drawing.Point(179, 327);
             this.patientIDTextBox.Name = "patientIDTextBox";
             this.patientIDTextBox.ReadOnly = true;
@@ -235,6 +264,7 @@
             // 
             // lastNameResultsTextBox
             // 
+            this.lastNameResultsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "LastName", true));
             this.lastNameResultsTextBox.Location = new System.Drawing.Point(179, 369);
             this.lastNameResultsTextBox.Name = "lastNameResultsTextBox";
             this.lastNameResultsTextBox.Size = new System.Drawing.Size(186, 20);
@@ -242,20 +272,15 @@
             // 
             // firstNameResultsTextBox
             // 
+            this.firstNameResultsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "FirstName", true));
             this.firstNameResultsTextBox.Location = new System.Drawing.Point(179, 412);
             this.firstNameResultsTextBox.Name = "firstNameResultsTextBox";
             this.firstNameResultsTextBox.Size = new System.Drawing.Size(186, 20);
             this.firstNameResultsTextBox.TabIndex = 19;
             // 
-            // dateOfBirthTextBox
-            // 
-            this.dateOfBirthTextBox.Location = new System.Drawing.Point(179, 454);
-            this.dateOfBirthTextBox.Name = "dateOfBirthTextBox";
-            this.dateOfBirthTextBox.Size = new System.Drawing.Size(186, 20);
-            this.dateOfBirthTextBox.TabIndex = 20;
-            // 
             // phoneTextBox
             // 
+            this.phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "Phone", true));
             this.phoneTextBox.Location = new System.Drawing.Point(179, 499);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(186, 20);
@@ -263,6 +288,7 @@
             // 
             // addressTextBox
             // 
+            this.addressTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "AddressStreet", true));
             this.addressTextBox.Location = new System.Drawing.Point(478, 329);
             this.addressTextBox.Name = "addressTextBox";
             this.addressTextBox.Size = new System.Drawing.Size(192, 20);
@@ -270,6 +296,7 @@
             // 
             // cityTextBox
             // 
+            this.cityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "City", true));
             this.cityTextBox.Location = new System.Drawing.Point(478, 369);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(192, 20);
@@ -277,6 +304,7 @@
             // 
             // stateTextBox
             // 
+            this.stateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "State", true));
             this.stateTextBox.Location = new System.Drawing.Point(478, 408);
             this.stateTextBox.Name = "stateTextBox";
             this.stateTextBox.Size = new System.Drawing.Size(192, 20);
@@ -284,6 +312,7 @@
             // 
             // zipTextBox
             // 
+            this.zipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "Zip", true));
             this.zipTextBox.Location = new System.Drawing.Point(478, 453);
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(192, 20);
@@ -330,9 +359,68 @@
             this.logoutLinkLabel.TabStop = true;
             this.logoutLinkLabel.Text = "Logout";
             // 
+            // clearButton
+            // 
+            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearButton.Location = new System.Drawing.Point(209, 534);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(187, 27);
+            this.clearButton.TabIndex = 30;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
+            // dateOfBirthResultsDateTimePicker1
+            // 
+            this.dateOfBirthResultsDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.patientBindingSource, "DateOfBirth", true));
+            this.dateOfBirthResultsDateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateOfBirthResultsDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateOfBirthResultsDateTimePicker1.Location = new System.Drawing.Point(179, 452);
+            this.dateOfBirthResultsDateTimePicker1.Name = "dateOfBirthResultsDateTimePicker1";
+            this.dateOfBirthResultsDateTimePicker1.Size = new System.Drawing.Size(186, 22);
+            this.dateOfBirthResultsDateTimePicker1.TabIndex = 31;
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(ClinicManagementApp.Model.Patient);
+            // 
+            // patientIDDataGridViewTextBoxColumn
+            // 
+            this.patientIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.patientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID";
+            this.patientIDDataGridViewTextBoxColumn.HeaderText = "PatientID";
+            this.patientIDDataGridViewTextBoxColumn.Name = "patientIDDataGridViewTextBoxColumn";
+            this.patientIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateOfBirthDataGridViewTextBoxColumn
+            // 
+            this.dateOfBirthDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
+            this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // UpdatePatientInformationUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.dateOfBirthResultsDateTimePicker1);
+            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.logoutLinkLabel);
             this.Controls.Add(this.nurseNameLabel);
             this.Controls.Add(this.dateOfBirthLabel);
@@ -342,7 +430,6 @@
             this.Controls.Add(this.cityTextBox);
             this.Controls.Add(this.addressTextBox);
             this.Controls.Add(this.phoneTextBox);
-            this.Controls.Add(this.dateOfBirthTextBox);
             this.Controls.Add(this.firstNameResultsTextBox);
             this.Controls.Add(this.lastNameResultsTextBox);
             this.Controls.Add(this.patientIDTextBox);
@@ -366,6 +453,7 @@
             this.Name = "UpdatePatientInformationUserControl";
             this.Size = new System.Drawing.Size(798, 585);
             ((System.ComponentModel.ISupportInitialize)(this.patientSearchDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -393,7 +481,6 @@
         private System.Windows.Forms.TextBox patientIDTextBox;
         private System.Windows.Forms.TextBox lastNameResultsTextBox;
         private System.Windows.Forms.TextBox firstNameResultsTextBox;
-        private System.Windows.Forms.TextBox dateOfBirthTextBox;
         private System.Windows.Forms.TextBox phoneTextBox;
         private System.Windows.Forms.TextBox addressTextBox;
         private System.Windows.Forms.TextBox cityTextBox;
@@ -403,5 +490,12 @@
         private System.Windows.Forms.Label dateOfBirthLabel;
         private System.Windows.Forms.Label nurseNameLabel;
         private System.Windows.Forms.LinkLabel logoutLinkLabel;
+        private System.Windows.Forms.BindingSource patientBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn patientIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateOfBirthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.DateTimePicker dateOfBirthResultsDateTimePicker1;
     }
 }
