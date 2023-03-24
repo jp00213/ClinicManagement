@@ -268,6 +268,7 @@
             this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(228, 22);
             this.dateOfBirthDateTimePicker.TabIndex = 22;
             this.dateOfBirthDateTimePicker.Value = new System.DateTime(2023, 3, 23, 0, 0, 0, 0);
+            this.dateOfBirthDateTimePicker.DropDown += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // firstNameErrorMessageLabel
             // 

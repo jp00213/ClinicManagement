@@ -80,16 +80,6 @@ namespace ClinicManagementApp.UserControls
 
         }
 
-        /*private bool EnteredNewInfo()
-        {
-            Person somePerson = new Person(this.lastNameResultsTextBox.Text.Trim(), this.firstNameResultsTextBox.Text.Trim(), this.dateOfBirthResultsDateTimePicker1.Value, this.addressTextBox.Text.Trim(), this.cityTextBox.Text.Trim(), this.stateTextBox.Text.Trim(), this.zipTextBox.Text.Trim(), this.phoneTextBox.Text.Trim());
-
-            if ((this._patient.LastName == this.lastNameResultsTextBox.Text.Trim() && this._patient.FirstName == this.firstNameResultsTextBox.Text.Trim() && this._patient.DateOfBirth == this.dateOfBirthResultsDateTimePicker1.Value && this._patient.Phone == this.phoneTextBox.Text.Trim() && this._patient.AddressStreet == this.addressTextBox.Text.Trim() && this._patient.City == this.cityTextBox.Text.Trim() && this._patient.State == this.stateTextBox.Text.Trim() && this._patient.Zip == this.zipTextBox.Text.Trim()))
-            {
-                return false;
-            }
-            return true;
-        }*/
         private void clearButton_Click(object sender, EventArgs e)
         {
             this.ResetForm();
