@@ -145,5 +145,15 @@ namespace ClinicManagementApp.UserControls
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void DoctorComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(this.doctorComboBox.SelectedValue != null && this.doctorComboBox.SelectedValue is int doctorID)
+            {
+                this.messageLabel.Text = "";
+                string date = this.appointmentDateTimePicker.Value.ToString("yyyy-MM-dd");
+                this.UpdateTimeOptions(date, doctorID);
+            }
+        }
     }
 }

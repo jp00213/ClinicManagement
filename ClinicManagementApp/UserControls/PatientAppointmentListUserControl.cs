@@ -316,5 +316,14 @@ namespace ClinicManagementApp.UserControls
             this.AppointmentInfoIsEditable(false);
             this.setFuturePatientAppointmentDetails();
         }
+
+        private void DoctorNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.doctorNameComboBox.SelectedValue != null && this.doctorNameComboBox.SelectedValue is int doctorID)
+            {
+                string date = this.appointmentDateTimePicker.Value.ToString("yyyy-MM-dd");
+                this.UpdateTimeOptions(date, doctorID);
+            }
+        }
     }
 }

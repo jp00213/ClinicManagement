@@ -32,6 +32,8 @@
             this.patientIDTextBox = new System.Windows.Forms.TextBox();
             this.appointmentTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.FutureAppointmentPanel = new System.Windows.Forms.Panel();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
             this.doctorNameComboBox = new System.Windows.Forms.ComboBox();
             this.futureAppointmentMessageLabel = new System.Windows.Forms.Label();
             this.newTimeLabel = new System.Windows.Forms.Label();
@@ -64,8 +66,6 @@
             this.showFutureRadioButton = new System.Windows.Forms.RadioButton();
             this.pastAppointmentRadioButton = new System.Windows.Forms.RadioButton();
             this.AppoinmentUserControlLabel = new System.Windows.Forms.Label();
-            this.saveButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
             this.appointmentTableLayout.SuspendLayout();
             this.FutureAppointmentPanel.SuspendLayout();
             this.pastAppointmentPanel.SuspendLayout();
@@ -133,6 +133,30 @@
             this.FutureAppointmentPanel.Size = new System.Drawing.Size(585, 226);
             this.FutureAppointmentPanel.TabIndex = 0;
             // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(20, 150);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(121, 25);
+            this.cancelButton.TabIndex = 31;
+            this.cancelButton.Text = "Cancel Changes";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Visible = false;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(156, 150);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(2);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(121, 25);
+            this.saveButton.TabIndex = 30;
+            this.saveButton.Text = "Save Changes";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Visible = false;
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
             // doctorNameComboBox
             // 
             this.doctorNameComboBox.Enabled = false;
@@ -141,6 +165,7 @@
             this.doctorNameComboBox.Name = "doctorNameComboBox";
             this.doctorNameComboBox.Size = new System.Drawing.Size(135, 21);
             this.doctorNameComboBox.TabIndex = 29;
+            this.doctorNameComboBox.SelectedIndexChanged += new System.EventHandler(this.DoctorNameComboBox_SelectedIndexChanged);
             // 
             // futureAppointmentMessageLabel
             // 
@@ -477,30 +502,6 @@
             this.AppoinmentUserControlLabel.Size = new System.Drawing.Size(142, 13);
             this.AppoinmentUserControlLabel.TabIndex = 25;
             this.AppoinmentUserControlLabel.Text = "Patient Appointments Details";
-            // 
-            // saveButton
-            // 
-            this.saveButton.Location = new System.Drawing.Point(156, 150);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(2);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(121, 25);
-            this.saveButton.TabIndex = 30;
-            this.saveButton.Text = "Save Changes";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Visible = false;
-            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Location = new System.Drawing.Point(20, 150);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(121, 25);
-            this.cancelButton.TabIndex = 31;
-            this.cancelButton.Text = "Cancel Changes";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Visible = false;
-            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // PatientAppointmentListUserControl
             // 
