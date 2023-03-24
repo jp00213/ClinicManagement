@@ -57,7 +57,7 @@ namespace ClinicManagementApp.UserControls
             string state = this.stateTextBox.Text.ToUpper();
             string zip = this.zipTextBox.Text;
 
-            if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(address) || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || state.Length != 2)
+            if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(address) || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || state.Length != 2 || !IsValidZipCode(zip) || !IsPhoneNumberValid(phone))
             {
                 this.ShowInvalidErrorMessage();
             } else
@@ -119,7 +119,7 @@ namespace ClinicManagementApp.UserControls
 
         private bool IsValidZipCode(string zip)
         {
-            string usZipRegEx = @"^\d{5}(?:[-\s]\d{4})?$";
+            string usZipRegEx = @"^\d{5}(\d{4})?$";
 
             bool validZipCode = true;
             if ((!Regex.Match(zip, usZipRegEx).Success))
@@ -131,7 +131,7 @@ namespace ClinicManagementApp.UserControls
 
         private bool IsPhoneNumberValid(string phoneNumber)
         {
-            string phoneRegEx = @"^(\+[0-9]{9})$";
+            string phoneRegEx = @"^\d{10}$";
             bool validPhoneNumber = true;
             if (!Regex.Match(phoneNumber, phoneRegEx).Success)
             {
@@ -151,9 +151,11 @@ namespace ClinicManagementApp.UserControls
             this.zipErrorMessageLabel.Text = "";
         }
 
-        private void lastNameTextBox_TextChanged(object sender, EventArgs e)
+        private void TextBox_TextChanged(object sender, EventArgs e)
         {
             this.HideInvalidErrorMessages();
         }
+
+        
     }
 }

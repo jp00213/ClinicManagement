@@ -177,7 +177,7 @@
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(228, 20);
             this.lastNameTextBox.TabIndex = 11;
-            this.lastNameTextBox.TextChanged += new System.EventHandler(this.lastNameTextBox_TextChanged);
+            this.lastNameTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // firstNameTextBox
             // 
@@ -185,6 +185,7 @@
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(228, 20);
             this.firstNameTextBox.TabIndex = 12;
+            this.firstNameTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // phoneTextBox
             // 
@@ -192,6 +193,7 @@
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(228, 20);
             this.phoneTextBox.TabIndex = 14;
+            this.phoneTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // addressTextBox
             // 
@@ -199,6 +201,7 @@
             this.addressTextBox.Name = "addressTextBox";
             this.addressTextBox.Size = new System.Drawing.Size(227, 20);
             this.addressTextBox.TabIndex = 15;
+            this.addressTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // cityTextBox
             // 
@@ -206,6 +209,7 @@
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(227, 20);
             this.cityTextBox.TabIndex = 16;
+            this.cityTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // stateTextBox
             // 
@@ -213,6 +217,7 @@
             this.stateTextBox.Name = "stateTextBox";
             this.stateTextBox.Size = new System.Drawing.Size(227, 20);
             this.stateTextBox.TabIndex = 17;
+            this.stateTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // zipTextBox
             // 
@@ -220,6 +225,7 @@
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(227, 20);
             this.zipTextBox.TabIndex = 18;
+            this.zipTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // logoutLinkLabel
             // 
