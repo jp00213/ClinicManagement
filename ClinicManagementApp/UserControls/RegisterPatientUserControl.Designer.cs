@@ -56,6 +56,7 @@
             this.cityErrorMessageLabel = new System.Windows.Forms.Label();
             this.stateErrorMessageLabel = new System.Windows.Forms.Label();
             this.zipErrorMessageLabel = new System.Windows.Forms.Label();
+            this.DOBErrorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // clearButton
@@ -322,9 +323,19 @@
             this.zipErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
             this.zipErrorMessageLabel.TabIndex = 28;
             // 
+            // DOBErrorLabel
+            // 
+            this.DOBErrorLabel.AutoSize = true;
+            this.DOBErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DOBErrorLabel.Location = new System.Drawing.Point(166, 228);
+            this.DOBErrorLabel.Name = "DOBErrorLabel";
+            this.DOBErrorLabel.Size = new System.Drawing.Size(0, 15);
+            this.DOBErrorLabel.TabIndex = 29;
+            // 
             // RegisterPatientUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.DOBErrorLabel);
             this.Controls.Add(this.zipErrorMessageLabel);
             this.Controls.Add(this.stateErrorMessageLabel);
             this.Controls.Add(this.cityErrorMessageLabel);
@@ -390,5 +401,6 @@
         private System.Windows.Forms.Label cityErrorMessageLabel;
         private System.Windows.Forms.Label stateErrorMessageLabel;
         private System.Windows.Forms.Label zipErrorMessageLabel;
+        private System.Windows.Forms.Label DOBErrorLabel;
     }
 }

@@ -1,19 +1,15 @@
 ﻿using ClinicManagementApp.Controller;
 using ClinicManagementApp.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ClinicManagementApp.UserControls
 {
+    /// <summary>
+    /// Register Patient User Control
+    /// </summary>
     public partial class RegisterPatientUserControl : UserControl
     {
         private PatientController _patientController;
@@ -48,16 +44,16 @@ namespace ClinicManagementApp.UserControls
 
         private void addPatientButton_Click(object sender, EventArgs e)
         {
-            string lastName = this.lastNameTextBox.Text;
-            string firstName = this.firstNameTextBox.Text;
+            string lastName = this.lastNameTextBox.Text.Trim();
+            string firstName = this.firstNameTextBox.Text.Trim();
             DateTime dateOfBirth = this.dateOfBirthDateTimePicker.Value;
-            string phone = this.phoneTextBox.Text;
-            string address = this.addressTextBox.Text;
-            string city = this.cityTextBox.Text;
-            string state = this.stateTextBox.Text.ToUpper();
-            string zip = this.zipTextBox.Text;
+            string phone = this.phoneTextBox.Text.Trim();
+            string address = this.addressTextBox.Text.Trim();
+            string city = this.cityTextBox.Text.Trim();
+            string state = this.stateTextBox.Text.ToUpper().Trim();
+            string zip = this.zipTextBox.Text.Trim();
 
-            if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(address) || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || state.Length != 2 || !IsValidZipCode(zip) || !IsPhoneNumberValid(phone))
+            if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || dateOfBirth > DateTime.Now || string.IsNullOrEmpty(address) || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || state.Length != 2 || !IsValidZipCode(zip) || !IsPhoneNumberValid(phone))
             {
                 this.ShowInvalidErrorMessage();
             } else
@@ -84,6 +80,12 @@ namespace ClinicManagementApp.UserControls
             {
                 this.firstNameErrorMessageLabel.Text = "Please enter your first name.";
                 this.firstNameErrorMessageLabel.ForeColor = Color.Red;
+            }
+
+            if (dateOfBirthDateTimePicker.Value > DateTime.Now)
+            {
+                this.DOBErrorLabel.Text = "DOB cannot be in the future.";
+                this.DOBErrorLabel.ForeColor = Color.Red;
             }
 
             if (string.IsNullOrEmpty(addressTextBox.Text) || string.IsNullOrWhiteSpace(addressTextBox.Text) || addressTextBox.Text.Length < 5)
@@ -144,6 +146,7 @@ namespace ClinicManagementApp.UserControls
         {
             this.lastNameErrorMessageLabel.Text = "";
             this.firstNameErrorMessageLabel.Text = "";
+            this.DOBErrorLabel.Text = "";
             this.addressErrorMessageLabel.Text = "";
             this.phoneErrorMessageLabel.Text = "";
             this.cityErrorMessageLabel.Text = "";
