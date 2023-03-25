@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="UserControls\UpdatePatientInformationUserControl.Designer.cs">
       <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
+    </Compile>
 
 
     <Compile Include="View\LoginForm.cs">
@@ -140,7 +141,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UpdatePatientInformationUserControl.resx">
       <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
-
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

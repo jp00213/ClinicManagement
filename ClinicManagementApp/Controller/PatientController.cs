@@ -70,7 +70,7 @@ namespace ClinicManagementApp.Controller
         public bool UpdatePatient(int recordID, string lastName, string firstName, DateTime birthday, string addressStreet, string city, string state, string zip, string phone)
         {
             return this._personDAL.UpdatePerson(recordID, lastName, firstName, birthday, addressStreet, city, state, zip, phone);
-
+        }
         /// Input check: if first and last name are empty, search by dob;
         /// if dob is empty, search by first and last name;
         /// if first name is empty, search by last name and dob.
