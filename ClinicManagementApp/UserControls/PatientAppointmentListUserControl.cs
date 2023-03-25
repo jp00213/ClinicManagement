@@ -131,6 +131,7 @@ namespace ClinicManagementApp.UserControls
 
         private void LoadFutureAppointmentComboBox()
         {
+            appointListComboBox.DataSource = null;
             appointListComboBox.DataSource = this.appointmentController.GetAppointmentsByID_NowOn(int.Parse(patientIDTextBox.Text));
             appointListComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             appointListComboBox.DisplayMember = "appointmentSummary";
@@ -239,23 +240,27 @@ namespace ClinicManagementApp.UserControls
 
         private void EditAppointmentButton_Click(object sender, EventArgs e)
         {
-            Appointment appointment = this.appointmentController.GetAppointmentByID(int.Parse(theFutureAppointmentNumberTextBox.Text));
-
-            DateTime appointmentDate = appointment.AppointmentDatetime; // replace with your target date
-            DateTime currentDate = DateTime.Now;
-            TimeSpan timeDifference = appointmentDate - currentDate;
-
-            if (timeDifference.TotalHours > 24)
+            if(patientIDTextBox.Text != "" && this.appointListComboBox.Items.Count > 0)
             {
-                this.AppointmentInfoIsEditable(true);
-                this.cancelButton.Visible = true;
-                this.saveButton.Visible = true;
-                this.SetDoctors();
-            } else
-            {
-                MessageBox.Show("This appointment is within 24 hours from now and cannot be edited.");
+                Appointment appointment = this.appointmentController.GetAppointmentByID(int.Parse(theFutureAppointmentNumberTextBox.Text));
+
+                DateTime appointmentDate = appointment.AppointmentDatetime; 
+                DateTime currentDate = DateTime.Now;
+                TimeSpan timeDifference = appointmentDate - currentDate;
+
+                if (timeDifference.TotalHours > 24)
+                {
+                    this.appointListComboBox.Enabled = false;
+                    this.AppointmentInfoIsEditable(true);
+                    this.cancelButton.Visible = true;
+                    this.saveButton.Visible = true;
+                    this.SetDoctors();
+                }
+                else
+                {
+                    MessageBox.Show("This appointment is within 24 hours from now and cannot be edited.");
+                }
             }
-
         }
 
         private void AppointmentInfoIsEditable(Boolean yesOrNo)
@@ -318,6 +323,7 @@ namespace ClinicManagementApp.UserControls
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            this.appointListComboBox.Enabled = true;
             this.saveButton.Visible = false;
             this.cancelButton.Visible = false;
             this.AppointmentInfoIsEditable(false);
@@ -342,6 +348,7 @@ namespace ClinicManagementApp.UserControls
                 Appointment editedAppointment = new Appointment(appointmentID, 0, doctorID, appointmentDateTime, reason);
                 string successMessage = this.appointmentController.UpdateAppointment(editedAppointment);
                 this.setFuturePatientAppointmentDetails();
+                this.LoadFutureAppointmentComboBox();
                 MessageBox.Show(successMessage);
             }
             else
@@ -356,6 +363,7 @@ namespace ClinicManagementApp.UserControls
             this.saveButton.Visible = false;
             this.cancelButton.Visible = false;
             this.AppointmentInfoIsEditable(false);
+            this.appointListComboBox.Enabled = true;
             this.setFuturePatientAppointmentDetails();
         }
 
