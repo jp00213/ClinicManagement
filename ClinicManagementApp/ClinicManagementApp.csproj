@@ -109,7 +109,6 @@
     </Compile>
     <Compile Include="UserControls\SearchPatientUserControl.Designer.cs">
       <DependentUpon>SearchPatientUserControl.cs</DependentUpon>
-
     </Compile>
     <Compile Include="View\MainDashboard.cs">
       <SubType>Form</SubType>
@@ -131,7 +130,6 @@
     <EmbeddedResource Include="UserControls\CreateAppointmentUserControl.resx">
       <DependentUpon>CreateAppointmentUserControl.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="UserControls\RegisterPatientUserControl.resx">
       <DependentUpon>RegisterPatientUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,7 +150,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchPatientUserControl.resx">
       <DependentUpon>SearchPatientUserControl.cs</DependentUpon>
-
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
@@ -176,8 +173,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="DB\cs6232-g1_schema.sql" />
-    <Content Include="DB\SPGenerateAppointmentTimeList.sql" />
+    <Content Include="DB\cs6232-g1_scripts.sql" />
     <Content Include="Model\Temporary.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
