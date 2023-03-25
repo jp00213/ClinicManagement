@@ -22,6 +22,7 @@ namespace ClinicManagementApp.UserControls
             this.doctorController = new DoctorController();
             this.patient = null;
             this.ResetDoctors();
+            this.appointmentDateTimePicker.MinDate = DateTime.Today;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -126,12 +127,33 @@ namespace ClinicManagementApp.UserControls
 
         private void ResetDoctors()
         {
-            this.doctorComboBox.DataSource = this.doctorController.GetDoctors();
-            this.doctorComboBox.DisplayMember = "FullName";
-            this.doctorComboBox.ValueMember = "DoctorID";
-            string date = this.appointmentDateTimePicker.Value.ToString("yyyy-MM-dd");
-            int doctorID = (int)this.doctorComboBox.SelectedValue;
-            this.UpdateTimeOptions(date, doctorID);
+            try 
+            { 
+                this.doctorComboBox.DataSource = this.doctorController.GetDoctors();
+                this.doctorComboBox.DisplayMember = "FullName";
+                this.doctorComboBox.ValueMember = "DoctorID";
+                string date = this.appointmentDateTimePicker.Value.ToString("yyyy-MM-dd");
+                int doctorID = (int)this.doctorComboBox.SelectedValue;
+                this.UpdateTimeOptions(date, doctorID);
+            }
+            catch(NullReferenceException)
+            {
+                MessageBox.Show("No doctors available for appointments");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void DoctorComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(this.doctorComboBox.SelectedValue != null && this.doctorComboBox.SelectedValue is int doctorID)
+            {
+                this.messageLabel.Text = "";
+                string date = this.appointmentDateTimePicker.Value.ToString("yyyy-MM-dd");
+                this.UpdateTimeOptions(date, doctorID);
+            }
         }
     }
 }

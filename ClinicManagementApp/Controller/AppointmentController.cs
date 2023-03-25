@@ -49,7 +49,7 @@ namespace ClinicManagementApp.Controller
         /// </summary>
         /// <param name="patientIDIn">patient ID</param>
         /// <returns>future appointment</returns>
-        public List<AppointmentWithDrName> GetAppointmentsByID_NowOn(int patientIDIn)
+        public List<Appointment> GetAppointmentsByID_NowOn(int patientIDIn)
         {
             return _appointmentDAL.GetAppointmentsByID_NowOn(patientIDIn);
         }
@@ -59,7 +59,7 @@ namespace ClinicManagementApp.Controller
         /// </summary>
         /// <param name="patientIDIn">patient ID</param>
         /// <returns>past appointment</returns>
-        public List<AppointmentWithDrName> GetAppointmentsByID_Past(int patientIDIn)
+        public List<Appointment> GetAppointmentsByID_Past(int patientIDIn)
         {
             return _appointmentDAL.GetAppointmentsByID_Past(patientIDIn);
         }
@@ -69,9 +69,19 @@ namespace ClinicManagementApp.Controller
         /// </summary>
         /// <param name="appointmentIDIn">appointment ID</param>
         /// <returns>appointment</returns>
-        public AppointmentWithDrName GetAppointmentByID(int appointmentIDIn)
+        public Appointment GetAppointmentByID(int appointmentIDIn)
         {
             return _appointmentDAL.GetAppointmentByID(appointmentIDIn);
+        }
+
+        /// <summary>
+        /// Update Appointment details
+        /// </summary>
+        /// <returns>success message</returns>
+        /// <param name="appointment"> appointment object to be updated</param>
+        public string UpdateAppointment(Appointment appointment)
+        {
+            return this._appointmentDAL.UpdateAppointment(appointment);
         }
     }
 }

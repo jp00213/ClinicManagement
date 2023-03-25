@@ -32,6 +32,9 @@
             this.patientIDTextBox = new System.Windows.Forms.TextBox();
             this.appointmentTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.FutureAppointmentPanel = new System.Windows.Forms.Panel();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.doctorNameComboBox = new System.Windows.Forms.ComboBox();
             this.futureAppointmentMessageLabel = new System.Windows.Forms.Label();
             this.newTimeLabel = new System.Windows.Forms.Label();
             this.editAppointmentButton = new System.Windows.Forms.Button();
@@ -42,7 +45,6 @@
             this.dateLabel = new System.Windows.Forms.Label();
             this.newAppointmentComboBox = new System.Windows.Forms.ComboBox();
             this.appointListComboBox = new System.Windows.Forms.ComboBox();
-            this.doctorName = new System.Windows.Forms.TextBox();
             this.theFutureAppointmentNumberTextBox = new System.Windows.Forms.TextBox();
             this.reasonLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
@@ -106,6 +108,9 @@
             // 
             // FutureAppointmentPanel
             // 
+            this.FutureAppointmentPanel.Controls.Add(this.cancelButton);
+            this.FutureAppointmentPanel.Controls.Add(this.saveButton);
+            this.FutureAppointmentPanel.Controls.Add(this.doctorNameComboBox);
             this.FutureAppointmentPanel.Controls.Add(this.futureAppointmentMessageLabel);
             this.FutureAppointmentPanel.Controls.Add(this.newTimeLabel);
             this.FutureAppointmentPanel.Controls.Add(this.editAppointmentButton);
@@ -116,7 +121,6 @@
             this.FutureAppointmentPanel.Controls.Add(this.dateLabel);
             this.FutureAppointmentPanel.Controls.Add(this.newAppointmentComboBox);
             this.FutureAppointmentPanel.Controls.Add(this.appointListComboBox);
-            this.FutureAppointmentPanel.Controls.Add(this.doctorName);
             this.FutureAppointmentPanel.Controls.Add(this.theFutureAppointmentNumberTextBox);
             this.FutureAppointmentPanel.Controls.Add(this.reasonLabel);
             this.FutureAppointmentPanel.Controls.Add(this.timeLabel);
@@ -128,6 +132,40 @@
             this.FutureAppointmentPanel.Name = "FutureAppointmentPanel";
             this.FutureAppointmentPanel.Size = new System.Drawing.Size(585, 226);
             this.FutureAppointmentPanel.TabIndex = 0;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(20, 150);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(121, 25);
+            this.cancelButton.TabIndex = 31;
+            this.cancelButton.Text = "Cancel Changes";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Visible = false;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(156, 150);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(2);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(121, 25);
+            this.saveButton.TabIndex = 30;
+            this.saveButton.Text = "Save Changes";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Visible = false;
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // doctorNameComboBox
+            // 
+            this.doctorNameComboBox.Enabled = false;
+            this.doctorNameComboBox.FormattingEnabled = true;
+            this.doctorNameComboBox.Location = new System.Drawing.Point(120, 53);
+            this.doctorNameComboBox.Name = "doctorNameComboBox";
+            this.doctorNameComboBox.Size = new System.Drawing.Size(135, 21);
+            this.doctorNameComboBox.TabIndex = 29;
+            this.doctorNameComboBox.SelectedIndexChanged += new System.EventHandler(this.DoctorNameComboBox_SelectedIndexChanged);
             // 
             // futureAppointmentMessageLabel
             // 
@@ -159,6 +197,7 @@
             this.editAppointmentButton.TabIndex = 27;
             this.editAppointmentButton.Text = "Edit Appointment";
             this.editAppointmentButton.UseVisualStyleBackColor = true;
+            this.editAppointmentButton.Click += new System.EventHandler(this.EditAppointmentButton_Click);
             // 
             // deleteAppointmentButton
             // 
@@ -172,6 +211,7 @@
             // 
             // reasonTextArea
             // 
+            this.reasonTextArea.Enabled = false;
             this.reasonTextArea.Location = new System.Drawing.Point(322, 53);
             this.reasonTextArea.Margin = new System.Windows.Forms.Padding(2);
             this.reasonTextArea.Multiline = true;
@@ -181,15 +221,18 @@
             // 
             // appointmentDateTimePicker
             // 
+            this.appointmentDateTimePicker.Enabled = false;
             this.appointmentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.appointmentDateTimePicker.Location = new System.Drawing.Point(120, 77);
             this.appointmentDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.appointmentDateTimePicker.Name = "appointmentDateTimePicker";
             this.appointmentDateTimePicker.Size = new System.Drawing.Size(135, 20);
             this.appointmentDateTimePicker.TabIndex = 8;
+            this.appointmentDateTimePicker.ValueChanged += new System.EventHandler(this.AppointmentDateTimePicker_ValueChanged);
             // 
             // tempTime
             // 
+            this.tempTime.Enabled = false;
             this.tempTime.Location = new System.Drawing.Point(120, 101);
             this.tempTime.Margin = new System.Windows.Forms.Padding(2);
             this.tempTime.Name = "tempTime";
@@ -209,6 +252,7 @@
             // newAppointmentComboBox
             // 
             this.newAppointmentComboBox.DropDownWidth = 223;
+            this.newAppointmentComboBox.Enabled = false;
             this.newAppointmentComboBox.FormattingEnabled = true;
             this.newAppointmentComboBox.Location = new System.Drawing.Point(120, 125);
             this.newAppointmentComboBox.Margin = new System.Windows.Forms.Padding(2);
@@ -227,17 +271,6 @@
             this.appointListComboBox.TabIndex = 5;
             this.appointListComboBox.SelectionChangeCommitted += new System.EventHandler(this.appointListComboBox_SelectionChangeCommitted);
             this.appointListComboBox.ValueMemberChanged += new System.EventHandler(this.appointListComboBox_ValueMemberChanged);
-            // 
-            // doctorName
-            // 
-            this.doctorName.BackColor = System.Drawing.SystemColors.Control;
-            this.doctorName.Location = new System.Drawing.Point(120, 53);
-            this.doctorName.Margin = new System.Windows.Forms.Padding(2);
-            this.doctorName.Name = "doctorName";
-            this.doctorName.ReadOnly = true;
-            this.doctorName.Size = new System.Drawing.Size(135, 20);
-            this.doctorName.TabIndex = 17;
-            this.doctorName.Text = "--";
             // 
             // theFutureAppointmentNumberTextBox
             // 
@@ -508,7 +541,6 @@
         private System.Windows.Forms.Label reasonLabel;
         private System.Windows.Forms.TextBox theFutureAppointmentNumberTextBox;
         private System.Windows.Forms.Label AppoinmentUserControlLabel;
-        private System.Windows.Forms.TextBox doctorName;
         private System.Windows.Forms.ComboBox appointListComboBox;
         private System.Windows.Forms.ComboBox newAppointmentComboBox;
         private System.Windows.Forms.Label dateLabel;
@@ -530,5 +562,8 @@
         private System.Windows.Forms.Label newTimeLabel;
         private System.Windows.Forms.Label futureAppointmentMessageLabel;
         private System.Windows.Forms.Label pastAppointmentMessageLabel;
+        private System.Windows.Forms.ComboBox doctorNameComboBox;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button saveButton;
     }
 }
