@@ -11,6 +11,7 @@ namespace ClinicManagementApp.Controller
     public class PatientController
     {
         private readonly PatientDAL _patientDAL;
+        private PersonDAL _personDAL;
 
         /// <summary>
         /// Create a PatientController object.
@@ -18,6 +19,7 @@ namespace ClinicManagementApp.Controller
         public PatientController()
         {
             this._patientDAL = new PatientDAL();
+            this._personDAL = new PersonDAL();
         }
 
         /// <summary>
@@ -40,6 +42,35 @@ namespace ClinicManagementApp.Controller
         public Patient GetPatientByID(int patientID) => this._patientDAL.GetPatientByID(patientID);
 
         /// <summary>
+
+        /// Adds a patients to the DB
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public int AddPatient(Person person)
+        {
+            if (person == null) throw new ArgumentNullException("Person cannot be null.");
+            int personID = this.AddPerson(person);
+            return this._patientDAL.AddPatient(personID);
+        }
+
+        /// <summary>
+        /// Adds a person to the DB
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public int AddPerson(Person person)
+        {
+            if (person == null) throw new ArgumentNullException("Person cannot be null.");
+            return this._personDAL.AddPerson(person);
+        }
+
+        public bool UpdatePatient(int recordID, string lastName, string firstName, DateTime birthday, string addressStreet, string city, string state, string zip, string phone)
+        {
+            return this._personDAL.UpdatePerson(recordID, lastName, firstName, birthday, addressStreet, city, state, zip, phone);
+        }
         /// Input check: if first and last name are empty, search by dob;
         /// if dob is empty, search by first and last name;
         /// if first name is empty, search by last name and dob.
@@ -62,6 +93,7 @@ namespace ClinicManagementApp.Controller
             {
                 return this._patientDAL.GetPatientByLastNameAndDOB(lastNameIn, dobIn);
             }
+
         }
 
     }
