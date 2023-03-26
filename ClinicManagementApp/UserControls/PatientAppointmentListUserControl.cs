@@ -1,9 +1,7 @@
 ﻿using ClinicManagementApp.Controller;
-using ClinicManagementApp.DAL;
 using ClinicManagementApp.Model;
 using System;
 using System.Collections.Generic;
-using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace ClinicManagementApp.UserControls
@@ -13,8 +11,8 @@ namespace ClinicManagementApp.UserControls
     /// </summary>
     public partial class PatientAppointmentListUserControl : UserControl
     {
-        private AppointmentController appointmentController;
-        private DoctorController doctorController;
+        private readonly AppointmentController _appointmentController;
+        private readonly DoctorController _doctorController;
 
         /// <summary>
         /// create constructors
@@ -22,8 +20,8 @@ namespace ClinicManagementApp.UserControls
         public PatientAppointmentListUserControl()
         {
             InitializeComponent();
-            this.appointmentController = new AppointmentController();
-            this.doctorController = new DoctorController();
+            this._appointmentController = new AppointmentController();
+            this._doctorController = new DoctorController();
             appointmentDateTimePicker.CustomFormat = "yyyy / MM / dd";
             this.SetTimeComboBox();
             this.showFutureRadioButton.Checked = true;
@@ -35,7 +33,7 @@ namespace ClinicManagementApp.UserControls
             if(Int32.TryParse(this.appointListComboBox.ValueMember, out int result))
             {
                 int appointmentID = Int32.Parse(this.appointListComboBox.ValueMember);
-                Appointment appointment = appointmentController.GetAppointmentByID(appointmentID);
+                Appointment appointment = _appointmentController.GetAppointmentByID(appointmentID);
                 string appointmentDay = appointment.AppointmentDatetime.ToString("yyyy-MM-dd");
 
                 this.UpdateTimeOptions(appointmentDay, appointment.DoctorID);
@@ -121,18 +119,18 @@ namespace ClinicManagementApp.UserControls
 
         private int GetFutureAppointmentCount()
         {
-            return this.appointmentController.GetAppointmentsByID_NowOn(int.Parse(patientIDTextBox.Text)).Count;
+            return this._appointmentController.GetAppointmentsByID_NowOn(int.Parse(patientIDTextBox.Text)).Count;
         }
 
         private int GetPastAppointmentCount()
         {
-            return this.appointmentController.GetAppointmentsByID_Past(int.Parse(patientIDTextBox.Text)).Count;
+            return this._appointmentController.GetAppointmentsByID_Past(int.Parse(patientIDTextBox.Text)).Count;
         }
 
         private void LoadFutureAppointmentComboBox()
         {
             appointListComboBox.DataSource = null;
-            appointListComboBox.DataSource = this.appointmentController.GetAppointmentsByID_NowOn(int.Parse(patientIDTextBox.Text));
+            appointListComboBox.DataSource = this._appointmentController.GetAppointmentsByID_NowOn(int.Parse(patientIDTextBox.Text));
             appointListComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             appointListComboBox.DisplayMember = "appointmentSummary";
             appointListComboBox.ValueMember = "appointmentID";
@@ -142,7 +140,7 @@ namespace ClinicManagementApp.UserControls
 
         private void LoadPastAppointmentComboBox()
         {
-            pastAppointmentComboBox.DataSource = this.appointmentController.GetAppointmentsByID_Past(int.Parse(patientIDTextBox.Text));
+            pastAppointmentComboBox.DataSource = this._appointmentController.GetAppointmentsByID_Past(int.Parse(patientIDTextBox.Text));
             pastAppointmentComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             pastAppointmentComboBox.DisplayMember = "appointmentSummary";
             pastAppointmentComboBox.ValueMember = "appointmentID";
@@ -187,7 +185,7 @@ namespace ClinicManagementApp.UserControls
         {
             if (theFutureAppointmentNumberTextBox.Text != "")
             {
-                Appointment appointmentDetail = this.appointmentController.GetAppointmentByID(int.Parse(theFutureAppointmentNumberTextBox.Text));
+                Appointment appointmentDetail = this._appointmentController.GetAppointmentByID(int.Parse(theFutureAppointmentNumberTextBox.Text));
 
                 this.doctorNameComboBox.Text = appointmentDetail.DoctorName.ToString();
                 this.reasonTextArea.Text = appointmentDetail.Reason.ToString();
@@ -200,7 +198,7 @@ namespace ClinicManagementApp.UserControls
         {
             if (pastAppointmentNumberTextBox.Text != "")
             {
-                Appointment appointmentDetail = this.appointmentController.GetAppointmentByID(int.Parse(pastAppointmentNumberTextBox.Text));
+                Appointment appointmentDetail = this._appointmentController.GetAppointmentByID(int.Parse(pastAppointmentNumberTextBox.Text));
 
                 pastAppointmentDoctorName.Text = appointmentDetail.DoctorName.ToString();
                 pastAppointmentDateTextBox.Text = appointmentDetail.AppointmentDatetime.ToShortDateString() + ' ' + appointmentDetail.AppointmentDatetime.ToString("HH:mm");
@@ -242,7 +240,7 @@ namespace ClinicManagementApp.UserControls
         {
             if(patientIDTextBox.Text != "" && this.appointListComboBox.Items.Count > 0)
             {
-                Appointment appointment = this.appointmentController.GetAppointmentByID(int.Parse(theFutureAppointmentNumberTextBox.Text));
+                Appointment appointment = this._appointmentController.GetAppointmentByID(int.Parse(theFutureAppointmentNumberTextBox.Text));
 
                 DateTime appointmentDate = appointment.AppointmentDatetime; 
                 DateTime currentDate = DateTime.Now;
@@ -275,9 +273,9 @@ namespace ClinicManagementApp.UserControls
         {
             try
             {
-                Appointment appointment = this.appointmentController.GetAppointmentByID(int.Parse(theFutureAppointmentNumberTextBox.Text));
+                Appointment appointment = this._appointmentController.GetAppointmentByID(int.Parse(theFutureAppointmentNumberTextBox.Text));
 
-                List<Doctor> doctors = this.doctorController.GetDoctors();
+                List<Doctor> doctors = this._doctorController.GetDoctors();
                 this.doctorNameComboBox.DataSource = doctors;
                 this.doctorNameComboBox.DisplayMember = "FullName";
                 this.doctorNameComboBox.ValueMember = "DoctorID";
@@ -297,7 +295,7 @@ namespace ClinicManagementApp.UserControls
         {
             this.newAppointmentComboBox.DataSource = null;
             this.newAppointmentComboBox.Items.Clear();
-            this.newAppointmentComboBox.DataSource = this.appointmentController.GetAppointmentTimeOptionsByDateAndDoctor(date, doctorID);
+            this.newAppointmentComboBox.DataSource = this._appointmentController.GetAppointmentTimeOptionsByDateAndDoctor(date, doctorID);
         }
 
         private void AppointmentDateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -346,7 +344,7 @@ namespace ClinicManagementApp.UserControls
             else if(DateTime.TryParse(date + " " + time, out appointmentDateTime))
             {
                 Appointment editedAppointment = new Appointment(appointmentID, 0, doctorID, appointmentDateTime, reason);
-                string successMessage = this.appointmentController.UpdateAppointment(editedAppointment);
+                string successMessage = this._appointmentController.UpdateAppointment(editedAppointment);
                 this.setFuturePatientAppointmentDetails();
                 this.LoadFutureAppointmentComboBox();
                 MessageBox.Show(successMessage);
