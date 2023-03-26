@@ -80,6 +80,7 @@
     <Compile Include="UserControls\UpdatePatientInformationUserControl.Designer.cs">
       <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
     </Compile>
+
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

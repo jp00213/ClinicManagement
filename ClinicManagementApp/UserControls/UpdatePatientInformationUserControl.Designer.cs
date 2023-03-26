@@ -64,8 +64,6 @@
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.updatePatientLabel = new System.Windows.Forms.Label();
             this.dateOfBirthLabel = new System.Windows.Forms.Label();
-            this.nurseNameLabel = new System.Windows.Forms.Label();
-            this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.clearButton = new System.Windows.Forms.Button();
             this.dateOfBirthResultsDateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lastNameErrorLabel = new System.Windows.Forms.Label();
@@ -407,27 +405,6 @@
             this.dateOfBirthLabel.TabIndex = 27;
             this.dateOfBirthLabel.Text = "DOB";
             // 
-            // nurseNameLabel
-            // 
-            this.nurseNameLabel.AutoSize = true;
-            this.nurseNameLabel.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nurseNameLabel.Location = new System.Drawing.Point(583, 18);
-            this.nurseNameLabel.Name = "nurseNameLabel";
-            this.nurseNameLabel.Size = new System.Drawing.Size(87, 19);
-            this.nurseNameLabel.TabIndex = 28;
-            this.nurseNameLabel.Text = "Nurse Name";
-            // 
-            // logoutLinkLabel
-            // 
-            this.logoutLinkLabel.AutoSize = true;
-            this.logoutLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutLinkLabel.Location = new System.Drawing.Point(684, 18);
-            this.logoutLinkLabel.Name = "logoutLinkLabel";
-            this.logoutLinkLabel.Size = new System.Drawing.Size(48, 16);
-            this.logoutLinkLabel.TabIndex = 29;
-            this.logoutLinkLabel.TabStop = true;
-            this.logoutLinkLabel.Text = "Logout";
-            // 
             // clearButton
             // 
             this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -528,8 +505,6 @@
             this.Controls.Add(this.lastNameErrorLabel);
             this.Controls.Add(this.dateOfBirthResultsDateTimePicker1);
             this.Controls.Add(this.clearButton);
-            this.Controls.Add(this.logoutLinkLabel);
-            this.Controls.Add(this.nurseNameLabel);
             this.Controls.Add(this.dateOfBirthLabel);
             this.Controls.Add(this.updatePatientLabel);
             this.Controls.Add(this.zipTextBox);
@@ -595,8 +570,6 @@
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.Label updatePatientLabel;
         private System.Windows.Forms.Label dateOfBirthLabel;
-        private System.Windows.Forms.Label nurseNameLabel;
-        private System.Windows.Forms.LinkLabel logoutLinkLabel;
         private System.Windows.Forms.BindingSource patientBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn patientIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
