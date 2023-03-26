@@ -441,6 +441,7 @@
             this.doctorComboBox.Name = "doctorComboBox";
             this.doctorComboBox.Size = new System.Drawing.Size(192, 26);
             this.doctorComboBox.TabIndex = 62;
+            this.doctorComboBox.SelectedIndexChanged += new System.EventHandler(this.DoctorComboBox_SelectedIndexChanged);
             this.doctorComboBox.SelectionChangeCommitted += new System.EventHandler(this.AppointmentDateTimePicker_ValueChanged);
             // 
             // messageLabel

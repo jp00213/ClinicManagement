@@ -59,7 +59,6 @@
     <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\PersonDAL.cs" />
     <Compile Include="Model\Appointment.cs" />
-    <Compile Include="Model\AppointmentWithDrName.cs" />
     <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\Person.cs" />
@@ -69,7 +68,6 @@
     <Compile Include="UserControls\CreateAppointmentUserControl.Designer.cs">
       <DependentUpon>CreateAppointmentUserControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UserControls\RegisterPatientUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -88,7 +86,7 @@
     </Compile>
     <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
-</Compile>
+    </Compile>
     <Compile Include="UserControls\PatientAppointmentListUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -112,7 +110,6 @@
     </Compile>
     <Compile Include="UserControls\SearchPatientUserControl.Designer.cs">
       <DependentUpon>SearchPatientUserControl.cs</DependentUpon>
-
     </Compile>
     <Compile Include="View\MainDashboard.cs">
       <SubType>Form</SubType>
@@ -134,7 +131,6 @@
     <EmbeddedResource Include="UserControls\CreateAppointmentUserControl.resx">
       <DependentUpon>CreateAppointmentUserControl.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="UserControls\RegisterPatientUserControl.resx">
       <DependentUpon>RegisterPatientUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,7 +151,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchPatientUserControl.resx">
       <DependentUpon>SearchPatientUserControl.cs</DependentUpon>
-
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
@@ -179,8 +174,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="DB\cs6232-g1_schema.sql" />
-    <Content Include="DB\SPGenerateAppointmentTimeList.sql" />
+    <Content Include="DB\cs6232-g1_scripts.sql" />
     <Content Include="Model\Temporary.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

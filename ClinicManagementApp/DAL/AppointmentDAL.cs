@@ -127,9 +127,9 @@ namespace ClinicManagementApp.DAL
         /// </summary>
         /// <param name="patientIDIn">patient ID</param>
         /// <returns>future appointment</returns>
-        public List<AppointmentWithDrName> GetAppointmentsByID_NowOn(int patientIDIn)
+        public List<Appointment> GetAppointmentsByID_NowOn(int patientIDIn)
         {
-            List<AppointmentWithDrName> appointments = new List<AppointmentWithDrName>();
+            List<Appointment> appointments = new List<Appointment>();
             string selectStatement =
                 "select d.doctorID, a.appointmentID, a.appointmentDatetime, " +
                 "a.reason, e.lastName as doctorLastName, " +
@@ -153,7 +153,7 @@ namespace ClinicManagementApp.DAL
                     {
                         while (reader.Read())
                         {
-                            AppointmentWithDrName appointment = new AppointmentWithDrName();
+                            Appointment appointment = new Appointment();
                             appointment.AppointmentID = (int)(reader)["appointmentID"];
                             appointment.DoctorID = (int)reader["doctorID"];
                             appointment.DoctorName = (string)(reader)["doctorLastName"];
@@ -173,9 +173,9 @@ namespace ClinicManagementApp.DAL
         /// </summary>
         /// <param name="patientIDIn">patient ID</param>
         /// <returns>past appointment</returns>
-        public List<AppointmentWithDrName> GetAppointmentsByID_Past(int patientIDIn)
+        public List<Appointment> GetAppointmentsByID_Past(int patientIDIn)
         {
-            List<AppointmentWithDrName> appointments = new List<AppointmentWithDrName>();
+            List<Appointment> appointments = new List<Appointment>();
             string selectStatement =
                 "select d. doctorID, a.appointmentID, a.appointmentDatetime, " +
                 "a.reason, e.lastName as doctorLastName, " +
@@ -198,7 +198,7 @@ namespace ClinicManagementApp.DAL
                     {
                         while (reader.Read())
                         {
-                            AppointmentWithDrName appointment = new AppointmentWithDrName();
+                            Appointment appointment = new Appointment();
                             appointment.AppointmentID = (int)(reader)["appointmentID"];
                             appointment.DoctorID = (int)reader["doctorID"];
                             appointment.DoctorName = (string)(reader)["doctorLastName"];
@@ -218,9 +218,9 @@ namespace ClinicManagementApp.DAL
         /// </summary>
         /// <param name="appointmentIDIn">appointment ID</param>
         /// <returns>appointment</returns>
-        public AppointmentWithDrName GetAppointmentByID(int appointmentIDIn)
+        public Appointment GetAppointmentByID(int appointmentIDIn)
         {
-            AppointmentWithDrName appointment = new AppointmentWithDrName();
+            Appointment appointment = new Appointment();
             string selectStatement =
                 "select d.doctorID, a.appointmentID, a.appointmentDatetime,   CONVERT(VARCHAR(5), a.appointmentDatetime, 108) as shortTime  , " +
                 "a.reason, e.lastName as doctorLastName  " +
@@ -252,6 +252,49 @@ namespace ClinicManagementApp.DAL
                 }
             }
             return appointment;
+        }
+
+        /// <summary>
+        /// Update Appointment details
+        /// </summary>
+        /// <returns>success message</returns>
+        /// <param name="appointment"> appointment object to be updated</param>
+        public string UpdateAppointment(Appointment appointment)
+        {
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string insertStatement =
+                "UPDATE appointment " +
+                "SET doctorID = @doctorID, appointmentDateTime = @time, " +
+                "reason = @reason " +
+                "WHERE appointmentID = @appointmentID ";
+
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+
+            insertCommand.Parameters.Add("@doctorID", System.Data.SqlDbType.Int);
+            insertCommand.Parameters["@doctorID"].Value = appointment.DoctorID;
+
+            insertCommand.Parameters.Add("@time", System.Data.SqlDbType.DateTime);
+            insertCommand.Parameters["@time"].Value = appointment.AppointmentDatetime;
+
+            insertCommand.Parameters.Add("@reason", System.Data.SqlDbType.VarChar);
+            insertCommand.Parameters["@reason"].Value = appointment.Reason;
+
+            insertCommand.Parameters.Add("@appointmentID", System.Data.SqlDbType.Int);
+            insertCommand.Parameters["@appointmentID"].Value = appointment.AppointmentID;
+
+            using (insertCommand)
+            {
+                connection.Open();
+                int rowsAffected = insertCommand.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    return "This appointment has been updated.";
+                }
+                else
+                {
+                    return "Appointment was not updated. Please try again.";
+                }
+            }
         }
     }
 }
