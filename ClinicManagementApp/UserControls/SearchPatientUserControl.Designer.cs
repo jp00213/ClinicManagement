@@ -106,7 +106,7 @@
             this.dobHeader});
             this.patientListView.FullRowSelect = true;
             this.patientListView.HideSelection = false;
-            this.patientListView.Location = new System.Drawing.Point(5, 70);
+            this.patientListView.Location = new System.Drawing.Point(16, 70);
             this.patientListView.Margin = new System.Windows.Forms.Padding(2);
             this.patientListView.Name = "patientListView";
             this.patientListView.Size = new System.Drawing.Size(519, 71);
@@ -141,7 +141,7 @@
             // clearButton
             // 
             this.clearButton.BackColor = System.Drawing.SystemColors.Control;
-            this.clearButton.Location = new System.Drawing.Point(474, 46);
+            this.clearButton.Location = new System.Drawing.Point(485, 45);
             this.clearButton.Margin = new System.Windows.Forms.Padding(2);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(50, 20);
@@ -153,7 +153,7 @@
             // patientSearchButton
             // 
             this.patientSearchButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.patientSearchButton.Location = new System.Drawing.Point(393, 46);
+            this.patientSearchButton.Location = new System.Drawing.Point(404, 45);
             this.patientSearchButton.Margin = new System.Windows.Forms.Padding(2);
             this.patientSearchButton.Name = "patientSearchButton";
             this.patientSearchButton.Size = new System.Drawing.Size(77, 20);
@@ -164,8 +164,8 @@
             // 
             // dobDateTimePicker
             // 
-            this.dobDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dobDateTimePicker.Location = new System.Drawing.Point(254, 46);
+            this.dobDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dobDateTimePicker.Location = new System.Drawing.Point(266, 46);
             this.dobDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.dobDateTimePicker.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
             this.dobDateTimePicker.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
@@ -176,7 +176,7 @@
             // 
             // lastNameTextBox
             // 
-            this.lastNameTextBox.Location = new System.Drawing.Point(130, 46);
+            this.lastNameTextBox.Location = new System.Drawing.Point(142, 45);
             this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(120, 20);
@@ -185,7 +185,7 @@
             // 
             // firstNameTextBox
             // 
-            this.firstNameTextBox.Location = new System.Drawing.Point(5, 46);
+            this.firstNameTextBox.Location = new System.Drawing.Point(17, 45);
             this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(121, 20);
@@ -196,7 +196,7 @@
             // 
             this.dobLabel.AutoSize = true;
             this.dobLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.dobLabel.Location = new System.Drawing.Point(263, 31);
+            this.dobLabel.Location = new System.Drawing.Point(248, 27);
             this.dobLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dobLabel.Name = "dobLabel";
             this.dobLabel.Size = new System.Drawing.Size(169, 17);
@@ -207,7 +207,7 @@
             // 
             this.lastNameLabel.AutoSize = true;
             this.lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.lastNameLabel.Location = new System.Drawing.Point(159, 31);
+            this.lastNameLabel.Location = new System.Drawing.Point(159, 26);
             this.lastNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(85, 17);
@@ -218,7 +218,7 @@
             // 
             this.firstNameLabel.AutoSize = true;
             this.firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.firstNameLabel.Location = new System.Drawing.Point(36, 31);
+            this.firstNameLabel.Location = new System.Drawing.Point(34, 27);
             this.firstNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(86, 17);
@@ -228,7 +228,7 @@
             // dobRadio
             // 
             this.dobRadio.AutoSize = true;
-            this.dobRadio.Location = new System.Drawing.Point(480, 12);
+            this.dobRadio.Location = new System.Drawing.Point(487, 8);
             this.dobRadio.Margin = new System.Windows.Forms.Padding(2);
             this.dobRadio.Name = "dobRadio";
             this.dobRadio.Size = new System.Drawing.Size(48, 17);
@@ -241,7 +241,7 @@
             // lastDOBRadio
             // 
             this.lastDOBRadio.AutoSize = true;
-            this.lastDOBRadio.Location = new System.Drawing.Point(353, 12);
+            this.lastDOBRadio.Location = new System.Drawing.Point(360, 8);
             this.lastDOBRadio.Margin = new System.Windows.Forms.Padding(2);
             this.lastDOBRadio.Name = "lastDOBRadio";
             this.lastDOBRadio.Size = new System.Drawing.Size(123, 17);
@@ -254,7 +254,7 @@
             // firstAndLastNameRadio
             // 
             this.firstAndLastNameRadio.AutoSize = true;
-            this.firstAndLastNameRadio.Location = new System.Drawing.Point(230, 12);
+            this.firstAndLastNameRadio.Location = new System.Drawing.Point(237, 8);
             this.firstAndLastNameRadio.Margin = new System.Windows.Forms.Padding(2);
             this.firstAndLastNameRadio.Name = "firstAndLastNameRadio";
             this.firstAndLastNameRadio.Size = new System.Drawing.Size(119, 17);
@@ -267,7 +267,7 @@
             // searchOptionaLabel
             // 
             this.searchOptionaLabel.AutoSize = true;
-            this.searchOptionaLabel.Location = new System.Drawing.Point(168, 12);
+            this.searchOptionaLabel.Location = new System.Drawing.Point(175, 10);
             this.searchOptionaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.searchOptionaLabel.Name = "searchOptionaLabel";
             this.searchOptionaLabel.Size = new System.Drawing.Size(58, 13);
@@ -278,7 +278,7 @@
             // 
             this.searchTitle.AutoSize = true;
             this.searchTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchTitle.Location = new System.Drawing.Point(13, 11);
+            this.searchTitle.Location = new System.Drawing.Point(13, 7);
             this.searchTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.searchTitle.Name = "searchTitle";
             this.searchTitle.Size = new System.Drawing.Size(172, 16);

@@ -262,6 +262,7 @@
             // 
             // appointListComboBox
             // 
+            this.appointListComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.appointListComboBox.DropDownWidth = 223;
             this.appointListComboBox.FormattingEnabled = true;
             this.appointListComboBox.Location = new System.Drawing.Point(120, 28);
@@ -426,6 +427,7 @@
             // 
             // pastAppointmentComboBox
             // 
+            this.pastAppointmentComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.pastAppointmentComboBox.DropDownWidth = 223;
             this.pastAppointmentComboBox.FormattingEnabled = true;
             this.pastAppointmentComboBox.Location = new System.Drawing.Point(120, 40);
