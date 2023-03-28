@@ -46,13 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\NurseController.cs" />
     <Compile Include="Controller\AppointmentController.cs" />
+    <Compile Include="Controller\AccountController.cs" />
     <Compile Include="Controller\DoctorController.cs" />
     <Compile Include="Controller\PatientController.cs" />
+    <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\AppointmentDAL.cs" />
     <Compile Include="DAL\ClinicManagementDBConnection.cs" />
+    <Compile Include="DAL\AccountDAL.cs" />
     <Compile Include="DAL\DoctorDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
+    <Compile Include="DAL\PersonDAL.cs" />
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\Patient.cs" />
@@ -62,6 +67,49 @@
     </Compile>
     <Compile Include="UserControls\CreateAppointmentUserControl.Designer.cs">
       <DependentUpon>CreateAppointmentUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RegisterPatientUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RegisterPatientUserControl.Designer.cs">
+      <DependentUpon>RegisterPatientUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UpdatePatientInformationUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UpdatePatientInformationUserControl.Designer.cs">
+      <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
+    </Compile>
+
+    <Compile Include="View\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PatientAppointmentListUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PatientAppointmentListUserControl.Designer.cs">
+      <DependentUpon>PatientAppointmentListUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PatientDisplayInfoUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PatientDisplayInfoUserControl.Designer.cs">
+      <DependentUpon>PatientDisplayInfoUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PatientVisitListUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PatientVisitListUserControl.Designer.cs">
+      <DependentUpon>PatientVisitListUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SearchPatientUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SearchPatientUserControl.Designer.cs">
+      <DependentUpon>SearchPatientUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MainDashboard.cs">
       <SubType>Form</SubType>
@@ -82,6 +130,27 @@
     </Compile>
     <EmbeddedResource Include="UserControls\CreateAppointmentUserControl.resx">
       <DependentUpon>CreateAppointmentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\RegisterPatientUserControl.resx">
+      <DependentUpon>RegisterPatientUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UpdatePatientInformationUserControl.resx">
+      <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PatientAppointmentListUserControl.resx">
+      <DependentUpon>PatientAppointmentListUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PatientDisplayInfoUserControl.resx">
+      <DependentUpon>PatientDisplayInfoUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PatientVisitListUserControl.resx">
+      <DependentUpon>PatientVisitListUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SearchPatientUserControl.resx">
+      <DependentUpon>SearchPatientUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
@@ -105,8 +174,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="DB\cs6232-g1_schema.sql" />
-    <Content Include="DB\SPGenerateAppointmentTimeList.sql" />
+    <Content Include="DB\cs6232-g1_scripts.sql" />
     <Content Include="Model\Temporary.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

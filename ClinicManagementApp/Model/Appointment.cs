@@ -12,6 +12,10 @@ namespace ClinicManagementApp.Model
         public int DoctorID { get; set; }
         public DateTime AppointmentDatetime { get; set; }
         public string Reason { get; set; }
+        public string DoctorName { get; set; }
+        public string AppointmentSummary { get; set; }
+
+        public string TimeInString { get; set; }
 
         /// <summary>
         /// Appointment constructor.

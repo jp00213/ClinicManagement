@@ -122,5 +122,179 @@ namespace ClinicManagementApp.DAL
             }
         }
 
+        /// <summary>
+        /// Get future Appointment by ID
+        /// </summary>
+        /// <param name="patientIDIn">patient ID</param>
+        /// <returns>future appointment</returns>
+        public List<Appointment> GetAppointmentsByID_NowOn(int patientIDIn)
+        {
+            List<Appointment> appointments = new List<Appointment>();
+            string selectStatement =
+                "select d.doctorID, a.appointmentID, a.appointmentDatetime, " +
+                "a.reason, e.lastName as doctorLastName, " +
+                "CONVERT(VARCHAR, a.appointmentDatetime, 22)  + ' - ' + 'Dr.' + ' ' + e.lastName as appointmentSummary, " +
+                "e.lastName as appointmentSummary  " +
+                "from appointment a, doctor d, person e " +
+                "where a.doctorID = d.doctorID " +
+                "and d.recordID = e.recordID " +
+                "and a.appointmentDatetime >= getDate() " +
+                "and a.patientID = @patientID " +
+                "order by a.appointmentID ";
+
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@patientID", patientIDIn);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Appointment appointment = new Appointment();
+                            appointment.AppointmentID = (int)(reader)["appointmentID"];
+                            appointment.DoctorID = (int)reader["doctorID"];
+                            appointment.DoctorName = (string)(reader)["doctorLastName"];
+                            appointment.AppointmentDatetime = (DateTime)reader["appointmentDatetime"];
+                            appointment.Reason = (string)(reader)["reason"];
+                            appointment.AppointmentSummary = (string)(reader)["appointmentSummary"];
+                            appointments.Add(appointment);
+                        }
+                    }
+                }
+            }
+            return appointments;
+        }
+
+        /// <summary>
+        /// Get past appointment by ID
+        /// </summary>
+        /// <param name="patientIDIn">patient ID</param>
+        /// <returns>past appointment</returns>
+        public List<Appointment> GetAppointmentsByID_Past(int patientIDIn)
+        {
+            List<Appointment> appointments = new List<Appointment>();
+            string selectStatement =
+                "select d. doctorID, a.appointmentID, a.appointmentDatetime, " +
+                "a.reason, e.lastName as doctorLastName, " +
+                "CONVERT(VARCHAR, a.appointmentDatetime, 22)  + ' - ' + 'Dr.' + ' ' + e.lastName as appointmentSummary " +
+                "from appointment a, doctor d, person e " +
+                "where a.doctorID = d.doctorID " +
+                "and d.recordID = e.recordID " +
+                "and a.appointmentDatetime < getDate() " +
+                "and a.patientID = @patientID " +
+                "order by a.appointmentID desc ";
+
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@patientID", patientIDIn);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Appointment appointment = new Appointment();
+                            appointment.AppointmentID = (int)(reader)["appointmentID"];
+                            appointment.DoctorID = (int)reader["doctorID"];
+                            appointment.DoctorName = (string)(reader)["doctorLastName"];
+                            appointment.AppointmentDatetime = (DateTime)reader["appointmentDatetime"];
+                            appointment.Reason = (string)(reader)["reason"];
+                            appointment.AppointmentSummary = (string)(reader)["appointmentSummary"];
+                            appointments.Add(appointment);
+                        }
+                    }
+                }
+            }
+            return appointments;
+        }
+
+        /// <summary>
+        /// Get Appointment by appointment ID
+        /// </summary>
+        /// <param name="appointmentIDIn">appointment ID</param>
+        /// <returns>appointment</returns>
+        public Appointment GetAppointmentByID(int appointmentIDIn)
+        {
+            Appointment appointment = new Appointment();
+            string selectStatement =
+                "select d.doctorID, a.appointmentID, a.appointmentDatetime,   CONVERT(VARCHAR(5), a.appointmentDatetime, 108) as shortTime  , " +
+                "a.reason, e.lastName as doctorLastName  " +
+                "from appointment a,  doctor d, person e " +
+                "where a.doctorID = d.doctorID " +
+                "and d.recordID = e.recordID " +
+                "and a.appointmentID = @appointmentIDIn " +
+                "order by a.appointmentID ";
+
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@appointmentIDIn", appointmentIDIn);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            appointment.AppointmentID = (int)(reader)["appointmentID"];
+                            appointment.DoctorID = (int)reader["doctorID"];
+                            appointment.DoctorName = (string)(reader)["doctorLastName"];
+                            appointment.AppointmentDatetime = (DateTime)reader["appointmentDatetime"];
+                            appointment.Reason = (string)(reader)["reason"];
+                            appointment.TimeInString = (string)(reader)["shortTime"];
+                        }
+                    }
+                }
+            }
+            return appointment;
+        }
+
+        /// <summary>
+        /// Update Appointment details
+        /// </summary>
+        /// <returns>success message</returns>
+        /// <param name="appointment"> appointment object to be updated</param>
+        public string UpdateAppointment(Appointment appointment)
+        {
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string insertStatement =
+                "UPDATE appointment " +
+                "SET doctorID = @doctorID, appointmentDateTime = @time, " +
+                "reason = @reason " +
+                "WHERE appointmentID = @appointmentID ";
+
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+
+            insertCommand.Parameters.Add("@doctorID", System.Data.SqlDbType.Int);
+            insertCommand.Parameters["@doctorID"].Value = appointment.DoctorID;
+
+            insertCommand.Parameters.Add("@time", System.Data.SqlDbType.DateTime);
+            insertCommand.Parameters["@time"].Value = appointment.AppointmentDatetime;
+
+            insertCommand.Parameters.Add("@reason", System.Data.SqlDbType.VarChar);
+            insertCommand.Parameters["@reason"].Value = appointment.Reason;
+
+            insertCommand.Parameters.Add("@appointmentID", System.Data.SqlDbType.Int);
+            insertCommand.Parameters["@appointmentID"].Value = appointment.AppointmentID;
+
+            using (insertCommand)
+            {
+                connection.Open();
+                int rowsAffected = insertCommand.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    return "This appointment has been updated.";
+                }
+                else
+                {
+                    return "Appointment was not updated. Please try again.";
+                }
+            }
+        }
     }
 }
