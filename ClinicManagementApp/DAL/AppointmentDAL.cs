@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 
 namespace ClinicManagementApp.DAL
 {
@@ -11,6 +10,12 @@ namespace ClinicManagementApp.DAL
     /// </summary>
     public class AppointmentDAL
     {
+        private readonly List<TimeSpan> _fifteenMinuteTimeOptions;
+
+        public AppointmentDAL()
+        {
+            this._fifteenMinuteTimeOptions = this.GenerateAppointmentTimeList();
+        }
         /// <summary>
         /// Get all the appointment time optoins from the database source.
         /// </summary>
@@ -48,8 +53,8 @@ namespace ClinicManagementApp.DAL
         /// <param name="doctorID"> id of doctor</param>
         public List<TimeSpan> GetAppointmentTimeOptionsByDateAndDoctor(string date, int doctorID)
         {
-            
-            List<TimeSpan> timeOptions = this.GenerateAppointmentTimeList();
+
+            List<TimeSpan> timeOptions = new List<TimeSpan>(this._fifteenMinuteTimeOptions);
             TimeSpan time = TimeSpan.Zero;
 
             SqlConnection connection = ClinicManagementDBConnection.GetConnection();
