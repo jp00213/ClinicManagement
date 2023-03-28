@@ -306,16 +306,19 @@
             // 
             this.dobDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dobDateTimePicker.Location = new System.Drawing.Point(469, 46);
+            this.dobDateTimePicker.MaxDate = new System.DateTime(2023, 3, 28, 0, 0, 0, 0);
             this.dobDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dobDateTimePicker.Name = "dobDateTimePicker";
             this.dobDateTimePicker.Size = new System.Drawing.Size(122, 24);
             this.dobDateTimePicker.TabIndex = 38;
+            this.dobDateTimePicker.Value = new System.DateTime(2023, 3, 28, 0, 0, 0, 0);
             // 
             // patientDataGridView
             // 
             this.patientDataGridView.AllowUserToAddRows = false;
             this.patientDataGridView.AllowUserToDeleteRows = false;
             this.patientDataGridView.AutoGenerateColumns = false;
+            this.patientDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.patientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.patientDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.patientIDDataGridViewTextBoxColumn,
