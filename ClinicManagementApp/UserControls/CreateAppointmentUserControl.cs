@@ -21,6 +21,7 @@ namespace ClinicManagementApp.UserControls
             this.patient = null;
             this.ResetDoctors();
             this.appointmentDateTimePicker.MinDate = DateTime.Today;
+            this.dobDateTimePicker.MaxDate = DateTime.Today;    
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -105,13 +106,13 @@ namespace ClinicManagementApp.UserControls
         {
             this.fNameTextBox.Text = "";
             this.lNameTextBox.Text = "";
-            this.appointmentDateTimePicker.Value = DateTime.Now;
-            this.dobDateTimePicker.Value = DateTime.Now;
+            this.appointmentDateTimePicker.Value = DateTime.Today;
+            this.dobDateTimePicker.Value = DateTime.Today;
             this.SearchButton_Click(null, null);
-            this.dateOfBirthDateTimePicker.Value = DateTime.Now;
+            this.dateOfBirthDateTimePicker.Value = DateTime.Today;
 
             this.patient = null;
-            this.patientBindingSource.DataSource = this._patientController.GetPatientByNameDOB("", "", DateTime.Now);
+            this.patientBindingSource.DataSource = this._patientController.GetPatientByNameDOB("", "", DateTime.Today);
             this.reasonTextBox.Text = "";
             this.saveButton.Enabled = false;
             this.ResetDoctors();
