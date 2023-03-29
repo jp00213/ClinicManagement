@@ -20,8 +20,6 @@ namespace ClinicManagementApp.UserControls
             this._patientController= new PatientController();
         }
 
-
-
         /// <summary>
         /// Clears all textboxes on page
         /// </summary>
@@ -33,7 +31,7 @@ namespace ClinicManagementApp.UserControls
             phoneTextBox.Clear();
             addressTextBox.Clear();
             cityTextBox.Clear();
-            stateTextBox.Clear();
+            stateComboBox.SelectedItem = null;
             zipTextBox.Clear();
         }
         private void clearButton_Click(object sender, EventArgs e)
@@ -50,7 +48,7 @@ namespace ClinicManagementApp.UserControls
             string phone = this.phoneTextBox.Text.Trim();
             string address = this.addressTextBox.Text.Trim();
             string city = this.cityTextBox.Text.Trim();
-            string state = this.stateTextBox.Text.ToUpper().Trim();
+            string state = this.stateComboBox.Text;
             string zip = this.zipTextBox.Text.Trim();
 
             if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || dateOfBirth > DateTime.Now || string.IsNullOrEmpty(address) || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || state.Length != 2 || !IsValidZipCode(zip) || !IsPhoneNumberValid(phone))
@@ -100,9 +98,9 @@ namespace ClinicManagementApp.UserControls
                 this.cityErrorMessageLabel.ForeColor = Color.Red;
             }
 
-            if (string.IsNullOrEmpty(stateTextBox.Text) || string.IsNullOrWhiteSpace(stateTextBox.Text) || stateTextBox.Text.Length != 2)
+            if (string.IsNullOrEmpty(stateComboBox.Text))
             {
-                this.stateErrorMessageLabel.Text = "Please enter your state abbreviation.";
+                this.stateErrorMessageLabel.Text = "Please select your state abbreviation.";
                 this.stateErrorMessageLabel.ForeColor = Color.Red;
             }
 

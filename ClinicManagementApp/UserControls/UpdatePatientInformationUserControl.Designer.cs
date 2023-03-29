@@ -39,11 +39,6 @@
             this.dateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.searchButton = new System.Windows.Forms.Button();
             this.patientSearchDataGridView = new System.Windows.Forms.DataGridView();
-            this.patientIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patientIDLabel = new System.Windows.Forms.Label();
             this.lastNameResultsLabel = new System.Windows.Forms.Label();
             this.firstNameResultsLabel = new System.Windows.Forms.Label();
@@ -60,7 +55,6 @@
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.addressTextBox = new System.Windows.Forms.TextBox();
             this.cityTextBox = new System.Windows.Forms.TextBox();
-            this.stateTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.updatePatientLabel = new System.Windows.Forms.Label();
             this.dateOfBirthLabel = new System.Windows.Forms.Label();
@@ -74,6 +68,12 @@
             this.stateErrorLabel = new System.Windows.Forms.Label();
             this.zipErrorLabel = new System.Windows.Forms.Label();
             this.DOBErrorLabel = new System.Windows.Forms.Label();
+            this.stateComboBox = new System.Windows.Forms.ComboBox();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.patientSearchDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -84,7 +84,7 @@
             this.firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.firstNameLabel.Location = new System.Drawing.Point(52, 76);
             this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(82, 16);
+            this.firstNameLabel.Size = new System.Drawing.Size(85, 16);
             this.firstNameLabel.TabIndex = 0;
             this.firstNameLabel.Text = "First Name";
             // 
@@ -101,7 +101,7 @@
             this.lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lastNameLabel.Location = new System.Drawing.Point(232, 76);
             this.lastNameLabel.Name = "lastNameLabel";
-            this.lastNameLabel.Size = new System.Drawing.Size(81, 16);
+            this.lastNameLabel.Size = new System.Drawing.Size(84, 16);
             this.lastNameLabel.TabIndex = 2;
             this.lastNameLabel.Text = "Last Name";
             // 
@@ -175,42 +175,6 @@
             this.patientSearchDataGridView.Size = new System.Drawing.Size(558, 150);
             this.patientSearchDataGridView.TabIndex = 6;
             this.patientSearchDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PatientSearchDataGridView_CellClick);
-            // 
-            // patientIDDataGridViewTextBoxColumn
-            // 
-            this.patientIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.patientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID";
-            this.patientIDDataGridViewTextBoxColumn.HeaderText = "PatientID";
-            this.patientIDDataGridViewTextBoxColumn.Name = "patientIDDataGridViewTextBoxColumn";
-            this.patientIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateOfBirthDataGridViewTextBoxColumn
-            // 
-            this.dateOfBirthDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
-            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "DateOfBirth";
-            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
-            this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(ClinicManagementApp.Model.Patient);
             // 
             // patientIDLabel
             // 
@@ -367,15 +331,6 @@
             this.cityTextBox.TabIndex = 23;
             this.cityTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
-            // stateTextBox
-            // 
-            this.stateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "State", true));
-            this.stateTextBox.Location = new System.Drawing.Point(478, 408);
-            this.stateTextBox.Name = "stateTextBox";
-            this.stateTextBox.Size = new System.Drawing.Size(192, 20);
-            this.stateTextBox.TabIndex = 24;
-            this.stateTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
-            // 
             // zipTextBox
             // 
             this.zipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "Zip", true));
@@ -401,7 +356,7 @@
             this.dateOfBirthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateOfBirthLabel.Location = new System.Drawing.Point(445, 75);
             this.dateOfBirthLabel.Name = "dateOfBirthLabel";
-            this.dateOfBirthLabel.Size = new System.Drawing.Size(39, 16);
+            this.dateOfBirthLabel.Size = new System.Drawing.Size(42, 16);
             this.dateOfBirthLabel.TabIndex = 27;
             this.dateOfBirthLabel.Text = "DOB";
             // 
@@ -492,9 +447,106 @@
             this.DOBErrorLabel.TabIndex = 39;
             this.DOBErrorLabel.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
+            // stateComboBox
+            // 
+            this.stateComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "State", true));
+            this.stateComboBox.FormattingEnabled = true;
+            this.stateComboBox.Items.AddRange(new object[] {
+            "AL",
+            "AK",
+            "AZ",
+            "AR",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "FL",
+            "GA",
+            "HI",
+            "ID",
+            "IL",
+            "IN",
+            "IA",
+            "KS",
+            "KY",
+            "LA",
+            "ME",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
+            "MT",
+            "NE",
+            "NV",
+            "NH",
+            "NJ",
+            "NM",
+            "NY",
+            "NC",
+            "ND",
+            "OH",
+            "OK",
+            "OR",
+            "PA",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VT",
+            "VA",
+            "WA",
+            "WV",
+            "WI",
+            "WY"});
+            this.stateComboBox.Location = new System.Drawing.Point(478, 411);
+            this.stateComboBox.Name = "stateComboBox";
+            this.stateComboBox.Size = new System.Drawing.Size(192, 21);
+            this.stateComboBox.TabIndex = 40;
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(ClinicManagementApp.Model.Patient);
+            // 
+            // patientIDDataGridViewTextBoxColumn
+            // 
+            this.patientIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.patientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID";
+            this.patientIDDataGridViewTextBoxColumn.HeaderText = "PatientID";
+            this.patientIDDataGridViewTextBoxColumn.Name = "patientIDDataGridViewTextBoxColumn";
+            this.patientIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateOfBirthDataGridViewTextBoxColumn
+            // 
+            this.dateOfBirthDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
+            this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // UpdatePatientInformationUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.stateComboBox);
             this.Controls.Add(this.DOBErrorLabel);
             this.Controls.Add(this.zipErrorLabel);
             this.Controls.Add(this.stateErrorLabel);
@@ -508,7 +560,6 @@
             this.Controls.Add(this.dateOfBirthLabel);
             this.Controls.Add(this.updatePatientLabel);
             this.Controls.Add(this.zipTextBox);
-            this.Controls.Add(this.stateTextBox);
             this.Controls.Add(this.cityTextBox);
             this.Controls.Add(this.addressTextBox);
             this.Controls.Add(this.phoneTextBox);
@@ -566,7 +617,6 @@
         private System.Windows.Forms.TextBox phoneTextBox;
         private System.Windows.Forms.TextBox addressTextBox;
         private System.Windows.Forms.TextBox cityTextBox;
-        private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.Label updatePatientLabel;
         private System.Windows.Forms.Label dateOfBirthLabel;
@@ -585,5 +635,6 @@
         private System.Windows.Forms.Label stateErrorLabel;
         private System.Windows.Forms.Label zipErrorLabel;
         private System.Windows.Forms.Label DOBErrorLabel;
+        private System.Windows.Forms.ComboBox stateComboBox;
     }
 }

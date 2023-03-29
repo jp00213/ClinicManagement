@@ -80,7 +80,6 @@
     <Compile Include="UserControls\UpdatePatientInformationUserControl.Designer.cs">
       <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +154,7 @@
     <EmbeddedResource Include="View\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\ClinicManagementApp.Controller.PatientController.datasource" />
     <None Include="Properties\DataSources\ClinicManagementApp.Model.Appointment.datasource" />
     <None Include="Properties\DataSources\ClinicManagementApp.Model.Doctor.datasource" />
     <None Include="Properties\DataSources\ClinicManagementApp.Model.Patient.datasource" />
