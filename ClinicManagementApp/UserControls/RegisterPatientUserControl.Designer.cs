@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.clearButton = new System.Windows.Forms.Button();
             this.addPatientButton = new System.Windows.Forms.Button();
             this.patientInformationLabel = new System.Windows.Forms.Label();
@@ -44,7 +45,6 @@
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.addressTextBox = new System.Windows.Forms.TextBox();
             this.cityTextBox = new System.Windows.Forms.TextBox();
-            this.stateTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.lastNameErrorMessageLabel = new System.Windows.Forms.Label();
             this.dateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -55,6 +55,9 @@
             this.stateErrorMessageLabel = new System.Windows.Forms.Label();
             this.zipErrorMessageLabel = new System.Windows.Forms.Label();
             this.DOBErrorLabel = new System.Windows.Forms.Label();
+            this.stateComboBox = new System.Windows.Forms.ComboBox();
+            this.patientControllerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.patientControllerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // clearButton
@@ -210,14 +213,6 @@
             this.cityTextBox.TabIndex = 16;
             this.cityTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
-            // stateTextBox
-            // 
-            this.stateTextBox.Location = new System.Drawing.Point(495, 199);
-            this.stateTextBox.Name = "stateTextBox";
-            this.stateTextBox.Size = new System.Drawing.Size(227, 20);
-            this.stateTextBox.TabIndex = 17;
-            this.stateTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
-            // 
             // zipTextBox
             // 
             this.zipTextBox.Location = new System.Drawing.Point(495, 251);
@@ -310,9 +305,73 @@
             this.DOBErrorLabel.Size = new System.Drawing.Size(0, 15);
             this.DOBErrorLabel.TabIndex = 29;
             // 
+            // stateComboBox
+            // 
+            this.stateComboBox.FormattingEnabled = true;
+            this.stateComboBox.Items.AddRange(new object[] {
+            "AL",
+            "AK",
+            "AZ",
+            "AR",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "FL",
+            "GA",
+            "HI",
+            "ID",
+            "IL",
+            "IN",
+            "IA",
+            "KS",
+            "KY",
+            "LA",
+            "ME",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
+            "MT",
+            "NE",
+            "NV",
+            "NH",
+            "NJ",
+            "NM",
+            "NY",
+            "NC",
+            "ND",
+            "OH",
+            "OK",
+            "OR",
+            "PA",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VT",
+            "VA",
+            "WA",
+            "WV",
+            "WI",
+            "WY"});
+            this.stateComboBox.Location = new System.Drawing.Point(495, 202);
+            this.stateComboBox.Name = "stateComboBox";
+            this.stateComboBox.Size = new System.Drawing.Size(227, 21);
+            this.stateComboBox.TabIndex = 30;
+            // 
+            // patientControllerBindingSource
+            // 
+            this.patientControllerBindingSource.DataSource = typeof(ClinicManagementApp.Controller.PatientController);
+            // 
             // RegisterPatientUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.stateComboBox);
             this.Controls.Add(this.DOBErrorLabel);
             this.Controls.Add(this.zipErrorMessageLabel);
             this.Controls.Add(this.stateErrorMessageLabel);
@@ -323,7 +382,6 @@
             this.Controls.Add(this.dateOfBirthDateTimePicker);
             this.Controls.Add(this.lastNameErrorMessageLabel);
             this.Controls.Add(this.zipTextBox);
-            this.Controls.Add(this.stateTextBox);
             this.Controls.Add(this.cityTextBox);
             this.Controls.Add(this.addressTextBox);
             this.Controls.Add(this.phoneTextBox);
@@ -342,6 +400,7 @@
             this.Controls.Add(this.clearButton);
             this.Name = "RegisterPatientUserControl";
             this.Size = new System.Drawing.Size(804, 499);
+            ((System.ComponentModel.ISupportInitialize)(this.patientControllerBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,7 +424,6 @@
         private System.Windows.Forms.TextBox phoneTextBox;
         private System.Windows.Forms.TextBox addressTextBox;
         private System.Windows.Forms.TextBox cityTextBox;
-        private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.Label lastNameErrorMessageLabel;
         private System.Windows.Forms.DateTimePicker dateOfBirthDateTimePicker;
@@ -376,5 +434,7 @@
         private System.Windows.Forms.Label stateErrorMessageLabel;
         private System.Windows.Forms.Label zipErrorMessageLabel;
         private System.Windows.Forms.Label DOBErrorLabel;
+        private System.Windows.Forms.ComboBox stateComboBox;
+        private System.Windows.Forms.BindingSource patientControllerBindingSource;
     }
 }
