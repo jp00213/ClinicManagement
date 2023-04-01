@@ -12,6 +12,9 @@ namespace ClinicManagementApp.DAL
     {
         private readonly List<TimeSpan> _fifteenMinuteTimeOptions;
 
+        /// <summary>
+        /// Constructor for AppointmentDAL
+        /// </summary>
         public AppointmentDAL()
         {
             this._fifteenMinuteTimeOptions = this.GenerateAppointmentTimeList();

@@ -4,10 +4,16 @@ using System.Windows.Forms;
 
 namespace ClinicManagementApp.View
 {
+    /// <summary>
+    /// Login Form for application
+    /// </summary>
     public partial class LoginForm : Form
     {
         private readonly AccountController _accountController;
 
+        /// <summary>
+        /// Constructor for the Login Form
+        /// </summary>
         public LoginForm()
         {
             InitializeComponent();

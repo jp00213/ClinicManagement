@@ -4,10 +4,17 @@ using System.Windows.Forms;
 
 namespace ClinicManagementApp
 {
+    /// <summary>
+    /// Main Dashboard for Nurses
+    /// </summary>
     public partial class MainDashboard : Form
     {
         private readonly NurseController _nurseController;
 
+        /// <summary>
+        /// Constructor for the Main Dashboard for Nurses
+        /// </summary>
+        /// <param name="username"></param>
         public MainDashboard(string username)
         {
             InitializeComponent();
@@ -76,9 +83,5 @@ namespace ClinicManagementApp
 
         }
 
-
     }
-
-
-    
 }

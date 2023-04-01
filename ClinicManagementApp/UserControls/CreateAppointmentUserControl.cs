@@ -6,12 +6,19 @@ using System.Windows.Forms;
 
 namespace ClinicManagementApp.UserControls
 {
+    /// <summary>
+    /// Create Appointment User Control
+    /// </summary>
     public partial class CreateAppointmentUserControl : UserControl
     {
         private readonly PatientController _patientController;
         private readonly AppointmentController _appointmentController;
         private readonly DoctorController _doctorController;
         private Patient patient;
+
+        /// <summary>
+        /// Constructor for create appointment user control
+        /// </summary>
         public CreateAppointmentUserControl()
         {
             InitializeComponent();
