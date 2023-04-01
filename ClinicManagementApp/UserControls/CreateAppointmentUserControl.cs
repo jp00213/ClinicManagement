@@ -134,15 +134,22 @@ namespace ClinicManagementApp.UserControls
         private void ResetDoctors()
         {
             try 
-            { 
+            {
+                int doctorID = -1;
                 this.doctorComboBox.DataSource = this._doctorController.GetDoctors();
                 this.doctorComboBox.DisplayMember = "FullName";
                 this.doctorComboBox.ValueMember = "DoctorID";
                 string date = this.appointmentDateTimePicker.Value.ToString("yyyy-MM-dd");
-                int doctorID = (int)this.doctorComboBox.SelectedValue;
+                if (this._doctorController.GetDoctors().Count > 0)
+                {
+                    doctorID = (int)this.doctorComboBox.SelectedValue;
+                } else
+                {
+                    MessageBox.Show("No doctors available for appointments");
+                }
                 this.UpdateTimeOptions(date, doctorID);
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
                 MessageBox.Show("No doctors available for appointments");
             }
