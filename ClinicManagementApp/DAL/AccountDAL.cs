@@ -32,7 +32,8 @@ namespace ClinicManagementApp.DAL
                 "SELECT Count(*) " +
                 "FROM Account " +
                 "JOIN Nurse ON Account.Username = Nurse.Username " +
-                "WHERE Account.Username = @Username AND Account.Password = @Password";
+                "WHERE Account.Username = @Username AND Account.Password = @Password " +
+                "AND Nurse.activeStatus = 1";
 
             using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
             {
