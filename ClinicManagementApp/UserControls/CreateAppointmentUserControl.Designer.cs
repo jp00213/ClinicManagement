@@ -53,6 +53,11 @@
             this.reasonTextBox = new System.Windows.Forms.TextBox();
             this.dobDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.patientDataGridView = new System.Windows.Forms.DataGridView();
+            this.patientIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.appointmentDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.addressStreetTextBox = new System.Windows.Forms.TextBox();
             this.cityTextBox = new System.Windows.Forms.TextBox();
@@ -66,11 +71,6 @@
             this.timeComboBox = new System.Windows.Forms.ComboBox();
             this.doctorComboBox = new System.Windows.Forms.ComboBox();
             this.messageLabel = new System.Windows.Forms.Label();
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.patientIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             addressStreetLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
@@ -91,7 +91,7 @@
             addressStreetLabel.AutoSize = true;
             addressStreetLabel.Location = new System.Drawing.Point(426, 214);
             addressStreetLabel.Name = "addressStreetLabel";
-            addressStreetLabel.Size = new System.Drawing.Size(109, 18);
+            addressStreetLabel.Size = new System.Drawing.Size(138, 24);
             addressStreetLabel.TabIndex = 41;
             addressStreetLabel.Text = "Address Street:";
             // 
@@ -100,7 +100,7 @@
             cityLabel.AutoSize = true;
             cityLabel.Location = new System.Drawing.Point(426, 244);
             cityLabel.Name = "cityLabel";
-            cityLabel.Size = new System.Drawing.Size(37, 18);
+            cityLabel.Size = new System.Drawing.Size(45, 24);
             cityLabel.TabIndex = 43;
             cityLabel.Text = "City:";
             // 
@@ -109,7 +109,7 @@
             dateOfBirthLabel.AutoSize = true;
             dateOfBirthLabel.Location = new System.Drawing.Point(71, 308);
             dateOfBirthLabel.Name = "dateOfBirthLabel";
-            dateOfBirthLabel.Size = new System.Drawing.Size(97, 18);
+            dateOfBirthLabel.Size = new System.Drawing.Size(119, 24);
             dateOfBirthLabel.TabIndex = 45;
             dateOfBirthLabel.Text = "Date Of Birth:";
             // 
@@ -118,7 +118,7 @@
             firstNameLabel.AutoSize = true;
             firstNameLabel.Location = new System.Drawing.Point(71, 271);
             firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new System.Drawing.Size(85, 18);
+            firstNameLabel.Size = new System.Drawing.Size(106, 24);
             firstNameLabel.TabIndex = 47;
             firstNameLabel.Text = "First Name:";
             // 
@@ -127,7 +127,7 @@
             lastNameLabel.AutoSize = true;
             lastNameLabel.Location = new System.Drawing.Point(71, 241);
             lastNameLabel.Name = "lastNameLabel";
-            lastNameLabel.Size = new System.Drawing.Size(84, 18);
+            lastNameLabel.Size = new System.Drawing.Size(104, 24);
             lastNameLabel.TabIndex = 49;
             lastNameLabel.Text = "Last Name:";
             // 
@@ -136,7 +136,7 @@
             patientIDLabel.AutoSize = true;
             patientIDLabel.Location = new System.Drawing.Point(71, 211);
             patientIDLabel.Name = "patientIDLabel";
-            patientIDLabel.Size = new System.Drawing.Size(75, 18);
+            patientIDLabel.Size = new System.Drawing.Size(93, 24);
             patientIDLabel.TabIndex = 51;
             patientIDLabel.Text = "Patient ID:";
             // 
@@ -145,7 +145,7 @@
             phoneLabel.AutoSize = true;
             phoneLabel.Location = new System.Drawing.Point(71, 337);
             phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new System.Drawing.Size(55, 18);
+            phoneLabel.Size = new System.Drawing.Size(71, 24);
             phoneLabel.TabIndex = 53;
             phoneLabel.Text = "Phone:";
             // 
@@ -154,7 +154,7 @@
             stateLabel.AutoSize = true;
             stateLabel.Location = new System.Drawing.Point(426, 274);
             stateLabel.Name = "stateLabel";
-            stateLabel.Size = new System.Drawing.Size(46, 18);
+            stateLabel.Size = new System.Drawing.Size(56, 24);
             stateLabel.TabIndex = 57;
             stateLabel.Text = "State:";
             // 
@@ -163,7 +163,7 @@
             zipLabel.AutoSize = true;
             zipLabel.Location = new System.Drawing.Point(426, 304);
             zipLabel.Name = "zipLabel";
-            zipLabel.Size = new System.Drawing.Size(32, 18);
+            zipLabel.Size = new System.Drawing.Size(42, 24);
             zipLabel.TabIndex = 59;
             zipLabel.Text = "Zip:";
             // 
@@ -173,7 +173,7 @@
             this.fNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fNameLabel.Location = new System.Drawing.Point(81, 23);
             this.fNameLabel.Name = "fNameLabel";
-            this.fNameLabel.Size = new System.Drawing.Size(86, 20);
+            this.fNameLabel.Size = new System.Drawing.Size(106, 25);
             this.fNameLabel.TabIndex = 1;
             this.fNameLabel.Text = "First Name";
             // 
@@ -183,7 +183,7 @@
             this.lNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lNameLabel.Location = new System.Drawing.Point(258, 23);
             this.lNameLabel.Name = "lNameLabel";
-            this.lNameLabel.Size = new System.Drawing.Size(86, 20);
+            this.lNameLabel.Size = new System.Drawing.Size(106, 25);
             this.lNameLabel.TabIndex = 2;
             this.lNameLabel.Text = "Last Name";
             // 
@@ -193,7 +193,7 @@
             this.dobLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dobLabel.Location = new System.Drawing.Point(465, 23);
             this.dobLabel.Name = "dobLabel";
-            this.dobLabel.Size = new System.Drawing.Size(44, 20);
+            this.dobLabel.Size = new System.Drawing.Size(55, 25);
             this.dobLabel.TabIndex = 3;
             this.dobLabel.Text = "DOB";
             // 
@@ -206,7 +206,7 @@
             this.searchButton.Location = new System.Drawing.Point(626, 38);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(119, 32);
-            this.searchButton.TabIndex = 4;
+            this.searchButton.TabIndex = 25;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = false;
             this.searchButton.Click += new System.EventHandler(this.SearchButton_Click);
@@ -220,7 +220,7 @@
             this.clearButton.Location = new System.Drawing.Point(259, 521);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(119, 32);
-            this.clearButton.TabIndex = 5;
+            this.clearButton.TabIndex = 40;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = false;
             this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
@@ -235,7 +235,7 @@
             this.saveButton.Location = new System.Drawing.Point(415, 521);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(201, 32);
-            this.saveButton.TabIndex = 6;
+            this.saveButton.TabIndex = 41;
             this.saveButton.Text = "Save Appointment";
             this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
@@ -246,7 +246,7 @@
             this.doctorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.doctorLabel.Location = new System.Drawing.Point(69, 386);
             this.doctorLabel.Name = "doctorLabel";
-            this.doctorLabel.Size = new System.Drawing.Size(57, 20);
+            this.doctorLabel.Size = new System.Drawing.Size(69, 25);
             this.doctorLabel.TabIndex = 12;
             this.doctorLabel.Text = "Doctor";
             // 
@@ -256,7 +256,7 @@
             this.dateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateLabel.Location = new System.Drawing.Point(70, 423);
             this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(44, 20);
+            this.dateLabel.Size = new System.Drawing.Size(53, 25);
             this.dateLabel.TabIndex = 13;
             this.dateLabel.Text = "Date";
             // 
@@ -266,7 +266,7 @@
             this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timeLabel.Location = new System.Drawing.Point(69, 457);
             this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(43, 20);
+            this.timeLabel.Size = new System.Drawing.Size(56, 25);
             this.timeLabel.TabIndex = 14;
             this.timeLabel.Text = "Time";
             // 
@@ -276,7 +276,7 @@
             this.reasonLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reasonLabel.Location = new System.Drawing.Point(423, 382);
             this.reasonLabel.Name = "reasonLabel";
-            this.reasonLabel.Size = new System.Drawing.Size(65, 20);
+            this.reasonLabel.Size = new System.Drawing.Size(79, 25);
             this.reasonLabel.TabIndex = 21;
             this.reasonLabel.Text = "Reason";
             // 
@@ -284,14 +284,14 @@
             // 
             this.fNameTextBox.Location = new System.Drawing.Point(85, 46);
             this.fNameTextBox.Name = "fNameTextBox";
-            this.fNameTextBox.Size = new System.Drawing.Size(146, 24);
+            this.fNameTextBox.Size = new System.Drawing.Size(146, 29);
             this.fNameTextBox.TabIndex = 22;
             // 
             // lNameTextBox
             // 
             this.lNameTextBox.Location = new System.Drawing.Point(262, 46);
             this.lNameTextBox.Name = "lNameTextBox";
-            this.lNameTextBox.Size = new System.Drawing.Size(154, 24);
+            this.lNameTextBox.Size = new System.Drawing.Size(154, 29);
             this.lNameTextBox.TabIndex = 23;
             // 
             // reasonTextBox
@@ -300,7 +300,7 @@
             this.reasonTextBox.Multiline = true;
             this.reasonTextBox.Name = "reasonTextBox";
             this.reasonTextBox.Size = new System.Drawing.Size(240, 91);
-            this.reasonTextBox.TabIndex = 37;
+            this.reasonTextBox.TabIndex = 39;
             // 
             // dobDateTimePicker
             // 
@@ -309,8 +309,8 @@
             this.dobDateTimePicker.MaxDate = new System.DateTime(2023, 3, 28, 0, 0, 0, 0);
             this.dobDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dobDateTimePicker.Name = "dobDateTimePicker";
-            this.dobDateTimePicker.Size = new System.Drawing.Size(122, 24);
-            this.dobDateTimePicker.TabIndex = 38;
+            this.dobDateTimePicker.Size = new System.Drawing.Size(122, 29);
+            this.dobDateTimePicker.TabIndex = 24;
             this.dobDateTimePicker.Value = new System.DateTime(2023, 3, 28, 0, 0, 0, 0);
             // 
             // patientDataGridView
@@ -329,10 +329,47 @@
             this.patientDataGridView.Location = new System.Drawing.Point(127, 89);
             this.patientDataGridView.Name = "patientDataGridView";
             this.patientDataGridView.ReadOnly = true;
+            this.patientDataGridView.RowHeadersWidth = 51;
             this.patientDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.patientDataGridView.Size = new System.Drawing.Size(565, 92);
-            this.patientDataGridView.TabIndex = 39;
+            this.patientDataGridView.TabIndex = 26;
             this.patientDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PatientDataGridView_CellClick);
+            // 
+            // patientIDDataGridViewTextBoxColumn
+            // 
+            this.patientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID";
+            this.patientIDDataGridViewTextBoxColumn.HeaderText = "PatientID";
+            this.patientIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.patientIDDataGridViewTextBoxColumn.Name = "patientIDDataGridViewTextBoxColumn";
+            this.patientIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateOfBirthDataGridViewTextBoxColumn
+            // 
+            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
+            this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(ClinicManagementApp.Model.Patient);
             // 
             // appointmentDateTimePicker
             // 
@@ -341,8 +378,8 @@
             this.appointmentDateTimePicker.Location = new System.Drawing.Point(186, 419);
             this.appointmentDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.appointmentDateTimePicker.Name = "appointmentDateTimePicker";
-            this.appointmentDateTimePicker.Size = new System.Drawing.Size(122, 24);
-            this.appointmentDateTimePicker.TabIndex = 40;
+            this.appointmentDateTimePicker.Size = new System.Drawing.Size(122, 29);
+            this.appointmentDateTimePicker.TabIndex = 33;
             this.appointmentDateTimePicker.ValueChanged += new System.EventHandler(this.AppointmentDateTimePicker_ValueChanged);
             // 
             // addressStreetTextBox
@@ -351,8 +388,8 @@
             this.addressStreetTextBox.Location = new System.Drawing.Point(541, 211);
             this.addressStreetTextBox.Name = "addressStreetTextBox";
             this.addressStreetTextBox.ReadOnly = true;
-            this.addressStreetTextBox.Size = new System.Drawing.Size(200, 24);
-            this.addressStreetTextBox.TabIndex = 42;
+            this.addressStreetTextBox.Size = new System.Drawing.Size(200, 29);
+            this.addressStreetTextBox.TabIndex = 35;
             // 
             // cityTextBox
             // 
@@ -360,8 +397,8 @@
             this.cityTextBox.Location = new System.Drawing.Point(541, 241);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.ReadOnly = true;
-            this.cityTextBox.Size = new System.Drawing.Size(200, 24);
-            this.cityTextBox.TabIndex = 44;
+            this.cityTextBox.Size = new System.Drawing.Size(200, 29);
+            this.cityTextBox.TabIndex = 36;
             // 
             // dateOfBirthDateTimePicker
             // 
@@ -369,8 +406,8 @@
             this.dateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(186, 304);
             this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
-            this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(200, 24);
-            this.dateOfBirthDateTimePicker.TabIndex = 46;
+            this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(200, 29);
+            this.dateOfBirthDateTimePicker.TabIndex = 30;
             this.dateOfBirthDateTimePicker.ValueChanged += new System.EventHandler(this.DateOfBirthDateTimePicker_ValueChanged);
             // 
             // firstNameTextBox
@@ -379,8 +416,8 @@
             this.firstNameTextBox.Location = new System.Drawing.Point(186, 268);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.ReadOnly = true;
-            this.firstNameTextBox.Size = new System.Drawing.Size(200, 24);
-            this.firstNameTextBox.TabIndex = 48;
+            this.firstNameTextBox.Size = new System.Drawing.Size(200, 29);
+            this.firstNameTextBox.TabIndex = 29;
             // 
             // lastNameTextBox
             // 
@@ -388,8 +425,8 @@
             this.lastNameTextBox.Location = new System.Drawing.Point(186, 238);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.ReadOnly = true;
-            this.lastNameTextBox.Size = new System.Drawing.Size(200, 24);
-            this.lastNameTextBox.TabIndex = 50;
+            this.lastNameTextBox.Size = new System.Drawing.Size(200, 29);
+            this.lastNameTextBox.TabIndex = 28;
             // 
             // patientIDTextBox
             // 
@@ -397,8 +434,8 @@
             this.patientIDTextBox.Location = new System.Drawing.Point(186, 208);
             this.patientIDTextBox.Name = "patientIDTextBox";
             this.patientIDTextBox.ReadOnly = true;
-            this.patientIDTextBox.Size = new System.Drawing.Size(200, 24);
-            this.patientIDTextBox.TabIndex = 52;
+            this.patientIDTextBox.Size = new System.Drawing.Size(200, 29);
+            this.patientIDTextBox.TabIndex = 27;
             // 
             // phoneTextBox
             // 
@@ -406,8 +443,8 @@
             this.phoneTextBox.Location = new System.Drawing.Point(186, 334);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.ReadOnly = true;
-            this.phoneTextBox.Size = new System.Drawing.Size(200, 24);
-            this.phoneTextBox.TabIndex = 54;
+            this.phoneTextBox.Size = new System.Drawing.Size(200, 29);
+            this.phoneTextBox.TabIndex = 31;
             // 
             // stateTextBox
             // 
@@ -415,8 +452,8 @@
             this.stateTextBox.Location = new System.Drawing.Point(541, 271);
             this.stateTextBox.Name = "stateTextBox";
             this.stateTextBox.ReadOnly = true;
-            this.stateTextBox.Size = new System.Drawing.Size(200, 24);
-            this.stateTextBox.TabIndex = 58;
+            this.stateTextBox.Size = new System.Drawing.Size(200, 29);
+            this.stateTextBox.TabIndex = 37;
             // 
             // zipTextBox
             // 
@@ -424,8 +461,8 @@
             this.zipTextBox.Location = new System.Drawing.Point(541, 301);
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.ReadOnly = true;
-            this.zipTextBox.Size = new System.Drawing.Size(200, 24);
-            this.zipTextBox.TabIndex = 60;
+            this.zipTextBox.Size = new System.Drawing.Size(200, 29);
+            this.zipTextBox.TabIndex = 38;
             // 
             // timeComboBox
             // 
@@ -433,8 +470,8 @@
             this.timeComboBox.FormattingEnabled = true;
             this.timeComboBox.Location = new System.Drawing.Point(185, 455);
             this.timeComboBox.Name = "timeComboBox";
-            this.timeComboBox.Size = new System.Drawing.Size(193, 26);
-            this.timeComboBox.TabIndex = 61;
+            this.timeComboBox.Size = new System.Drawing.Size(193, 32);
+            this.timeComboBox.TabIndex = 34;
             // 
             // doctorComboBox
             // 
@@ -442,8 +479,8 @@
             this.doctorComboBox.FormattingEnabled = true;
             this.doctorComboBox.Location = new System.Drawing.Point(186, 380);
             this.doctorComboBox.Name = "doctorComboBox";
-            this.doctorComboBox.Size = new System.Drawing.Size(192, 26);
-            this.doctorComboBox.TabIndex = 62;
+            this.doctorComboBox.Size = new System.Drawing.Size(192, 32);
+            this.doctorComboBox.TabIndex = 32;
             this.doctorComboBox.SelectedIndexChanged += new System.EventHandler(this.DoctorComboBox_SelectedIndexChanged);
             this.doctorComboBox.SelectionChangeCommitted += new System.EventHandler(this.AppointmentDateTimePicker_ValueChanged);
             // 
@@ -454,40 +491,8 @@
             this.messageLabel.ForeColor = System.Drawing.Color.Red;
             this.messageLabel.Location = new System.Drawing.Point(415, 489);
             this.messageLabel.Name = "messageLabel";
-            this.messageLabel.Size = new System.Drawing.Size(0, 18);
+            this.messageLabel.Size = new System.Drawing.Size(0, 24);
             this.messageLabel.TabIndex = 63;
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(ClinicManagementApp.Model.Patient);
-            // 
-            // patientIDDataGridViewTextBoxColumn
-            // 
-            this.patientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID";
-            this.patientIDDataGridViewTextBoxColumn.HeaderText = "PatientID";
-            this.patientIDDataGridViewTextBoxColumn.Name = "patientIDDataGridViewTextBoxColumn";
-            this.patientIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateOfBirthDataGridViewTextBoxColumn
-            // 
-            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
-            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "DateOfBirth";
-            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
-            this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // appointmentBindingSource
             // 
@@ -495,7 +500,7 @@
             // 
             // CreateAppointmentUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.messageLabel);
             this.Controls.Add(this.doctorComboBox);

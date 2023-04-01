@@ -66,7 +66,7 @@
             this.clearButton.Location = new System.Drawing.Point(229, 343);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(133, 35);
-            this.clearButton.TabIndex = 0;
+            this.clearButton.TabIndex = 19;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
@@ -77,7 +77,7 @@
             this.addPatientButton.Location = new System.Drawing.Point(471, 343);
             this.addPatientButton.Name = "addPatientButton";
             this.addPatientButton.Size = new System.Drawing.Size(125, 35);
-            this.addPatientButton.TabIndex = 1;
+            this.addPatientButton.TabIndex = 20;
             this.addPatientButton.Text = "Add Patient";
             this.addPatientButton.UseVisualStyleBackColor = true;
             this.addPatientButton.Click += new System.EventHandler(this.addPatientButton_Click);
@@ -238,7 +238,7 @@
             this.dateOfBirthDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
             this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(228, 26);
-            this.dateOfBirthDateTimePicker.TabIndex = 22;
+            this.dateOfBirthDateTimePicker.TabIndex = 13;
             this.dateOfBirthDateTimePicker.Value = new System.DateTime(2023, 3, 23, 0, 0, 0, 0);
             this.dateOfBirthDateTimePicker.DropDown += new System.EventHandler(this.TextBox_TextChanged);
             // 
@@ -363,7 +363,7 @@
             this.stateComboBox.Location = new System.Drawing.Point(495, 202);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(227, 24);
-            this.stateComboBox.TabIndex = 30;
+            this.stateComboBox.TabIndex = 17;
             // 
             // patientControllerBindingSource
             // 

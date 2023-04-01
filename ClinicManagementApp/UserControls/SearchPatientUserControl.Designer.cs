@@ -108,7 +108,7 @@
             this.patientListView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.patientListView.Name = "patientListView";
             this.patientListView.Size = new System.Drawing.Size(691, 86);
-            this.patientListView.TabIndex = 9;
+            this.patientListView.TabIndex = 20;
             this.patientListView.UseCompatibleStateImageBehavior = false;
             this.patientListView.View = System.Windows.Forms.View.Details;
             this.patientListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.patientListView_MouseClick);
@@ -143,7 +143,7 @@
             this.clearButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(67, 25);
-            this.clearButton.TabIndex = 16;
+            this.clearButton.TabIndex = 19;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = false;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
@@ -155,7 +155,7 @@
             this.patientSearchButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.patientSearchButton.Name = "patientSearchButton";
             this.patientSearchButton.Size = new System.Drawing.Size(103, 25);
-            this.patientSearchButton.TabIndex = 8;
+            this.patientSearchButton.TabIndex = 18;
             this.patientSearchButton.Text = "Search";
             this.patientSearchButton.UseVisualStyleBackColor = false;
             this.patientSearchButton.Click += new System.EventHandler(this.patientSearchButton_Click);
@@ -169,7 +169,7 @@
             this.dobDateTimePicker.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
             this.dobDateTimePicker.Name = "dobDateTimePicker";
             this.dobDateTimePicker.Size = new System.Drawing.Size(179, 22);
-            this.dobDateTimePicker.TabIndex = 7;
+            this.dobDateTimePicker.TabIndex = 17;
             this.dobDateTimePicker.ValueChanged += new System.EventHandler(this.dobDateTimePicker_ValueChanged);
             // 
             // lastNameTextBox
@@ -178,7 +178,7 @@
             this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(159, 22);
-            this.lastNameTextBox.TabIndex = 5;
+            this.lastNameTextBox.TabIndex = 16;
             this.lastNameTextBox.TextChanged += new System.EventHandler(this.lastNameTextBox_TextChanged);
             // 
             // firstNameTextBox
@@ -187,7 +187,7 @@
             this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(160, 22);
-            this.firstNameTextBox.TabIndex = 4;
+            this.firstNameTextBox.TabIndex = 15;
             this.firstNameTextBox.TextChanged += new System.EventHandler(this.firstNameTextBox_TextChanged);
             // 
             // dobLabel
