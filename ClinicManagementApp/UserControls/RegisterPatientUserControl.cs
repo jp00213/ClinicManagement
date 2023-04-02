@@ -14,6 +14,9 @@ namespace ClinicManagementApp.UserControls
     {
         private PatientController _patientController;
 
+        /// <summary>
+        /// Constructor for RegisterPatientUserControl
+        /// </summary>
         public RegisterPatientUserControl()
         {
             InitializeComponent();
