@@ -2,11 +2,11 @@
 
 namespace ClinicManagementApp.Model
 {
+    /// <summary>
+    /// The Visit model class.
+    /// </summary>
     public class Visit
     {
-        /// <summary>
-        /// The Visit model class.
-        /// </summary>
         public int VisitID { get; set; }
 
         public int AppointmentID { get; set; }
@@ -48,6 +48,10 @@ namespace ClinicManagementApp.Model
         public int PatientID { get; set; }
 
         public string AppointmentReason { get; set; }   
+
+        public string VisitSummary { get; set; }
+
+        public string HeightFormatted { get; set; }
 
     }
 }
