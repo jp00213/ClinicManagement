@@ -37,7 +37,7 @@ namespace ClinicManagementApp.Model
 
         public string DoctorFirstName { get; set;}
 
-        public string NurseLastname { get; set; }
+        public string NurseLastName { get; set; }
 
         public string NurseFirstName { get; set;}
 
