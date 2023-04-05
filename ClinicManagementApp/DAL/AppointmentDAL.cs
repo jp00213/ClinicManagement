@@ -141,7 +141,7 @@ namespace ClinicManagementApp.DAL
             string selectStatement =
                 "select d.doctorID, a.appointmentID, a.appointmentDatetime, " +
                 "a.reason, e.lastName as doctorLastName, " +
-                "CONVERT(VARCHAR, a.appointmentDatetime, 22)  + ' - ' + 'Dr.' + ' ' + e.lastName as appointmentSummary, " +
+                "CONVERT(VARCHAR, a.appointmentDatetime, 22)  + ' - ' + 'Dr.' + ' ' + e.lastName + ', ' + e.firstName as appointmentSummary, " +
                 "e.lastName as appointmentSummary  " +
                 "from appointment a, doctor d, person e " +
                 "where a.doctorID = d.doctorID " +
@@ -187,7 +187,7 @@ namespace ClinicManagementApp.DAL
             string selectStatement =
                 "select d. doctorID, a.appointmentID, a.appointmentDatetime, " +
                 "a.reason, e.lastName as doctorLastName, " +
-                "CONVERT(VARCHAR, a.appointmentDatetime, 22)  + ' - ' + 'Dr.' + ' ' + e.lastName as appointmentSummary " +
+                "CONVERT(VARCHAR, a.appointmentDatetime, 22)  + ' - ' + 'Dr.' + ' ' + e.lastName + ', ' + e.firstName as appointmentSummary " +
                 "from appointment a, doctor d, person e " +
                 "where a.doctorID = d.doctorID " +
                 "and d.recordID = e.recordID " +
@@ -231,7 +231,7 @@ namespace ClinicManagementApp.DAL
             Appointment appointment = new Appointment();
             string selectStatement =
                 "select d.doctorID, a.appointmentID, a.appointmentDatetime,   CONVERT(VARCHAR(5), a.appointmentDatetime, 108) as shortTime  , " +
-                "a.reason, e.lastName as doctorLastName  " +
+                "a.reason, e.firstName + ' ' + e.lastName as doctorLastName  " +
                 "from appointment a,  doctor d, person e " +
                 "where a.doctorID = d.doctorID " +
                 "and d.recordID = e.recordID " +
