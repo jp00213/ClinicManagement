@@ -257,8 +257,8 @@ namespace ClinicManagementApp.UserControls
                     {
                         theTest = labTestList[i];
                         labResultListView.Items.Add(theTest.TestName.ToString());
-                        labResultListView.Items[i].SubItems.Add(theTest.TestName.ToString());
-                        labResultListView.Items[i].SubItems.Add(theTest.TestDate.ToString());
+                        labResultListView.Items[i].SubItems.Add(theTest.Result.ToString());
+                        labResultListView.Items[i].SubItems.Add(theTest.TestDate.ToShortDateString());
 
                         string normalOrAbnormal = "";
                         if (theTest.ResultIsNormal.ToString() == "1")
