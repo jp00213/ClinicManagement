@@ -27,7 +27,14 @@ namespace ClinicManagementApp.View
                 if (this._accountController.IsUsernamePasswordCorrectForNurse(this.usernameTextBox.Text, this.passwordTextBox.Text))
                 {
                     this.Hide();
-                    using (Form mainWindow = new MainDashboard(this.usernameTextBox.Text))
+                    using (Form mainWindow = new NurseDashboard(this.usernameTextBox.Text))
+                    {
+                        DialogResult result = mainWindow.ShowDialog(this);
+                    }
+                }
+                else if (this._accountController.IsUsernamePasswordCorrectForAdministrator(this.usernameTextBox.Text, this.passwordTextBox.Text)) {
+                    this.Hide();
+                    using (Form mainWindow = new AdministratorDashboard(this.usernameTextBox.Text))
                     {
                         DialogResult result = mainWindow.ShowDialog(this);
                     }

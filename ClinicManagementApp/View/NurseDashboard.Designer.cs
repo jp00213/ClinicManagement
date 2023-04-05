@@ -1,6 +1,6 @@
 ﻿namespace ClinicManagementApp
 {
-    partial class MainDashboard
+    partial class NurseDashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -356,7 +356,7 @@
             this.Name = "MainDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clinic Management Application";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainDashboard_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NurseDashboard_FormClosed);
             this.nurseTabControl.ResumeLayout(false);
 
             this.registerTabPage.ResumeLayout(false);
