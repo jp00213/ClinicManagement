@@ -72,6 +72,10 @@
             this.cancelFinalEditButton = new System.Windows.Forms.Button();
             this.saveFinalDiagnosisButton = new System.Windows.Forms.Button();
             this.messageTextLabel = new System.Windows.Forms.Label();
+            this.testNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.resultHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.datePerformedHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.normalNotNormalHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.patientInformationPanel.SuspendLayout();
@@ -108,20 +112,23 @@
             this.patientIDTextBox.Name = "patientIDTextBox";
             this.patientIDTextBox.Size = new System.Drawing.Size(46, 13);
             this.patientIDTextBox.TabIndex = 3;
+            this.patientIDTextBox.TextChanged += new System.EventHandler(this.patientIDTextBox_TextChanged);
             // 
             // visitListComboBox
             // 
+            this.visitListComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.visitListComboBox.FormattingEnabled = true;
             this.visitListComboBox.Location = new System.Drawing.Point(186, 2);
             this.visitListComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.visitListComboBox.Name = "visitListComboBox";
             this.visitListComboBox.Size = new System.Drawing.Size(244, 21);
             this.visitListComboBox.TabIndex = 6;
+            this.visitListComboBox.SelectionChangeCommitted += new System.EventHandler(this.visitListComboBox_SelectionChangeCommitted);
             // 
             // visitID_Label
             // 
             this.visitID_Label.AutoSize = true;
-            this.visitID_Label.Location = new System.Drawing.Point(434, 0);
+            this.visitID_Label.Location = new System.Drawing.Point(434, 5);
             this.visitID_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.visitID_Label.Name = "visitID_Label";
             this.visitID_Label.Size = new System.Drawing.Size(43, 13);
@@ -131,7 +138,7 @@
             // currentVisitIDLabel
             // 
             this.currentVisitIDLabel.AutoSize = true;
-            this.currentVisitIDLabel.Location = new System.Drawing.Point(481, 0);
+            this.currentVisitIDLabel.Location = new System.Drawing.Point(481, 5);
             this.currentVisitIDLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.currentVisitIDLabel.Name = "currentVisitIDLabel";
             this.currentVisitIDLabel.Size = new System.Drawing.Size(13, 13);
@@ -162,8 +169,8 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(201, 38);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.28283F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 71.71717F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.30303F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.69697F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(411, 231);
             this.tableLayoutPanel2.TabIndex = 11;
@@ -199,7 +206,7 @@
             this.labOrdersPanel.Location = new System.Drawing.Point(2, 2);
             this.labOrdersPanel.Margin = new System.Windows.Forms.Padding(2);
             this.labOrdersPanel.Name = "labOrdersPanel";
-            this.labOrdersPanel.Size = new System.Drawing.Size(407, 55);
+            this.labOrdersPanel.Size = new System.Drawing.Size(407, 64);
             this.labOrdersPanel.TabIndex = 0;
             // 
             // panel1
@@ -234,20 +241,25 @@
             this.panel2.Controls.Add(this.initialDiagnosisTextBox);
             this.panel2.Controls.Add(this.enterDiagnosisLabel);
             this.panel2.Controls.Add(this.diagnosisLabel);
-            this.panel2.Location = new System.Drawing.Point(2, 65);
+            this.panel2.Location = new System.Drawing.Point(2, 70);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(407, 158);
+            this.panel2.Size = new System.Drawing.Size(405, 120);
             this.panel2.TabIndex = 1;
             // 
             // labResultListView
             // 
+            this.labResultListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.testNameHeader,
+            this.resultHeader,
+            this.datePerformedHeader,
+            this.normalNotNormalHeader});
             this.labResultListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F);
             this.labResultListView.HideSelection = false;
             this.labResultListView.Location = new System.Drawing.Point(0, 0);
             this.labResultListView.Margin = new System.Windows.Forms.Padding(2);
             this.labResultListView.Name = "labResultListView";
-            this.labResultListView.Size = new System.Drawing.Size(352, 55);
+            this.labResultListView.Size = new System.Drawing.Size(352, 64);
             this.labResultListView.TabIndex = 0;
             this.labResultListView.UseCompatibleStateImageBehavior = false;
             this.labResultListView.View = System.Windows.Forms.View.Details;
@@ -270,9 +282,9 @@
             this.patientNameLabel.Location = new System.Drawing.Point(0, 13);
             this.patientNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.patientNameLabel.Name = "patientNameLabel";
-            this.patientNameLabel.Size = new System.Drawing.Size(74, 13);
+            this.patientNameLabel.Size = new System.Drawing.Size(38, 13);
             this.patientNameLabel.TabIndex = 3;
-            this.patientNameLabel.Text = "Patient Name:";
+            this.patientNameLabel.Text = "Name:";
             // 
             // dobLabel
             // 
@@ -300,7 +312,7 @@
             // 
             this.patientNameValueLabel.AutoSize = true;
             this.patientNameValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.patientNameValueLabel.Location = new System.Drawing.Point(76, 13);
+            this.patientNameValueLabel.Location = new System.Drawing.Point(25, 13);
             this.patientNameValueLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.patientNameValueLabel.Name = "patientNameValueLabel";
             this.patientNameValueLabel.Size = new System.Drawing.Size(13, 13);
@@ -311,7 +323,7 @@
             // 
             this.dobValueLabel.AutoSize = true;
             this.dobValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.dobValueLabel.Location = new System.Drawing.Point(37, 26);
+            this.dobValueLabel.Location = new System.Drawing.Point(25, 26);
             this.dobValueLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dobValueLabel.Name = "dobValueLabel";
             this.dobValueLabel.Size = new System.Drawing.Size(13, 13);
@@ -322,7 +334,7 @@
             // 
             this.phoneValueLabel.AutoSize = true;
             this.phoneValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.phoneValueLabel.Location = new System.Drawing.Point(137, 26);
+            this.phoneValueLabel.Location = new System.Drawing.Point(128, 26);
             this.phoneValueLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.phoneValueLabel.Name = "phoneValueLabel";
             this.phoneValueLabel.Size = new System.Drawing.Size(13, 13);
@@ -410,7 +422,7 @@
             // 
             this.diagnosisLabel.AutoSize = true;
             this.diagnosisLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.diagnosisLabel.Location = new System.Drawing.Point(10, 5);
+            this.diagnosisLabel.Location = new System.Drawing.Point(2, 13);
             this.diagnosisLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.diagnosisLabel.Name = "diagnosisLabel";
             this.diagnosisLabel.Size = new System.Drawing.Size(83, 13);
@@ -421,7 +433,7 @@
             // 
             this.enterDiagnosisLabel.AutoSize = true;
             this.enterDiagnosisLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.enterDiagnosisLabel.Location = new System.Drawing.Point(9, 41);
+            this.enterDiagnosisLabel.Location = new System.Drawing.Point(2, 49);
             this.enterDiagnosisLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.enterDiagnosisLabel.Name = "enterDiagnosisLabel";
             this.enterDiagnosisLabel.Size = new System.Drawing.Size(81, 13);
@@ -465,7 +477,7 @@
             // 
             this.bpValueLabel.AutoSize = true;
             this.bpValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.bpValueLabel.Location = new System.Drawing.Point(156, -2);
+            this.bpValueLabel.Location = new System.Drawing.Point(156, 0);
             this.bpValueLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.bpValueLabel.Name = "bpValueLabel";
             this.bpValueLabel.Size = new System.Drawing.Size(13, 13);
@@ -510,31 +522,32 @@
             // 
             this.initialDiagnosisTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.initialDiagnosisTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.initialDiagnosisTextBox.Location = new System.Drawing.Point(94, 0);
+            this.initialDiagnosisTextBox.Location = new System.Drawing.Point(63, 10);
             this.initialDiagnosisTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.initialDiagnosisTextBox.Multiline = true;
             this.initialDiagnosisTextBox.Name = "initialDiagnosisTextBox";
             this.initialDiagnosisTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.initialDiagnosisTextBox.Size = new System.Drawing.Size(257, 42);
+            this.initialDiagnosisTextBox.Size = new System.Drawing.Size(289, 37);
             this.initialDiagnosisTextBox.TabIndex = 1;
             // 
             // finalDiagnosisTextBox
             // 
             this.finalDiagnosisTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.finalDiagnosisTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.finalDiagnosisTextBox.Location = new System.Drawing.Point(94, 46);
+            this.finalDiagnosisTextBox.Location = new System.Drawing.Point(63, 49);
             this.finalDiagnosisTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.finalDiagnosisTextBox.Multiline = true;
             this.finalDiagnosisTextBox.Name = "finalDiagnosisTextBox";
             this.finalDiagnosisTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.finalDiagnosisTextBox.Size = new System.Drawing.Size(257, 39);
+            this.finalDiagnosisTextBox.Size = new System.Drawing.Size(289, 39);
             this.finalDiagnosisTextBox.TabIndex = 4;
+            this.finalDiagnosisTextBox.TextChanged += new System.EventHandler(this.finalDiagnosisTextBox_TextChanged);
             // 
             // updateMessage
             // 
             this.updateMessage.AutoSize = true;
             this.updateMessage.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.updateMessage.Location = new System.Drawing.Point(-3, 107);
+            this.updateMessage.Location = new System.Drawing.Point(5, 107);
             this.updateMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.updateMessage.Name = "updateMessage";
             this.updateMessage.Size = new System.Drawing.Size(13, 13);
@@ -560,6 +573,7 @@
             this.cancelFinalEditButton.TabIndex = 14;
             this.cancelFinalEditButton.Text = "Cancel";
             this.cancelFinalEditButton.UseVisualStyleBackColor = true;
+            this.cancelFinalEditButton.Click += new System.EventHandler(this.cancelFinalEditButton_Click);
             // 
             // saveFinalDiagnosisButton
             // 
@@ -570,6 +584,7 @@
             this.saveFinalDiagnosisButton.TabIndex = 15;
             this.saveFinalDiagnosisButton.Text = "Save Final Diagnosis";
             this.saveFinalDiagnosisButton.UseVisualStyleBackColor = true;
+            this.saveFinalDiagnosisButton.Click += new System.EventHandler(this.saveFinalDiagnosisButton_Click);
             // 
             // messageTextLabel
             // 
@@ -581,6 +596,29 @@
             this.messageTextLabel.Size = new System.Drawing.Size(13, 13);
             this.messageTextLabel.TabIndex = 10;
             this.messageTextLabel.Text = "--";
+            // 
+            // testNameHeader
+            // 
+            this.testNameHeader.Text = "Test name";
+            this.testNameHeader.Width = 162;
+            // 
+            // resultHeader
+            // 
+            this.resultHeader.Text = "Results";
+            this.resultHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.resultHeader.Width = 160;
+            // 
+            // datePerformedHeader
+            // 
+            this.datePerformedHeader.Text = "Performed on";
+            this.datePerformedHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.datePerformedHeader.Width = 90;
+            // 
+            // normalNotNormalHeader
+            // 
+            this.normalNotNormalHeader.Text = "Normal/Abnormal";
+            this.normalNotNormalHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.normalNotNormalHeader.Width = 100;
             // 
             // PatientVisitListUserControl
             // 
@@ -659,5 +697,9 @@
         private System.Windows.Forms.Button saveFinalDiagnosisButton;
         private System.Windows.Forms.Button cancelFinalEditButton;
         private System.Windows.Forms.Label messageTextLabel;
+        private System.Windows.Forms.ColumnHeader testNameHeader;
+        private System.Windows.Forms.ColumnHeader resultHeader;
+        private System.Windows.Forms.ColumnHeader datePerformedHeader;
+        private System.Windows.Forms.ColumnHeader normalNotNormalHeader;
     }
 }
