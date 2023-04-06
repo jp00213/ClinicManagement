@@ -5,6 +5,9 @@ using System.Data.SqlClient;
 
 namespace ClinicManagementApp.DAL
 {
+    /// <summary>
+    /// The DAL that interacts with a database for labTest objects. 
+    /// </summary>
     public class LabTestDAL
     {
         /// <summary>
