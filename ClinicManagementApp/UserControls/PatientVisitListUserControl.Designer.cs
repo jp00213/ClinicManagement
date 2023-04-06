@@ -280,7 +280,7 @@
             this.orderAdditionalTestButton.Location = new System.Drawing.Point(40, 120);
             this.orderAdditionalTestButton.Margin = new System.Windows.Forms.Padding(2);
             this.orderAdditionalTestButton.Name = "orderAdditionalTestButton";
-            this.orderAdditionalTestButton.Size = new System.Drawing.Size(119, 22);
+            this.orderAdditionalTestButton.Size = new System.Drawing.Size(119, 20);
             this.orderAdditionalTestButton.TabIndex = 6;
             this.orderAdditionalTestButton.Text = "Order Additional Tests";
             this.orderAdditionalTestButton.UseVisualStyleBackColor = true;
@@ -516,15 +516,15 @@
             this.panel2.Location = new System.Drawing.Point(2, 70);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(405, 120);
+            this.panel2.Size = new System.Drawing.Size(405, 139);
             this.panel2.TabIndex = 1;
             // 
             // saveFinalDiagnosisButton
             // 
-            this.saveFinalDiagnosisButton.Location = new System.Drawing.Point(234, 89);
+            this.saveFinalDiagnosisButton.Location = new System.Drawing.Point(234, 86);
             this.saveFinalDiagnosisButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveFinalDiagnosisButton.Name = "saveFinalDiagnosisButton";
-            this.saveFinalDiagnosisButton.Size = new System.Drawing.Size(118, 22);
+            this.saveFinalDiagnosisButton.Size = new System.Drawing.Size(118, 20);
             this.saveFinalDiagnosisButton.TabIndex = 15;
             this.saveFinalDiagnosisButton.Text = "Save Final Diagnosis";
             this.saveFinalDiagnosisButton.UseVisualStyleBackColor = true;
@@ -532,10 +532,10 @@
             // 
             // cancelFinalEditButton
             // 
-            this.cancelFinalEditButton.Location = new System.Drawing.Point(109, 89);
+            this.cancelFinalEditButton.Location = new System.Drawing.Point(112, 86);
             this.cancelFinalEditButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelFinalEditButton.Name = "cancelFinalEditButton";
-            this.cancelFinalEditButton.Size = new System.Drawing.Size(118, 22);
+            this.cancelFinalEditButton.Size = new System.Drawing.Size(118, 20);
             this.cancelFinalEditButton.TabIndex = 14;
             this.cancelFinalEditButton.Text = "Cancel";
             this.cancelFinalEditButton.UseVisualStyleBackColor = true;
@@ -545,7 +545,7 @@
             // 
             this.updateMessage.AutoSize = true;
             this.updateMessage.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.updateMessage.Location = new System.Drawing.Point(5, 107);
+            this.updateMessage.Location = new System.Drawing.Point(5, 104);
             this.updateMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.updateMessage.Name = "updateMessage";
             this.updateMessage.Size = new System.Drawing.Size(13, 13);
@@ -556,7 +556,7 @@
             // 
             this.finalDiagnosisTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.finalDiagnosisTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.finalDiagnosisTextBox.Location = new System.Drawing.Point(63, 49);
+            this.finalDiagnosisTextBox.Location = new System.Drawing.Point(63, 43);
             this.finalDiagnosisTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.finalDiagnosisTextBox.Multiline = true;
             this.finalDiagnosisTextBox.Name = "finalDiagnosisTextBox";
@@ -569,7 +569,7 @@
             // 
             this.initialDiagnosisTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.initialDiagnosisTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.initialDiagnosisTextBox.Location = new System.Drawing.Point(63, 10);
+            this.initialDiagnosisTextBox.Location = new System.Drawing.Point(63, 2);
             this.initialDiagnosisTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.initialDiagnosisTextBox.Multiline = true;
             this.initialDiagnosisTextBox.Name = "initialDiagnosisTextBox";
