@@ -263,6 +263,7 @@ namespace ClinicManagementApp.UserControls
                         string normalOrAbnormal = "";
                         if (theTest.ResultIsNormal.ToString() == "1")
                         {
+
                             normalOrAbnormal = "Normal";
                         }
                         else if (theTest.ResultIsNormal.ToString() == "0")

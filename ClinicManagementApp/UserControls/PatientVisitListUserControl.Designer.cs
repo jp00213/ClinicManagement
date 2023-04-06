@@ -476,7 +476,7 @@
             this.labResultListView.Location = new System.Drawing.Point(0, 0);
             this.labResultListView.Margin = new System.Windows.Forms.Padding(2);
             this.labResultListView.Name = "labResultListView";
-            this.labResultListView.Size = new System.Drawing.Size(352, 67);
+            this.labResultListView.Size = new System.Drawing.Size(352, 62);
             this.labResultListView.TabIndex = 0;
             this.labResultListView.UseCompatibleStateImageBehavior = false;
             this.labResultListView.View = System.Windows.Forms.View.Details;
