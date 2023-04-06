@@ -86,6 +86,12 @@
     <Compile Include="UserControls\UpdatePatientInformationUserControl.Designer.cs">
       <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AdministratorDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorDashboard.Designer.cs">
+      <DependentUpon>AdministratorDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,11 +122,11 @@
     <Compile Include="UserControls\SearchPatientUserControl.Designer.cs">
       <DependentUpon>SearchPatientUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\MainDashboard.cs">
+    <Compile Include="View\NurseDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MainDashboard.Designer.cs">
-      <DependentUpon>MainDashboard.cs</DependentUpon>
+    <Compile Include="View\NurseDashboard.Designer.cs">
+      <DependentUpon>NurseDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Controller\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -142,6 +148,9 @@
     <EmbeddedResource Include="UserControls\UpdatePatientInformationUserControl.resx">
       <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\AdministratorDashboard.resx">
+      <DependentUpon>AdministratorDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,8 +166,8 @@
     <EmbeddedResource Include="UserControls\SearchPatientUserControl.resx">
       <DependentUpon>SearchPatientUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MainDashboard.resx">
-      <DependentUpon>MainDashboard.cs</DependentUpon>
+    <EmbeddedResource Include="View\NurseDashboard.resx">
+      <DependentUpon>NurseDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\ClinicManagementApp.Controller.PatientController.datasource" />
     <None Include="Properties\DataSources\ClinicManagementApp.Model.Appointment.datasource" />
