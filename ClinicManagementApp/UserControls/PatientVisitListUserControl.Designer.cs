@@ -277,7 +277,7 @@
             // 
             // orderAdditionalTestButton
             // 
-            this.orderAdditionalTestButton.Location = new System.Drawing.Point(40, 120);
+            this.orderAdditionalTestButton.Location = new System.Drawing.Point(46, 120);
             this.orderAdditionalTestButton.Margin = new System.Windows.Forms.Padding(2);
             this.orderAdditionalTestButton.Name = "orderAdditionalTestButton";
             this.orderAdditionalTestButton.Size = new System.Drawing.Size(119, 20);
@@ -293,6 +293,7 @@
             this.symptomsValueTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.symptomsValueTextBox.Multiline = true;
             this.symptomsValueTextBox.Name = "symptomsValueTextBox";
+            this.symptomsValueTextBox.ReadOnly = true;
             this.symptomsValueTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.symptomsValueTextBox.Size = new System.Drawing.Size(188, 62);
             this.symptomsValueTextBox.TabIndex = 19;
@@ -508,7 +509,6 @@
             // 
             this.panel2.Controls.Add(this.saveFinalDiagnosisButton);
             this.panel2.Controls.Add(this.cancelFinalEditButton);
-            this.panel2.Controls.Add(this.updateMessage);
             this.panel2.Controls.Add(this.finalDiagnosisTextBox);
             this.panel2.Controls.Add(this.initialDiagnosisTextBox);
             this.panel2.Controls.Add(this.enterDiagnosisLabel);
@@ -545,7 +545,7 @@
             // 
             this.updateMessage.AutoSize = true;
             this.updateMessage.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.updateMessage.Location = new System.Drawing.Point(5, 104);
+            this.updateMessage.Location = new System.Drawing.Point(382, 22);
             this.updateMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.updateMessage.Name = "updateMessage";
             this.updateMessage.Size = new System.Drawing.Size(13, 13);
@@ -613,7 +613,7 @@
             // 
             this.messageTextLabel.AutoSize = true;
             this.messageTextLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.messageTextLabel.Location = new System.Drawing.Point(324, 25);
+            this.messageTextLabel.Location = new System.Drawing.Point(283, 22);
             this.messageTextLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.messageTextLabel.Name = "messageTextLabel";
             this.messageTextLabel.Size = new System.Drawing.Size(13, 13);
@@ -626,6 +626,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.messageTextLabel);
             this.Controls.Add(this.labsOrderedLabel);
+            this.Controls.Add(this.updateMessage);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.currentVisitIDLabel);
