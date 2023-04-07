@@ -60,11 +60,11 @@ namespace ClinicManagementApp.UserControls
             string phone = this.phoneTextBox.Text.Trim();
             string address = this.addressTextBox.Text.Trim();
             string city = this.cityTextBox.Text.Trim();
-            string state = this.stateTextBox.Text.ToUpper().Trim();
+            string state = this.stateComboBox.Text;
             string zip = this.zipTextBox.Text.Trim();
             Patient oldPatient = _patient;
 
-            if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || dateOfBirth > DateTime.Now ||string.IsNullOrEmpty(address) || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || state.Length != 2 || !IsValidZipCode(zip) || !IsPhoneNumberValid(phone))
+            if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || dateOfBirth > DateTime.Now ||string.IsNullOrEmpty(address) || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || !IsValidZipCode(zip) || !IsPhoneNumberValid(phone))
             {
                 this.ShowInvalidErrorMessage();
             }
@@ -83,6 +83,7 @@ namespace ClinicManagementApp.UserControls
         private void clearButton_Click(object sender, EventArgs e)
         {
             this.ResetForm();
+            this.HideInvalidErrorMessages();
         }
 
         private void ResetForm()
@@ -129,9 +130,9 @@ namespace ClinicManagementApp.UserControls
                 this.cityErrorLabel.ForeColor = Color.Red;
             }
 
-            if (string.IsNullOrEmpty(stateTextBox.Text) || string.IsNullOrWhiteSpace(stateTextBox.Text) || stateTextBox.Text.Length != 2)
+            if (string.IsNullOrEmpty(stateComboBox.Text))
             {
-                this.stateErrorLabel.Text = "Please enter your state abbreviation.";
+                this.stateErrorLabel.Text = "Please select your state abbreviation.";
                 this.stateErrorLabel.ForeColor = Color.Red;
             }
 

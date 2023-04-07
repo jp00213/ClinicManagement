@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Text;
+using System.Windows.Forms;
 
 namespace ClinicManagementApp.DAL
 {
@@ -8,6 +10,22 @@ namespace ClinicManagementApp.DAL
     /// </summary>
     public class AccountDAL
     {
+        /// <summary>
+        /// Hashes a given password using SHA512, returns hashed password as a string
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        private string HashPassword(string password)
+        {
+            var bytes = new UTF8Encoding().GetBytes(password);
+            byte[] hashBytes;
+            using (var algorithm = new System.Security.Cryptography.SHA512Managed())
+            {
+                hashBytes = algorithm.ComputeHash(bytes);
+            }
+            return Convert.ToBase64String(hashBytes);
+        }
+
         /// <summary>
         /// Verifies if username/password are valid in the system for nurses
         /// </summary>
@@ -27,12 +45,14 @@ namespace ClinicManagementApp.DAL
             }
 
             Boolean result = false;
+            Console.WriteLine(this.HashPassword(pass));
 
             string selectStatement =
                 "SELECT Count(*) " +
                 "FROM Account " +
                 "JOIN Nurse ON Account.Username = Nurse.Username " +
-                "WHERE Account.Username = @Username AND Account.Password = @Password";
+                "WHERE Account.Username = @Username AND Account.Password = @Password " +
+                "AND Nurse.activeStatus = 1";
 
             using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
             {
@@ -42,7 +62,7 @@ namespace ClinicManagementApp.DAL
                     selectCommand.Parameters.Add("@Username", System.Data.SqlDbType.VarChar);
                     selectCommand.Parameters["@Username"].Value = user;
                     selectCommand.Parameters.Add("@Password", System.Data.SqlDbType.VarChar);
-                    selectCommand.Parameters["@Password"].Value = pass;
+                    selectCommand.Parameters["@Password"].Value = this.HashPassword(pass);
 
                     Int32 count = (Int32)selectCommand.ExecuteScalar();
                     if (count > 0) { result = true; }
@@ -86,7 +106,7 @@ namespace ClinicManagementApp.DAL
                     selectCommand.Parameters.Add("@Username", System.Data.SqlDbType.VarChar);
                     selectCommand.Parameters["@Username"].Value = user;
                     selectCommand.Parameters.Add("@Password", System.Data.SqlDbType.VarChar);
-                    selectCommand.Parameters["@Password"].Value = pass;
+                    selectCommand.Parameters["@Password"].Value = this.HashPassword(pass);
 
                     Int32 count = (Int32)selectCommand.ExecuteScalar();
                     if (count > 0) { result = true; }

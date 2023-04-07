@@ -1,8 +1,6 @@
 ﻿using ClinicManagementApp.Model;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 
 namespace ClinicManagementApp.DAL
 {

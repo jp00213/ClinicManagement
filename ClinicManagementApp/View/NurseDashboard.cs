@@ -4,11 +4,18 @@ using System.Windows.Forms;
 
 namespace ClinicManagementApp
 {
-    public partial class MainDashboard : Form
+    /// <summary>
+    /// Main Dashboard for Nurses
+    /// </summary>
+    public partial class NurseDashboard : Form
     {
         private readonly NurseController _nurseController;
 
-        public MainDashboard(string username)
+        /// <summary>
+        /// Constructor for the Main Dashboard for Nurses
+        /// </summary>
+        /// <param name="username"></param>
+        public NurseDashboard(string username)
         {
             InitializeComponent();
             this._nurseController = new NurseController();
@@ -29,7 +36,7 @@ namespace ClinicManagementApp
             Owner.Show();
         }
 
-        private void MainDashboard_FormClosed(object sender, FormClosedEventArgs e)
+        private void NurseDashboard_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
@@ -76,9 +83,5 @@ namespace ClinicManagementApp
 
         }
 
-
     }
-
-
-    
 }

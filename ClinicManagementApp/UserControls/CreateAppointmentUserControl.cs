@@ -6,12 +6,19 @@ using System.Windows.Forms;
 
 namespace ClinicManagementApp.UserControls
 {
+    /// <summary>
+    /// Create Appointment User Control
+    /// </summary>
     public partial class CreateAppointmentUserControl : UserControl
     {
         private readonly PatientController _patientController;
         private readonly AppointmentController _appointmentController;
         private readonly DoctorController _doctorController;
         private Patient patient;
+
+        /// <summary>
+        /// Constructor for create appointment user control
+        /// </summary>
         public CreateAppointmentUserControl()
         {
             InitializeComponent();
@@ -21,6 +28,7 @@ namespace ClinicManagementApp.UserControls
             this.patient = null;
             this.ResetDoctors();
             this.appointmentDateTimePicker.MinDate = DateTime.Today;
+            this.dobDateTimePicker.MaxDate = DateTime.Today;    
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -105,13 +113,13 @@ namespace ClinicManagementApp.UserControls
         {
             this.fNameTextBox.Text = "";
             this.lNameTextBox.Text = "";
-            this.appointmentDateTimePicker.Value = DateTime.Now;
-            this.dobDateTimePicker.Value = DateTime.Now;
+            this.appointmentDateTimePicker.Value = DateTime.Today;
+            this.dobDateTimePicker.Value = DateTime.Today;
             this.SearchButton_Click(null, null);
-            this.dateOfBirthDateTimePicker.Value = DateTime.Now;
+            this.dateOfBirthDateTimePicker.Value = DateTime.Today;
 
             this.patient = null;
-            this.patientBindingSource.DataSource = this._patientController.GetPatientByNameDOB("", "", DateTime.Now);
+            this.patientBindingSource.DataSource = this._patientController.GetPatientByNameDOB("", "", DateTime.Today);
             this.reasonTextBox.Text = "";
             this.saveButton.Enabled = false;
             this.ResetDoctors();
@@ -126,15 +134,22 @@ namespace ClinicManagementApp.UserControls
         private void ResetDoctors()
         {
             try 
-            { 
+            {
+                int doctorID = -1;
                 this.doctorComboBox.DataSource = this._doctorController.GetDoctors();
                 this.doctorComboBox.DisplayMember = "FullName";
                 this.doctorComboBox.ValueMember = "DoctorID";
                 string date = this.appointmentDateTimePicker.Value.ToString("yyyy-MM-dd");
-                int doctorID = (int)this.doctorComboBox.SelectedValue;
+                if (this._doctorController.GetDoctors().Count > 0)
+                {
+                    doctorID = (int)this.doctorComboBox.SelectedValue;
+                } else
+                {
+                    MessageBox.Show("No doctors available for appointments");
+                }
                 this.UpdateTimeOptions(date, doctorID);
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
                 MessageBox.Show("No doctors available for appointments");
             }

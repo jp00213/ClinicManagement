@@ -1,6 +1,6 @@
 ﻿namespace ClinicManagementApp
 {
-    partial class MainDashboard
+    partial class NurseDashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -32,12 +32,8 @@
             this.registerTabPage = new System.Windows.Forms.TabPage();
             this.registerPatientUserControl1 = new ClinicManagementApp.UserControls.RegisterPatientUserControl();
             this.UpdateTabPage = new System.Windows.Forms.TabPage();
-            this.updatePatientInformationUserControl1 = new ClinicManagementApp.UserControls.UpdatePatientInformationUserControl();
             this.ViewTabPage = new System.Windows.Forms.TabPage();
             this.bottomPanelHoldMultipleUserControl = new System.Windows.Forms.Panel();
-            this.patientAppointmentListUserControl1 = new ClinicManagementApp.UserControls.PatientAppointmentListUserControl();
-            this.patientVisitListUserControl1 = new ClinicManagementApp.UserControls.PatientVisitListUserControl();
-            this.patientDisplayInfoUserControl1 = new ClinicManagementApp.UserControls.PatientDisplayInfoUserControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.patientVisitButton = new System.Windows.Forms.Button();
@@ -46,14 +42,19 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.currentPatientIDLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.searchPatientUserControl1 = new ClinicManagementApp.UserControls.SearchPatientUserControl();
             this.CreateTabPage = new System.Windows.Forms.TabPage();
-            this.createAppointmentUserControl1 = new ClinicManagementApp.UserControls.CreateAppointmentUserControl();
             this.DocumentTabPage = new System.Windows.Forms.TabPage();
             this.documentVisitUserControl1 = new ClinicManagementApp.UserControls.DocumentVisitUserControl();
             this.LabsTabPage = new System.Windows.Forms.TabPage();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.welcomeUserLabel = new System.Windows.Forms.Label();
+            this.registerPatientUserControl1 = new ClinicManagementApp.UserControls.RegisterPatientUserControl();
+            this.updatePatientInformationUserControl1 = new ClinicManagementApp.UserControls.UpdatePatientInformationUserControl();
+            this.patientAppointmentListUserControl1 = new ClinicManagementApp.UserControls.PatientAppointmentListUserControl();
+            this.patientVisitListUserControl1 = new ClinicManagementApp.UserControls.PatientVisitListUserControl();
+            this.patientDisplayInfoUserControl1 = new ClinicManagementApp.UserControls.PatientDisplayInfoUserControl();
+            this.searchPatientUserControl1 = new ClinicManagementApp.UserControls.SearchPatientUserControl();
+            this.createAppointmentUserControl1 = new ClinicManagementApp.UserControls.CreateAppointmentUserControl();
             this.nurseTabControl.SuspendLayout();
             this.registerTabPage.SuspendLayout();
             this.UpdateTabPage.SuspendLayout();
@@ -113,13 +114,6 @@
             this.UpdateTabPage.Text = "Update Patient";
             this.UpdateTabPage.UseVisualStyleBackColor = true;
             // 
-            // updatePatientInformationUserControl1
-            // 
-            this.updatePatientInformationUserControl1.Location = new System.Drawing.Point(28, 7);
-            this.updatePatientInformationUserControl1.Name = "updatePatientInformationUserControl1";
-            this.updatePatientInformationUserControl1.Size = new System.Drawing.Size(798, 585);
-            this.updatePatientInformationUserControl1.TabIndex = 0;
-            // 
             // ViewTabPage
             // 
             this.ViewTabPage.Controls.Add(this.bottomPanelHoldMultipleUserControl);
@@ -141,30 +135,6 @@
             this.bottomPanelHoldMultipleUserControl.Name = "bottomPanelHoldMultipleUserControl";
             this.bottomPanelHoldMultipleUserControl.Size = new System.Drawing.Size(838, 305);
             this.bottomPanelHoldMultipleUserControl.TabIndex = 1;
-            // 
-            // patientAppointmentListUserControl1
-            // 
-            this.patientAppointmentListUserControl1.Location = new System.Drawing.Point(3, 4);
-            this.patientAppointmentListUserControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.patientAppointmentListUserControl1.Name = "patientAppointmentListUserControl1";
-            this.patientAppointmentListUserControl1.Size = new System.Drawing.Size(803, 299);
-            this.patientAppointmentListUserControl1.TabIndex = 2;
-            // 
-            // patientVisitListUserControl1
-            // 
-            this.patientVisitListUserControl1.Location = new System.Drawing.Point(3, 4);
-            this.patientVisitListUserControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.patientVisitListUserControl1.Name = "patientVisitListUserControl1";
-            this.patientVisitListUserControl1.Size = new System.Drawing.Size(832, 297);
-            this.patientVisitListUserControl1.TabIndex = 2;
-            // 
-            // patientDisplayInfoUserControl1
-            // 
-            this.patientDisplayInfoUserControl1.Location = new System.Drawing.Point(1, 4);
-            this.patientDisplayInfoUserControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.patientDisplayInfoUserControl1.Name = "patientDisplayInfoUserControl1";
-            this.patientDisplayInfoUserControl1.Size = new System.Drawing.Size(817, 297);
-            this.patientDisplayInfoUserControl1.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -255,10 +225,101 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Current Patient #:";
             // 
+            // CreateTabPage
+            // 
+            this.CreateTabPage.Controls.Add(this.createAppointmentUserControl1);
+            this.CreateTabPage.Location = new System.Drawing.Point(4, 27);
+            this.CreateTabPage.Margin = new System.Windows.Forms.Padding(4);
+            this.CreateTabPage.Name = "CreateTabPage";
+            this.CreateTabPage.Size = new System.Drawing.Size(854, 599);
+            this.CreateTabPage.TabIndex = 3;
+            this.CreateTabPage.Text = "Create Appointment";
+            this.CreateTabPage.UseVisualStyleBackColor = true;
+            // 
+            // DocumentTabPage
+            // 
+            this.DocumentTabPage.Location = new System.Drawing.Point(4, 27);
+            this.DocumentTabPage.Margin = new System.Windows.Forms.Padding(4);
+            this.DocumentTabPage.Name = "DocumentTabPage";
+            this.DocumentTabPage.Size = new System.Drawing.Size(854, 599);
+            this.DocumentTabPage.TabIndex = 4;
+            this.DocumentTabPage.Text = "Document Visit";
+            this.DocumentTabPage.UseVisualStyleBackColor = true;
+            // 
+            // LabsTabPage
+            // 
+            this.LabsTabPage.Location = new System.Drawing.Point(4, 27);
+            this.LabsTabPage.Margin = new System.Windows.Forms.Padding(4);
+            this.LabsTabPage.Name = "LabsTabPage";
+            this.LabsTabPage.Size = new System.Drawing.Size(854, 599);
+            this.LabsTabPage.TabIndex = 5;
+            this.LabsTabPage.Text = "Labs";
+            this.LabsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // logoutLinkLabel
+            // 
+            this.logoutLinkLabel.AutoSize = true;
+            this.logoutLinkLabel.Location = new System.Drawing.Point(745, 9);
+            this.logoutLinkLabel.Name = "logoutLinkLabel";
+            this.logoutLinkLabel.Size = new System.Drawing.Size(54, 18);
+            this.logoutLinkLabel.TabIndex = 1;
+            this.logoutLinkLabel.TabStop = true;
+            this.logoutLinkLabel.Text = "Logout";
+            this.logoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.logoutLinkLabel_LinkClicked);
+            // 
+            // welcomeUserLabel
+            // 
+            this.welcomeUserLabel.AutoSize = true;
+            this.welcomeUserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.welcomeUserLabel.ForeColor = System.Drawing.Color.DarkGreen;
+            this.welcomeUserLabel.Location = new System.Drawing.Point(52, 9);
+            this.welcomeUserLabel.Name = "welcomeUserLabel";
+            this.welcomeUserLabel.Size = new System.Drawing.Size(91, 24);
+            this.welcomeUserLabel.TabIndex = 2;
+            this.welcomeUserLabel.Text = "Welcome";
+            // 
+            // registerPatientUserControl1
+            // 
+            this.registerPatientUserControl1.Location = new System.Drawing.Point(8, 66);
+            this.registerPatientUserControl1.Name = "registerPatientUserControl1";
+            this.registerPatientUserControl1.Size = new System.Drawing.Size(804, 499);
+            this.registerPatientUserControl1.TabIndex = 0;
+            // 
+            // updatePatientInformationUserControl1
+            // 
+            this.updatePatientInformationUserControl1.Location = new System.Drawing.Point(28, 7);
+            this.updatePatientInformationUserControl1.Name = "updatePatientInformationUserControl1";
+            this.updatePatientInformationUserControl1.Size = new System.Drawing.Size(798, 585);
+            this.updatePatientInformationUserControl1.TabIndex = 0;
+            // 
+            // patientAppointmentListUserControl1
+            // 
+            this.patientAppointmentListUserControl1.Location = new System.Drawing.Point(3, -2);
+            this.patientAppointmentListUserControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.patientAppointmentListUserControl1.Name = "patientAppointmentListUserControl1";
+            this.patientAppointmentListUserControl1.Size = new System.Drawing.Size(836, 305);
+            this.patientAppointmentListUserControl1.TabIndex = 2;
+            // 
+            // patientVisitListUserControl1
+            // 
+            this.patientVisitListUserControl1.Location = new System.Drawing.Point(6, -2);
+            this.patientVisitListUserControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.patientVisitListUserControl1.Name = "patientVisitListUserControl1";
+            this.patientVisitListUserControl1.Size = new System.Drawing.Size(832, 297);
+            this.patientVisitListUserControl1.TabIndex = 2;
+            // 
+            // patientDisplayInfoUserControl1
+            // 
+            this.patientDisplayInfoUserControl1.Location = new System.Drawing.Point(1, 4);
+            this.patientDisplayInfoUserControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.patientDisplayInfoUserControl1.Name = "patientDisplayInfoUserControl1";
+            this.patientDisplayInfoUserControl1.Size = new System.Drawing.Size(817, 297);
+            this.patientDisplayInfoUserControl1.TabIndex = 0;
+            // 
             // searchPatientUserControl1
             // 
             this.searchPatientUserControl1.Location = new System.Drawing.Point(2, 29);
-            this.searchPatientUserControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.searchPatientUserControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.searchPatientUserControl1.Name = "searchPatientUserControl1";
             this.searchPatientUserControl1.Size = new System.Drawing.Size(826, 202);
             this.searchPatientUserControl1.TabIndex = 2;
@@ -350,7 +411,7 @@
             this.Name = "MainDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clinic Management Application";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainDashboard_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NurseDashboard_FormClosed);
             this.nurseTabControl.ResumeLayout(false);
             this.registerTabPage.ResumeLayout(false);
             this.UpdateTabPage.ResumeLayout(false);

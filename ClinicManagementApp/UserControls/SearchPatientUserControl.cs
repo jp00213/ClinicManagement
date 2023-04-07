@@ -34,8 +34,6 @@ namespace ClinicManagementApp.UserControls
 
         private void SetDefaultPageSetting()
         {
-            dobDateTimePicker.MaxDate = DateTime.Now.Date;
-            dobDateTimePicker.CustomFormat = "yyyy / MM / dd";
             firstAndLastNameRadio.Checked = false;
             lastDOBRadio.Checked = false;
             dobRadio.Checked = false;
@@ -62,12 +60,18 @@ namespace ClinicManagementApp.UserControls
         {
             List<Patient> patientFoundList = this._patientController.GetPatientByInputsCheck(firstNameIn, lastNameIn, dobIn);
 
+            if (CheckIfDateIsBeforeTomorrow(dobIn) == false)
+            {
+                this.messageBox.Text = "DOB cannot be a future date.";
+                return;
+            }
+
             if (patientFoundList.Count > 0)
             {
                 this.messageBox.Text = "";
                 this.patientListView.Items.Clear();
                 Patient currentPatient;
-                for(int i = 0; i < patientFoundList.Count; i++)
+                for (int i = 0; i < patientFoundList.Count; i++)
                 {
                     currentPatient = patientFoundList[i];
                     patientListView.Items.Add(currentPatient.PatientID.ToString());
@@ -209,6 +213,18 @@ namespace ClinicManagementApp.UserControls
         private void dobDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             this.messageBox.Text = "";
+        }
+
+        private bool CheckIfDateIsBeforeTomorrow(DateTime dateIn)
+        {
+            if (dateIn.Date <= DateTime.Now.Date)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

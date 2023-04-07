@@ -46,11 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\LabTestController.cs" />
     <Compile Include="Controller\NurseController.cs" />
     <Compile Include="Controller\AppointmentController.cs" />
     <Compile Include="Controller\AccountController.cs" />
     <Compile Include="Controller\DoctorController.cs" />
     <Compile Include="Controller\PatientController.cs" />
+    <Compile Include="Controller\VisitController.cs" />
+    <Compile Include="DAL\LabTestDAL.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\AppointmentDAL.cs" />
     <Compile Include="DAL\ClinicManagementDBConnection.cs" />
@@ -58,10 +61,13 @@
     <Compile Include="DAL\DoctorDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\PersonDAL.cs" />
+    <Compile Include="DAL\VisitDAL.cs" />
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\Doctor.cs" />
+    <Compile Include="Model\LabTest.cs" />
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\Visit.cs" />
     <Compile Include="UserControls\CreateAppointmentUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -85,6 +91,12 @@
     </Compile>
     <Compile Include="UserControls\UpdatePatientInformationUserControl.Designer.cs">
       <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdministratorDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdministratorDashboard.Designer.cs">
+      <DependentUpon>AdministratorDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -116,11 +128,11 @@
     <Compile Include="UserControls\SearchPatientUserControl.Designer.cs">
       <DependentUpon>SearchPatientUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\MainDashboard.cs">
+    <Compile Include="View\NurseDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MainDashboard.Designer.cs">
-      <DependentUpon>MainDashboard.cs</DependentUpon>
+    <Compile Include="View\NurseDashboard.Designer.cs">
+      <DependentUpon>NurseDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Controller\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -145,6 +157,9 @@
     <EmbeddedResource Include="UserControls\UpdatePatientInformationUserControl.resx">
       <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\AdministratorDashboard.resx">
+      <DependentUpon>AdministratorDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,9 +175,10 @@
     <EmbeddedResource Include="UserControls\SearchPatientUserControl.resx">
       <DependentUpon>SearchPatientUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MainDashboard.resx">
-      <DependentUpon>MainDashboard.cs</DependentUpon>
+    <EmbeddedResource Include="View\NurseDashboard.resx">
+      <DependentUpon>NurseDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\ClinicManagementApp.Controller.PatientController.datasource" />
     <None Include="Properties\DataSources\ClinicManagementApp.Model.Appointment.datasource" />
     <None Include="Properties\DataSources\ClinicManagementApp.Model.Doctor.datasource" />
     <None Include="Properties\DataSources\ClinicManagementApp.Model.Patient.datasource" />
@@ -183,7 +199,6 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="DB\cs6232-g1_scripts.sql" />
-    <Content Include="Model\Temporary.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

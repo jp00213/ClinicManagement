@@ -1,7 +1,5 @@
-﻿using ClinicManagementApp.Model;
-using System;
+﻿using System;
 using System.Data.SqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ClinicManagementApp.DAL
 {
