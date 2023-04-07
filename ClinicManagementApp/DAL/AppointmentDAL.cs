@@ -304,5 +304,45 @@ namespace ClinicManagementApp.DAL
                 }
             }
         }
+
+        public List<Appointment> GetAppointmentsByDate(int patientIDIn)
+        {
+            List<Appointment> appointments = new List<Appointment>();
+            string selectStatement =
+                "select d. doctorID, a.appointmentID, a.appointmentDatetime, " +
+                "a.reason, e.lastName as doctorLastName, " +
+                "CONVERT(VARCHAR, a.appointmentDatetime, 22)  + ' - ' + 'Dr.' + ' ' + e.lastName as appointmentSummary " +
+                "from appointment a, doctor d, person e " +
+                "where a.doctorID = d.doctorID " +
+                "and d.recordID = e.recordID " +
+                "and a.appointmentDatetime < getDate() " +
+                "and a.patientID = @patientID " +
+                "order by a.appointmentID desc ";
+
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@patientID", patientIDIn);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Appointment appointment = new Appointment();
+                            appointment.AppointmentID = (int)(reader)["appointmentID"];
+                            appointment.DoctorID = (int)reader["doctorID"];
+                            appointment.DoctorName = (string)(reader)["doctorLastName"];
+                            appointment.AppointmentDatetime = (DateTime)reader["appointmentDatetime"];
+                            appointment.Reason = (string)(reader)["reason"];
+                            appointment.AppointmentSummary = (string)(reader)["appointmentSummary"];
+                            appointments.Add(appointment);
+                        }
+                    }
+                }
+            }
+            return appointments;
+        }
     }
 }
