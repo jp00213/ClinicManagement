@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.administratorTabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.addNurseTab = new System.Windows.Forms.TabPage();
+            this.viewNurseTab = new System.Windows.Forms.TabPage();
+            this.updateNurseTab = new System.Windows.Forms.TabPage();
             this.welcomeUserLabel = new System.Windows.Forms.Label();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.administratorTabControl.SuspendLayout();
@@ -38,8 +39,9 @@
             // 
             // administratorTabControl
             // 
-            this.administratorTabControl.Controls.Add(this.tabPage1);
-            this.administratorTabControl.Controls.Add(this.tabPage2);
+            this.administratorTabControl.Controls.Add(this.addNurseTab);
+            this.administratorTabControl.Controls.Add(this.viewNurseTab);
+            this.administratorTabControl.Controls.Add(this.updateNurseTab);
             this.administratorTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.administratorTabControl.Location = new System.Drawing.Point(2, 73);
             this.administratorTabControl.Name = "administratorTabControl";
@@ -47,25 +49,35 @@
             this.administratorTabControl.Size = new System.Drawing.Size(862, 630);
             this.administratorTabControl.TabIndex = 0;
             // 
-            // tabPage1
+            // addNurseTab
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 33);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(854, 593);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.addNurseTab.Location = new System.Drawing.Point(4, 33);
+            this.addNurseTab.Name = "addNurseTab";
+            this.addNurseTab.Padding = new System.Windows.Forms.Padding(3);
+            this.addNurseTab.Size = new System.Drawing.Size(854, 593);
+            this.addNurseTab.TabIndex = 0;
+            this.addNurseTab.Text = "Add Nurse";
+            this.addNurseTab.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // viewNurseTab
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(854, 601);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.viewNurseTab.Location = new System.Drawing.Point(4, 33);
+            this.viewNurseTab.Name = "viewNurseTab";
+            this.viewNurseTab.Padding = new System.Windows.Forms.Padding(3);
+            this.viewNurseTab.Size = new System.Drawing.Size(854, 593);
+            this.viewNurseTab.TabIndex = 1;
+            this.viewNurseTab.Text = "View Nurse";
+            this.viewNurseTab.UseVisualStyleBackColor = true;
+            // 
+            // updateNurseTab
+            // 
+            this.updateNurseTab.Location = new System.Drawing.Point(4, 33);
+            this.updateNurseTab.Name = "updateNurseTab";
+            this.updateNurseTab.Padding = new System.Windows.Forms.Padding(3);
+            this.updateNurseTab.Size = new System.Drawing.Size(854, 593);
+            this.updateNurseTab.TabIndex = 2;
+            this.updateNurseTab.Text = "Update Nurse";
+            this.updateNurseTab.UseVisualStyleBackColor = true;
             // 
             // welcomeUserLabel
             // 
@@ -113,9 +125,10 @@
         #endregion
 
         private System.Windows.Forms.TabControl administratorTabControl;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage addNurseTab;
+        private System.Windows.Forms.TabPage viewNurseTab;
         private System.Windows.Forms.Label welcomeUserLabel;
         private System.Windows.Forms.LinkLabel logoutLinkLabel;
+        private System.Windows.Forms.TabPage updateNurseTab;
     }
 }
