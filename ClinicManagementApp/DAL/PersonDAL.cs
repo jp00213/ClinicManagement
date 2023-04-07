@@ -18,8 +18,8 @@ namespace ClinicManagementApp.DAL
         {
             SqlConnection connection = ClinicManagementDBConnection.GetConnection();
             string insertStatement = "INSERT INTO person " +
-                "(lastName, firstName, birthday, addressStreet, city, state, zip, phoneNumber)" +
-                "VALUES (@lastName, @firstName, @birthday, @addressStreet, @city, @state, @zip, @phoneNumber)";
+                "(lastName, firstName, birthday, addressStreet, city, state, zip, phoneNumber, sex, ssn)" +
+                "VALUES (@lastName, @firstName, @birthday, @addressStreet, @city, @state, @zip, @phoneNumber, @sex, @ssn)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
 
             insertCommand.Parameters.Add("@lastName", System.Data.SqlDbType.VarChar);
@@ -46,7 +46,13 @@ namespace ClinicManagementApp.DAL
             insertCommand.Parameters.Add("@phoneNumber", System.Data.SqlDbType.Char);
             insertCommand.Parameters["@phoneNumber"].Value = person.Phone;
 
-            using(insertCommand)
+            insertCommand.Parameters.Add("@sex", System.Data.SqlDbType.VarChar);
+            insertCommand.Parameters["@sex"].Value = person.Sex;
+
+            insertCommand.Parameters.Add("@ssn", System.Data.SqlDbType.Char);
+            insertCommand.Parameters["@ssn"].Value = person.SSN;
+
+            using (insertCommand)
             {
                 connection.Open();
                 insertCommand.ExecuteNonQuery();
