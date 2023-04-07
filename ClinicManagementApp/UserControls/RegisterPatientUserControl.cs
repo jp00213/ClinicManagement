@@ -61,7 +61,9 @@ namespace ClinicManagementApp.UserControls
                 ssn = "";
             }
 
-            if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || dateOfBirth > DateTime.Now || string.IsNullOrEmpty(address) || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || state.Length != 2 || !IsValidZipCode(zip) || !IsPhoneNumberValid(phone) || string.IsNullOrEmpty(sex))
+            if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || dateOfBirth > DateTime.Now || string.IsNullOrEmpty(address) 
+                || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || state.Length != 2 || !IsValidZipCode(zip) 
+                || !IsPhoneNumberValid(phone) || string.IsNullOrEmpty(sex) || !IsSSNValid(ssn))
             {
                 this.ShowInvalidErrorMessage();
             } else
@@ -131,6 +133,12 @@ namespace ClinicManagementApp.UserControls
                 this.sexErrorMessageLabel.Text = "Please enter a sex.";
                 this.sexErrorMessageLabel.ForeColor = Color.Red;
             }
+
+            if (!IsSSNValid(ssnTextBox.Text))
+            {
+                this.ssnErrorMessageLabel.Text = "Please enter a valid 8 digit SSN, numbers only.";
+                this.ssnErrorMessageLabel.ForeColor = Color.Red;
+            }
         }
 
         private bool IsValidZipCode(string zip)
@@ -156,6 +164,20 @@ namespace ClinicManagementApp.UserControls
             return validPhoneNumber;
         }
 
+        private bool IsSSNValid(string ssn)
+        {
+            string ssnRegEx = @"^[0-9]{8}$";
+            bool validSSN = true;
+            if (ssn.Equals(""))
+            {
+                validSSN = true;
+            } else if (!Regex.Match(ssn, ssnRegEx).Success)
+            {
+                validSSN = false;
+            }
+            return validSSN;
+        }
+
         private void HideInvalidErrorMessages()
         {
             this.lastNameErrorMessageLabel.Text = "";
@@ -167,6 +189,7 @@ namespace ClinicManagementApp.UserControls
             this.stateErrorMessageLabel.Text = "";
             this.zipErrorMessageLabel.Text = "";
             this.sexErrorMessageLabel.Text = "";
+            this.ssnErrorMessageLabel.Text = "";
         }
 
         private void TextBox_TextChanged(object sender, EventArgs e)

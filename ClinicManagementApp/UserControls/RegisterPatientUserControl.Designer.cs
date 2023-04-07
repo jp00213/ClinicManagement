@@ -62,6 +62,7 @@
             this.sexLabel = new System.Windows.Forms.Label();
             this.sexErrorMessageLabel = new System.Windows.Forms.Label();
             this.patientControllerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ssnErrorMessageLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientControllerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -417,9 +418,19 @@
             // 
             this.patientControllerBindingSource.DataSource = typeof(ClinicManagementApp.Controller.PatientController);
             // 
+            // ssnErrorMessageLabel
+            // 
+            this.ssnErrorMessageLabel.AutoSize = true;
+            this.ssnErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ssnErrorMessageLabel.Location = new System.Drawing.Point(495, 329);
+            this.ssnErrorMessageLabel.Name = "ssnErrorMessageLabel";
+            this.ssnErrorMessageLabel.Size = new System.Drawing.Size(0, 18);
+            this.ssnErrorMessageLabel.TabIndex = 35;
+            // 
             // RegisterPatientUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.ssnErrorMessageLabel);
             this.Controls.Add(this.sexErrorMessageLabel);
             this.Controls.Add(this.ssnTextBox);
             this.Controls.Add(this.sexTextBox);
@@ -495,5 +506,6 @@
         private System.Windows.Forms.Label ssnLabel;
         private System.Windows.Forms.Label sexLabel;
         private System.Windows.Forms.Label sexErrorMessageLabel;
+        private System.Windows.Forms.Label ssnErrorMessageLabel;
     }
 }
