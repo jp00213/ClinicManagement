@@ -11,12 +11,14 @@ namespace ClinicManagementApp.Model
 
         public int TestCode { get; set; }
 
-        public DateTime TestDate { get; set; }
+        public DateTime TestDate { get; set; } //date test was performed
 
         public string Result { get; set; }
 
         public string TestName { get; set; }
 
         public int ResultIsNormal { get; set; }
+
+        public DateTime DateOrdered { get; set; } //date test was ordered (the date of the visit)
     }
 }

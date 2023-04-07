@@ -80,6 +80,12 @@
     <Compile Include="UserControls\DocumentVisitUserControl.Designer.cs">
       <DependentUpon>DocumentVisitUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\LabsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\LabsUserControl.Designer.cs">
+      <DependentUpon>LabsUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\RegisterPatientUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -151,6 +157,9 @@
     <EmbeddedResource Include="UserControls\DocumentVisitUserControl.resx">
       <DependentUpon>DocumentVisitUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\LabsUserControl.resx">
+      <DependentUpon>LabsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RegisterPatientUserControl.resx">
       <DependentUpon>RegisterPatientUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,6 +190,7 @@
     <None Include="Properties\DataSources\ClinicManagementApp.Controller.PatientController.datasource" />
     <None Include="Properties\DataSources\ClinicManagementApp.Model.Appointment.datasource" />
     <None Include="Properties\DataSources\ClinicManagementApp.Model.Doctor.datasource" />
+    <None Include="Properties\DataSources\ClinicManagementApp.Model.LabTest.datasource" />
     <None Include="Properties\DataSources\ClinicManagementApp.Model.Patient.datasource" />
     <None Include="Properties\DataSources\ClinicManagementApp.Model.Person.datasource" />
     <None Include="Properties\Settings.settings">
