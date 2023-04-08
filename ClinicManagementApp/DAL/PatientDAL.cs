@@ -302,6 +302,65 @@ namespace ClinicManagementApp.DAL
             return patients;
         }
 
+        /// <summary>
+        /// Get patients by visit Date per search requirement
+        /// </summary>
+        /// <param name="visitDate">visit date</param>
+        /// <returns>patient list</returns>
+        public List<PatientVisit> GetPatientsByVisitDate(DateTime visitDate)
+        {
+            List<PatientVisit> patients = new List<PatientVisit>();
+            PatientVisit patient = new PatientVisit();
+
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string selectStatement =
+                  "SELECT pe.firstName, pe.lastName, pe.birthday, pe.phoneNumber, pe.addressStreet, pe.recordID, p.patientID, " +
+                  "pe.city, pe.state, pe.zip, v.visitID " +
+                  "FROM visitRoutineResults v " +
+                  "join appointment a " +
+                  "on a.appointmentID = v.appointmentID " +
+                  "join patient p " +
+                  "on p.patientID = a.patientID " +
+                  "join person pe " +
+                  "on pe.recordID = p.recordID " +
+                  "where v.visitDatetime between @visitDate and @visitDateEnd";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            selectCommand.Parameters.Add("@visitDate", System.Data.SqlDbType.Date);
+            selectCommand.Parameters["@visitDate"].Value = visitDate;
+
+            selectCommand.Parameters.Add("@visitDateEnd", System.Data.SqlDbType.DateTime);
+            selectCommand.Parameters["@visitDateEnd"].Value = visitDate.Add(new TimeSpan(23, 59, 59));
+
+            using (selectCommand)
+            {
+                connection.Open();
+                using (SqlDataReader reader = selectCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        patient = new PatientVisit
+                        {
+                            RecordID = (int)(reader)["recordID"],
+                            LastName = (string)(reader)["lastName"],
+                            FirstName = (string)(reader)["firstName"],
+                            DateOfBirth = (DateTime)(reader)["birthday"],
+                            AddressStreet = (string)(reader)["addressStreet"],
+                            City = (string)(reader)["city"],
+                            State = (string)(reader)["state"],
+                            Zip = (string)(reader)["zip"],
+                            Phone = (string)(reader)["phoneNumber"],
+                            PatientID = (int)(reader)["patientID"],
+                            VisitID = (int)(reader)["visitID"]
+                        };
+                        patients.Add(patient);
+                    }
+                }
+            }
+            return patients;
+        }
+
     }
 
 }

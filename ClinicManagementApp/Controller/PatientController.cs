@@ -97,5 +97,12 @@ namespace ClinicManagementApp.Controller
 
         }
 
+        /// <summary>
+        /// Get patients by visit Date per search requirement
+        /// </summary>
+        /// <param name="visitDate">visit date</param>
+        /// <returns>patient list</returns>
+        public List<PatientVisit> GetPatientsByVisitDate(DateTime visitDate) => this._patientDAL.GetPatientsByVisitDate(visitDate);
+
     }
 }
