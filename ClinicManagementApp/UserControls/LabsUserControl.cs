@@ -63,6 +63,10 @@ namespace ClinicManagementApp.UserControls
                 patientBindingSource.DataSource = _patientController.GetPatientByID(visit.PatientID);
 
                 doctorBindingSource.Clear();
+                doctorBindingSource.DataSource = _doctorController.GetDoctorByID(visit.DoctorID);
+
+                nurseBindingSource.Clear();
+                nurseBindingSource.DataSource = _nurseController.GetNurseByID(visit.NurseID);
             }
         }
     }
