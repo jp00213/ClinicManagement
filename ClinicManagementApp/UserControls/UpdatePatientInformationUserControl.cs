@@ -20,6 +20,7 @@ namespace ClinicManagementApp.UserControls
             InitializeComponent();
             this._patientController= new PatientController();
             this._patient = null;
+            this.updatePatientButton.Enabled = false;
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -29,6 +30,8 @@ namespace ClinicManagementApp.UserControls
             DateTime dob = this.dateOfBirthDateTimePicker.Value;
 
             this.patientSearchDataGridView.DataSource = _patientController.GetPatientByNameDOB(firstName, lastName, dob);
+
+            this.ResetIndividualInfo();
         }
 
         private void PatientSearchDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -102,6 +105,11 @@ namespace ClinicManagementApp.UserControls
             this.dateOfBirthDateTimePicker.Value = DateTime.Now;
             this.searchButton_Click(null, null);
 
+            this.ResetIndividualInfo();
+        }
+
+        private void ResetIndividualInfo()
+        {
             this._patient = null;
             this.patientBindingSource.DataSource = this._patientController.GetPatientByNameDOB("", "", DateTime.Now);
             this.updatePatientButton.Enabled = false;
@@ -207,7 +215,7 @@ namespace ClinicManagementApp.UserControls
             }
             return validSSN;
         }
-
+        
 
         private void HideInvalidErrorMessages()
         {
@@ -228,9 +236,5 @@ namespace ClinicManagementApp.UserControls
             this.HideInvalidErrorMessages();
         }
 
-        private void firstNameResultsLabel_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
