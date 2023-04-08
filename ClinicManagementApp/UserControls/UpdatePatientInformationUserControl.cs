@@ -62,6 +62,7 @@ namespace ClinicManagementApp.UserControls
             string city = this.cityTextBox.Text.Trim();
             string state = this.stateComboBox.Text;
             string zip = this.zipTextBox.Text.Trim();
+            string sex = this.sexTextBox.Text.Trim();
             Patient oldPatient = _patient;
 
             if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || dateOfBirth > DateTime.Now ||string.IsNullOrEmpty(address) || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || !IsValidZipCode(zip) || !IsPhoneNumberValid(phone))
@@ -189,6 +190,9 @@ namespace ClinicManagementApp.UserControls
             this.HideInvalidErrorMessages();
         }
 
-        
+        private void firstNameResultsLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

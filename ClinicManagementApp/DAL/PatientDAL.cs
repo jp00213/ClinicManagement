@@ -108,7 +108,9 @@ namespace ClinicManagementApp.DAL
                             State = (string)(reader)["state"],
                             Zip = (string)(reader)["zip"],
                             Phone = (string)(reader)["phoneNumber"],
-                            PatientID = (int)(reader)["patientID"]
+                            PatientID = (int)(reader)["patientID"],
+                            Sex = (string)(reader)["sex"],
+                            SSN = (string)(reader)["ssn"]
                         };
                     }
                 }
