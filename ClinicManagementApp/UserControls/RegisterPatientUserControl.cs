@@ -57,13 +57,10 @@ namespace ClinicManagementApp.UserControls
             string zip = this.zipTextBox.Text.Trim();
             string sex = this.sexTextBox.Text.Trim();
             string ssn = this.ssnTextBox.Text.Trim();
-            if (string.IsNullOrEmpty(ssn)) {
-                ssn = "";
-            }
 
             if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || dateOfBirth > DateTime.Now || string.IsNullOrEmpty(address) 
                 || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || state.Length != 2 || !IsValidZipCode(zip) 
-                || !IsPhoneNumberValid(phone) || string.IsNullOrEmpty(sex) || !IsSSNValid(ssn))
+                || !IsPhoneNumberValid(phone) || !IsSexValid(sex) || !IsSSNValid(ssn))
             {
                 this.ShowInvalidErrorMessage();
             } else
@@ -128,15 +125,15 @@ namespace ClinicManagementApp.UserControls
                 this.phoneErrorMessageLabel.ForeColor = Color.Red;
             }
 
-            if (string.IsNullOrEmpty(sexTextBox.Text))
+            if (!IsSexValid(sexTextBox.Text))
             {
-                this.sexErrorMessageLabel.Text = "Please enter a sex.";
+                this.sexErrorMessageLabel.Text = "Please enter M or F.";
                 this.sexErrorMessageLabel.ForeColor = Color.Red;
             }
 
             if (!IsSSNValid(ssnTextBox.Text))
             {
-                this.ssnErrorMessageLabel.Text = "Please enter a valid 8 digit SSN, numbers only.";
+                this.ssnErrorMessageLabel.Text = "Please enter a valid 9 digit SSN, numbers only.";
                 this.ssnErrorMessageLabel.ForeColor = Color.Red;
             }
         }
@@ -166,7 +163,7 @@ namespace ClinicManagementApp.UserControls
 
         private bool IsSSNValid(string ssn)
         {
-            string ssnRegEx = @"^[0-9]{8}$";
+            string ssnRegEx = @"^[0-9]{9}$";
             bool validSSN = true;
             if (ssn.Equals(""))
             {
@@ -176,6 +173,19 @@ namespace ClinicManagementApp.UserControls
                 validSSN = false;
             }
             return validSSN;
+        }
+
+        private bool IsSexValid(string sex)
+        {
+            bool validSex = true;
+            if (String.Equals(sex, "M") || String.Equals(sex, "F"))
+            {
+                validSex = true;
+            } else
+            {
+                validSex = false;
+            }
+            return validSex;
         }
 
         private void HideInvalidErrorMessages()

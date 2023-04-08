@@ -50,7 +50,13 @@ namespace ClinicManagementApp.DAL
             insertCommand.Parameters["@sex"].Value = person.Sex;
 
             insertCommand.Parameters.Add("@ssn", System.Data.SqlDbType.Char);
-            insertCommand.Parameters["@ssn"].Value = person.SSN;
+            if (person.SSN == "")
+            {
+                insertCommand.Parameters["@ssn"].Value = DBNull.Value;
+            } else
+            {
+                insertCommand.Parameters["@ssn"].Value = person.SSN;
+            }
 
             using (insertCommand)
             {
@@ -96,7 +102,14 @@ namespace ClinicManagementApp.DAL
             updateCommand.Parameters.AddWithValue("@newZip", zip);
             updateCommand.Parameters.AddWithValue("@newPhone", phone);
             updateCommand.Parameters.AddWithValue("@newSex", sex);
-            updateCommand.Parameters.AddWithValue("@newSSN", ssn);
+            if (ssn == "")
+            {
+                updateCommand.Parameters.AddWithValue("@newSSN", DBNull.Value);
+            }
+            else
+            {
+                updateCommand.Parameters.AddWithValue("@newSSN", ssn);
+            }
 
             using (updateCommand)
             {
