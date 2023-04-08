@@ -22,8 +22,10 @@ namespace ClinicManagementApp.UserControls
         private readonly VisitController _visitController;
         private readonly DoctorController _doctorController;
         private readonly NurseController _nurseController;
+        private readonly LabTestController _labTestController;
         private int _visitID;
         private List<PatientVisit> _patients;
+
         /// <summary>
         /// Constructor for labs user control
         /// </summary>
@@ -36,6 +38,8 @@ namespace ClinicManagementApp.UserControls
             _doctorController = new DoctorController();
             _nurseController = new NurseController();
             _patients = new List<PatientVisit>();
+            _labTestController = new LabTestController();
+            setGridComboBoxOptions();
         }
 
         private void AppointmentDateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -54,7 +58,12 @@ namespace ClinicManagementApp.UserControls
 
         private void patientComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(_patients.Count > 0)
+
+        }
+
+        private void SelectButton_Click(object sender, EventArgs e)
+        {
+            if (_patients.Count > 0)
             {
                 _visitID = _patients[patientComboBox.SelectedIndex].VisitID;
                 Visit visit = _visitController.GetVisitInformationByVisitID(_visitID);
@@ -67,7 +76,21 @@ namespace ClinicManagementApp.UserControls
 
                 nurseBindingSource.Clear();
                 nurseBindingSource.DataSource = _nurseController.GetNurseByID(visit.NurseID);
+
+                labDataGridView.DataSource = _labTestController.GetLabTestListByVisitID(_visitID);
             }
+        }
+
+        private void setGridComboBoxOptions()
+        {
+            this.resultIsNormalDataGridViewComboBoxColumn.DataSource = new List<Range>
+            {
+                new Range {RangeInt = 0, RangeString = "Normal"},
+                new Range {RangeInt = 1, RangeString = "Abnormal"}
+            };
+
+            this.resultIsNormalDataGridViewComboBoxColumn.DisplayMember = "RangeString";
+            this.resultIsNormalDataGridViewComboBoxColumn.ValueMember = "RangeInt";
         }
     }
 }

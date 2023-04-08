@@ -19,9 +19,12 @@ namespace ClinicManagementApp.DAL
         {
             List<LabTest> labTests = new List<LabTest>();
             string selectStatement =
-                "select v.visitID, v.testCode, v.resultIsNormal, v.testDate, t.name, v.result " +
-                " from visit_has_test v, test t " +
-                " where v.testCode = t.testCode " +
+                "select v.visitID, v.testCode, v.resultIsNormal, v.testDate, t.name, v.result, vi.visitDatetime " +
+                "FROM visit_has_test v " +
+                "join test t " +
+                "on v.testCode = t.testCode " +
+                "join visitRoutineResults vi " +
+                "on vi.visitID = v.visitID " +
                 "and v.visitID = @visitID ";
             using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
             {
@@ -42,6 +45,7 @@ namespace ClinicManagementApp.DAL
                             theLabTest.ResultIsNormal = (byte)(reader)["resultIsNormal"];
                             theLabTest.TestDate = (DateTime)(reader)["testDate"];
                             theLabTest.TestName = (string)(reader)["name"];
+                            theLabTest.DateOrdered = (DateTime)(reader)["visitDateTime"];
 
                             labTests.Add(theLabTest);
                         }

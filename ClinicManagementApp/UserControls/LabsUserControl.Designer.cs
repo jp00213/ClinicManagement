@@ -63,7 +63,7 @@
             this.dateOrderedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resultIsNormalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resultIsNormalDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.labTestBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.addressStreetTextBox = new System.Windows.Forms.TextBox();
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -174,6 +174,24 @@
             specialtyLabel.TabIndex = 91;
             specialtyLabel.Text = "Specialty:";
             // 
+            // nurseFullNameLabel
+            // 
+            nurseFullNameLabel.AutoSize = true;
+            nurseFullNameLabel.Location = new System.Drawing.Point(528, 178);
+            nurseFullNameLabel.Name = "nurseFullNameLabel";
+            nurseFullNameLabel.Size = new System.Drawing.Size(52, 18);
+            nurseFullNameLabel.TabIndex = 100;
+            nurseFullNameLabel.Text = "Name:";
+            // 
+            // nurseIDLabel
+            // 
+            nurseIDLabel.AutoSize = true;
+            nurseIDLabel.Location = new System.Drawing.Point(529, 208);
+            nurseIDLabel.Name = "nurseIDLabel";
+            nurseIDLabel.Size = new System.Drawing.Size(70, 18);
+            nurseIDLabel.TabIndex = 104;
+            nurseIDLabel.Text = "Nurse ID:";
+            // 
             // appointmentDateTimePicker
             // 
             this.appointmentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -230,6 +248,7 @@
             this.selectButton.TabIndex = 34;
             this.selectButton.Text = "Select";
             this.selectButton.UseVisualStyleBackColor = true;
+            this.selectButton.Click += new System.EventHandler(this.SelectButton_Click);
             // 
             // nurseInfoLabel
             // 
@@ -348,6 +367,8 @@
             // 
             // labDataGridView
             // 
+            this.labDataGridView.AllowUserToAddRows = false;
+            this.labDataGridView.AllowUserToDeleteRows = false;
             this.labDataGridView.AutoGenerateColumns = false;
             this.labDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.labDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -357,7 +378,7 @@
             this.dateOrderedDataGridViewTextBoxColumn,
             this.testDateDataGridViewTextBoxColumn,
             this.resultDataGridViewTextBoxColumn,
-            this.resultIsNormalDataGridViewTextBoxColumn});
+            this.resultIsNormalDataGridViewComboBoxColumn});
             this.labDataGridView.DataSource = this.labTestBindingSource;
             this.labDataGridView.Location = new System.Drawing.Point(52, 250);
             this.labDataGridView.Name = "labDataGridView";
@@ -397,11 +418,16 @@
             this.resultDataGridViewTextBoxColumn.HeaderText = "Result";
             this.resultDataGridViewTextBoxColumn.Name = "resultDataGridViewTextBoxColumn";
             // 
-            // resultIsNormalDataGridViewTextBoxColumn
+            // resultIsNormalDataGridViewComboBoxColumn
             // 
-            this.resultIsNormalDataGridViewTextBoxColumn.DataPropertyName = "ResultIsNormal";
-            this.resultIsNormalDataGridViewTextBoxColumn.HeaderText = "Range";
-            this.resultIsNormalDataGridViewTextBoxColumn.Name = "resultIsNormalDataGridViewTextBoxColumn";
+            this.resultIsNormalDataGridViewComboBoxColumn.DataPropertyName = "ResultIsNormal";
+            this.resultIsNormalDataGridViewComboBoxColumn.HeaderText = "Range";
+            this.resultIsNormalDataGridViewComboBoxColumn.Items.AddRange(new object[] {
+            "normal",
+            "abnormal"});
+            this.resultIsNormalDataGridViewComboBoxColumn.Name = "resultIsNormalDataGridViewComboBoxColumn";
+            this.resultIsNormalDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.resultIsNormalDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // labTestBindingSource
             // 
@@ -501,15 +527,6 @@
             // 
             this.nurseBindingSource.DataSource = typeof(ClinicManagementApp.Model.Nurse);
             // 
-            // nurseFullNameLabel
-            // 
-            nurseFullNameLabel.AutoSize = true;
-            nurseFullNameLabel.Location = new System.Drawing.Point(528, 178);
-            nurseFullNameLabel.Name = "nurseFullNameLabel";
-            nurseFullNameLabel.Size = new System.Drawing.Size(52, 18);
-            nurseFullNameLabel.TabIndex = 100;
-            nurseFullNameLabel.Text = "Name:";
-            // 
             // fullNameTextBox1
             // 
             this.fullNameTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "FullName", true));
@@ -518,15 +535,6 @@
             this.fullNameTextBox1.Name = "fullNameTextBox1";
             this.fullNameTextBox1.Size = new System.Drawing.Size(200, 24);
             this.fullNameTextBox1.TabIndex = 101;
-            // 
-            // nurseIDLabel
-            // 
-            nurseIDLabel.AutoSize = true;
-            nurseIDLabel.Location = new System.Drawing.Point(529, 208);
-            nurseIDLabel.Name = "nurseIDLabel";
-            nurseIDLabel.Size = new System.Drawing.Size(70, 18);
-            nurseIDLabel.TabIndex = 104;
-            nurseIDLabel.Text = "Nurse ID:";
             // 
             // nurseIDTextBox
             // 
@@ -616,12 +624,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView labDataGridView;
         private System.Windows.Forms.BindingSource labTestBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn testCodeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn testNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateOrderedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn testDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn resultDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn resultIsNormalDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource patientBindingSource;
         private System.Windows.Forms.TextBox addressStreetTextBox;
         private System.Windows.Forms.TextBox cityTextBox;
@@ -637,5 +639,11 @@
         private System.Windows.Forms.BindingSource nurseBindingSource;
         private System.Windows.Forms.TextBox fullNameTextBox1;
         private System.Windows.Forms.TextBox nurseIDTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn testCodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn testNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateOrderedDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn testDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resultDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn resultIsNormalDataGridViewComboBoxColumn;
     }
 }
