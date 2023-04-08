@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace ClinicManagementApp.UserControls
 {
     /// <summary>
-    /// this class manages usercontrol for viewing individual selected patient information
+    /// this class manages usercontrol for viewing individual selected patient information.
     /// </summary>
     public partial class PatientDisplayInfoUserControl : UserControl
     {
