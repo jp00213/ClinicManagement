@@ -19,6 +19,11 @@ namespace ClinicManagementApp.UserControls
     public partial class LabsUserControl : UserControl
     {
         private readonly PatientController _patientController;
+        private readonly VisitController _visitController;
+        private readonly DoctorController _doctorController;
+        private readonly NurseController _nurseController;
+        private int _visitID;
+        private List<PatientVisit> _patients;
         /// <summary>
         /// Constructor for labs user control
         /// </summary>
@@ -26,21 +31,38 @@ namespace ClinicManagementApp.UserControls
         {
             InitializeComponent();
             _patientController = new PatientController();
+            _visitID = -1;
+            _visitController = new VisitController(); 
+            _doctorController = new DoctorController();
+            _nurseController = new NurseController();
+            _patients = new List<PatientVisit>();
         }
 
         private void AppointmentDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            List<Patient> patients = this._patientController.GetPatientsByVisitDate(this.appointmentDateTimePicker.Value);
+            _patients = _patientController.GetPatientsByVisitDate(appointmentDateTimePicker.Value);
 
-            if(patients.Count > 0)
+            if(_patients.Count > 0)
             {
-                this.patientComboBox.DataSource = patients;
-                this.patientComboBox.DisplayMember = "FullName";
-                this.patientComboBox.ValueMember = "PatientID";
+                patientComboBox.DataSource = _patients;
             }
             else
             {
-                MessageBox.Show("No patients with a visit on " + this.appointmentDateTimePicker.Value.ToString("dd/MM/yyyy"));
+                MessageBox.Show("No patients with a visit on " + appointmentDateTimePicker.Value.ToString("dd/MM/yyyy"));
+            }
+        }
+
+        private void patientComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(_patients.Count > 0)
+            {
+                _visitID = _patients[patientComboBox.SelectedIndex].VisitID;
+                Visit visit = _visitController.GetVisitInformationByVisitID(_visitID);
+
+                patientBindingSource.Clear();
+                patientBindingSource.DataSource = _patientController.GetPatientByID(visit.PatientID);
+
+                doctorBindingSource.Clear();
             }
         }
     }

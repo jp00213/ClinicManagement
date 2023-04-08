@@ -101,7 +101,7 @@ namespace ClinicManagementApp.Controller
         /// </summary>
         /// <param name="visitDate">visit date</param>
         /// <returns>patient list</returns>
-        public List<Patient> GetPatientsByVisitDate(DateTime visitDate) => this._patientDAL.GetPatientsByVisitDate(visitDate);
+        public List<PatientVisit> GetPatientsByVisitDate(DateTime visitDate) => this._patientDAL.GetPatientsByVisitDate(visitDate);
 
     }
 }

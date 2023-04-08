@@ -60,6 +60,13 @@
             this.dividerLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.labDataGridView = new System.Windows.Forms.DataGridView();
+            this.addressStreetTextBox = new System.Windows.Forms.TextBox();
+            this.cityTextBox = new System.Windows.Forms.TextBox();
+            this.dateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.firstNameTextBox = new System.Windows.Forms.TextBox();
+            this.lastNameTextBox = new System.Windows.Forms.TextBox();
+            this.phoneTextBox = new System.Windows.Forms.TextBox();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.testCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateOrderedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,23 +74,18 @@
             this.resultDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultIsNormalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labTestBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.addressStreetTextBox = new System.Windows.Forms.TextBox();
-            this.cityTextBox = new System.Windows.Forms.TextBox();
-            this.dateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.firstNameTextBox = new System.Windows.Forms.TextBox();
-            this.lastNameTextBox = new System.Windows.Forms.TextBox();
-            this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.doctorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientVisitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             addressStreetLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
             dateOfBirthLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
             phoneLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.labDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.doctorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientVisitBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // addressStreetLabel
@@ -169,12 +171,16 @@
             // 
             // patientComboBox
             // 
+            this.patientComboBox.DataSource = this.patientVisitBindingSource;
+            this.patientComboBox.DisplayMember = "FullName";
             this.patientComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.patientComboBox.FormattingEnabled = true;
             this.patientComboBox.Location = new System.Drawing.Point(407, 34);
             this.patientComboBox.Name = "patientComboBox";
             this.patientComboBox.Size = new System.Drawing.Size(192, 26);
             this.patientComboBox.TabIndex = 33;
+            this.patientComboBox.ValueMember = "VisitID";
+            this.patientComboBox.SelectedIndexChanged += new System.EventHandler(this.patientComboBox_SelectedIndexChanged);
             // 
             // selectButton
             // 
@@ -391,53 +397,6 @@
             this.labDataGridView.Size = new System.Drawing.Size(852, 257);
             this.labDataGridView.TabIndex = 60;
             // 
-            // testCodeDataGridViewTextBoxColumn
-            // 
-            this.testCodeDataGridViewTextBoxColumn.DataPropertyName = "TestCode";
-            this.testCodeDataGridViewTextBoxColumn.HeaderText = "Test Code";
-            this.testCodeDataGridViewTextBoxColumn.Name = "testCodeDataGridViewTextBoxColumn";
-            this.testCodeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // testNameDataGridViewTextBoxColumn
-            // 
-            this.testNameDataGridViewTextBoxColumn.DataPropertyName = "TestName";
-            this.testNameDataGridViewTextBoxColumn.HeaderText = "Test Name";
-            this.testNameDataGridViewTextBoxColumn.Name = "testNameDataGridViewTextBoxColumn";
-            this.testNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateOrderedDataGridViewTextBoxColumn
-            // 
-            this.dateOrderedDataGridViewTextBoxColumn.DataPropertyName = "DateOrdered";
-            this.dateOrderedDataGridViewTextBoxColumn.HeaderText = "Date Ordered";
-            this.dateOrderedDataGridViewTextBoxColumn.Name = "dateOrderedDataGridViewTextBoxColumn";
-            this.dateOrderedDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // testDateDataGridViewTextBoxColumn
-            // 
-            this.testDateDataGridViewTextBoxColumn.DataPropertyName = "TestDate";
-            this.testDateDataGridViewTextBoxColumn.HeaderText = "Date Performed";
-            this.testDateDataGridViewTextBoxColumn.Name = "testDateDataGridViewTextBoxColumn";
-            // 
-            // resultDataGridViewTextBoxColumn
-            // 
-            this.resultDataGridViewTextBoxColumn.DataPropertyName = "Result";
-            this.resultDataGridViewTextBoxColumn.HeaderText = "Result";
-            this.resultDataGridViewTextBoxColumn.Name = "resultDataGridViewTextBoxColumn";
-            // 
-            // resultIsNormalDataGridViewTextBoxColumn
-            // 
-            this.resultIsNormalDataGridViewTextBoxColumn.DataPropertyName = "ResultIsNormal";
-            this.resultIsNormalDataGridViewTextBoxColumn.HeaderText = "Range";
-            this.resultIsNormalDataGridViewTextBoxColumn.Name = "resultIsNormalDataGridViewTextBoxColumn";
-            // 
-            // labTestBindingSource
-            // 
-            this.labTestBindingSource.DataSource = typeof(ClinicManagementApp.Model.LabTest);
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(ClinicManagementApp.Model.Patient);
-            // 
             // addressStreetTextBox
             // 
             this.addressStreetTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "AddressStreet", true));
@@ -493,9 +452,60 @@
             this.phoneTextBox.Size = new System.Drawing.Size(148, 24);
             this.phoneTextBox.TabIndex = 73;
             // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(ClinicManagementApp.Model.Patient);
+            // 
+            // testCodeDataGridViewTextBoxColumn
+            // 
+            this.testCodeDataGridViewTextBoxColumn.DataPropertyName = "TestCode";
+            this.testCodeDataGridViewTextBoxColumn.HeaderText = "Test Code";
+            this.testCodeDataGridViewTextBoxColumn.Name = "testCodeDataGridViewTextBoxColumn";
+            this.testCodeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // testNameDataGridViewTextBoxColumn
+            // 
+            this.testNameDataGridViewTextBoxColumn.DataPropertyName = "TestName";
+            this.testNameDataGridViewTextBoxColumn.HeaderText = "Test Name";
+            this.testNameDataGridViewTextBoxColumn.Name = "testNameDataGridViewTextBoxColumn";
+            this.testNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateOrderedDataGridViewTextBoxColumn
+            // 
+            this.dateOrderedDataGridViewTextBoxColumn.DataPropertyName = "DateOrdered";
+            this.dateOrderedDataGridViewTextBoxColumn.HeaderText = "Date Ordered";
+            this.dateOrderedDataGridViewTextBoxColumn.Name = "dateOrderedDataGridViewTextBoxColumn";
+            this.dateOrderedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // testDateDataGridViewTextBoxColumn
+            // 
+            this.testDateDataGridViewTextBoxColumn.DataPropertyName = "TestDate";
+            this.testDateDataGridViewTextBoxColumn.HeaderText = "Date Performed";
+            this.testDateDataGridViewTextBoxColumn.Name = "testDateDataGridViewTextBoxColumn";
+            // 
+            // resultDataGridViewTextBoxColumn
+            // 
+            this.resultDataGridViewTextBoxColumn.DataPropertyName = "Result";
+            this.resultDataGridViewTextBoxColumn.HeaderText = "Result";
+            this.resultDataGridViewTextBoxColumn.Name = "resultDataGridViewTextBoxColumn";
+            // 
+            // resultIsNormalDataGridViewTextBoxColumn
+            // 
+            this.resultIsNormalDataGridViewTextBoxColumn.DataPropertyName = "ResultIsNormal";
+            this.resultIsNormalDataGridViewTextBoxColumn.HeaderText = "Range";
+            this.resultIsNormalDataGridViewTextBoxColumn.Name = "resultIsNormalDataGridViewTextBoxColumn";
+            // 
+            // labTestBindingSource
+            // 
+            this.labTestBindingSource.DataSource = typeof(ClinicManagementApp.Model.LabTest);
+            // 
             // doctorBindingSource
             // 
             this.doctorBindingSource.DataSource = typeof(ClinicManagementApp.Model.Doctor);
+            // 
+            // patientVisitBindingSource
+            // 
+            this.patientVisitBindingSource.DataSource = typeof(ClinicManagementApp.Model.PatientVisit);
             // 
             // LabsUserControl
             // 
@@ -543,9 +553,10 @@
             this.Name = "LabsUserControl";
             this.Size = new System.Drawing.Size(969, 542);
             ((System.ComponentModel.ISupportInitialize)(this.labDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.doctorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientVisitBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -594,5 +605,6 @@
         private System.Windows.Forms.TextBox lastNameTextBox;
         private System.Windows.Forms.TextBox phoneTextBox;
         private System.Windows.Forms.BindingSource doctorBindingSource;
+        private System.Windows.Forms.BindingSource patientVisitBindingSource;
     }
 }

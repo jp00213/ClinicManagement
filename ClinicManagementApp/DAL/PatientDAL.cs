@@ -305,15 +305,15 @@ namespace ClinicManagementApp.DAL
         /// </summary>
         /// <param name="visitDate">visit date</param>
         /// <returns>patient list</returns>
-        public List<Patient> GetPatientsByVisitDate(DateTime visitDate)
+        public List<PatientVisit> GetPatientsByVisitDate(DateTime visitDate)
         {
-            List<Patient> patients = new List<Patient>();
-            Patient patient = new Patient();
+            List<PatientVisit> patients = new List<PatientVisit>();
+            PatientVisit patient = new PatientVisit();
 
             SqlConnection connection = ClinicManagementDBConnection.GetConnection();
             string selectStatement =
                   "SELECT pe.firstName, pe.lastName, pe.birthday, pe.phoneNumber, pe.addressStreet, pe.recordID, p.patientID, " +
-                  "pe.city, pe.state, pe.zip " +
+                  "pe.city, pe.state, pe.zip, v.visitID " +
                   "FROM visitRoutineResults v " +
                   "join appointment a " +
                   "on a.appointmentID = v.appointmentID " +
@@ -338,7 +338,7 @@ namespace ClinicManagementApp.DAL
                 {
                     while (reader.Read())
                     {
-                        patient = new Patient
+                        patient = new PatientVisit
                         {
                             RecordID = (int)(reader)["recordID"],
                             LastName = (string)(reader)["lastName"],
@@ -349,7 +349,8 @@ namespace ClinicManagementApp.DAL
                             State = (string)(reader)["state"],
                             Zip = (string)(reader)["zip"],
                             Phone = (string)(reader)["phoneNumber"],
-                            PatientID = (int)(reader)["patientID"]
+                            PatientID = (int)(reader)["patientID"],
+                            VisitID = (int)(reader)["visitID"]
                         };
                         patients.Add(patient);
                     }
