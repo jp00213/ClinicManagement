@@ -5,11 +5,11 @@
     /// </summary>
     public class Doctor : Person
     {
+        public int DoctorID { get; set; }
+        public string Specialty { get; set; }
         /// <summary>
         /// Doctor constructor.
         /// </summary>
-        public int DoctorID { get; set; }
-        public string Specialty { get; set; }
         public Doctor()
         {
 

@@ -47,5 +47,49 @@ namespace ClinicManagementApp.DAL
             }
             return doctors;
         }
+
+        /// <summary>
+        /// Get doctor by id
+        /// </summary>
+        /// /// <param name="doctorID">id of doctor</param>
+        /// <returns>Doctor</returns>
+        public Doctor GetDoctorByID(int doctorID)
+        {
+            Doctor doctor = new Doctor();
+
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string selectStatement =
+                "SELECT d.doctorID, pe.firstName, pe.lastName, s.specialtyName " +
+                "FROM doctor d " +
+                "JOIN person pe " +
+                "ON d.recordID = pe.recordID " +
+                "JOIN doctor_has_specialty s " +
+                "ON s.doctorID = d.doctorID " +
+                "WHERE d.doctorID = @doctorID";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            selectCommand.Parameters.Add("@doctorID", System.Data.SqlDbType.Int);
+            selectCommand.Parameters["@doctorID"].Value = doctorID;
+
+            using (selectCommand)
+            {
+                connection.Open();
+                using (SqlDataReader reader = selectCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        doctor = new Doctor
+                        {
+                            DoctorID = (int)(reader)["doctorID"],
+                            LastName = (string)(reader)["lastName"],
+                            FirstName = (string)(reader)["firstName"],
+                            Specialty = (string)(reader)["specialtyName"]
+                        };
+                    }
+                }
+            }
+            return doctor;
+        }
     }
 }
