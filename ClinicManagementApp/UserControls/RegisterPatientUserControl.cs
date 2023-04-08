@@ -36,6 +36,8 @@ namespace ClinicManagementApp.UserControls
             cityTextBox.Clear();
             stateComboBox.SelectedItem = null;
             zipTextBox.Clear();
+            sexTextBox.Clear();
+            ssnTextBox.Clear();
         }
         private void clearButton_Click(object sender, EventArgs e)
         {
@@ -53,13 +55,20 @@ namespace ClinicManagementApp.UserControls
             string city = this.cityTextBox.Text.Trim();
             string state = this.stateComboBox.Text;
             string zip = this.zipTextBox.Text.Trim();
+            string sex = this.sexTextBox.Text.Trim();
+            string ssn = this.ssnTextBox.Text.Trim();
+            if (string.IsNullOrEmpty(ssn)) {
+                ssn = "";
+            }
 
-            if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || dateOfBirth > DateTime.Now || string.IsNullOrEmpty(address) || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || state.Length != 2 || !IsValidZipCode(zip) || !IsPhoneNumberValid(phone))
+            if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || dateOfBirth > DateTime.Now || string.IsNullOrEmpty(address) 
+                || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || state.Length != 2 || !IsValidZipCode(zip) 
+                || !IsPhoneNumberValid(phone) || string.IsNullOrEmpty(sex) || !IsSSNValid(ssn))
             {
                 this.ShowInvalidErrorMessage();
             } else
             {
-                Person person = new Person(lastName, firstName, dateOfBirth, address, city, state, zip, phone);
+                Person person = new Person(lastName, firstName, dateOfBirth, address, city, state, zip, phone, sex, ssn);
                 int success = this._patientController.AddPatient(person);
                 if (success >= 0)
                 {
@@ -118,6 +127,18 @@ namespace ClinicManagementApp.UserControls
                 this.phoneErrorMessageLabel.Text = "Please enter your 10 digit phone number, numbers only.";
                 this.phoneErrorMessageLabel.ForeColor = Color.Red;
             }
+
+            if (string.IsNullOrEmpty(sexTextBox.Text))
+            {
+                this.sexErrorMessageLabel.Text = "Please enter a sex.";
+                this.sexErrorMessageLabel.ForeColor = Color.Red;
+            }
+
+            if (!IsSSNValid(ssnTextBox.Text))
+            {
+                this.ssnErrorMessageLabel.Text = "Please enter a valid 8 digit SSN, numbers only.";
+                this.ssnErrorMessageLabel.ForeColor = Color.Red;
+            }
         }
 
         private bool IsValidZipCode(string zip)
@@ -143,6 +164,20 @@ namespace ClinicManagementApp.UserControls
             return validPhoneNumber;
         }
 
+        private bool IsSSNValid(string ssn)
+        {
+            string ssnRegEx = @"^[0-9]{8}$";
+            bool validSSN = true;
+            if (ssn.Equals(""))
+            {
+                validSSN = true;
+            } else if (!Regex.Match(ssn, ssnRegEx).Success)
+            {
+                validSSN = false;
+            }
+            return validSSN;
+        }
+
         private void HideInvalidErrorMessages()
         {
             this.lastNameErrorMessageLabel.Text = "";
@@ -153,6 +188,8 @@ namespace ClinicManagementApp.UserControls
             this.cityErrorMessageLabel.Text = "";
             this.stateErrorMessageLabel.Text = "";
             this.zipErrorMessageLabel.Text = "";
+            this.sexErrorMessageLabel.Text = "";
+            this.ssnErrorMessageLabel.Text = "";
         }
 
         private void TextBox_TextChanged(object sender, EventArgs e)

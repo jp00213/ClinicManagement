@@ -11,7 +11,7 @@ namespace ClinicManagementApp.Controller
     public class PatientController
     {
         private readonly PatientDAL _patientDAL;
-        private PersonDAL _personDAL;
+        private readonly PersonDAL _personDAL;
 
         /// <summary>
         /// Create a PatientController object.
@@ -67,10 +67,11 @@ namespace ClinicManagementApp.Controller
             return this._personDAL.AddPerson(person);
         }
 
-        public bool UpdatePatient(int recordID, string lastName, string firstName, DateTime birthday, string addressStreet, string city, string state, string zip, string phone)
+        public bool UpdatePatient(int recordID, string lastName, string firstName, DateTime birthday, string addressStreet, string city, string state, string zip, string phone, string sex, string ssn)
         {
-            return this._personDAL.UpdatePerson(recordID, lastName, firstName, birthday, addressStreet, city, state, zip, phone);
+            return this._personDAL.UpdatePerson(recordID, lastName, firstName, birthday, addressStreet, city, state, zip, phone, sex, ssn);
         }
+
         /// Input check: if first and last name are empty, search by dob;
         /// if dob is empty, search by first and last name;
         /// if first name is empty, search by last name and dob.

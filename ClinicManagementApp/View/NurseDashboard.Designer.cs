@@ -54,7 +54,16 @@
             this.LabsTabPage = new System.Windows.Forms.TabPage();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.welcomeUserLabel = new System.Windows.Forms.Label();
+
             this.labsUserControl1 = new ClinicManagementApp.UserControls.LabsUserControl();
+
+            this.updatePatientInformationUserControl1 = new ClinicManagementApp.UserControls.UpdatePatientInformationUserControl();
+            this.patientAppointmentListUserControl1 = new ClinicManagementApp.UserControls.PatientAppointmentListUserControl();
+            this.patientVisitListUserControl1 = new ClinicManagementApp.UserControls.PatientVisitListUserControl();
+            this.patientDisplayInfoUserControl1 = new ClinicManagementApp.UserControls.PatientDisplayInfoUserControl();
+            this.searchPatientUserControl1 = new ClinicManagementApp.UserControls.SearchPatientUserControl();
+            this.createAppointmentUserControl1 = new ClinicManagementApp.UserControls.CreateAppointmentUserControl();
+
             this.nurseTabControl.SuspendLayout();
             this.registerTabPage.SuspendLayout();
             this.UpdateTabPage.SuspendLayout();
