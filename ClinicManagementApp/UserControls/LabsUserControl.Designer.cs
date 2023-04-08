@@ -39,6 +39,8 @@
             System.Windows.Forms.Label specialtyLabel;
             System.Windows.Forms.Label nurseFullNameLabel;
             System.Windows.Forms.Label nurseIDLabel;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.appointmentDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.dateLabel = new System.Windows.Forms.Label();
             this.patientLabel = new System.Windows.Forms.Label();
@@ -64,6 +66,7 @@
             this.testDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultIsNormalDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.UpdateLabTestButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.labTestBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.addressStreetTextBox = new System.Windows.Forms.TextBox();
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -378,12 +381,27 @@
             this.dateOrderedDataGridViewTextBoxColumn,
             this.testDateDataGridViewTextBoxColumn,
             this.resultDataGridViewTextBoxColumn,
-            this.resultIsNormalDataGridViewComboBoxColumn});
+            this.resultIsNormalDataGridViewComboBoxColumn,
+            this.UpdateLabTestButton});
             this.labDataGridView.DataSource = this.labTestBindingSource;
             this.labDataGridView.Location = new System.Drawing.Point(52, 250);
+            this.labDataGridView.MultiSelect = false;
             this.labDataGridView.Name = "labDataGridView";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.labDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.labDataGridView.RowHeadersVisible = false;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.labDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.labDataGridView.Size = new System.Drawing.Size(852, 257);
             this.labDataGridView.TabIndex = 60;
+            this.labDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LabDataGridView_CellContentClick);
+            this.labDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.LabDataGridView_DataError);
             // 
             // testCodeDataGridViewTextBoxColumn
             // 
@@ -428,6 +446,15 @@
             this.resultIsNormalDataGridViewComboBoxColumn.Name = "resultIsNormalDataGridViewComboBoxColumn";
             this.resultIsNormalDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.resultIsNormalDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // UpdateLabTestButton
+            // 
+            this.UpdateLabTestButton.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.UpdateLabTestButton.HeaderText = "Update Results";
+            this.UpdateLabTestButton.Name = "UpdateLabTestButton";
+            this.UpdateLabTestButton.Text = "Update";
+            this.UpdateLabTestButton.UseColumnTextForButtonValue = true;
+            this.UpdateLabTestButton.Width = 104;
             // 
             // labTestBindingSource
             // 
@@ -645,5 +672,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn testDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn resultDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn resultIsNormalDataGridViewComboBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn UpdateLabTestButton;
     }
 }

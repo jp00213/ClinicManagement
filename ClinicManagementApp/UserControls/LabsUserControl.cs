@@ -92,5 +92,62 @@ namespace ClinicManagementApp.UserControls
             this.resultIsNormalDataGridViewComboBoxColumn.DisplayMember = "RangeString";
             this.resultIsNormalDataGridViewComboBoxColumn.ValueMember = "RangeInt";
         }
+
+        private void LabDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.ColumnIndex == labDataGridView.Columns["UpdateLabTestButton"].Index && e.RowIndex >= 0)
+                {
+                    //MessageBox.Show("Button clicked at row: " + e.RowIndex.ToString());
+
+                    DataGridViewRow row = labDataGridView.Rows[e.RowIndex];
+                    object datePerformed = row.Cells["testDateDataGridViewTextBoxColumn"].Value;
+                    object result = row.Cells["resultDataGridViewTextBoxColumn"].Value;
+                    object range = row.Cells["resultIsNormalDataGridViewComboBoxColumn"].Value;
+
+                    if (datePerformed == null || string.IsNullOrEmpty(datePerformed.ToString()) ||
+                        result == null || string.IsNullOrEmpty(result.ToString()) ||
+                            range == null || string.IsNullOrEmpty(range.ToString()))
+                    {
+                        MessageBox.Show("Must fill out date performed, result, and range to submit.");
+                    }
+                    else if (!DateTime.TryParse(datePerformed.ToString(), out DateTime parsedDate))
+                    {
+                        MessageBox.Show("Must enter a valid date in the form of YYYY-MM-DD. Ex. 2023-03-11");
+                    } 
+                    else
+                    {
+                        LabTest testToUpdate = row.DataBoundItem as LabTest;
+                        bool success = _labTestController.UpdateLabTest(testToUpdate);
+
+                        if(success)
+                        {
+                            MessageBox.Show("Lab test successfully updated.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Warning: Lab Test not updated. Please check the entered values and try again. " +
+                                "Range: " + testToUpdate.ResultIsNormal + " Date Performed: " + testToUpdate.TestDate + " Result: " + testToUpdate.Result
+                            + " visitID: " + testToUpdate.VisitID + " Test Code: " + testToUpdate.TestCode);
+                        }
+                    }
+                }
+            }
+            catch (FormatException fe)
+            {
+                MessageBox.Show("Must enter a valid date in the form of YYYY-MM-DD. Ex. 2023-03-11");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void LabDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show("Must enter a valid date in the form of YYYY-MM-DD. Ex. 2023-03-11. " +
+                    "Must fill out date performed, result, and range to submit.");
+        }
     }
 }
