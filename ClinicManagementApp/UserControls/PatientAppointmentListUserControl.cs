@@ -344,10 +344,15 @@ namespace ClinicManagementApp.UserControls
             else if(DateTime.TryParse(date + " " + time, out appointmentDateTime))
             {
                 Appointment editedAppointment = new Appointment(appointmentID, 0, doctorID, appointmentDateTime, reason);
-                string successMessage = this._appointmentController.UpdateAppointment(editedAppointment);
+                if (this._appointmentController.UpdateAppointment(editedAppointment))
+                {
+                    MessageBox.Show("This appointment has been updated.");
+                } else
+                {
+                    MessageBox.Show("Appointment was not updated. Please try again.");
+                }
                 this.setFuturePatientAppointmentDetails();
                 this.LoadFutureAppointmentComboBox();
-                MessageBox.Show(successMessage);
             }
             else
             {
