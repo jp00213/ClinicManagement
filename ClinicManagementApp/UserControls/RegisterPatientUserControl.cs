@@ -66,8 +66,7 @@ namespace ClinicManagementApp.UserControls
             } else
             {
                 Person person = new Person(lastName, firstName, dateOfBirth, address, city, state, zip, phone, sex, ssn);
-                int success = this._patientController.AddPatient(person);
-                if (success >= 0)
+                if (this._patientController.AddPatient(person))
                 {
                     MessageBox.Show("Patient successfully created!", "Patient Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.ResetInputFields();
