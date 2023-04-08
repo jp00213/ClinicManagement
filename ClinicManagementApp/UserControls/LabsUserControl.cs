@@ -1,5 +1,6 @@
 ﻿using ClinicManagementApp.Controller;
 using ClinicManagementApp.DAL;
+using ClinicManagementApp.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +30,18 @@ namespace ClinicManagementApp.UserControls
 
         private void AppointmentDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            this.patientComboBox.DataSource = this._patientController.GetPatientsByVisitDate(this.appointmentDateTimePicker.Value);
+            List<Patient> patients = this._patientController.GetPatientsByVisitDate(this.appointmentDateTimePicker.Value);
+
+            if(patients.Count > 0)
+            {
+                this.patientComboBox.DataSource = patients;
+                this.patientComboBox.DisplayMember = "FullName";
+                this.patientComboBox.ValueMember = "PatientID";
+            }
+            else
+            {
+                MessageBox.Show("No patients with a visit on " + this.appointmentDateTimePicker.Value.ToString("dd/MM/yyyy"));
+            }
         }
     }
 }

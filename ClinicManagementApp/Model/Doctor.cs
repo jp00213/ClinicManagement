@@ -9,10 +9,6 @@
         /// Doctor constructor.
         /// </summary>
         public int DoctorID { get; set; }
-        public string FullName
-        {
-            get { return $"{FirstName} {LastName}"; }
-        }
         public string Specialty { get; set; }
         public Doctor()
         {

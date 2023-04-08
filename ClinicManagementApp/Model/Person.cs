@@ -16,6 +16,10 @@ namespace ClinicManagementApp.Model
         public string State { get; set; }
         public string Zip { get; set; }
         public string Phone { get; set; }
+        public string FullName
+        {
+            get { return $"{FirstName} {LastName}"; }
+        }
 
         /// <summary>
         /// Person constructor.

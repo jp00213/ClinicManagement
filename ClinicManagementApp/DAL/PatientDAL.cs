@@ -314,7 +314,7 @@ namespace ClinicManagementApp.DAL
             string selectStatement =
                   "SELECT pe.firstName, pe.lastName, pe.birthday, pe.phoneNumber, pe.addressStreet, pe.recordID, p.patientID, " +
                   "pe.city, pe.state, pe.zip " +
-                  "FROM[cs6232 - g1].[dbo].[visitRoutineResults] v " +
+                  "FROM visitRoutineResults v " +
                   "join appointment a " +
                   "on a.appointmentID = v.appointmentID " +
                   "join patient p " +
@@ -329,7 +329,7 @@ namespace ClinicManagementApp.DAL
             selectCommand.Parameters["@visitDate"].Value = visitDate;
 
             selectCommand.Parameters.Add("@visitDateEnd", System.Data.SqlDbType.DateTime);
-            selectCommand.Parameters["@visitDateEnd"].Value = visitDate + "23:59:59";
+            selectCommand.Parameters["@visitDateEnd"].Value = visitDate.Add(new TimeSpan(23, 59, 59));
 
             using (selectCommand)
             {
