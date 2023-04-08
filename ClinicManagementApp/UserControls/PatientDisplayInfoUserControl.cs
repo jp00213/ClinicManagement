@@ -45,6 +45,8 @@ namespace ClinicManagementApp.UserControls
                 this.cityTextBox.Text = this.thePatient.City;
                 this.stateTextBox.Text = this.thePatient.State;
                 this.zipTextBox.Text = this.thePatient.Zip;
+                this.genderTextBox.Text = this.thePatient.Sex;
+                this.ssnTextBox.Text = this.thePatient.SSN;
             }
             else
             {

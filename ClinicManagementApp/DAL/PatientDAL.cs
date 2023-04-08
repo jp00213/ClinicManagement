@@ -110,8 +110,15 @@ namespace ClinicManagementApp.DAL
                             Phone = (string)(reader)["phoneNumber"],
                             PatientID = (int)(reader)["patientID"],
                             Sex = (string)(reader)["sex"],
-                            SSN = (string)(reader)["ssn"]
                         };
+                        if (reader["ssn"] == DBNull.Value)
+                        {
+                            patient.SSN = string.Empty;
+                        }
+                        else
+                        {
+                            patient.SSN = (string)(reader)["ssn"];
+                        }
                     }
                 }
             }
