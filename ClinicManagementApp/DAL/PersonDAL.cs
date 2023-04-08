@@ -18,8 +18,8 @@ namespace ClinicManagementApp.DAL
         {
             SqlConnection connection = ClinicManagementDBConnection.GetConnection();
             string insertStatement = "INSERT INTO person " +
-                "(lastName, firstName, birthday, addressStreet, city, state, zip, phoneNumber)" +
-                "VALUES (@lastName, @firstName, @birthday, @addressStreet, @city, @state, @zip, @phoneNumber)";
+                "(lastName, firstName, birthday, addressStreet, city, state, zip, phoneNumber, sex, ssn)" +
+                "VALUES (@lastName, @firstName, @birthday, @addressStreet, @city, @state, @zip, @phoneNumber, @sex, @ssn)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
 
             insertCommand.Parameters.Add("@lastName", System.Data.SqlDbType.VarChar);
@@ -46,7 +46,13 @@ namespace ClinicManagementApp.DAL
             insertCommand.Parameters.Add("@phoneNumber", System.Data.SqlDbType.Char);
             insertCommand.Parameters["@phoneNumber"].Value = person.Phone;
 
-            using(insertCommand)
+            insertCommand.Parameters.Add("@sex", System.Data.SqlDbType.VarChar);
+            insertCommand.Parameters["@sex"].Value = person.Sex;
+
+            insertCommand.Parameters.Add("@ssn", System.Data.SqlDbType.Char);
+            insertCommand.Parameters["@ssn"].Value = person.SSN;
+
+            using (insertCommand)
             {
                 connection.Open();
                 insertCommand.ExecuteNonQuery();
@@ -72,10 +78,12 @@ namespace ClinicManagementApp.DAL
         /// <param name="zip"></param>
         /// <param name="phone"></param>
         /// <returns></returns>
-        public bool UpdatePerson(int recordID, string lastName, string firstName, DateTime birthday, string addressStreet, string city, string state, string zip, string phone)
+        public bool UpdatePerson(int recordID, string lastName, string firstName, DateTime birthday, string addressStreet, string city, string state, string zip, string phone, string sex, string ssn)
         {
             SqlConnection connection = ClinicManagementDBConnection.GetConnection();
-            string updateStatement = "UPDATE person SET " + "lastName = @newLastName, " + "firstName = @newFirstName, " + "birthday = @newBirthday, " + "addressStreet = @newAddressStreet, " + "city = @newCity, " + "state = @newState, " + "zip = @newZip, " + "phoneNumber = @newPhone " + "WHERE recordID = @oldRecordID";
+            string updateStatement = "UPDATE person SET " + "lastName = @newLastName, " + "firstName = @newFirstName, " + 
+                "birthday = @newBirthday, " + "addressStreet = @newAddressStreet, " + "city = @newCity, " + "state = @newState, " 
+                + "zip = @newZip, " + "phoneNumber = @newPhone, sex = @newSex, ssn = @newSSN " + "WHERE recordID = @oldRecordID";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
 
             updateCommand.Parameters.AddWithValue("@oldRecordID", recordID);
@@ -87,6 +95,8 @@ namespace ClinicManagementApp.DAL
             updateCommand.Parameters.AddWithValue("@newState", state);
             updateCommand.Parameters.AddWithValue("@newZip", zip);
             updateCommand.Parameters.AddWithValue("@newPhone", phone);
+            updateCommand.Parameters.AddWithValue("@newSex", sex);
+            updateCommand.Parameters.AddWithValue("@newSSN", ssn);
 
             using (updateCommand)
             {
