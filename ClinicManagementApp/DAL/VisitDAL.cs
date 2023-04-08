@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicManagementApp.DAL
 {
@@ -63,7 +60,7 @@ namespace ClinicManagementApp.DAL
             Visit visit = new Visit();
             string selectStatement =
                 "select a.appointmentID, v.visitID, v.visitDatetime, " +
-                "p1.lastName as doctorLastName, p1.firstName as doctorFirstName, " +
+                "p1.lastName as doctorLastName, p1.firstName as doctorFirstName, d.doctorID, n.nurseID, " +
                 "p2.lastName as nurseLastName, p2.firstName as nurseFirstName, " +
                 "p3.lastName as patientLastName, p3.firstName as patientFirstname, " +
                 " CONVERT(VARCHAR(20), CAST( round( v.height, 0) as int) /12) + '''' + CONVERT(VARCHAR(20),CAST( round( v.height, 0) as int) %12) as formattedHeight , " +
@@ -114,6 +111,8 @@ namespace ClinicManagementApp.DAL
                             visit.PatientID = (int)(reader)["patientID"];
                             visit.VisitSummary = (string)(reader)["visitSummary"];
                             visit.HeightFormatted = (string)(reader)["formattedHeight"];
+                            visit.DoctorID = (int)(reader)["doctorID"];
+                            visit.NurseID = (int)(reader)["nurseID"];
                         }
                     }
                 }
@@ -154,5 +153,6 @@ namespace ClinicManagementApp.DAL
                 }
             }
         }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicManagementApp.Model;
+using System;
 using System.Data.SqlClient;
 
 namespace ClinicManagementApp.DAL
@@ -46,6 +47,47 @@ namespace ClinicManagementApp.DAL
             }
 
             return fullName;
+        }
+
+        /// <summary>
+        /// Get nurse by id
+        /// </summary>
+        /// /// <param name="nurseID">id of nurse</param>
+        /// <returns>Nurse</returns>
+        public Nurse GetNurseByID(int nurseID)
+        {
+            Nurse nurse = new Nurse();
+
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string selectStatement =
+                "SELECT d.nurseID, pe.firstName, pe.lastName " +
+                "FROM nurse d " +
+                "JOIN person pe " +
+                "ON d.recordID = pe.recordID " +
+                "WHERE d.nurseID = @nurseID";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            selectCommand.Parameters.Add("@nurseID", System.Data.SqlDbType.Int);
+            selectCommand.Parameters["@nurseID"].Value = nurseID;
+
+            using (selectCommand)
+            {
+                connection.Open();
+                using (SqlDataReader reader = selectCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        nurse = new Nurse
+                        {
+                            NurseID = (int)(reader)["nurseID"],
+                            LastName = (string)(reader)["lastName"],
+                            FirstName = (string)(reader)["firstName"],
+                        };
+                    }
+                }
+            }
+            return nurse;
         }
 
     }
