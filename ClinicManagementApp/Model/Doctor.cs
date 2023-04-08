@@ -13,6 +13,7 @@
         {
             get { return $"{FirstName} {LastName}"; }
         }
+        public string Specialty { get; set; }
         public Doctor()
         {
 
