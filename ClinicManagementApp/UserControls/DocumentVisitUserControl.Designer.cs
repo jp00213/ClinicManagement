@@ -34,13 +34,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dateOfApptLabel = new System.Windows.Forms.Label();
             this.appointmentDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.selectButton = new System.Windows.Forms.Button();
             this.dividerLabel = new System.Windows.Forms.Label();
             this.dividerLabel2 = new System.Windows.Forms.Label();
             this.patientInformationLabel = new System.Windows.Forms.Label();
             this.patientNameLabel = new System.Windows.Forms.Label();
             this.activeFirstNameLabel = new System.Windows.Forms.Label();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dobLabel = new System.Windows.Forms.Label();
             this.activeDOBLabel = new System.Windows.Forms.Label();
             this.phoneLabel = new System.Windows.Forms.Label();
@@ -55,7 +55,7 @@
             this.activeDoctorIDLabel = new System.Windows.Forms.Label();
             this.specialtyLabel = new System.Windows.Forms.Label();
             this.labsListBox = new System.Windows.Forms.ListBox();
-            this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.labTestBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.activeSpecialtyLabel = new System.Windows.Forms.Label();
             this.nurseInfoLabel = new System.Windows.Forms.Label();
             this.nurseNameLabel = new System.Windows.Forms.Label();
@@ -90,8 +90,10 @@
             this.inchesLabel = new System.Windows.Forms.Label();
             this.finalDiagnosisLabel = new System.Windows.Forms.Label();
             this.finalDiagnosisTextBox = new System.Windows.Forms.TextBox();
+            this.orderLabsButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.feetNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inchesNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
@@ -117,16 +119,12 @@
             this.appointmentDateTimePicker.Size = new System.Drawing.Size(136, 21);
             this.appointmentDateTimePicker.TabIndex = 2;
             // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(ClinicManagementApp.Model.Patient);
-            // 
             // selectButton
             // 
             this.selectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectButton.Location = new System.Drawing.Point(102, 62);
             this.selectButton.Name = "selectButton";
-            this.selectButton.Size = new System.Drawing.Size(99, 24);
+            this.selectButton.Size = new System.Drawing.Size(102, 33);
             this.selectButton.TabIndex = 5;
             this.selectButton.Text = "Select";
             this.selectButton.UseVisualStyleBackColor = true;
@@ -181,6 +179,10 @@
             this.activeFirstNameLabel.Name = "activeFirstNameLabel";
             this.activeFirstNameLabel.Size = new System.Drawing.Size(0, 13);
             this.activeFirstNameLabel.TabIndex = 10;
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(ClinicManagementApp.Model.Patient);
             // 
             // dobLabel
             // 
@@ -309,12 +311,21 @@
             // 
             // labsListBox
             // 
-            this.labsListBox.DataSource = this.appointmentBindingSource;
+            this.labsListBox.DataSource = this.labTestBindingSource;
+            this.labsListBox.DisplayMember = "TestName";
+            this.labsListBox.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labsListBox.FormattingEnabled = true;
+            this.labsListBox.ItemHeight = 14;
             this.labsListBox.Location = new System.Drawing.Point(506, 241);
             this.labsListBox.Name = "labsListBox";
-            this.labsListBox.Size = new System.Drawing.Size(225, 277);
+            this.labsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.labsListBox.Size = new System.Drawing.Size(225, 228);
             this.labsListBox.TabIndex = 24;
+            this.labsListBox.ValueMember = "TestCode";
+            // 
+            // labTestBindingSource
+            // 
+            this.labTestBindingSource.DataSource = typeof(ClinicManagementApp.Model.LabTest);
             // 
             // activeSpecialtyLabel
             // 
@@ -378,9 +389,9 @@
             // saveButton
             // 
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(297, 535);
+            this.saveButton.Location = new System.Drawing.Point(281, 535);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(215, 27);
+            this.saveButton.Size = new System.Drawing.Size(225, 36);
             this.saveButton.TabIndex = 31;
             this.saveButton.Text = "Save Appointment";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -674,10 +685,33 @@
             this.finalDiagnosisTextBox.Size = new System.Drawing.Size(139, 62);
             this.finalDiagnosisTextBox.TabIndex = 55;
             // 
+            // orderLabsButton
+            // 
+            this.orderLabsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orderLabsButton.Location = new System.Drawing.Point(555, 484);
+            this.orderLabsButton.Name = "orderLabsButton";
+            this.orderLabsButton.Size = new System.Drawing.Size(128, 35);
+            this.orderLabsButton.TabIndex = 56;
+            this.orderLabsButton.Text = "Order Labs";
+            this.orderLabsButton.UseVisualStyleBackColor = true;
+            this.orderLabsButton.Click += new System.EventHandler(this.orderLabsButton_Click);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelButton.Location = new System.Drawing.Point(61, 535);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(208, 36);
+            this.cancelButton.TabIndex = 57;
+            this.cancelButton.Text = "Clear";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            // 
             // DocumentVisitUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.orderLabsButton);
             this.Controls.Add(this.finalDiagnosisTextBox);
             this.Controls.Add(this.finalDiagnosisLabel);
             this.Controls.Add(this.inchesLabel);
@@ -733,7 +767,7 @@
             this.Name = "DocumentVisitUserControl";
             this.Size = new System.Drawing.Size(804, 576);
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.feetNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inchesNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).EndInit();
@@ -785,7 +819,6 @@
         private System.Windows.Forms.Label symptomsLabel;
         private System.Windows.Forms.Label tempLabel;
         private System.Windows.Forms.Label pulseLabel;
-        private System.Windows.Forms.BindingSource appointmentBindingSource;
         private System.Windows.Forms.NumericUpDown feetNumericUpDown;
         private System.Windows.Forms.NumericUpDown inchesNumericUpDown;
         private System.Windows.Forms.Label initialDiagnosisLabel;
@@ -801,5 +834,8 @@
         private System.Windows.Forms.Label inchesLabel;
         private System.Windows.Forms.Label finalDiagnosisLabel;
         private System.Windows.Forms.TextBox finalDiagnosisTextBox;
+        private System.Windows.Forms.BindingSource labTestBindingSource;
+        private System.Windows.Forms.Button orderLabsButton;
+        private System.Windows.Forms.Button cancelButton;
     }
 }

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ClinicManagementApp.UserControls
 {
@@ -19,6 +20,7 @@ namespace ClinicManagementApp.UserControls
         private PatientController _patientController;
         private AppointmentController _appointmentController;
         private VisitController _visitController;
+        private LabTestController _labController;
         private Patient _patient;
         public DocumentVisitUserControl()
         {
@@ -26,6 +28,7 @@ namespace ClinicManagementApp.UserControls
             this._patientController = new PatientController();
             this._appointmentController= new AppointmentController();
             this._visitController = new VisitController();
+            this._labController = new LabTestController();
             this._patient = null;
         }
 
@@ -37,8 +40,12 @@ namespace ClinicManagementApp.UserControls
 
         private void patientDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             var patientID = patientDataGridView.SelectedRows[0].Cells[0].Value.ToString();
             this._patient = this._patientController.GetPatientByID(Int32.Parse(patientID));
+
+            this.labsListBox.DataSource = _labController.GetLabTests();
+            /*this.labTestsDataGridView.DataSource= _labController.GetLabTests();*/
 
             int patientIDd = this._patient.PatientID;
             DateTime appointmentDate = this.appointmentDateTimePicker.Value;
@@ -89,6 +96,20 @@ namespace ClinicManagementApp.UserControls
             return feetToCM + inchesToCM;
         }
 
-        
+        private void orderLabsButton_Click(object sender, EventArgs e)
+        {
+            List<LabTest> labs = new List<LabTest>();
+            List<String> testNames = new List<String>();
+            string[] labNames = testNames.ToArray();
+            int paul = 0;
+            foreach ( LabTest lab in labsListBox.SelectedItems)
+            {
+                /*labs.Add(lab);
+                testNames.Add(lab.TestName);*/
+                paul++;
+                
+            }
+            MessageBox.Show(paul.ToString());
+        }
     }
 }
