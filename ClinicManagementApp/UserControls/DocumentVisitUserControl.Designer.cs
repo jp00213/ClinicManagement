@@ -702,6 +702,7 @@
             this.cancelButton.TabIndex = 57;
             this.cancelButton.Text = "Clear";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // DocumentVisitUserControl
             // 

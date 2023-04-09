@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,7 +24,7 @@ namespace ClinicManagementApp.UserControls
         private VisitController _visitController;
         private LabTestController _labController;
         private Patient _patient;
-        private Doctor _doctor;
+        private Appointment _appointment;
         public DocumentVisitUserControl()
         {
             InitializeComponent();
@@ -34,6 +35,7 @@ namespace ClinicManagementApp.UserControls
             this._labController = new LabTestController();
 
             this._patient = null;
+            this._appointment = null;
             this.labsListBox.DataSource = _labController.GetLabTests();
         }
 
@@ -49,49 +51,53 @@ namespace ClinicManagementApp.UserControls
             var patientID = patientDataGridView.SelectedRows[0].Cells[0].Value.ToString();
             this._patient = this._patientController.GetPatientByID(Int32.Parse(patientID));
 
-            
-           
-            int patientIDd = this._patient.PatientID;
-            DateTime appointmentDate = this.appointmentDateTimePicker.Value.Date;
-            Appointment appointment = this._appointmentController.GetAppointmentByPatientIDAndDate(patientIDd, appointmentDate);
-            this.GetDoctorInfoForAppointment(appointment.AppointmentID);
-            
-
             if (_patient != null)
             {
                 patientBindingSource.DataSource = _patient;
                 patientBindingSource.ResetBindings(true);
+                this.saveButton.Enabled = true;
             }
+ 
+            int activePatientID = this._patient.PatientID;
+            DateTime appointmentDate = this.appointmentDateTimePicker.Value.Date;
+            this._appointment = this._appointmentController.GetAppointmentByPatientIDAndDate(activePatientID, appointmentDate);
+            this.GetDoctorInfoForAppointment(this._appointment.AppointmentID);
+            
+        }
+
+        private void AppointmentDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-           
-            
-            
-            
-            int appointmentID = 8;
+            int appointmentID = this._appointment.AppointmentID;
             int nurseID = 1;
             DateTime visitDateTime = DateTime.Now;
             Decimal height = this.CalculateHeight(this.feetNumericUpDown.Value, this.inchesNumericUpDown.Value);
             Decimal weight = Decimal.Parse(this.weightTextBox.Text);
-            int dbp = int.Parse(this.diastolicTextBox.Text);
-            int sbp = int.Parse(this.systolicTextBox.Text);
-            Decimal bodyTemp = Decimal.Parse(this.temperatureTextBox.Text);
+            int diastolicBloodPressure = int.Parse(this.diastolicTextBox.Text);
+            int systolicBloodPressure = int.Parse(this.systolicTextBox.Text);
+            Decimal bodyTemperature = Decimal.Parse(this.temperatureTextBox.Text);
             int pulse = int.Parse(this.pulseTextBox.Text);
             var symptoms = this.symptomsTextBox.Text;
             var initialDiagnosis = this.initialDiagnosisTextbox.Text;
             var finalDiagnosis = this.finalDiagnosisTextBox.Text;
 
-            Visit visit = new Visit(-1, appointmentID, nurseID, visitDateTime, height, weight, dbp, sbp, bodyTemp, pulse, symptoms, initialDiagnosis, finalDiagnosis);
-            int success = this._visitController.AddVisit(visit);
-            if (success > 0)
+            if (appointmentID <= 0 || nurseID <= 0 || height < 10 || height > 250 || weight < 0 || weight > 800 || diastolicBloodPressure > 370 || diastolicBloodPressure < 40 || systolicBloodPressure > 360 || systolicBloodPressure < 20 || bodyTemperature > 115 || bodyTemperature < 78 || pulse > 400 || pulse < 55 || string.IsNullOrEmpty(symptoms) || string.IsNullOrEmpty(initialDiagnosis) || string.IsNullOrEmpty(finalDiagnosis))
             {
-                MessageBox.Show("Appointment notes successfully saved!", "Appointment Notes Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+                this.ShowInvalidErrorMessages();
+            } else
+            {
+                Visit visit = new Visit(-1, appointmentID, nurseID, visitDateTime, height, weight, diastolicBloodPressure, systolicBloodPressure, bodyTemperature, pulse, symptoms, initialDiagnosis, finalDiagnosis);
+                int success = this._visitController.AddVisit(visit);
+                if (success > 0)
+                    {
+                        MessageBox.Show("Appointment notes successfully saved!", "Appointment Notes Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
 
-            
         }
 
         private Decimal CalculateHeight(Decimal feet, Decimal inches)
@@ -129,6 +135,37 @@ namespace ClinicManagementApp.UserControls
                 specialties.Add(doctor.Speciality.ToString());
             }
             this.activeSpecialtyLabel.Text = string.Join(", ", specialties);
+        }
+
+        private void ShowInvalidErrorMessages()
+        {
+
+        }
+
+        private void HideInvalidErrorMessages()
+        {
+
+        }
+
+        private void ResetForm()
+        {
+            this.appointmentDateTimePicker.Value = DateTime.Now;
+            this.selectButton_Click(null, null);
+
+            this._patient = null;
+            this.patientBindingSource.DataSource = this._patientController.GetPatientByNameDOB("", "", DateTime.Now);
+
+            activeDoctorNameLabel.Text = "";
+            activeDoctorIDLabel.Text = "";
+            activeSpecialtyLabel.Text = "";
+
+            this.saveButton.Enabled = false;
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.ResetForm();
+            this.HideInvalidErrorMessages();
         }
     }
 }
