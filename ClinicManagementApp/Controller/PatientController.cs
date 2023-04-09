@@ -96,5 +96,10 @@ namespace ClinicManagementApp.Controller
 
         }
 
+        public List<Patient> GetPatientByAppointmentDate(DateTime appointmentDate)
+        {
+            return _patientDAL.GetPatientByAppointmentDate(appointmentDate);
+        }
+
     }
 }

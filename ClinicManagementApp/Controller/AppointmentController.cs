@@ -83,5 +83,16 @@ namespace ClinicManagementApp.Controller
         {
             return this._appointmentDAL.UpdateAppointment(appointment);
         }
+
+        /// <summary>
+        /// Gets the appointment based on the patient id and date
+        /// </summary>
+        /// <param name="patientIDIn"></param>
+        /// <param name="appointmentDateIn"></param>
+        /// <returns></returns>
+        public Appointment GetAppointmentByPatientIDAndDate(int patientIDIn, DateTime appointmentDateIn)
+        {
+            return this._appointmentDAL.GetAppointmentByPatientIDAndDate(patientIDIn, appointmentDateIn);
+        }
     }
 }
