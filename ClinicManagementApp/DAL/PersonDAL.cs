@@ -1,6 +1,7 @@
 ﻿using ClinicManagementApp.Model;
 using System;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ClinicManagementApp.DAL
 {
@@ -9,62 +10,6 @@ namespace ClinicManagementApp.DAL
     /// </summary>
     public class PersonDAL
     {
-        /// <summary>
-        /// Adds a person to the person DB
-        /// </summary>
-        /// <param name="person"></param>
-        /// <returns>new personID</returns>
-        public int AddPerson(Person person)
-        {
-            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
-            string insertStatement = "INSERT INTO person " +
-                "(lastName, firstName, birthday, addressStreet, city, state, zip, phoneNumber, sex, ssn)" +
-                "VALUES (@lastName, @firstName, @birthday, @addressStreet, @city, @state, @zip, @phoneNumber, @sex, @ssn)";
-            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-
-            insertCommand.Parameters.Add("@lastName", System.Data.SqlDbType.VarChar);
-            insertCommand.Parameters["@lastName"].Value = person.LastName;
-
-            insertCommand.Parameters.Add("@firstName", System.Data.SqlDbType.VarChar);
-            insertCommand.Parameters["@firstName"].Value = person.FirstName;
-
-            insertCommand.Parameters.Add("@birthday", System.Data.SqlDbType.Date);
-            insertCommand.Parameters["@birthday"].Value = person.DateOfBirth;
-
-            insertCommand.Parameters.Add("@addressStreet", System.Data.SqlDbType.VarChar);
-            insertCommand.Parameters["@addressStreet"].Value = person.AddressStreet;
-
-            insertCommand.Parameters.Add("@city", System.Data.SqlDbType.VarChar);
-            insertCommand.Parameters["@city"].Value = person.City;
-
-            insertCommand.Parameters.Add("@state", System.Data.SqlDbType.Char);
-            insertCommand.Parameters["@state"].Value = person.State;
-
-            insertCommand.Parameters.Add("@zip", System.Data.SqlDbType.VarChar);
-            insertCommand.Parameters["@zip"].Value = person.Zip;
-
-            insertCommand.Parameters.Add("@phoneNumber", System.Data.SqlDbType.Char);
-            insertCommand.Parameters["@phoneNumber"].Value = person.Phone;
-
-            insertCommand.Parameters.Add("@sex", System.Data.SqlDbType.VarChar);
-            insertCommand.Parameters["@sex"].Value = person.Sex;
-
-            insertCommand.Parameters.Add("@ssn", System.Data.SqlDbType.Char);
-            insertCommand.Parameters["@ssn"].Value = person.SSN;
-
-            using (insertCommand)
-            {
-                connection.Open();
-                insertCommand.ExecuteNonQuery();
-                string selectStatement = "SELECT IDENT_CURRENT('person') FROM person";
-                SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-                using(selectCommand)
-                {
-                    int personID = Convert.ToInt32(selectCommand.ExecuteScalar());
-                    return personID;
-                }
-            }
-        }
         /// <summary>
         ///  Updates person's info in the DB
         /// </summary>
@@ -96,7 +41,14 @@ namespace ClinicManagementApp.DAL
             updateCommand.Parameters.AddWithValue("@newZip", zip);
             updateCommand.Parameters.AddWithValue("@newPhone", phone);
             updateCommand.Parameters.AddWithValue("@newSex", sex);
-            updateCommand.Parameters.AddWithValue("@newSSN", ssn);
+            if (ssn == "")
+            {
+                updateCommand.Parameters.AddWithValue("@newSSN", DBNull.Value);
+            }
+            else
+            {
+                updateCommand.Parameters.AddWithValue("@newSSN", ssn);
+            }
 
             using (updateCommand)
             {
@@ -106,10 +58,103 @@ namespace ClinicManagementApp.DAL
                 SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
                 using (selectCommand)
                 {
-                    int count = updateCommand.ExecuteNonQuery(); ;
+                    int count = updateCommand.ExecuteNonQuery();
                     return count > 0;
                 }
             }
         }
+
+        public Boolean AddPersonAsPatient(Person person)
+        {
+            Boolean result = false;
+            int record = 0;
+
+            string insertStatement1 = "INSERT INTO person " +
+                "(lastName, firstName, birthday, addressStreet, city, state, zip, phoneNumber, sex, ssn) " +
+                "VALUES (@lastName, @firstName, @birthday, @addressStreet, @city, @state, @zip, @phoneNumber, @sex, @ssn)";
+            string selectStatement = "SELECT IDENT_CURRENT('person') FROM person";
+            string insertStatement2 = "INSERT INTO patient (recordID) VALUES (@recordID)";
+
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        using (SqlCommand insertCommand = new SqlCommand(insertStatement1, connection))
+                        {
+                            insertCommand.Transaction = transaction;
+
+                            insertCommand.Parameters.Add("@lastName", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@lastName"].Value = person.LastName;
+
+                            insertCommand.Parameters.Add("@firstName", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@firstName"].Value = person.FirstName;
+
+                            insertCommand.Parameters.Add("@birthday", System.Data.SqlDbType.Date);
+                            insertCommand.Parameters["@birthday"].Value = person.DateOfBirth;
+
+                            insertCommand.Parameters.Add("@addressStreet", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@addressStreet"].Value = person.AddressStreet;
+
+                            insertCommand.Parameters.Add("@city", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@city"].Value = person.City;
+
+                            insertCommand.Parameters.Add("@state", System.Data.SqlDbType.Char);
+                            insertCommand.Parameters["@state"].Value = person.State;
+
+                            insertCommand.Parameters.Add("@zip", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@zip"].Value = person.Zip;
+
+                            insertCommand.Parameters.Add("@phoneNumber", System.Data.SqlDbType.Char);
+                            insertCommand.Parameters["@phoneNumber"].Value = person.Phone;
+
+                            insertCommand.Parameters.Add("@sex", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@sex"].Value = person.Sex;
+
+                            insertCommand.Parameters.Add("@ssn", System.Data.SqlDbType.Char);
+                            if (person.SSN == "")
+                            {
+                                insertCommand.Parameters["@ssn"].Value = DBNull.Value;
+                            }
+                            else
+                            {
+                                insertCommand.Parameters["@ssn"].Value = person.SSN;
+                            }
+
+                            insertCommand.ExecuteNonQuery();
+
+                            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+                            selectCommand.Transaction = transaction;
+                            using (selectCommand)
+                            {
+                                record = Convert.ToInt32(selectCommand.ExecuteScalar());
+                            }
+                        }
+
+                        using (SqlCommand insertCommand = new SqlCommand(insertStatement2, connection))
+                        {
+                            insertCommand.Transaction = transaction;
+
+                            insertCommand.Parameters.Add("@recordID", System.Data.SqlDbType.Int);
+                            insertCommand.Parameters["@recordID"].Value = record;
+
+                            insertCommand.ExecuteNonQuery();
+                        }
+
+                        result = true;
+                        transaction.Commit();
+                    } catch
+                    {
+                        result = false;
+                        transaction.Rollback();
+                    }
+                }
+            }
+
+            return result;
+        }
+
     }
 }

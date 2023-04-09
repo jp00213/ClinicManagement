@@ -377,6 +377,7 @@
             this.ssnTextBox.Name = "ssnTextBox";
             this.ssnTextBox.Size = new System.Drawing.Size(227, 22);
             this.ssnTextBox.TabIndex = 20;
+            this.ssnTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // sexTextBox
             // 
@@ -384,6 +385,7 @@
             this.sexTextBox.Name = "sexTextBox";
             this.sexTextBox.Size = new System.Drawing.Size(228, 22);
             this.sexTextBox.TabIndex = 15;
+            this.sexTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // ssnLabel
             // 

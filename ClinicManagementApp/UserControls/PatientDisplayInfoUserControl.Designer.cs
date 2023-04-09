@@ -47,6 +47,10 @@
             this.stateTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.patientIDTextBox = new System.Windows.Forms.TextBox();
+            this.GenderLabel = new System.Windows.Forms.Label();
+            this.ssnLabel = new System.Windows.Forms.Label();
+            this.genderTextBox = new System.Windows.Forms.TextBox();
+            this.ssnTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -232,10 +236,52 @@
             this.patientIDTextBox.TabIndex = 1;
             this.patientIDTextBox.TextChanged += new System.EventHandler(this.patientIDTextBox_TextChanged);
             // 
+            // GenderLabel
+            // 
+            this.GenderLabel.AutoSize = true;
+            this.GenderLabel.Location = new System.Drawing.Point(30, 171);
+            this.GenderLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.GenderLabel.Name = "GenderLabel";
+            this.GenderLabel.Size = new System.Drawing.Size(45, 13);
+            this.GenderLabel.TabIndex = 22;
+            this.GenderLabel.Text = "Gender:";
+            // 
+            // ssnLabel
+            // 
+            this.ssnLabel.AutoSize = true;
+            this.ssnLabel.Location = new System.Drawing.Point(305, 171);
+            this.ssnLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ssnLabel.Name = "ssnLabel";
+            this.ssnLabel.Size = new System.Drawing.Size(32, 13);
+            this.ssnLabel.TabIndex = 23;
+            this.ssnLabel.Text = "SSN:";
+            // 
+            // genderTextBox
+            // 
+            this.genderTextBox.Location = new System.Drawing.Point(103, 171);
+            this.genderTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.genderTextBox.Name = "genderTextBox";
+            this.genderTextBox.ReadOnly = true;
+            this.genderTextBox.Size = new System.Drawing.Size(165, 20);
+            this.genderTextBox.TabIndex = 24;
+            // 
+            // ssnTextBox
+            // 
+            this.ssnTextBox.Location = new System.Drawing.Point(370, 171);
+            this.ssnTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.ssnTextBox.Name = "ssnTextBox";
+            this.ssnTextBox.ReadOnly = true;
+            this.ssnTextBox.Size = new System.Drawing.Size(165, 20);
+            this.ssnTextBox.TabIndex = 25;
+            // 
             // PatientDisplayInfoUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ssnTextBox);
+            this.Controls.Add(this.genderTextBox);
+            this.Controls.Add(this.ssnLabel);
+            this.Controls.Add(this.GenderLabel);
             this.Controls.Add(this.patientIDTextBox);
             this.Controls.Add(this.zipTextBox);
             this.Controls.Add(this.stateTextBox);
@@ -283,5 +329,9 @@
         private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.TextBox patientIDTextBox;
+        private System.Windows.Forms.Label GenderLabel;
+        private System.Windows.Forms.Label ssnLabel;
+        private System.Windows.Forms.TextBox genderTextBox;
+        private System.Windows.Forms.TextBox ssnTextBox;
     }
 }

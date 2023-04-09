@@ -48,23 +48,10 @@ namespace ClinicManagementApp.Controller
         /// <param name="person"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public int AddPatient(Person person)
+        public Boolean AddPatient(Person person)
         {
             if (person == null) throw new ArgumentNullException("Person cannot be null.");
-            int personID = this.AddPerson(person);
-            return this._patientDAL.AddPatient(personID);
-        }
-
-        /// <summary>
-        /// Adds a person to the DB
-        /// </summary>
-        /// <param name="person"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        public int AddPerson(Person person)
-        {
-            if (person == null) throw new ArgumentNullException("Person cannot be null.");
-            return this._personDAL.AddPerson(person);
+            return this._personDAL.AddPersonAsPatient(person);
         }
 
         public bool UpdatePatient(int recordID, string lastName, string firstName, DateTime birthday, string addressStreet, string city, string state, string zip, string phone, string sex, string ssn)
@@ -96,6 +83,13 @@ namespace ClinicManagementApp.Controller
             }
 
         }
+
+        /// <summary>
+        /// Get patients by visit Date per search requirement
+        /// </summary>
+        /// <param name="visitDate">visit date</param>
+        /// <returns>patient list</returns>
+        public List<PatientVisit> GetPatientsByVisitDate(DateTime visitDate) => this._patientDAL.GetPatientsByVisitDate(visitDate);
 
     }
 }

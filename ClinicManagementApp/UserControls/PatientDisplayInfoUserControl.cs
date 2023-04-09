@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace ClinicManagementApp.UserControls
 {
     /// <summary>
-    /// this class manages usercontrol for viewing individual selected patient information
+    /// this class manages usercontrol for viewing individual selected patient information.
     /// </summary>
     public partial class PatientDisplayInfoUserControl : UserControl
     {
@@ -45,6 +45,8 @@ namespace ClinicManagementApp.UserControls
                 this.cityTextBox.Text = this.thePatient.City;
                 this.stateTextBox.Text = this.thePatient.State;
                 this.zipTextBox.Text = this.thePatient.Zip;
+                this.genderTextBox.Text = this.thePatient.Sex;
+                this.ssnTextBox.Text = this.thePatient.SSN;
             }
             else
             {
@@ -62,6 +64,8 @@ namespace ClinicManagementApp.UserControls
             this.cityTextBox.Text = "";
             this.stateTextBox.Text = "";
             this.zipTextBox.Text = "";
+            this.genderTextBox.Text = "";
+            this.ssnTextBox.Text = "";
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ClinicManagementApp.DAL;
+using ClinicManagementApp.Model;
 
 namespace ClinicManagementApp.Controller
 {
@@ -26,6 +27,13 @@ namespace ClinicManagementApp.Controller
         {
             return this._nurseDAL.GetNurseName(user);
         }
+
+        /// <summary>
+        /// Get nurse by id
+        /// </summary>
+        /// /// <param name="nurseID">id of nurse</param>
+        /// <returns>Nurse</returns>
+        public Nurse GetNurseByID(int nurseID) => _nurseDAL.GetNurseByID(nurseID);
 
     }
 }
