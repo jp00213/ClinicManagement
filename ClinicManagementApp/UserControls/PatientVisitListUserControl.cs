@@ -41,7 +41,6 @@ namespace ClinicManagementApp.UserControls
             this.initialDiagnosisTextBox.Text = "";
             this.finalDiagnosisTextBox.Text = "";
             this.HideTheSaveFinalDiagnosisButton();
-            this.orderAdditionalTestButton.Enabled = false;
         }
 
         private void currentVisitIDLabel_TextChanged(object sender, System.EventArgs e)
@@ -75,7 +74,6 @@ namespace ClinicManagementApp.UserControls
                 this.finalDiagnosisTextBox.Enabled = true;
                 this.saveFinalDiagnosisButton.Show();
                 this.cancelFinalEditButton.Show();
-                this.orderAdditionalTestButton.Enabled = true;
             }
         }
 
@@ -287,7 +285,6 @@ namespace ClinicManagementApp.UserControls
         {
             this.finalDiagnosisTextBox.Text = "";
             this.finalDiagnosisTextBox.Enabled = true;
-            this.orderAdditionalTestButton.Enabled = true;
         }
 
         private void saveFinalDiagnosisButton_Click(object sender, System.EventArgs e)
@@ -327,7 +324,6 @@ namespace ClinicManagementApp.UserControls
                         if (updatedResult == true)
                         {
                             finalDiagnosisTextBox.Enabled = false;
-                            orderAdditionalTestButton.Enabled = false;
                             this.updateMessage.Text = "Final diagnosis has been updated.";
                             this.disableTheAddTestButton();
                         }
@@ -358,7 +354,6 @@ namespace ClinicManagementApp.UserControls
         {
             if (CheckIfFinalDiagnosisHasBeenEntered())
             {
-                orderAdditionalTestButton.Enabled = false;
                 this.cancelFinalEditButton.Hide();
                 this.HideTheSaveFinalDiagnosisButton();
             }

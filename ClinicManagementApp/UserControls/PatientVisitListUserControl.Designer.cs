@@ -44,7 +44,6 @@
             this.patientNameLabel = new System.Windows.Forms.Label();
             this.patientInformationLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.orderAdditionalTestButton = new System.Windows.Forms.Button();
             this.symptomsValueTextBox = new System.Windows.Forms.TextBox();
             this.pulseValueLabel = new System.Windows.Forms.Label();
             this.tempValueLabel = new System.Windows.Forms.Label();
@@ -69,11 +68,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.saveFinalDiagnosisButton = new System.Windows.Forms.Button();
             this.cancelFinalEditButton = new System.Windows.Forms.Button();
-            this.updateMessage = new System.Windows.Forms.Label();
             this.finalDiagnosisTextBox = new System.Windows.Forms.TextBox();
             this.initialDiagnosisTextBox = new System.Windows.Forms.TextBox();
             this.enterDiagnosisLabel = new System.Windows.Forms.Label();
             this.diagnosisLabel = new System.Windows.Forms.Label();
+            this.updateMessage = new System.Windows.Forms.Label();
             this.labsOrderedLabel = new System.Windows.Forms.Label();
             this.messageTextLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
@@ -254,7 +253,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.orderAdditionalTestButton);
             this.panel1.Controls.Add(this.symptomsValueTextBox);
             this.panel1.Controls.Add(this.pulseValueLabel);
             this.panel1.Controls.Add(this.tempValueLabel);
@@ -274,16 +272,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(196, 179);
             this.panel1.TabIndex = 1;
-            // 
-            // orderAdditionalTestButton
-            // 
-            this.orderAdditionalTestButton.Location = new System.Drawing.Point(46, 120);
-            this.orderAdditionalTestButton.Margin = new System.Windows.Forms.Padding(2);
-            this.orderAdditionalTestButton.Name = "orderAdditionalTestButton";
-            this.orderAdditionalTestButton.Size = new System.Drawing.Size(119, 20);
-            this.orderAdditionalTestButton.TabIndex = 6;
-            this.orderAdditionalTestButton.Text = "Order Additional Tests";
-            this.orderAdditionalTestButton.UseVisualStyleBackColor = true;
             // 
             // symptomsValueTextBox
             // 
@@ -541,17 +529,6 @@
             this.cancelFinalEditButton.UseVisualStyleBackColor = true;
             this.cancelFinalEditButton.Click += new System.EventHandler(this.cancelFinalEditButton_Click);
             // 
-            // updateMessage
-            // 
-            this.updateMessage.AutoSize = true;
-            this.updateMessage.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.updateMessage.Location = new System.Drawing.Point(382, 22);
-            this.updateMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.updateMessage.Name = "updateMessage";
-            this.updateMessage.Size = new System.Drawing.Size(13, 13);
-            this.updateMessage.TabIndex = 13;
-            this.updateMessage.Text = "--";
-            // 
             // finalDiagnosisTextBox
             // 
             this.finalDiagnosisTextBox.BackColor = System.Drawing.SystemColors.Window;
@@ -598,6 +575,17 @@
             this.diagnosisLabel.Size = new System.Drawing.Size(83, 13);
             this.diagnosisLabel.TabIndex = 0;
             this.diagnosisLabel.Text = "Initial Diagnosis:";
+            // 
+            // updateMessage
+            // 
+            this.updateMessage.AutoSize = true;
+            this.updateMessage.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.updateMessage.Location = new System.Drawing.Point(382, 22);
+            this.updateMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.updateMessage.Name = "updateMessage";
+            this.updateMessage.Size = new System.Drawing.Size(13, 13);
+            this.updateMessage.TabIndex = 13;
+            this.updateMessage.Text = "--";
             // 
             // labsOrderedLabel
             // 
@@ -694,7 +682,6 @@
         private System.Windows.Forms.TextBox initialDiagnosisTextBox;
         private System.Windows.Forms.TextBox finalDiagnosisTextBox;
         private System.Windows.Forms.Label updateMessage;
-        private System.Windows.Forms.Button orderAdditionalTestButton;
         private System.Windows.Forms.Button saveFinalDiagnosisButton;
         private System.Windows.Forms.Button cancelFinalEditButton;
         private System.Windows.Forms.Label messageTextLabel;
