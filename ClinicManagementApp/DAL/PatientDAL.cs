@@ -317,7 +317,7 @@ namespace ClinicManagementApp.DAL
                 "from appointment a, person e, patient p " +
                 "where a.patientID = p.patientID " +
                 "and p.recordID = e.recordID " +
-                "and a.appointmentDateTime between (@date + ' 08:00:00.000') and (@date + '16:00:00.000') " +
+                "and a.appointmentDateTime between (@date + ' 08:00:00.000') and (@date + ' 16:00:00.000') " +
                 "order by a.appointmentDateTime ";
 
             using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
