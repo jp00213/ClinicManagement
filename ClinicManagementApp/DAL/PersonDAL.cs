@@ -80,69 +80,76 @@ namespace ClinicManagementApp.DAL
                 connection.Open();
                 using (SqlTransaction transaction = connection.BeginTransaction())
                 {
-                    using (SqlCommand insertCommand = new SqlCommand(insertStatement1, connection))
+                    try
                     {
-                        insertCommand.Transaction = transaction;
-
-                        insertCommand.Parameters.Add("@lastName", System.Data.SqlDbType.VarChar);
-                        insertCommand.Parameters["@lastName"].Value = person.LastName;
-
-                        insertCommand.Parameters.Add("@firstName", System.Data.SqlDbType.VarChar);
-                        insertCommand.Parameters["@firstName"].Value = person.FirstName;
-
-                        insertCommand.Parameters.Add("@birthday", System.Data.SqlDbType.Date);
-                        insertCommand.Parameters["@birthday"].Value = person.DateOfBirth;
-
-                        insertCommand.Parameters.Add("@addressStreet", System.Data.SqlDbType.VarChar);
-                        insertCommand.Parameters["@addressStreet"].Value = person.AddressStreet;
-
-                        insertCommand.Parameters.Add("@city", System.Data.SqlDbType.VarChar);
-                        insertCommand.Parameters["@city"].Value = person.City;
-
-                        insertCommand.Parameters.Add("@state", System.Data.SqlDbType.Char);
-                        insertCommand.Parameters["@state"].Value = person.State;
-
-                        insertCommand.Parameters.Add("@zip", System.Data.SqlDbType.VarChar);
-                        insertCommand.Parameters["@zip"].Value = person.Zip;
-
-                        insertCommand.Parameters.Add("@phoneNumber", System.Data.SqlDbType.Char);
-                        insertCommand.Parameters["@phoneNumber"].Value = person.Phone;
-
-                        insertCommand.Parameters.Add("@sex", System.Data.SqlDbType.VarChar);
-                        insertCommand.Parameters["@sex"].Value = person.Sex;
-
-                        insertCommand.Parameters.Add("@ssn", System.Data.SqlDbType.Char);
-                        if (person.SSN == "")
+                        using (SqlCommand insertCommand = new SqlCommand(insertStatement1, connection))
                         {
-                            insertCommand.Parameters["@ssn"].Value = DBNull.Value;
+                            insertCommand.Transaction = transaction;
+
+                            insertCommand.Parameters.Add("@lastName", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@lastName"].Value = person.LastName;
+
+                            insertCommand.Parameters.Add("@firstName", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@firstName"].Value = person.FirstName;
+
+                            insertCommand.Parameters.Add("@birthday", System.Data.SqlDbType.Date);
+                            insertCommand.Parameters["@birthday"].Value = person.DateOfBirth;
+
+                            insertCommand.Parameters.Add("@addressStreet", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@addressStreet"].Value = person.AddressStreet;
+
+                            insertCommand.Parameters.Add("@city", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@city"].Value = person.City;
+
+                            insertCommand.Parameters.Add("@state", System.Data.SqlDbType.Char);
+                            insertCommand.Parameters["@state"].Value = person.State;
+
+                            insertCommand.Parameters.Add("@zip", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@zip"].Value = person.Zip;
+
+                            insertCommand.Parameters.Add("@phoneNumber", System.Data.SqlDbType.Char);
+                            insertCommand.Parameters["@phoneNumber"].Value = person.Phone;
+
+                            insertCommand.Parameters.Add("@sex", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@sex"].Value = person.Sex;
+
+                            insertCommand.Parameters.Add("@ssn", System.Data.SqlDbType.Char);
+                            if (person.SSN == "")
+                            {
+                                insertCommand.Parameters["@ssn"].Value = DBNull.Value;
+                            }
+                            else
+                            {
+                                insertCommand.Parameters["@ssn"].Value = person.SSN;
+                            }
+
+                            insertCommand.ExecuteNonQuery();
+
+                            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+                            selectCommand.Transaction = transaction;
+                            using (selectCommand)
+                            {
+                                record = Convert.ToInt32(selectCommand.ExecuteScalar());
+                            }
                         }
-                        else
+
+                        using (SqlCommand insertCommand = new SqlCommand(insertStatement2, connection))
                         {
-                            insertCommand.Parameters["@ssn"].Value = person.SSN;
+                            insertCommand.Transaction = transaction;
+
+                            insertCommand.Parameters.Add("@recordID", System.Data.SqlDbType.Int);
+                            insertCommand.Parameters["@recordID"].Value = record;
+
+                            insertCommand.ExecuteNonQuery();
                         }
 
-                        insertCommand.ExecuteNonQuery();
-
-                        SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-                        selectCommand.Transaction = transaction;
-                        using (selectCommand)
-                        {
-                            record = Convert.ToInt32(selectCommand.ExecuteScalar());
-                        }
-                    }
-
-                    using (SqlCommand insertCommand = new SqlCommand(insertStatement2, connection))
+                        result = true;
+                        transaction.Commit();
+                    } catch
                     {
-                        insertCommand.Transaction = transaction;
-
-                        insertCommand.Parameters.Add("@recordID", System.Data.SqlDbType.Int);
-                        insertCommand.Parameters["@recordID"].Value = record;
-
-                        insertCommand.ExecuteNonQuery();
+                        result = false;
+                        transaction.Rollback();
                     }
-
-                    transaction.Commit();
-                    result = true;
                 }
             }
 

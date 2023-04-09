@@ -70,6 +70,9 @@ namespace ClinicManagementApp.UserControls
                 {
                     MessageBox.Show("Patient successfully created!", "Patient Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.ResetInputFields();
+                } else
+                {
+                    MessageBox.Show("Patient was not created");
                 }
             }            
         }
