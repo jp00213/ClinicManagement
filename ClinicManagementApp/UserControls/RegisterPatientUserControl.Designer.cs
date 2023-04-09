@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label sexLabel;
             this.clearButton = new System.Windows.Forms.Button();
             this.addPatientButton = new System.Windows.Forms.Button();
             this.patientInformationLabel = new System.Windows.Forms.Label();
@@ -57,14 +58,26 @@
             this.DOBErrorLabel = new System.Windows.Forms.Label();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.ssnTextBox = new System.Windows.Forms.TextBox();
-            this.sexTextBox = new System.Windows.Forms.TextBox();
             this.ssnLabel = new System.Windows.Forms.Label();
-            this.sexLabel = new System.Windows.Forms.Label();
             this.sexErrorMessageLabel = new System.Windows.Forms.Label();
-            this.patientControllerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ssnErrorMessageLabel = new System.Windows.Forms.Label();
+            this.sexComboBox = new System.Windows.Forms.ComboBox();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientControllerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            sexLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientControllerBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // sexLabel
+            // 
+            sexLabel.AutoSize = true;
+            sexLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            sexLabel.Location = new System.Drawing.Point(119, 305);
+            sexLabel.Name = "sexLabel";
+            sexLabel.Size = new System.Drawing.Size(47, 25);
+            sexLabel.TabIndex = 35;
+            sexLabel.Text = "Sex";
             // 
             // clearButton
             // 
@@ -370,6 +383,7 @@
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(227, 24);
             this.stateComboBox.TabIndex = 18;
+            this.stateComboBox.SelectedValueChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // ssnTextBox
             // 
@@ -378,14 +392,6 @@
             this.ssnTextBox.Size = new System.Drawing.Size(227, 22);
             this.ssnTextBox.TabIndex = 20;
             this.ssnTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
-            // 
-            // sexTextBox
-            // 
-            this.sexTextBox.Location = new System.Drawing.Point(166, 304);
-            this.sexTextBox.Name = "sexTextBox";
-            this.sexTextBox.Size = new System.Drawing.Size(228, 22);
-            this.sexTextBox.TabIndex = 15;
-            this.sexTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // ssnLabel
             // 
@@ -397,16 +403,6 @@
             this.ssnLabel.TabIndex = 31;
             this.ssnLabel.Text = "SSN*";
             // 
-            // sexLabel
-            // 
-            this.sexLabel.AutoSize = true;
-            this.sexLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sexLabel.Location = new System.Drawing.Point(104, 305);
-            this.sexLabel.Name = "sexLabel";
-            this.sexLabel.Size = new System.Drawing.Size(47, 25);
-            this.sexLabel.TabIndex = 30;
-            this.sexLabel.Text = "Sex";
-            // 
             // sexErrorMessageLabel
             // 
             this.sexErrorMessageLabel.AutoSize = true;
@@ -415,10 +411,6 @@
             this.sexErrorMessageLabel.Name = "sexErrorMessageLabel";
             this.sexErrorMessageLabel.Size = new System.Drawing.Size(0, 18);
             this.sexErrorMessageLabel.TabIndex = 34;
-            // 
-            // patientControllerBindingSource
-            // 
-            this.patientControllerBindingSource.DataSource = typeof(ClinicManagementApp.Controller.PatientController);
             // 
             // ssnErrorMessageLabel
             // 
@@ -429,15 +421,34 @@
             this.ssnErrorMessageLabel.Size = new System.Drawing.Size(0, 18);
             this.ssnErrorMessageLabel.TabIndex = 35;
             // 
+            // sexComboBox
+            // 
+            this.sexComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "Sex", true));
+            this.sexComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sexComboBox.FormattingEnabled = true;
+            this.sexComboBox.Location = new System.Drawing.Point(167, 305);
+            this.sexComboBox.Name = "sexComboBox";
+            this.sexComboBox.Size = new System.Drawing.Size(228, 24);
+            this.sexComboBox.TabIndex = 36;
+            this.sexComboBox.SelectedIndexChanged += new System.EventHandler(this.TextBox_TextChanged);
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(ClinicManagementApp.Model.Patient);
+            // 
+            // patientControllerBindingSource
+            // 
+            this.patientControllerBindingSource.DataSource = typeof(ClinicManagementApp.Controller.PatientController);
+            // 
             // RegisterPatientUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(sexLabel);
+            this.Controls.Add(this.sexComboBox);
             this.Controls.Add(this.ssnErrorMessageLabel);
             this.Controls.Add(this.sexErrorMessageLabel);
             this.Controls.Add(this.ssnTextBox);
-            this.Controls.Add(this.sexTextBox);
             this.Controls.Add(this.ssnLabel);
-            this.Controls.Add(this.sexLabel);
             this.Controls.Add(this.stateComboBox);
             this.Controls.Add(this.DOBErrorLabel);
             this.Controls.Add(this.zipErrorMessageLabel);
@@ -467,6 +478,7 @@
             this.Controls.Add(this.clearButton);
             this.Name = "RegisterPatientUserControl";
             this.Size = new System.Drawing.Size(804, 499);
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientControllerBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -504,10 +516,10 @@
         private System.Windows.Forms.ComboBox stateComboBox;
         private System.Windows.Forms.BindingSource patientControllerBindingSource;
         private System.Windows.Forms.TextBox ssnTextBox;
-        private System.Windows.Forms.TextBox sexTextBox;
         private System.Windows.Forms.Label ssnLabel;
-        private System.Windows.Forms.Label sexLabel;
         private System.Windows.Forms.Label sexErrorMessageLabel;
         private System.Windows.Forms.Label ssnErrorMessageLabel;
+        private System.Windows.Forms.BindingSource patientBindingSource;
+        private System.Windows.Forms.ComboBox sexComboBox;
     }
 }
