@@ -266,11 +266,10 @@
             // activeDoctorNameLabel
             // 
             this.activeDoctorNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeDoctorNameLabel.Location = new System.Drawing.Point(277, 166);
+            this.activeDoctorNameLabel.Location = new System.Drawing.Point(242, 166);
             this.activeDoctorNameLabel.Name = "activeDoctorNameLabel";
             this.activeDoctorNameLabel.Size = new System.Drawing.Size(100, 15);
             this.activeDoctorNameLabel.TabIndex = 19;
-            this.activeDoctorNameLabel.Text = "Dr.";
             // 
             // dividerLabel3
             // 
@@ -294,11 +293,10 @@
             // activeDoctorIDLabel
             // 
             this.activeDoctorIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeDoctorIDLabel.Location = new System.Drawing.Point(277, 181);
+            this.activeDoctorIDLabel.Location = new System.Drawing.Point(242, 181);
             this.activeDoctorIDLabel.Name = "activeDoctorIDLabel";
             this.activeDoctorIDLabel.Size = new System.Drawing.Size(58, 13);
             this.activeDoctorIDLabel.TabIndex = 22;
-            this.activeDoctorIDLabel.Text = "111";
             // 
             // specialtyLabel
             // 
@@ -330,11 +328,10 @@
             // activeSpecialtyLabel
             // 
             this.activeSpecialtyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeSpecialtyLabel.Location = new System.Drawing.Point(277, 196);
+            this.activeSpecialtyLabel.Location = new System.Drawing.Point(242, 196);
             this.activeSpecialtyLabel.Name = "activeSpecialtyLabel";
-            this.activeSpecialtyLabel.Size = new System.Drawing.Size(100, 23);
+            this.activeSpecialtyLabel.Size = new System.Drawing.Size(214, 23);
             this.activeSpecialtyLabel.TabIndex = 25;
-            this.activeSpecialtyLabel.Text = "Endo";
             // 
             // nurseInfoLabel
             // 

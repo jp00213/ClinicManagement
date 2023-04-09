@@ -18,23 +18,28 @@ namespace ClinicManagementApp.UserControls
     public partial class DocumentVisitUserControl : UserControl
     {
         private PatientController _patientController;
+        private DoctorController _doctorController;
         private AppointmentController _appointmentController;
         private VisitController _visitController;
         private LabTestController _labController;
         private Patient _patient;
+        private Doctor _doctor;
         public DocumentVisitUserControl()
         {
             InitializeComponent();
             this._patientController = new PatientController();
+            this._doctorController = new DoctorController();
             this._appointmentController= new AppointmentController();
             this._visitController = new VisitController();
             this._labController = new LabTestController();
+
             this._patient = null;
+            this.labsListBox.DataSource = _labController.GetLabTests();
         }
 
         private void selectButton_Click(object sender, EventArgs e)
         {
-            DateTime appointmentDate = this.appointmentDateTimePicker.Value;
+            DateTime appointmentDate = this.appointmentDateTimePicker.Value.Date;
             this.patientDataGridView.DataSource = _patientController.GetPatientByAppointmentDate(appointmentDate);
         }
 
@@ -44,13 +49,13 @@ namespace ClinicManagementApp.UserControls
             var patientID = patientDataGridView.SelectedRows[0].Cells[0].Value.ToString();
             this._patient = this._patientController.GetPatientByID(Int32.Parse(patientID));
 
-            this.labsListBox.DataSource = _labController.GetLabTests();
-            /*this.labTestsDataGridView.DataSource= _labController.GetLabTests();*/
-
+            
+           
             int patientIDd = this._patient.PatientID;
-            DateTime appointmentDate = this.appointmentDateTimePicker.Value;
+            DateTime appointmentDate = this.appointmentDateTimePicker.Value.Date;
             Appointment appointment = this._appointmentController.GetAppointmentByPatientIDAndDate(patientIDd, appointmentDate);
-            this.phoneLabel.Text = appointment.AppointmentID.ToString();
+            this.GetDoctorInfoForAppointment(appointment.AppointmentID);
+            
 
             if (_patient != null)
             {
@@ -110,6 +115,20 @@ namespace ClinicManagementApp.UserControls
                 
             }
             MessageBox.Show(paul.ToString());
+        }
+
+        private void GetDoctorInfoForAppointment(int appointmentID)
+        {
+            List<Doctor> doctors = this._doctorController.GetDoctorAndSpecialtyByAppointmentID(appointmentID);
+            this.activeDoctorNameLabel.Text = doctors[0].FullName;
+            this.activeDoctorIDLabel.Text = doctors[0].DoctorID.ToString();
+
+            List<string> specialties = new List<string>();
+            foreach (Doctor doctor in doctors)
+            {
+                specialties.Add(doctor.Speciality.ToString());
+            }
+            this.activeSpecialtyLabel.Text = string.Join(", ", specialties);
         }
     }
 }
