@@ -300,6 +300,11 @@ namespace ClinicManagementApp.DAL
             return patients;
         }
 
+        /// <summary>
+        /// Gets a list of patients based on their appointment date
+        /// </summary>
+        /// <param name="dateIn"></param>
+        /// <returns></returns>
         public List<Patient> GetPatientByAppointmentDate(DateTime dateIn)
         {
             List<Patient> patients = new List<Patient>();
