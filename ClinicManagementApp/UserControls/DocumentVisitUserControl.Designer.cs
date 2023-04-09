@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.documentVisitLabel = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dateOfApptLabel = new System.Windows.Forms.Label();
             this.appointmentDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.patientLabel = new System.Windows.Forms.Label();
-            this.patientComboBox = new System.Windows.Forms.ComboBox();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.selectButton = new System.Windows.Forms.Button();
             this.dividerLabel = new System.Windows.Forms.Label();
             this.dividerLabel2 = new System.Windows.Forms.Label();
             this.patientInformationLabel = new System.Windows.Forms.Label();
             this.patientNameLabel = new System.Windows.Forms.Label();
-            this.activeNameLabel = new System.Windows.Forms.Label();
+            this.activeFirstNameLabel = new System.Windows.Forms.Label();
             this.dobLabel = new System.Windows.Forms.Label();
             this.activeDOBLabel = new System.Windows.Forms.Label();
             this.phoneLabel = new System.Windows.Forms.Label();
@@ -78,27 +79,29 @@
             this.feetNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.inchesNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.initialDiagnosisLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.initialDiagnosisTextbox = new System.Windows.Forms.TextBox();
+            this.patientDataGridView = new System.Windows.Forms.DataGridView();
+            this.patientIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.activeLastNameLabel = new System.Windows.Forms.Label();
+            this.feetLabel = new System.Windows.Forms.Label();
+            this.inchesLabel = new System.Windows.Forms.Label();
+            this.finalDiagnosisLabel = new System.Windows.Forms.Label();
+            this.finalDiagnosisTextBox = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.feetNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inchesNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // documentVisitLabel
-            // 
-            this.documentVisitLabel.AutoSize = true;
-            this.documentVisitLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.documentVisitLabel.Location = new System.Drawing.Point(308, 12);
-            this.documentVisitLabel.Name = "documentVisitLabel";
-            this.documentVisitLabel.Size = new System.Drawing.Size(150, 24);
-            this.documentVisitLabel.TabIndex = 0;
-            this.documentVisitLabel.Text = "Document Visit";
             // 
             // dateOfApptLabel
             // 
             this.dateOfApptLabel.AutoSize = true;
             this.dateOfApptLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateOfApptLabel.Location = new System.Drawing.Point(161, 44);
+            this.dateOfApptLabel.Location = new System.Drawing.Point(87, 16);
             this.dateOfApptLabel.Name = "dateOfApptLabel";
             this.dateOfApptLabel.Size = new System.Drawing.Size(139, 15);
             this.dateOfApptLabel.TabIndex = 1;
@@ -109,39 +112,25 @@
             this.appointmentDateTimePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointmentDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointmentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.appointmentDateTimePicker.Location = new System.Drawing.Point(164, 63);
+            this.appointmentDateTimePicker.Location = new System.Drawing.Point(90, 35);
             this.appointmentDateTimePicker.Name = "appointmentDateTimePicker";
             this.appointmentDateTimePicker.Size = new System.Drawing.Size(136, 21);
             this.appointmentDateTimePicker.TabIndex = 2;
             // 
-            // patientLabel
+            // patientBindingSource
             // 
-            this.patientLabel.AutoSize = true;
-            this.patientLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientLabel.Location = new System.Drawing.Point(349, 42);
-            this.patientLabel.Name = "patientLabel";
-            this.patientLabel.Size = new System.Drawing.Size(52, 15);
-            this.patientLabel.TabIndex = 3;
-            this.patientLabel.Text = "Patient";
-            // 
-            // patientComboBox
-            // 
-            this.patientComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientComboBox.FormattingEnabled = true;
-            this.patientComboBox.Location = new System.Drawing.Point(352, 61);
-            this.patientComboBox.Name = "patientComboBox";
-            this.patientComboBox.Size = new System.Drawing.Size(121, 23);
-            this.patientComboBox.TabIndex = 4;
+            this.patientBindingSource.DataSource = typeof(ClinicManagementApp.Model.Patient);
             // 
             // selectButton
             // 
             this.selectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectButton.Location = new System.Drawing.Point(506, 60);
+            this.selectButton.Location = new System.Drawing.Point(102, 62);
             this.selectButton.Name = "selectButton";
             this.selectButton.Size = new System.Drawing.Size(99, 24);
             this.selectButton.TabIndex = 5;
             this.selectButton.Text = "Select";
             this.selectButton.UseVisualStyleBackColor = true;
+            this.selectButton.Click += new System.EventHandler(this.selectButton_Click);
             // 
             // dividerLabel
             // 
@@ -183,15 +172,15 @@
             this.patientNameLabel.TabIndex = 9;
             this.patientNameLabel.Text = "Name:";
             // 
-            // activeNameLabel
+            // activeFirstNameLabel
             // 
-            this.activeNameLabel.AutoSize = true;
-            this.activeNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeNameLabel.Location = new System.Drawing.Point(83, 130);
-            this.activeNameLabel.Name = "activeNameLabel";
-            this.activeNameLabel.Size = new System.Drawing.Size(95, 13);
-            this.activeNameLabel.TabIndex = 10;
-            this.activeNameLabel.Text = "James Buchannan";
+            this.activeFirstNameLabel.AutoSize = true;
+            this.activeFirstNameLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "FirstName", true));
+            this.activeFirstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activeFirstNameLabel.Location = new System.Drawing.Point(83, 130);
+            this.activeFirstNameLabel.Name = "activeFirstNameLabel";
+            this.activeFirstNameLabel.Size = new System.Drawing.Size(0, 13);
+            this.activeFirstNameLabel.TabIndex = 10;
             // 
             // dobLabel
             // 
@@ -206,12 +195,12 @@
             // activeDOBLabel
             // 
             this.activeDOBLabel.AutoSize = true;
+            this.activeDOBLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "DateOfBirth", true));
             this.activeDOBLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activeDOBLabel.Location = new System.Drawing.Point(251, 130);
             this.activeDOBLabel.Name = "activeDOBLabel";
-            this.activeDOBLabel.Size = new System.Drawing.Size(65, 13);
+            this.activeDOBLabel.Size = new System.Drawing.Size(0, 13);
             this.activeDOBLabel.TabIndex = 12;
-            this.activeDOBLabel.Text = "07/18/1987";
             // 
             // phoneLabel
             // 
@@ -226,12 +215,12 @@
             // activePhoneLabel
             // 
             this.activePhoneLabel.AutoSize = true;
+            this.activePhoneLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "Phone", true));
             this.activePhoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activePhoneLabel.Location = new System.Drawing.Point(391, 130);
             this.activePhoneLabel.Name = "activePhoneLabel";
-            this.activePhoneLabel.Size = new System.Drawing.Size(67, 13);
+            this.activePhoneLabel.Size = new System.Drawing.Size(0, 13);
             this.activePhoneLabel.TabIndex = 14;
-            this.activePhoneLabel.Text = "7064651395";
             // 
             // addressLabel
             // 
@@ -246,12 +235,12 @@
             // activeAddressLabel
             // 
             this.activeAddressLabel.AutoSize = true;
+            this.activeAddressLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "AddressStreet", true));
             this.activeAddressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeAddressLabel.Location = new System.Drawing.Point(543, 129);
+            this.activeAddressLabel.Location = new System.Drawing.Point(542, 130);
             this.activeAddressLabel.Name = "activeAddressLabel";
-            this.activeAddressLabel.Size = new System.Drawing.Size(25, 13);
+            this.activeAddressLabel.Size = new System.Drawing.Size(0, 13);
             this.activeAddressLabel.TabIndex = 16;
-            this.activeAddressLabel.Text = "123";
             // 
             // doctorInformationLabel
             // 
@@ -395,6 +384,7 @@
             this.saveButton.TabIndex = 31;
             this.saveButton.Text = "Save Appointment";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // heightLabel
             // 
@@ -553,19 +543,148 @@
             this.initialDiagnosisLabel.TabIndex = 48;
             this.initialDiagnosisLabel.Text = "Initial Diagnosis:";
             // 
-            // textBox1
+            // initialDiagnosisTextbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(352, 375);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(139, 143);
-            this.textBox1.TabIndex = 49;
+            this.initialDiagnosisTextbox.Location = new System.Drawing.Point(352, 375);
+            this.initialDiagnosisTextbox.Multiline = true;
+            this.initialDiagnosisTextbox.Name = "initialDiagnosisTextbox";
+            this.initialDiagnosisTextbox.Size = new System.Drawing.Size(139, 62);
+            this.initialDiagnosisTextbox.TabIndex = 49;
+            // 
+            // patientDataGridView
+            // 
+            this.patientDataGridView.AllowUserToAddRows = false;
+            this.patientDataGridView.AllowUserToDeleteRows = false;
+            this.patientDataGridView.AutoGenerateColumns = false;
+            this.patientDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.patientDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.patientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.patientDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.patientIDDataGridViewTextBoxColumn,
+            this.lastNameDataGridViewTextBoxColumn,
+            this.firstNameDataGridViewTextBoxColumn,
+            this.dateOfBirthDataGridViewTextBoxColumn});
+            this.patientDataGridView.DataSource = this.patientBindingSource;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.patientDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.patientDataGridView.Location = new System.Drawing.Point(263, 15);
+            this.patientDataGridView.MultiSelect = false;
+            this.patientDataGridView.Name = "patientDataGridView";
+            this.patientDataGridView.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.patientDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.patientDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.patientDataGridView.Size = new System.Drawing.Size(468, 80);
+            this.patientDataGridView.TabIndex = 50;
+            this.patientDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.patientDataGridView_CellClick);
+            this.patientDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.patientDataGridView_CellClick);
+            // 
+            // patientIDDataGridViewTextBoxColumn
+            // 
+            this.patientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID";
+            this.patientIDDataGridViewTextBoxColumn.HeaderText = "PatientID";
+            this.patientIDDataGridViewTextBoxColumn.Name = "patientIDDataGridViewTextBoxColumn";
+            this.patientIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateOfBirthDataGridViewTextBoxColumn
+            // 
+            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
+            this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // activeLastNameLabel
+            // 
+            this.activeLastNameLabel.AutoSize = true;
+            this.activeLastNameLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "LastName", true));
+            this.activeLastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activeLastNameLabel.Location = new System.Drawing.Point(120, 130);
+            this.activeLastNameLabel.Name = "activeLastNameLabel";
+            this.activeLastNameLabel.Size = new System.Drawing.Size(0, 13);
+            this.activeLastNameLabel.TabIndex = 51;
+            // 
+            // feetLabel
+            // 
+            this.feetLabel.AutoSize = true;
+            this.feetLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.feetLabel.Location = new System.Drawing.Point(120, 237);
+            this.feetLabel.Name = "feetLabel";
+            this.feetLabel.Size = new System.Drawing.Size(24, 12);
+            this.feetLabel.TabIndex = 52;
+            this.feetLabel.Text = "Feet";
+            // 
+            // inchesLabel
+            // 
+            this.inchesLabel.AutoSize = true;
+            this.inchesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inchesLabel.Location = new System.Drawing.Point(193, 237);
+            this.inchesLabel.Name = "inchesLabel";
+            this.inchesLabel.Size = new System.Drawing.Size(33, 12);
+            this.inchesLabel.TabIndex = 53;
+            this.inchesLabel.Text = "Inches";
+            // 
+            // finalDiagnosisLabel
+            // 
+            this.finalDiagnosisLabel.AutoSize = true;
+            this.finalDiagnosisLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finalDiagnosisLabel.Location = new System.Drawing.Point(253, 458);
+            this.finalDiagnosisLabel.Name = "finalDiagnosisLabel";
+            this.finalDiagnosisLabel.Size = new System.Drawing.Size(95, 15);
+            this.finalDiagnosisLabel.TabIndex = 54;
+            this.finalDiagnosisLabel.Text = "Final Diagnosis:";
+            // 
+            // finalDiagnosisTextBox
+            // 
+            this.finalDiagnosisTextBox.Location = new System.Drawing.Point(352, 457);
+            this.finalDiagnosisTextBox.Multiline = true;
+            this.finalDiagnosisTextBox.Name = "finalDiagnosisTextBox";
+            this.finalDiagnosisTextBox.Size = new System.Drawing.Size(139, 62);
+            this.finalDiagnosisTextBox.TabIndex = 55;
             // 
             // DocumentVisitUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.finalDiagnosisTextBox);
+            this.Controls.Add(this.finalDiagnosisLabel);
+            this.Controls.Add(this.inchesLabel);
+            this.Controls.Add(this.feetLabel);
+            this.Controls.Add(this.activeLastNameLabel);
+            this.Controls.Add(this.patientDataGridView);
+            this.Controls.Add(this.initialDiagnosisTextbox);
             this.Controls.Add(this.initialDiagnosisLabel);
             this.Controls.Add(this.inchesNumericUpDown);
             this.Controls.Add(this.feetNumericUpDown);
@@ -603,40 +722,35 @@
             this.Controls.Add(this.phoneLabel);
             this.Controls.Add(this.activeDOBLabel);
             this.Controls.Add(this.dobLabel);
-            this.Controls.Add(this.activeNameLabel);
+            this.Controls.Add(this.activeFirstNameLabel);
             this.Controls.Add(this.patientNameLabel);
             this.Controls.Add(this.patientInformationLabel);
             this.Controls.Add(this.dividerLabel2);
             this.Controls.Add(this.dividerLabel);
             this.Controls.Add(this.selectButton);
-            this.Controls.Add(this.patientComboBox);
-            this.Controls.Add(this.patientLabel);
             this.Controls.Add(this.appointmentDateTimePicker);
             this.Controls.Add(this.dateOfApptLabel);
-            this.Controls.Add(this.documentVisitLabel);
             this.Name = "DocumentVisitUserControl";
             this.Size = new System.Drawing.Size(804, 576);
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.feetNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inchesNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label documentVisitLabel;
         private System.Windows.Forms.Label dateOfApptLabel;
         private System.Windows.Forms.DateTimePicker appointmentDateTimePicker;
-        private System.Windows.Forms.Label patientLabel;
-        private System.Windows.Forms.ComboBox patientComboBox;
         private System.Windows.Forms.Button selectButton;
         private System.Windows.Forms.Label dividerLabel;
         private System.Windows.Forms.Label dividerLabel2;
         private System.Windows.Forms.Label patientInformationLabel;
         private System.Windows.Forms.Label patientNameLabel;
-        private System.Windows.Forms.Label activeNameLabel;
+        private System.Windows.Forms.Label activeFirstNameLabel;
         private System.Windows.Forms.Label dobLabel;
         private System.Windows.Forms.Label activeDOBLabel;
         private System.Windows.Forms.Label phoneLabel;
@@ -675,6 +789,17 @@
         private System.Windows.Forms.NumericUpDown feetNumericUpDown;
         private System.Windows.Forms.NumericUpDown inchesNumericUpDown;
         private System.Windows.Forms.Label initialDiagnosisLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox initialDiagnosisTextbox;
+        private System.Windows.Forms.BindingSource patientBindingSource;
+        private System.Windows.Forms.DataGridView patientDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn patientIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateOfBirthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label activeLastNameLabel;
+        private System.Windows.Forms.Label feetLabel;
+        private System.Windows.Forms.Label inchesLabel;
+        private System.Windows.Forms.Label finalDiagnosisLabel;
+        private System.Windows.Forms.TextBox finalDiagnosisTextBox;
     }
 }
