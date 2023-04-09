@@ -262,6 +262,44 @@ namespace ClinicManagementApp.DAL
             return appointment;
         }
 
+        public Appointment GetAppointmentByPatientIDAndDate(int patientIDIn, DateTime appointmentDateIn)
+        {
+            Appointment appointment = new Appointment();
+            string selectStatement =
+                "select d.doctorID, a.appointmentID, a.appointmentDatetime,   CONVERT(VARCHAR(10), a.appointmentDatetime, 101) as shortTime  , " +
+                "a.reason, e.firstName + ' ' + e.lastName as doctorLastName  " +
+                "from appointment a,  doctor d, person e " +
+                "where a.doctorID = d.doctorID " +
+                "and d.recordID = e.recordID " +
+                "and a.patientID = @patientIDIn " +
+                "and CONVERT(VARCHAR(10), a.appointmentDatetime, 101) = @appointmentDateIn " +
+                "order by a.appointmentDatetime ";
+            
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@patientIDIn", patientIDIn);
+                    selectCommand.Parameters.AddWithValue("@appointmentDateIn", appointmentDateIn);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            appointment.AppointmentID = (int)(reader)["appointmentID"];
+                            appointment.DoctorID = (int)reader["doctorID"];
+                            appointment.DoctorName = (string)(reader)["doctorLastName"];
+                            appointment.AppointmentDatetime = (DateTime)reader["appointmentDatetime"];
+                            appointment.Reason = (string)(reader)["reason"];
+                            appointment.TimeInString = (string)(reader)["shortTime"];
+                        }
+                    }
+                }
+            }
+            return appointment;
+        }
+
         /// <summary>
         /// Update Appointment details
         /// </summary>
