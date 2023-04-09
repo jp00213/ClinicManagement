@@ -32,12 +32,8 @@
             this.registerTabPage = new System.Windows.Forms.TabPage();
             this.registerPatientUserControl1 = new ClinicManagementApp.UserControls.RegisterPatientUserControl();
             this.UpdateTabPage = new System.Windows.Forms.TabPage();
-            this.updatePatientInformationUserControl1 = new ClinicManagementApp.UserControls.UpdatePatientInformationUserControl();
             this.ViewTabPage = new System.Windows.Forms.TabPage();
             this.bottomPanelHoldMultipleUserControl = new System.Windows.Forms.Panel();
-            this.patientAppointmentListUserControl1 = new ClinicManagementApp.UserControls.PatientAppointmentListUserControl();
-            this.patientVisitListUserControl1 = new ClinicManagementApp.UserControls.PatientVisitListUserControl();
-            this.patientDisplayInfoUserControl1 = new ClinicManagementApp.UserControls.PatientDisplayInfoUserControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.patientVisitButton = new System.Windows.Forms.Button();
@@ -46,9 +42,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.currentPatientIDLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.searchPatientUserControl1 = new ClinicManagementApp.UserControls.SearchPatientUserControl();
             this.CreateTabPage = new System.Windows.Forms.TabPage();
-            this.createAppointmentUserControl1 = new ClinicManagementApp.UserControls.CreateAppointmentUserControl();
             this.DocumentTabPage = new System.Windows.Forms.TabPage();
             this.documentVisitUserControl1 = new ClinicManagementApp.UserControls.DocumentVisitUserControl();
             this.LabsTabPage = new System.Windows.Forms.TabPage();
