@@ -20,6 +20,10 @@ namespace ClinicManagementApp.UserControls
             InitializeComponent();
             this._patientController= new PatientController();
             this._patient = null;
+            sexComboBox.Items.Insert(0, "--select--");
+            sexComboBox.Items.Insert(1, "M");
+            sexComboBox.Items.Insert(2, "F");
+            sexComboBox.SelectedIndex = 0;
             this.updatePatientButton.Enabled = false;
         }
 
@@ -65,7 +69,7 @@ namespace ClinicManagementApp.UserControls
             string city = this.cityTextBox.Text.Trim();
             string state = this.stateComboBox.Text;
             string zip = this.zipTextBox.Text.Trim();
-            string sex = this.sexTextBox.Text.Trim();
+            string sex = this.sexComboBox.Text.Trim();
             string ssn = this.sSNTextBox.Text.Trim();
             Patient oldPatient = _patient;
 
@@ -161,7 +165,7 @@ namespace ClinicManagementApp.UserControls
                 this.phoneErrorLabel.ForeColor = Color.Red;
             }
 
-            if (!IsSexValid(sexTextBox.Text))
+            if (!IsSexValid(sexComboBox.Text))
             {
                 this.sexErrorMessageLabel.Text = "Please enter M or F.";
                 this.sexErrorMessageLabel.ForeColor = Color.Red;

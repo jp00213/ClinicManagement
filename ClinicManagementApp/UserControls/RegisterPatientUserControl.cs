@@ -4,6 +4,7 @@ using System;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ClinicManagementApp.UserControls
 {
@@ -21,6 +22,10 @@ namespace ClinicManagementApp.UserControls
         {
             InitializeComponent();
             this._patientController= new PatientController();
+            sexComboBox.Items.Insert(0, "--select--");
+            sexComboBox.Items.Insert(1, "M");
+            sexComboBox.Items.Insert(2, "F");
+            sexComboBox.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -36,7 +41,7 @@ namespace ClinicManagementApp.UserControls
             cityTextBox.Clear();
             stateComboBox.SelectedItem = null;
             zipTextBox.Clear();
-            sexTextBox.Clear();
+            sexComboBox.SelectedItem = null;
             ssnTextBox.Clear();
         }
         private void clearButton_Click(object sender, EventArgs e)
@@ -55,7 +60,7 @@ namespace ClinicManagementApp.UserControls
             string city = this.cityTextBox.Text.Trim();
             string state = this.stateComboBox.Text;
             string zip = this.zipTextBox.Text.Trim();
-            string sex = this.sexTextBox.Text.Trim();
+            string sex = this.sexComboBox.Text.Trim();
             string ssn = this.ssnTextBox.Text.Trim();
 
             if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || dateOfBirth > DateTime.Now || string.IsNullOrEmpty(address) 
@@ -127,7 +132,7 @@ namespace ClinicManagementApp.UserControls
                 this.phoneErrorMessageLabel.ForeColor = Color.Red;
             }
 
-            if (!IsSexValid(sexTextBox.Text))
+            if (!IsSexValid(sexComboBox.Text))
             {
                 this.sexErrorMessageLabel.Text = "Please enter M or F.";
                 this.sexErrorMessageLabel.ForeColor = Color.Red;
