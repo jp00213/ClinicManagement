@@ -34,7 +34,9 @@
             this.updateNurseTab = new System.Windows.Forms.TabPage();
             this.welcomeUserLabel = new System.Windows.Forms.Label();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.administratorAddNurse1 = new ClinicManagementApp.UserControls.AdministratorAddNurse();
             this.administratorTabControl.SuspendLayout();
+            this.addNurseTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // administratorTabControl
@@ -51,6 +53,7 @@
             // 
             // addNurseTab
             // 
+            this.addNurseTab.Controls.Add(this.administratorAddNurse1);
             this.addNurseTab.Location = new System.Drawing.Point(4, 33);
             this.addNurseTab.Name = "addNurseTab";
             this.addNurseTab.Padding = new System.Windows.Forms.Padding(3);
@@ -102,6 +105,15 @@
             this.logoutLinkLabel.Text = "Logout";
             this.logoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.logoutLinkLabel_LinkClicked);
             // 
+            // administratorAddNurse1
+            // 
+            this.administratorAddNurse1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.administratorAddNurse1.Location = new System.Drawing.Point(3, 3);
+            this.administratorAddNurse1.Margin = new System.Windows.Forms.Padding(4);
+            this.administratorAddNurse1.Name = "administratorAddNurse1";
+            this.administratorAddNurse1.Size = new System.Drawing.Size(848, 587);
+            this.administratorAddNurse1.TabIndex = 0;
+            // 
             // AdministratorDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -117,6 +129,7 @@
             this.Text = "Clinic Management Application";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdministratorDashboard_FormClosed);
             this.administratorTabControl.ResumeLayout(false);
+            this.addNurseTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,5 +143,6 @@
         private System.Windows.Forms.Label welcomeUserLabel;
         private System.Windows.Forms.LinkLabel logoutLinkLabel;
         private System.Windows.Forms.TabPage updateNurseTab;
+        private UserControls.AdministratorAddNurse administratorAddNurse1;
     }
 }

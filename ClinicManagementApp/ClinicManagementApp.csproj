@@ -71,6 +71,12 @@
     <Compile Include="Model\Person.cs" />
     <Compile Include="Model\Range.cs" />
     <Compile Include="Model\Visit.cs" />
+    <Compile Include="UserControls\AdministratorAddNurse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AdministratorAddNurse.Designer.cs">
+      <DependentUpon>AdministratorAddNurse.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\CreateAppointmentUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -154,6 +160,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\AdministratorAddNurse.resx">
+      <DependentUpon>AdministratorAddNurse.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CreateAppointmentUserControl.resx">
       <DependentUpon>CreateAppointmentUserControl.cs</DependentUpon>
     </EmbeddedResource>

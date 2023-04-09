@@ -12,5 +12,6 @@ namespace ClinicManagementApp.Model
     public class Nurse : Person
     {
         public int NurseID { get; set; }
+        public string Username { get; set; }
     }
 }
