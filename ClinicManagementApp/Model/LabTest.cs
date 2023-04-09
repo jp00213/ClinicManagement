@@ -18,5 +18,12 @@ namespace ClinicManagementApp.Model
         public string TestName { get; set; }
 
         public int ResultIsNormal { get; set; }
+
+        public LabTest()
+        {
+
+        }
     }
+
+    
 }

@@ -50,5 +50,42 @@ namespace ClinicManagementApp.DAL
             }
             return labTests;
         }
+
+        /// <summary>
+        /// Gets the full lists of available lab tests
+        /// </summary>
+        /// <returns></returns>
+        public List<LabTest> GetLabTests()
+        {
+            List<LabTest> labTests = new List<LabTest>();
+            LabTest labTest = new LabTest();
+
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string selectStatement =
+                "select * " +
+                " from test " +
+                " order by name ";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            using (selectCommand)
+            {
+                connection.Open();
+                using (SqlDataReader reader = selectCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        labTest = new LabTest
+                        {
+                            TestCode = (int)(reader)["testCode"],
+                            TestName = (string)(reader)["name"],
+                   
+                        };
+                        labTests.Add(labTest);
+                    }
+                }
+            }
+            return labTests;
+        }
     }
 }
