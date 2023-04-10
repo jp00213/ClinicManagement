@@ -280,6 +280,58 @@ namespace ClinicManagementApp.DAL
         }
 
         /// <summary>
+
+        /// Gets a list of patients based on their appointment date
+        /// </summary>
+        /// <param name="dateIn"></param>
+        /// <returns></returns>
+        public List<Patient> GetPatientByAppointmentDate(DateTime dateIn)
+        {
+            List<Patient> patients = new List<Patient>();
+            Patient patient = new Patient();
+            string selectStatement =
+                "select a.patientID, a.appointmentDatetime, " +
+                "p.recordID as personID, e.lastName, e.firstName, " +
+                "e.birthday, e.phoneNumber, " +
+                "e.addressStreet, e.city, e.state, e.zip " +
+                "from appointment a, person e, patient p " +
+                "where a.patientID = p.patientID " +
+                "and p.recordID = e.recordID " +
+                "and a.appointmentDateTime between (@date + ' 08:00:00.000') and (@date + ' 16:00:00.000') " +
+                "order by a.appointmentDateTime ";
+
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@date", dateIn);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            patient = new Patient
+                            {
+                                RecordID = (int)(reader)["personID"],
+                                LastName = (string)(reader)["lastName"],
+                                FirstName = (string)(reader)["firstName"],
+                                DateOfBirth = (DateTime)(reader)["birthday"],
+                                AddressStreet = (string)(reader)["addressStreet"],
+                                City = (string)(reader)["city"],
+                                State = (string)(reader)["state"],
+                                Zip = (string)(reader)["zip"],
+                                Phone = (string)(reader)["phoneNumber"],
+                                PatientID = (int)(reader)["patientID"]
+                            };
+                            patients.Add(patient);
+                        }
+                    }
+                }
+             }
+            return patients;
+        }
+
         /// Get patients by visit Date per search requirement
         /// </summary>
         /// <param name="visitDate">visit date</param>
@@ -332,6 +384,7 @@ namespace ClinicManagementApp.DAL
                             VisitID = (int)(reader)["visitID"]
                         };
                         patients.Add(patient);
+
                     }
                 }
             }

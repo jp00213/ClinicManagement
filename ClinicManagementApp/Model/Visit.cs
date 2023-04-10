@@ -54,5 +54,46 @@ namespace ClinicManagementApp.Model
 
         public string HeightFormatted { get; set; }
 
+        /// <summary>
+        /// Default visit constructor
+        /// </summary>
+        public Visit()
+        {
+
+        }
+        
+        /// <summary>
+        /// Overloaded visit constructor
+        /// </summary>
+        /// <param name="visitID"></param>
+        /// <param name="appointmentID"></param>
+        /// <param name="nurseID"></param>
+        /// <param name="visitDatetime"></param>
+        /// <param name="height"></param>
+        /// <param name="weight"></param>
+        /// <param name="bloodPressureDiastolic"></param>
+        /// <param name="bloodPressureSystolic"></param>
+        /// <param name="bodyTemperature"></param>
+        /// <param name="pulse"></param>
+        /// <param name="symptoms"></param>
+        /// <param name="initialDiagnoses"></param>
+        /// <param name="finalDiagnoses"></param>
+        public Visit(int visitID, int appointmentID, int nurseID, DateTime visitDatetime, decimal height, decimal weight, int bloodPressureDiastolic, int bloodPressureSystolic, decimal bodyTemperature, int pulse, string symptoms, string initialDiagnoses, string finalDiagnoses)
+        {
+            VisitID = visitID;
+            AppointmentID = appointmentID;
+            NurseID = nurseID;
+            VisitDatetime = visitDatetime;
+            Height = height;
+            Weight = weight;
+            BloodPressureDiastolic = bloodPressureDiastolic;
+            BloodPressureSystolic = bloodPressureSystolic;
+            BodyTemperature = bodyTemperature;
+            Pulse = pulse;
+            Symptoms = symptoms;
+            InitialDiagnoses = initialDiagnoses;
+            FinalDiagnoses = finalDiagnoses;
+            
+        }
     }
 }

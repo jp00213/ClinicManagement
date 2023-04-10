@@ -52,5 +52,15 @@ namespace ClinicManagementApp.Controller
         {
             return this._visitDAL.EnterFinalDiagnosis(visitDataIn);
         }
+
+        /// <summary>
+        /// Adds a visit
+        /// </summary>
+        /// <param name="visit"></param>
+        /// <returns></returns>
+        public int AddVisit(Visit visit)
+        {
+            return this._visitDAL.AddVisit(visit);
+        }
     }
 }
