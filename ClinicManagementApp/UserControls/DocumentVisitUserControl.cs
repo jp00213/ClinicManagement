@@ -73,19 +73,19 @@ namespace ClinicManagementApp.UserControls
         private void saveButton_Click(object sender, EventArgs e)
         {
             int appointmentID = this._appointment.AppointmentID;
-            int nurseID = 1;
+            int nurseID = 4;
             DateTime visitDateTime = DateTime.Now;
             Decimal height = this.CalculateHeight(this.feetNumericUpDown.Value, this.inchesNumericUpDown.Value);
-            Decimal weight = Decimal.Parse(this.weightTextBox.Text);
-            int diastolicBloodPressure = int.Parse(this.diastolicTextBox.Text);
-            int systolicBloodPressure = int.Parse(this.systolicTextBox.Text);
-            Decimal bodyTemperature = Decimal.Parse(this.temperatureTextBox.Text);
-            int pulse = int.Parse(this.pulseTextBox.Text);
-            var symptoms = this.symptomsTextBox.Text;
-            var initialDiagnosis = this.initialDiagnosisTextbox.Text;
-            var finalDiagnosis = this.finalDiagnosisTextBox.Text;
+            Decimal weight = Decimal.Parse(this.weightTextBox.Text.Trim());
+            int diastolicBloodPressure = int.Parse(this.diastolicTextBox.Text.Trim());
+            int systolicBloodPressure = int.Parse(this.systolicTextBox.Text.Trim());
+            Decimal bodyTemperature = Decimal.Parse(this.temperatureTextBox.Text.Trim());
+            int pulse = int.Parse(this.pulseTextBox.Text.Trim());
+            var symptoms = this.symptomsTextBox.Text.Trim();
+            var initialDiagnosis = this.initialDiagnosisTextbox.Text.Trim();
+            var finalDiagnosis = this.finalDiagnosisTextBox.Text.Trim();
 
-            if (appointmentID <= 0 || nurseID <= 0 || height < 10 || height > 250 || weight < 0 || weight > 800 || diastolicBloodPressure > 370 || diastolicBloodPressure < 40 || systolicBloodPressure > 360 || systolicBloodPressure < 20 || bodyTemperature > 115 || bodyTemperature < 78 || pulse > 400 || pulse < 55 || string.IsNullOrEmpty(symptoms) || string.IsNullOrEmpty(initialDiagnosis) || string.IsNullOrEmpty(finalDiagnosis))
+            if (appointmentID <= 0 || nurseID <= 0 || height < 10 || height > 250 || weight < 0 || weight > 800 || diastolicBloodPressure > 370 || diastolicBloodPressure < 40 || systolicBloodPressure > 360 || systolicBloodPressure < 20 || bodyTemperature > 115 || bodyTemperature < 78 || pulse > 400 || pulse < 55 || string.IsNullOrEmpty(symptoms) || string.IsNullOrEmpty(initialDiagnosis))
             {
                 this.ShowInvalidErrorMessages();
             } else
@@ -93,7 +93,7 @@ namespace ClinicManagementApp.UserControls
                 Visit visit = new Visit(-1, appointmentID, nurseID, visitDateTime, height, weight, diastolicBloodPressure, systolicBloodPressure, bodyTemperature, pulse, symptoms, initialDiagnosis, finalDiagnosis);
                 int success = this._visitController.AddVisit(visit);
                 if (success > 0)
-                    {
+                {
                         MessageBox.Show("Appointment notes successfully saved!", "Appointment Notes Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -162,7 +162,7 @@ namespace ClinicManagementApp.UserControls
             this.saveButton.Enabled = false;
         }
 
-        private void cancelButton_Click(object sender, EventArgs e)
+        private void clearButton_Click(object sender, EventArgs e)
         {
             this.ResetForm();
             this.HideInvalidErrorMessages();

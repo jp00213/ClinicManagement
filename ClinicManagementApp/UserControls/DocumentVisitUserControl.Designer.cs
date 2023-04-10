@@ -91,7 +91,15 @@
             this.finalDiagnosisLabel = new System.Windows.Forms.Label();
             this.finalDiagnosisTextBox = new System.Windows.Forms.TextBox();
             this.orderLabsButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.heightErrorLabel = new System.Windows.Forms.Label();
+            this.diastolicBloodPressureErrorLabel = new System.Windows.Forms.Label();
+            this.bodyTemperatureErrorLabel = new System.Windows.Forms.Label();
+            this.symptomsErrorLabel = new System.Windows.Forms.Label();
+            this.weightErrorLabel = new System.Windows.Forms.Label();
+            this.systolicErrorLabel = new System.Windows.Forms.Label();
+            this.pulseErrorMessage = new System.Windows.Forms.Label();
+            this.initialDiagnosisErrorLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.feetNumericUpDown)).BeginInit();
@@ -416,6 +424,7 @@
             // 
             // weightTextBox
             // 
+            this.weightTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.weightTextBox.Location = new System.Drawing.Point(352, 252);
             this.weightTextBox.Name = "weightTextBox";
             this.weightTextBox.Size = new System.Drawing.Size(139, 20);
@@ -433,6 +442,7 @@
             // 
             // diastolicTextBox
             // 
+            this.diastolicTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.diastolicTextBox.Location = new System.Drawing.Point(102, 293);
             this.diastolicTextBox.Name = "diastolicTextBox";
             this.diastolicTextBox.Size = new System.Drawing.Size(139, 20);
@@ -450,6 +460,7 @@
             // 
             // systolicTextBox
             // 
+            this.systolicTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.systolicTextBox.Location = new System.Drawing.Point(352, 292);
             this.systolicTextBox.Name = "systolicTextBox";
             this.systolicTextBox.Size = new System.Drawing.Size(139, 20);
@@ -457,6 +468,7 @@
             // 
             // temperatureTextBox
             // 
+            this.temperatureTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.temperatureTextBox.Location = new System.Drawing.Point(102, 335);
             this.temperatureTextBox.Name = "temperatureTextBox";
             this.temperatureTextBox.Size = new System.Drawing.Size(139, 20);
@@ -464,6 +476,7 @@
             // 
             // pulseTextBox
             // 
+            this.pulseTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pulseTextBox.Location = new System.Drawing.Point(352, 334);
             this.pulseTextBox.Name = "pulseTextBox";
             this.pulseTextBox.Size = new System.Drawing.Size(139, 20);
@@ -471,6 +484,7 @@
             // 
             // symptomsTextBox
             // 
+            this.symptomsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.symptomsTextBox.Location = new System.Drawing.Point(102, 376);
             this.symptomsTextBox.Multiline = true;
             this.symptomsTextBox.Name = "symptomsTextBox";
@@ -553,6 +567,7 @@
             // 
             // initialDiagnosisTextbox
             // 
+            this.initialDiagnosisTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.initialDiagnosisTextbox.Location = new System.Drawing.Point(352, 375);
             this.initialDiagnosisTextbox.Multiline = true;
             this.initialDiagnosisTextbox.Name = "initialDiagnosisTextbox";
@@ -676,6 +691,7 @@
             // 
             // finalDiagnosisTextBox
             // 
+            this.finalDiagnosisTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.finalDiagnosisTextBox.Location = new System.Drawing.Point(352, 457);
             this.finalDiagnosisTextBox.Multiline = true;
             this.finalDiagnosisTextBox.Name = "finalDiagnosisTextBox";
@@ -693,22 +709,102 @@
             this.orderLabsButton.UseVisualStyleBackColor = true;
             this.orderLabsButton.Click += new System.EventHandler(this.orderLabsButton_Click);
             // 
-            // cancelButton
+            // clearButton
             // 
-            this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(61, 535);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(208, 36);
-            this.cancelButton.TabIndex = 57;
-            this.cancelButton.Text = "Clear";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearButton.Location = new System.Drawing.Point(61, 535);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(208, 36);
+            this.clearButton.TabIndex = 57;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
+            // heightErrorLabel
+            // 
+            this.heightErrorLabel.AutoSize = true;
+            this.heightErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.heightErrorLabel.Location = new System.Drawing.Point(99, 277);
+            this.heightErrorLabel.Name = "heightErrorLabel";
+            this.heightErrorLabel.Size = new System.Drawing.Size(0, 12);
+            this.heightErrorLabel.TabIndex = 58;
+            // 
+            // diastolicBloodPressureErrorLabel
+            // 
+            this.diastolicBloodPressureErrorLabel.AutoSize = true;
+            this.diastolicBloodPressureErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.diastolicBloodPressureErrorLabel.Location = new System.Drawing.Point(99, 319);
+            this.diastolicBloodPressureErrorLabel.Name = "diastolicBloodPressureErrorLabel";
+            this.diastolicBloodPressureErrorLabel.Size = new System.Drawing.Size(0, 12);
+            this.diastolicBloodPressureErrorLabel.TabIndex = 59;
+            // 
+            // bodyTemperatureErrorLabel
+            // 
+            this.bodyTemperatureErrorLabel.AutoSize = true;
+            this.bodyTemperatureErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bodyTemperatureErrorLabel.Location = new System.Drawing.Point(99, 358);
+            this.bodyTemperatureErrorLabel.Name = "bodyTemperatureErrorLabel";
+            this.bodyTemperatureErrorLabel.Size = new System.Drawing.Size(0, 12);
+            this.bodyTemperatureErrorLabel.TabIndex = 60;
+            // 
+            // symptomsErrorLabel
+            // 
+            this.symptomsErrorLabel.AutoSize = true;
+            this.symptomsErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.symptomsErrorLabel.Location = new System.Drawing.Point(97, 522);
+            this.symptomsErrorLabel.Name = "symptomsErrorLabel";
+            this.symptomsErrorLabel.Size = new System.Drawing.Size(0, 12);
+            this.symptomsErrorLabel.TabIndex = 61;
+            // 
+            // weightErrorLabel
+            // 
+            this.weightErrorLabel.AutoSize = true;
+            this.weightErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weightErrorLabel.Location = new System.Drawing.Point(352, 273);
+            this.weightErrorLabel.Name = "weightErrorLabel";
+            this.weightErrorLabel.Size = new System.Drawing.Size(0, 12);
+            this.weightErrorLabel.TabIndex = 62;
+            // 
+            // systolicErrorLabel
+            // 
+            this.systolicErrorLabel.AutoSize = true;
+            this.systolicErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.systolicErrorLabel.Location = new System.Drawing.Point(352, 317);
+            this.systolicErrorLabel.Name = "systolicErrorLabel";
+            this.systolicErrorLabel.Size = new System.Drawing.Size(0, 12);
+            this.systolicErrorLabel.TabIndex = 63;
+            // 
+            // pulseErrorMessage
+            // 
+            this.pulseErrorMessage.AutoSize = true;
+            this.pulseErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pulseErrorMessage.Location = new System.Drawing.Point(352, 358);
+            this.pulseErrorMessage.Name = "pulseErrorMessage";
+            this.pulseErrorMessage.Size = new System.Drawing.Size(0, 12);
+            this.pulseErrorMessage.TabIndex = 64;
+            // 
+            // initialDiagnosisErrorLabel
+            // 
+            this.initialDiagnosisErrorLabel.AutoSize = true;
+            this.initialDiagnosisErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.initialDiagnosisErrorLabel.Location = new System.Drawing.Point(351, 441);
+            this.initialDiagnosisErrorLabel.Name = "initialDiagnosisErrorLabel";
+            this.initialDiagnosisErrorLabel.Size = new System.Drawing.Size(0, 12);
+            this.initialDiagnosisErrorLabel.TabIndex = 65;
             // 
             // DocumentVisitUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
-            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.initialDiagnosisErrorLabel);
+            this.Controls.Add(this.pulseErrorMessage);
+            this.Controls.Add(this.systolicErrorLabel);
+            this.Controls.Add(this.weightErrorLabel);
+            this.Controls.Add(this.symptomsErrorLabel);
+            this.Controls.Add(this.bodyTemperatureErrorLabel);
+            this.Controls.Add(this.diastolicBloodPressureErrorLabel);
+            this.Controls.Add(this.heightErrorLabel);
+            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.orderLabsButton);
             this.Controls.Add(this.finalDiagnosisTextBox);
             this.Controls.Add(this.finalDiagnosisLabel);
@@ -834,6 +930,14 @@
         private System.Windows.Forms.TextBox finalDiagnosisTextBox;
         private System.Windows.Forms.BindingSource labTestBindingSource;
         private System.Windows.Forms.Button orderLabsButton;
-        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Label heightErrorLabel;
+        private System.Windows.Forms.Label diastolicBloodPressureErrorLabel;
+        private System.Windows.Forms.Label bodyTemperatureErrorLabel;
+        private System.Windows.Forms.Label symptomsErrorLabel;
+        private System.Windows.Forms.Label weightErrorLabel;
+        private System.Windows.Forms.Label systolicErrorLabel;
+        private System.Windows.Forms.Label pulseErrorMessage;
+        private System.Windows.Forms.Label initialDiagnosisErrorLabel;
     }
 }
