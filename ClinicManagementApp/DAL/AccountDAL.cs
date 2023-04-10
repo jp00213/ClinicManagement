@@ -45,7 +45,6 @@ namespace ClinicManagementApp.DAL
             }
 
             Boolean result = false;
-            Console.WriteLine(this.HashPassword(pass));
 
             string selectStatement =
                 "SELECT Count(*) " +

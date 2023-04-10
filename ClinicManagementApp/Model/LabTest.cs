@@ -11,7 +11,7 @@ namespace ClinicManagementApp.Model
 
         public int TestCode { get; set; }
 
-        public DateTime TestDate { get; set; }
+        public DateTime TestDate { get; set; } //date test was performed
 
         public string Result { get; set; }
 
@@ -19,10 +19,14 @@ namespace ClinicManagementApp.Model
 
         public int ResultIsNormal { get; set; }
 
+
         public LabTest()
         {
 
         }
+
+        public DateTime DateOrdered { get; set; } //date test was ordered (the date of the visit)
+
     }
 
     

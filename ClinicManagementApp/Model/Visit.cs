@@ -32,6 +32,7 @@ namespace ClinicManagementApp.Model
         public string InitialDiagnoses { get; set; }
 
         public string FinalDiagnoses { get; set; }
+        public int DoctorID { get; set; }
 
         public string DoctorLastName { get; set; }
 

@@ -303,9 +303,9 @@ namespace ClinicManagementApp.DAL
         /// <summary>
         /// Update Appointment details
         /// </summary>
-        /// <returns>success message</returns>
+        /// <returns>success boolean (true is successful)</returns>
         /// <param name="appointment"> appointment object to be updated</param>
-        public string UpdateAppointment(Appointment appointment)
+        public bool UpdateAppointment(Appointment appointment)
         {
             SqlConnection connection = ClinicManagementDBConnection.GetConnection();
             string insertStatement =
@@ -334,11 +334,11 @@ namespace ClinicManagementApp.DAL
                 int rowsAffected = insertCommand.ExecuteNonQuery();
                 if (rowsAffected > 0)
                 {
-                    return "This appointment has been updated.";
+                    return true;
                 }
                 else
                 {
-                    return "Appointment was not updated. Please try again.";
+                    return false;
                 }
             }
         }

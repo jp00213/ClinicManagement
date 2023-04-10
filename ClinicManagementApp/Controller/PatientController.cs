@@ -11,7 +11,7 @@ namespace ClinicManagementApp.Controller
     public class PatientController
     {
         private readonly PatientDAL _patientDAL;
-        private PersonDAL _personDAL;
+        private readonly PersonDAL _personDAL;
 
         /// <summary>
         /// Create a PatientController object.
@@ -48,29 +48,17 @@ namespace ClinicManagementApp.Controller
         /// <param name="person"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public int AddPatient(Person person)
+        public Boolean AddPatient(Person person)
         {
             if (person == null) throw new ArgumentNullException("Person cannot be null.");
-            int personID = this.AddPerson(person);
-            return this._patientDAL.AddPatient(personID);
+            return this._personDAL.AddPersonAsPatient(person);
         }
 
-        /// <summary>
-        /// Adds a person to the DB
-        /// </summary>
-        /// <param name="person"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        public int AddPerson(Person person)
+        public bool UpdatePatient(int recordID, string lastName, string firstName, DateTime birthday, string addressStreet, string city, string state, string zip, string phone, string sex, string ssn)
         {
-            if (person == null) throw new ArgumentNullException("Person cannot be null.");
-            return this._personDAL.AddPerson(person);
+            return this._personDAL.UpdatePerson(recordID, lastName, firstName, birthday, addressStreet, city, state, zip, phone, sex, ssn);
         }
 
-        public bool UpdatePatient(int recordID, string lastName, string firstName, DateTime birthday, string addressStreet, string city, string state, string zip, string phone)
-        {
-            return this._personDAL.UpdatePerson(recordID, lastName, firstName, birthday, addressStreet, city, state, zip, phone);
-        }
         /// Input check: if first and last name are empty, search by dob;
         /// if dob is empty, search by first and last name;
         /// if first name is empty, search by last name and dob.
@@ -96,10 +84,19 @@ namespace ClinicManagementApp.Controller
 
         }
 
+
         public List<Patient> GetPatientByAppointmentDate(DateTime appointmentDate)
         {
             return _patientDAL.GetPatientByAppointmentDate(appointmentDate);
         }
+
+        /// <summary>
+        /// Get patients by visit Date per search requirement
+        /// </summary>
+        /// <param name="visitDate">visit date</param>
+        /// <returns>patient list</returns>
+        public List<PatientVisit> GetPatientsByVisitDate(DateTime visitDate) => this._patientDAL.GetPatientsByVisitDate(visitDate);
+
 
     }
 }

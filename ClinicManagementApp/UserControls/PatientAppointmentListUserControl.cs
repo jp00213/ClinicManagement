@@ -2,6 +2,7 @@
 using ClinicManagementApp.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ClinicManagementApp.UserControls
@@ -283,7 +284,19 @@ namespace ClinicManagementApp.UserControls
                 this.doctorNameComboBox.SelectedIndex = doctorIndex;
                 string date = this.appointmentDateTimePicker.Value.ToString("yyyy-MM-dd");
                 int doctorID = (int)this.doctorNameComboBox.SelectedValue;
-                this.UpdateTimeOptions(date, doctorID);
+
+                List<TimeSpan> appointmentListOptions = this._appointmentController.GetAppointmentTimeOptionsByDateAndDoctor(date, doctorID);
+                appointmentListOptions.Add(appointment.AppointmentDatetime.TimeOfDay);
+                appointmentListOptions = appointmentListOptions.OrderBy(e => e.TotalMinutes).ToList();
+
+                this.newAppointmentComboBox.DataSource = null;
+                this.newAppointmentComboBox.Items.Clear();
+                this.newAppointmentComboBox.DataSource = appointmentListOptions;
+
+                int defaultAppointmentTimeIndex = appointmentListOptions.FindIndex(ts => ts == appointment.AppointmentDatetime.TimeOfDay);
+
+                this.newAppointmentComboBox.SelectedIndex = defaultAppointmentTimeIndex;
+
             }
             catch (Exception ex)
             {
@@ -344,10 +357,15 @@ namespace ClinicManagementApp.UserControls
             else if(DateTime.TryParse(date + " " + time, out appointmentDateTime))
             {
                 Appointment editedAppointment = new Appointment(appointmentID, 0, doctorID, appointmentDateTime, reason);
-                string successMessage = this._appointmentController.UpdateAppointment(editedAppointment);
+                if (this._appointmentController.UpdateAppointment(editedAppointment))
+                {
+                    MessageBox.Show("This appointment has been updated.");
+                } else
+                {
+                    MessageBox.Show("Appointment was not updated. Please try again.");
+                }
                 this.setFuturePatientAppointmentDetails();
                 this.LoadFutureAppointmentComboBox();
-                MessageBox.Show(successMessage);
             }
             else
             {

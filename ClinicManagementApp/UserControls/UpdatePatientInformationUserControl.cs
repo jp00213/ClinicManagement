@@ -20,6 +20,11 @@ namespace ClinicManagementApp.UserControls
             InitializeComponent();
             this._patientController= new PatientController();
             this._patient = null;
+            sexComboBox.Items.Insert(0, "--select--");
+            sexComboBox.Items.Insert(1, "M");
+            sexComboBox.Items.Insert(2, "F");
+            sexComboBox.SelectedIndex = 0;
+            this.updatePatientButton.Enabled = false;
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -29,6 +34,8 @@ namespace ClinicManagementApp.UserControls
             DateTime dob = this.dateOfBirthDateTimePicker.Value;
 
             this.patientSearchDataGridView.DataSource = _patientController.GetPatientByNameDOB(firstName, lastName, dob);
+
+            this.ResetIndividualInfo();
         }
 
         private void PatientSearchDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -62,15 +69,20 @@ namespace ClinicManagementApp.UserControls
             string city = this.cityTextBox.Text.Trim();
             string state = this.stateComboBox.Text;
             string zip = this.zipTextBox.Text.Trim();
+            string sex = this.sexComboBox.Text.Trim();
+            string ssn = this.sSNTextBox.Text.Trim();
             Patient oldPatient = _patient;
 
-            if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || dateOfBirth > DateTime.Now ||string.IsNullOrEmpty(address) || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || !IsValidZipCode(zip) || !IsPhoneNumberValid(phone))
+
+            if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || dateOfBirth > DateTime.Now ||string.IsNullOrEmpty(address) 
+                || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || !IsValidZipCode(zip) 
+                || !IsPhoneNumberValid(phone) || !IsSexValid(sex) || !IsSSNValid(ssn))
             {
                 this.ShowInvalidErrorMessage();
             }
             else
             {
-                bool success = this._patientController.UpdatePatient(oldPatient.RecordID, lastName, firstName, dateOfBirth, address, city, state, zip, phone);
+                bool success = this._patientController.UpdatePatient(oldPatient.RecordID, lastName, firstName, dateOfBirth, address, city, state, zip, phone, sex, ssn);
                 if (success)
                 {
                     MessageBox.Show("Patient successfully updated!", "Patient Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -93,6 +105,11 @@ namespace ClinicManagementApp.UserControls
             this.dateOfBirthDateTimePicker.Value = DateTime.Now;
             this.searchButton_Click(null, null);
 
+            this.ResetIndividualInfo();
+        }
+
+        private void ResetIndividualInfo()
+        {
             this._patient = null;
             this.patientBindingSource.DataSource = this._patientController.GetPatientByNameDOB("", "", DateTime.Now);
             this.updatePatientButton.Enabled = false;
@@ -147,6 +164,18 @@ namespace ClinicManagementApp.UserControls
                 this.phoneErrorLabel.Text = "Please enter your 10 digit phone number, numbers only.";
                 this.phoneErrorLabel.ForeColor = Color.Red;
             }
+
+            if (!IsSexValid(sexComboBox.Text))
+            {
+                this.sexErrorMessageLabel.Text = "Please enter M or F.";
+                this.sexErrorMessageLabel.ForeColor = Color.Red;
+            }
+            
+            if (!IsSSNValid(sSNTextBox.Text))
+            {
+                this.ssnErrorMessageLabel.Text = "Please enter a valid 9 digit SSN, numbers only.";
+                this.ssnErrorMessageLabel.ForeColor = Color.Red;
+            }
         }
 
         private bool IsValidZipCode(string zip)
@@ -172,6 +201,35 @@ namespace ClinicManagementApp.UserControls
             return validPhoneNumber;
         }
 
+        private bool IsSSNValid(string ssn)
+        {
+            string ssnRegEx = @"^[0-9]{9}$";
+            bool validSSN = true;
+            if (ssn.Equals(""))
+            {
+                validSSN = true;
+            }
+            else if (!Regex.Match(ssn, ssnRegEx).Success)
+            {
+                validSSN = false;
+            }
+            return validSSN;
+        }
+
+        private bool IsSexValid(string sex)
+        {
+            bool validSex = true;
+            if (String.Equals(sex, "M") || String.Equals(sex, "F"))
+            {
+                validSex = true;
+            }
+            else
+            {
+                validSex = false;
+            }
+            return validSex;
+        }
+
         private void HideInvalidErrorMessages()
         {
             this.lastNameErrorLabel.Text = "";
@@ -182,6 +240,8 @@ namespace ClinicManagementApp.UserControls
             this.cityErrorLabel.Text = "";
             this.stateErrorLabel.Text = "";
             this.zipErrorLabel.Text = "";
+            this.sexErrorMessageLabel.Text = "";
+            this.ssnErrorMessageLabel.Text = "";
         }
 
         private void TextBox_TextChanged(object sender, EventArgs e)
@@ -189,6 +249,5 @@ namespace ClinicManagementApp.UserControls
             this.HideInvalidErrorMessages();
         }
 
-        
     }
 }

@@ -29,9 +29,18 @@ namespace ClinicManagementApp.Controller
             return this._labTestDAL.GetLabTestListByVisitID(patientIDIn);
         }
 
+
         public List<LabTest> GetLabTests()
         {
             return this._labTestDAL.GetLabTests();
         }
+
+        /// <summary>
+        /// Update lab test details
+        /// </summary>
+        /// <returns>success message</returns>
+        /// <param name="test"> test object to be updated</param>
+        public bool UpdateLabTest(LabTest test) => _labTestDAL.UpdateLabTest(test);
+
     }
 }
