@@ -83,14 +83,14 @@ namespace ClinicManagementApp.DAL
                         {
                             TestCode = (int)(reader)["testCode"],
                             TestName = (string)(reader)["name"],
-                   
+
                         };
                         labTests.Add(labTest);
                     }
                 }
             }
             return labTests;
-
+        }
         /// Update lab test details
         /// </summary>
         /// <returns>success message</returns>
