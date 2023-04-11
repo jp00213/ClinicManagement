@@ -19,6 +19,15 @@ namespace ClinicManagementApp.Model
 
         public int ResultIsNormal { get; set; }
 
+
+        public LabTest()
+        {
+
+        }
+
         public DateTime DateOrdered { get; set; } //date test was ordered (the date of the visit)
+
     }
+
+    
 }

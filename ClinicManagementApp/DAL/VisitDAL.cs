@@ -154,5 +154,73 @@ namespace ClinicManagementApp.DAL
             }
         }
 
+
+        /// <summary>
+        /// Adds a visit
+        /// </summary>
+        /// <param name="visit"></param>
+        /// <returns></returns>
+        public int AddVisit(Visit visit)
+        {
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string insertStatement =
+                "INSERT INTO visitRoutineResults " +
+                "(appointmentID, nurseID, visitDatetime, height, weight, bloodPressureDiastolic, " +
+                "bloodPressureSystolic, bodyTemperature, pulse, symptoms, initialDiagnoses, finalDiagnoses)" +
+                "VALUES (@appointmentID, @nurseID, @visitDatetime, @height, @weight, " +
+                "@bloodPressureDiastolic, @bloodPressureSystolic, @bodyTemperature, " +
+                "@pulse, @symptoms, @initialDiagnoses, @finalDiagnoses)";
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+
+            insertCommand.Parameters.Add("@appointmentID", System.Data.SqlDbType.Int);
+            insertCommand.Parameters["@appointmentID"].Value = visit.AppointmentID;
+
+            insertCommand.Parameters.Add("@nurseID", System.Data.SqlDbType.Int);
+            insertCommand.Parameters["@nurseID"].Value = visit.NurseID;
+
+            insertCommand.Parameters.Add("@visitDatetime", System.Data.SqlDbType.DateTime);
+            insertCommand.Parameters["@visitDatetime"].Value = visit.VisitDatetime;
+
+            insertCommand.Parameters.Add("@height", System.Data.SqlDbType.Decimal);
+            insertCommand.Parameters["@height"].Value = visit.Height;
+
+            insertCommand.Parameters.Add("@weight", System.Data.SqlDbType.Decimal);
+            insertCommand.Parameters["@weight"].Value = visit.Weight;
+
+            insertCommand.Parameters.Add("@bloodPressureDiastolic", System.Data.SqlDbType.Int);
+            insertCommand.Parameters["@bloodPressureDiastolic"].Value = visit.BloodPressureDiastolic;
+
+            insertCommand.Parameters.Add("@bloodPressureSystolic", System.Data.SqlDbType.Int);
+            insertCommand.Parameters["@bloodPressureSystolic"].Value = visit.BloodPressureSystolic;
+
+            insertCommand.Parameters.Add("@bodyTemperature", System.Data.SqlDbType.Decimal);
+            insertCommand.Parameters["@bodyTemperature"].Value = visit.BodyTemperature;
+
+            insertCommand.Parameters.Add("@pulse", System.Data.SqlDbType.Int);
+            insertCommand.Parameters["@pulse"].Value = visit.Pulse;
+
+            insertCommand.Parameters.Add("@symptoms", System.Data.SqlDbType.VarChar);
+            insertCommand.Parameters["@symptoms"].Value = visit.Symptoms;
+
+            insertCommand.Parameters.Add("@initialDiagnoses", System.Data.SqlDbType.VarChar);
+            insertCommand.Parameters["@initialDiagnoses"].Value = visit.InitialDiagnoses;
+
+            insertCommand.Parameters.Add("@finalDiagnoses", System.Data.SqlDbType.VarChar);
+            insertCommand.Parameters["@finalDiagnoses"].Value = visit.FinalDiagnoses;
+
+            using (insertCommand)
+            {
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+                string selectStatement =
+                    "SELECT IDENT_CURRENT('visitRoutineResults') FROM visitRoutineResults";
+                SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+                using (selectCommand)
+                {
+                    int visitID = Convert.ToInt32(selectCommand.ExecuteScalar());
+                    return visitID;
+                }
+            }
+        }
     }
 }

@@ -7,6 +7,14 @@
     {
         public int DoctorID { get; set; }
         public string Specialty { get; set; }
+        
+
+        public string Speciality { get; set; }
+        public string FullName
+        {
+            get { return $"{FirstName} {LastName}"; }
+        }
+
         /// <summary>
         /// Doctor constructor.
         /// </summary>
@@ -23,6 +31,8 @@
         {
             this.DoctorID = doctorID;
         }
+
+
         
     }
 }
