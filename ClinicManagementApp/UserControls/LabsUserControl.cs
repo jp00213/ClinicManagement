@@ -39,6 +39,8 @@ namespace ClinicManagementApp.UserControls
             _nurseController = new NurseController();
             _patients = new List<PatientVisit>();
             _labTestController = new LabTestController();
+            appointmentDateTimePicker.MaxDate = DateTime.Now;
+            appointmentDateTimePicker.MinDate = new DateTime(1976, 1, 1);
             setGridComboBoxOptions();
         }
 
