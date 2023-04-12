@@ -122,21 +122,22 @@ namespace ClinicManagementApp.UserControls
         private void orderLabsButton_Click(object sender, EventArgs e)
         {
             List<LabTest> labs = new List<LabTest>();
-            List<String> testNames = new List<String>();
+            List<string> testNames = new List<string>();
             string[] labNames = testNames.ToArray();
-            int paul = 0;
-            int joe = 0;
-            foreach ( LabTest lab in labsListBox.SelectedItems)
+            var name = "";
+            
+            foreach (LabTest lab in labsListBox.SelectedItems)
             {
-                var name = lab.TestName.ToString();
-                
-                labs.Add(lab);
-                testNames.Add(name);
-                paul++;
-                joe = labNames.Length;
-                Console.WriteLine(lab);
+                name = "\t\u2022   " + "Test code: " + lab.TestCode.ToString() + "  |  " + lab.TestName.ToString();
+                testNames.Add(name); 
             }
-            MessageBox.Show("Number of labs: " + paul.ToString() + ", " + joe.ToString() + "\n Labs (object) List: " + labs.ToString() + "\n Labs String List: " + testNames.ToString() + "\n Labs String Array: " + labNames.ToString() + "\n  Wildcard: " + labsListBox.SelectedItems.ToString()); 
+            var message = string.Join(Environment.NewLine, testNames);
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to order the following test for " + this._patient.FullName + ":\n" + message, "Pending Lab Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question); 
+
+            if(dialogResult == DialogResult.Yes)
+            {
+                MessageBox.Show("Labs have been ordered!", "Labs Order Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } 
         }
 
         private void GetDoctorInfoForAppointment(int appointmentID)
@@ -245,6 +246,8 @@ namespace ClinicManagementApp.UserControls
             this.finalDiagnosisTextBox.Text = "";
             this.pulseTextBox.Text = "";
             this.temperatureTextBox.Text = "";
+
+            this.labsListBox.ClearSelected();
 
             this.saveButton.Enabled = false;
 
