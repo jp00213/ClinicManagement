@@ -98,8 +98,9 @@
             this.symptomsErrorLabel = new System.Windows.Forms.Label();
             this.weightErrorLabel = new System.Windows.Forms.Label();
             this.systolicErrorLabel = new System.Windows.Forms.Label();
-            this.pulseErrorMessage = new System.Windows.Forms.Label();
+            this.pulseErrorLabel = new System.Windows.Forms.Label();
             this.initialDiagnosisErrorLabel = new System.Windows.Forms.Label();
+            this.generalErrorLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.feetNumericUpDown)).BeginInit();
@@ -429,6 +430,8 @@
             this.weightTextBox.Name = "weightTextBox";
             this.weightTextBox.Size = new System.Drawing.Size(139, 20);
             this.weightTextBox.TabIndex = 35;
+            this.weightTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.weightTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckInputIsDigits);
             // 
             // diastolicLabel
             // 
@@ -447,6 +450,8 @@
             this.diastolicTextBox.Name = "diastolicTextBox";
             this.diastolicTextBox.Size = new System.Drawing.Size(139, 20);
             this.diastolicTextBox.TabIndex = 37;
+            this.diastolicTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.diastolicTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckInputIsDigits);
             // 
             // systolicLabel
             // 
@@ -465,6 +470,8 @@
             this.systolicTextBox.Name = "systolicTextBox";
             this.systolicTextBox.Size = new System.Drawing.Size(139, 20);
             this.systolicTextBox.TabIndex = 39;
+            this.systolicTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.systolicTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckInputIsDigits);
             // 
             // temperatureTextBox
             // 
@@ -473,6 +480,8 @@
             this.temperatureTextBox.Name = "temperatureTextBox";
             this.temperatureTextBox.Size = new System.Drawing.Size(139, 20);
             this.temperatureTextBox.TabIndex = 40;
+            this.temperatureTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.temperatureTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckInputIsDigits);
             // 
             // pulseTextBox
             // 
@@ -481,6 +490,8 @@
             this.pulseTextBox.Name = "pulseTextBox";
             this.pulseTextBox.Size = new System.Drawing.Size(139, 20);
             this.pulseTextBox.TabIndex = 41;
+            this.pulseTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.pulseTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckInputIsDigits);
             // 
             // symptomsTextBox
             // 
@@ -490,6 +501,7 @@
             this.symptomsTextBox.Name = "symptomsTextBox";
             this.symptomsTextBox.Size = new System.Drawing.Size(139, 143);
             this.symptomsTextBox.TabIndex = 42;
+            this.symptomsTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // symptomsLabel
             // 
@@ -542,6 +554,7 @@
             0,
             0,
             0});
+            this.feetNumericUpDown.Click += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // inchesNumericUpDown
             // 
@@ -554,6 +567,7 @@
             this.inchesNumericUpDown.Name = "inchesNumericUpDown";
             this.inchesNumericUpDown.Size = new System.Drawing.Size(63, 20);
             this.inchesNumericUpDown.TabIndex = 47;
+            this.inchesNumericUpDown.Click += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // initialDiagnosisLabel
             // 
@@ -573,6 +587,7 @@
             this.initialDiagnosisTextbox.Name = "initialDiagnosisTextbox";
             this.initialDiagnosisTextbox.Size = new System.Drawing.Size(139, 62);
             this.initialDiagnosisTextbox.TabIndex = 49;
+            this.initialDiagnosisTextbox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // patientDataGridView
             // 
@@ -688,6 +703,7 @@
             this.finalDiagnosisLabel.Size = new System.Drawing.Size(95, 15);
             this.finalDiagnosisLabel.TabIndex = 54;
             this.finalDiagnosisLabel.Text = "Final Diagnosis:";
+            this.finalDiagnosisLabel.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // finalDiagnosisTextBox
             // 
@@ -774,14 +790,14 @@
             this.systolicErrorLabel.Size = new System.Drawing.Size(0, 12);
             this.systolicErrorLabel.TabIndex = 63;
             // 
-            // pulseErrorMessage
+            // pulseErrorLabel
             // 
-            this.pulseErrorMessage.AutoSize = true;
-            this.pulseErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pulseErrorMessage.Location = new System.Drawing.Point(352, 358);
-            this.pulseErrorMessage.Name = "pulseErrorMessage";
-            this.pulseErrorMessage.Size = new System.Drawing.Size(0, 12);
-            this.pulseErrorMessage.TabIndex = 64;
+            this.pulseErrorLabel.AutoSize = true;
+            this.pulseErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pulseErrorLabel.Location = new System.Drawing.Point(352, 358);
+            this.pulseErrorLabel.Name = "pulseErrorLabel";
+            this.pulseErrorLabel.Size = new System.Drawing.Size(0, 12);
+            this.pulseErrorLabel.TabIndex = 64;
             // 
             // initialDiagnosisErrorLabel
             // 
@@ -792,12 +808,22 @@
             this.initialDiagnosisErrorLabel.Size = new System.Drawing.Size(0, 12);
             this.initialDiagnosisErrorLabel.TabIndex = 65;
             // 
+            // generalErrorLabel
+            // 
+            this.generalErrorLabel.AutoSize = true;
+            this.generalErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.generalErrorLabel.Location = new System.Drawing.Point(163, 222);
+            this.generalErrorLabel.Name = "generalErrorLabel";
+            this.generalErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.generalErrorLabel.TabIndex = 66;
+            // 
             // DocumentVisitUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
+            this.Controls.Add(this.generalErrorLabel);
             this.Controls.Add(this.initialDiagnosisErrorLabel);
-            this.Controls.Add(this.pulseErrorMessage);
+            this.Controls.Add(this.pulseErrorLabel);
             this.Controls.Add(this.systolicErrorLabel);
             this.Controls.Add(this.weightErrorLabel);
             this.Controls.Add(this.symptomsErrorLabel);
@@ -937,7 +963,8 @@
         private System.Windows.Forms.Label symptomsErrorLabel;
         private System.Windows.Forms.Label weightErrorLabel;
         private System.Windows.Forms.Label systolicErrorLabel;
-        private System.Windows.Forms.Label pulseErrorMessage;
+        private System.Windows.Forms.Label pulseErrorLabel;
         private System.Windows.Forms.Label initialDiagnosisErrorLabel;
+        private System.Windows.Forms.Label generalErrorLabel;
     }
 }

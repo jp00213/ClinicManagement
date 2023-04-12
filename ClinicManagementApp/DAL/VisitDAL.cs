@@ -19,7 +19,7 @@ namespace ClinicManagementApp.DAL
         {
             List<Visit> visits = new List<Visit>();
             string selectStatement =
-                " select v.visitID, " +
+                " select v.visitID, v.appointmentID, " +
                 " 'Visit: ' + convert(varchar, v.visitDatetime, 101) + ', ' + FORMAT(v.visitDatetime, 'hh:mm tt') + ', Dr. ' + p1.lastName as visitSummary " +
                 " from appointment a, visitRoutineResults v, " +
                 " doctor d, person p1 " +
@@ -42,6 +42,7 @@ namespace ClinicManagementApp.DAL
 
                             visit.VisitID = (int)(reader)["VisitID"];
                             visit.VisitSummary = (string)(reader)["visitSummary"];
+                            visit.AppointmentID = (int)(reader)["appointmentID"];
                             visits.Add(visit);
                         }
                     }
