@@ -91,6 +91,7 @@ namespace ClinicManagementApp.DAL
             }
             return labTests;
         }
+
         /// Update lab test details
         /// </summary>
         /// <returns>success message</returns>

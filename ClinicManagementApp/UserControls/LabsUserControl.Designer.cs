@@ -82,6 +82,7 @@
             this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fullNameTextBox1 = new System.Windows.Forms.TextBox();
             this.nurseIDTextBox = new System.Windows.Forms.TextBox();
+            this.noPatientsLabel = new System.Windows.Forms.Label();
             addressStreetLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
             dateOfBirthLabel = new System.Windows.Forms.Label();
@@ -572,10 +573,20 @@
             this.nurseIDTextBox.Size = new System.Drawing.Size(53, 24);
             this.nurseIDTextBox.TabIndex = 105;
             // 
+            // noPatientsLabel
+            // 
+            this.noPatientsLabel.AutoSize = true;
+            this.noPatientsLabel.ForeColor = System.Drawing.Color.Red;
+            this.noPatientsLabel.Location = new System.Drawing.Point(411, 67);
+            this.noPatientsLabel.Name = "noPatientsLabel";
+            this.noPatientsLabel.Size = new System.Drawing.Size(0, 18);
+            this.noPatientsLabel.TabIndex = 106;
+            // 
             // LabsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.noPatientsLabel);
             this.Controls.Add(nurseFullNameLabel);
             this.Controls.Add(this.fullNameTextBox1);
             this.Controls.Add(nurseIDLabel);
@@ -673,5 +684,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn resultDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn resultIsNormalDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn UpdateLabTestButton;
+        private System.Windows.Forms.Label noPatientsLabel;
     }
 }
