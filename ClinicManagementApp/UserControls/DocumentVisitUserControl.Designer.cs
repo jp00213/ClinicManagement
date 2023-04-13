@@ -90,7 +90,6 @@
             this.inchesLabel = new System.Windows.Forms.Label();
             this.finalDiagnosisLabel = new System.Windows.Forms.Label();
             this.finalDiagnosisTextBox = new System.Windows.Forms.TextBox();
-            this.orderLabsButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.heightErrorLabel = new System.Windows.Forms.Label();
             this.diastolicBloodPressureErrorLabel = new System.Windows.Forms.Label();
@@ -101,6 +100,10 @@
             this.pulseErrorLabel = new System.Windows.Forms.Label();
             this.initialDiagnosisErrorLabel = new System.Windows.Forms.Label();
             this.generalErrorLabel = new System.Windows.Forms.Label();
+            this.labTestsLabel = new System.Windows.Forms.Label();
+            this.cityLabel = new System.Windows.Forms.Label();
+            this.stateLabel = new System.Windows.Forms.Label();
+            this.zipLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.feetNumericUpDown)).BeginInit();
@@ -237,7 +240,7 @@
             // 
             this.addressLabel.AutoSize = true;
             this.addressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addressLabel.Location = new System.Drawing.Point(488, 130);
+            this.addressLabel.Location = new System.Drawing.Point(482, 130);
             this.addressLabel.Name = "addressLabel";
             this.addressLabel.Size = new System.Drawing.Size(48, 13);
             this.addressLabel.TabIndex = 15;
@@ -248,7 +251,7 @@
             this.activeAddressLabel.AutoSize = true;
             this.activeAddressLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "AddressStreet", true));
             this.activeAddressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeAddressLabel.Location = new System.Drawing.Point(542, 130);
+            this.activeAddressLabel.Location = new System.Drawing.Point(536, 108);
             this.activeAddressLabel.Name = "activeAddressLabel";
             this.activeAddressLabel.Size = new System.Drawing.Size(0, 13);
             this.activeAddressLabel.TabIndex = 16;
@@ -323,10 +326,10 @@
             this.labsListBox.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labsListBox.FormattingEnabled = true;
             this.labsListBox.ItemHeight = 14;
-            this.labsListBox.Location = new System.Drawing.Point(506, 241);
+            this.labsListBox.Location = new System.Drawing.Point(506, 249);
             this.labsListBox.Name = "labsListBox";
             this.labsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.labsListBox.Size = new System.Drawing.Size(225, 228);
+            this.labsListBox.Size = new System.Drawing.Size(225, 270);
             this.labsListBox.TabIndex = 24;
             this.labsListBox.ValueMember = "TestCode";
             // 
@@ -395,7 +398,7 @@
             // saveButton
             // 
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(281, 535);
+            this.saveButton.Location = new System.Drawing.Point(427, 535);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(225, 36);
             this.saveButton.TabIndex = 31;
@@ -714,21 +717,10 @@
             this.finalDiagnosisTextBox.Size = new System.Drawing.Size(139, 62);
             this.finalDiagnosisTextBox.TabIndex = 55;
             // 
-            // orderLabsButton
-            // 
-            this.orderLabsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.orderLabsButton.Location = new System.Drawing.Point(555, 484);
-            this.orderLabsButton.Name = "orderLabsButton";
-            this.orderLabsButton.Size = new System.Drawing.Size(128, 35);
-            this.orderLabsButton.TabIndex = 56;
-            this.orderLabsButton.Text = "Order Labs";
-            this.orderLabsButton.UseVisualStyleBackColor = true;
-            this.orderLabsButton.Click += new System.EventHandler(this.orderLabsButton_Click);
-            // 
             // clearButton
             // 
             this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(61, 535);
+            this.clearButton.Location = new System.Drawing.Point(123, 535);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(208, 36);
             this.clearButton.TabIndex = 57;
@@ -817,10 +809,54 @@
             this.generalErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.generalErrorLabel.TabIndex = 66;
             // 
+            // labTestsLabel
+            // 
+            this.labTestsLabel.AutoSize = true;
+            this.labTestsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labTestsLabel.Location = new System.Drawing.Point(562, 231);
+            this.labTestsLabel.Name = "labTestsLabel";
+            this.labTestsLabel.Size = new System.Drawing.Size(112, 15);
+            this.labTestsLabel.TabIndex = 67;
+            this.labTestsLabel.Text = "Available Lab Tests";
+            // 
+            // cityLabel
+            // 
+            this.cityLabel.AutoSize = true;
+            this.cityLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "City", true));
+            this.cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cityLabel.Location = new System.Drawing.Point(536, 130);
+            this.cityLabel.Name = "cityLabel";
+            this.cityLabel.Size = new System.Drawing.Size(0, 13);
+            this.cityLabel.TabIndex = 68;
+            // 
+            // stateLabel
+            // 
+            this.stateLabel.AutoSize = true;
+            this.stateLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "State", true));
+            this.stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stateLabel.Location = new System.Drawing.Point(597, 130);
+            this.stateLabel.Name = "stateLabel";
+            this.stateLabel.Size = new System.Drawing.Size(0, 13);
+            this.stateLabel.TabIndex = 69;
+            // 
+            // zipLabel
+            // 
+            this.zipLabel.AutoSize = true;
+            this.zipLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "Zip", true));
+            this.zipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zipLabel.Location = new System.Drawing.Point(667, 130);
+            this.zipLabel.Name = "zipLabel";
+            this.zipLabel.Size = new System.Drawing.Size(0, 13);
+            this.zipLabel.TabIndex = 70;
+            // 
             // DocumentVisitUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
+            this.Controls.Add(this.zipLabel);
+            this.Controls.Add(this.stateLabel);
+            this.Controls.Add(this.cityLabel);
+            this.Controls.Add(this.labTestsLabel);
             this.Controls.Add(this.generalErrorLabel);
             this.Controls.Add(this.initialDiagnosisErrorLabel);
             this.Controls.Add(this.pulseErrorLabel);
@@ -831,7 +867,6 @@
             this.Controls.Add(this.diastolicBloodPressureErrorLabel);
             this.Controls.Add(this.heightErrorLabel);
             this.Controls.Add(this.clearButton);
-            this.Controls.Add(this.orderLabsButton);
             this.Controls.Add(this.finalDiagnosisTextBox);
             this.Controls.Add(this.finalDiagnosisLabel);
             this.Controls.Add(this.inchesLabel);
@@ -955,7 +990,6 @@
         private System.Windows.Forms.Label finalDiagnosisLabel;
         private System.Windows.Forms.TextBox finalDiagnosisTextBox;
         private System.Windows.Forms.BindingSource labTestBindingSource;
-        private System.Windows.Forms.Button orderLabsButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Label heightErrorLabel;
         private System.Windows.Forms.Label diastolicBloodPressureErrorLabel;
@@ -966,5 +1000,9 @@
         private System.Windows.Forms.Label pulseErrorLabel;
         private System.Windows.Forms.Label initialDiagnosisErrorLabel;
         private System.Windows.Forms.Label generalErrorLabel;
+        private System.Windows.Forms.Label labTestsLabel;
+        private System.Windows.Forms.Label cityLabel;
+        private System.Windows.Forms.Label stateLabel;
+        private System.Windows.Forms.Label zipLabel;
     }
 }

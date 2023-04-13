@@ -72,7 +72,6 @@ namespace ClinicManagementApp.UserControls
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            
             int appointmentID = this._appointment.AppointmentID;
             int nurseID = 4;
             DateTime visitDateTime = DateTime.Now;
@@ -101,15 +100,14 @@ namespace ClinicManagementApp.UserControls
                 this.ShowInvalidErrorMessages();
             } else
             {
-                Visit visit = new Visit(-1, appointmentID, nurseID, visitDateTime, height, weight, diastolicBloodPressure, systolicBloodPressure, bodyTemperature, pulse, symptoms, initialDiagnosis, finalDiagnosis);
-                int success = this._visitController.AddVisit(visit);
-                if (success > 0)
+                if (this.ConfirmNotesAndLabs() == DialogResult.Yes)
                 {
-                        MessageBox.Show("Appointment notes successfully saved!", "Appointment Notes Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.ResetForm();
+                    Visit visit = new Visit(-1, appointmentID, nurseID, visitDateTime, height, weight, diastolicBloodPressure, systolicBloodPressure, bodyTemperature, pulse, symptoms, initialDiagnosis, finalDiagnosis);
+                    int success = this._visitController.AddVisit(visit);
+                    this.OrderLabs(success);
+                    this.ResetForm();
                 }
             }
-
         }
 
         private Decimal CalculateHeight(Decimal feet, Decimal inches)
@@ -119,25 +117,39 @@ namespace ClinicManagementApp.UserControls
             return feetToCM + inchesToCM;
         }
 
-        private void orderLabsButton_Click(object sender, EventArgs e)
+        private void OrderLabs(int visitID)
         {
             List<LabTest> labs = new List<LabTest>();
             List<string> testNames = new List<string>();
-            string[] labNames = testNames.ToArray();
-            var name = "";
-            
+
             foreach (LabTest lab in labsListBox.SelectedItems)
             {
-                name = "\t\u2022   " + "Test code: " + lab.TestCode.ToString() + "  |  " + lab.TestName.ToString();
-                testNames.Add(name); 
+                labs.Add(lab);
+            }
+
+            foreach (LabTest lab in labs)
+            {
+                LabTest currentLab = new LabTest(visitID, lab.TestCode, DateTime.Now, "PENDING", lab.TestName, 0, DateTime.Now);
+                this._labController.AddLabTest(currentLab);
+            }
+            MessageBox.Show("Visit notes saved and labs have been ordered!", "Visit Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private DialogResult ConfirmNotesAndLabs()
+        {
+            List<LabTest> labs = new List<LabTest>();
+            List<string> testNames = new List<string>();
+
+            foreach (LabTest lab in labsListBox.SelectedItems)
+            {
+                string name = "\t\u2022   " + "Test code: " + lab.TestCode.ToString() + "  |  " + lab.TestName.ToString();
+                testNames.Add(name);
+                
             }
             var message = string.Join(Environment.NewLine, testNames);
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to order the following test for " + this._patient.FullName + ":\n" + message, "Pending Lab Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question); 
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to complete the visit notes and order the following test(s) for " + this._patient.FullName + ":\n \n" + message, "Pending Notes and Lab Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if(dialogResult == DialogResult.Yes)
-            {
-                MessageBox.Show("Labs have been ordered!", "Labs Order Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } 
+            return dialogResult;
         }
 
         private void GetDoctorInfoForAppointment(int appointmentID)
@@ -238,6 +250,8 @@ namespace ClinicManagementApp.UserControls
             activeDoctorIDLabel.Text = "";
             activeSpecialtyLabel.Text = "";
 
+            this.feetNumericUpDown.Value = 1;
+            this.inchesNumericUpDown.Value = 0;
             this.weightTextBox.Text = "";
             this.diastolicTextBox.Text = "";
             this.systolicTextBox.Text = "";
