@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label sSNLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label sexLabel;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.firstNameLabel = new System.Windows.Forms.Label();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameLabel = new System.Windows.Forms.Label();
@@ -41,11 +41,6 @@
             this.dateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.searchButton = new System.Windows.Forms.Button();
             this.patientSearchDataGridView = new System.Windows.Forms.DataGridView();
-            this.patientIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patientIDLabel = new System.Windows.Forms.Label();
             this.lastNameResultsLabel = new System.Windows.Forms.Label();
             this.firstNameResultsLabel = new System.Windows.Forms.Label();
@@ -65,7 +60,7 @@
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.updatePatientLabel = new System.Windows.Forms.Label();
             this.dateOfBirthLabel = new System.Windows.Forms.Label();
-            this.clearButton = new System.Windows.Forms.Button();
+            this.clearPatientButton = new System.Windows.Forms.Button();
             this.dateOfBirthResultsDateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lastNameErrorLabel = new System.Windows.Forms.Label();
             this.firstNameErrorLabel = new System.Windows.Forms.Label();
@@ -79,8 +74,14 @@
             this.sSNTextBox = new System.Windows.Forms.TextBox();
             this.sexErrorMessageLabel = new System.Windows.Forms.Label();
             this.ssnErrorMessageLabel = new System.Windows.Forms.Label();
-            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sexComboBox = new System.Windows.Forms.ComboBox();
+            this.clearSearchButton = new System.Windows.Forms.Button();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
             sSNLabel = new System.Windows.Forms.Label();
             sexLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientSearchDataGridView)).BeginInit();
@@ -98,11 +99,21 @@
             sSNLabel.TabIndex = 40;
             sSNLabel.Text = "SSN*";
             // 
+            // sexLabel
+            // 
+            sexLabel.AutoSize = true;
+            sexLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            sexLabel.Location = new System.Drawing.Point(137, 505);
+            sexLabel.Name = "sexLabel";
+            sexLabel.Size = new System.Drawing.Size(43, 24);
+            sexLabel.TabIndex = 42;
+            sexLabel.Text = "Sex";
+            // 
             // firstNameLabel
             // 
             this.firstNameLabel.AutoSize = true;
             this.firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameLabel.Location = new System.Drawing.Point(48, 61);
+            this.firstNameLabel.Location = new System.Drawing.Point(15, 67);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(102, 20);
             this.firstNameLabel.TabIndex = 0;
@@ -110,7 +121,7 @@
             // 
             // firstNameTextBox
             // 
-            this.firstNameTextBox.Location = new System.Drawing.Point(51, 80);
+            this.firstNameTextBox.Location = new System.Drawing.Point(18, 86);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(148, 22);
             this.firstNameTextBox.TabIndex = 1;
@@ -119,7 +130,7 @@
             // 
             this.lastNameLabel.AutoSize = true;
             this.lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameLabel.Location = new System.Drawing.Point(228, 61);
+            this.lastNameLabel.Location = new System.Drawing.Point(180, 67);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(100, 20);
             this.lastNameLabel.TabIndex = 2;
@@ -127,7 +138,7 @@
             // 
             // lastNameTextBox
             // 
-            this.lastNameTextBox.Location = new System.Drawing.Point(231, 80);
+            this.lastNameTextBox.Location = new System.Drawing.Point(183, 86);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(161, 22);
             this.lastNameTextBox.TabIndex = 3;
@@ -136,7 +147,7 @@
             // 
             this.dateOfBirthDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(444, 79);
+            this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(370, 85);
             this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
             this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(127, 29);
             this.dateOfBirthDateTimePicker.TabIndex = 4;
@@ -144,7 +155,7 @@
             // searchButton
             // 
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Location = new System.Drawing.Point(615, 72);
+            this.searchButton.Location = new System.Drawing.Point(512, 77);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(113, 31);
             this.searchButton.TabIndex = 5;
@@ -157,14 +168,14 @@
             this.patientSearchDataGridView.AllowUserToAddRows = false;
             this.patientSearchDataGridView.AllowUserToDeleteRows = false;
             this.patientSearchDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.patientSearchDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.patientSearchDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.patientSearchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.patientSearchDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.patientIDDataGridViewTextBoxColumn,
@@ -172,70 +183,30 @@
             this.firstNameDataGridViewTextBoxColumn,
             this.dateOfBirthDataGridViewTextBoxColumn});
             this.patientSearchDataGridView.DataSource = this.patientBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.patientSearchDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.patientSearchDataGridView.DefaultCellStyle = dataGridViewCellStyle8;
             this.patientSearchDataGridView.Location = new System.Drawing.Point(115, 120);
             this.patientSearchDataGridView.Name = "patientSearchDataGridView";
             this.patientSearchDataGridView.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.patientSearchDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.patientSearchDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.patientSearchDataGridView.RowHeadersWidth = 51;
             this.patientSearchDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.patientSearchDataGridView.Size = new System.Drawing.Size(558, 150);
             this.patientSearchDataGridView.TabIndex = 6;
             this.patientSearchDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PatientSearchDataGridView_CellClick);
-            // 
-            // patientIDDataGridViewTextBoxColumn
-            // 
-            this.patientIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.patientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID";
-            this.patientIDDataGridViewTextBoxColumn.HeaderText = "PatientID";
-            this.patientIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.patientIDDataGridViewTextBoxColumn.Name = "patientIDDataGridViewTextBoxColumn";
-            this.patientIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateOfBirthDataGridViewTextBoxColumn
-            // 
-            this.dateOfBirthDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
-            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "DateOfBirth";
-            this.dateOfBirthDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
-            this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(ClinicManagementApp.Model.Patient);
             // 
             // patientIDLabel
             // 
@@ -415,22 +386,22 @@
             // 
             this.dateOfBirthLabel.AutoSize = true;
             this.dateOfBirthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateOfBirthLabel.Location = new System.Drawing.Point(441, 60);
+            this.dateOfBirthLabel.Location = new System.Drawing.Point(367, 66);
             this.dateOfBirthLabel.Name = "dateOfBirthLabel";
             this.dateOfBirthLabel.Size = new System.Drawing.Size(50, 20);
             this.dateOfBirthLabel.TabIndex = 27;
             this.dateOfBirthLabel.Text = "DOB";
             // 
-            // clearButton
+            // clearPatientButton
             // 
-            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(201, 550);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(187, 27);
-            this.clearButton.TabIndex = 28;
-            this.clearButton.Text = "Clear";
-            this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            this.clearPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearPatientButton.Location = new System.Drawing.Point(201, 550);
+            this.clearPatientButton.Name = "clearPatientButton";
+            this.clearPatientButton.Size = new System.Drawing.Size(187, 27);
+            this.clearPatientButton.TabIndex = 28;
+            this.clearPatientButton.Text = "Clear Patient";
+            this.clearPatientButton.UseVisualStyleBackColor = true;
+            this.clearPatientButton.Click += new System.EventHandler(this.clearPatientButton_Click);
             // 
             // dateOfBirthResultsDateTimePicker1
             // 
@@ -593,20 +564,6 @@
             this.ssnErrorMessageLabel.Size = new System.Drawing.Size(0, 16);
             this.ssnErrorMessageLabel.TabIndex = 42;
             // 
-            // personBindingSource
-            // 
-            this.personBindingSource.DataSource = typeof(ClinicManagementApp.Model.Person);
-            // 
-            // sexLabel
-            // 
-            sexLabel.AutoSize = true;
-            sexLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            sexLabel.Location = new System.Drawing.Point(137, 505);
-            sexLabel.Name = "sexLabel";
-            sexLabel.Size = new System.Drawing.Size(43, 24);
-            sexLabel.TabIndex = 42;
-            sexLabel.Text = "Sex";
-            // 
             // sexComboBox
             // 
             this.sexComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "Sex", true));
@@ -617,9 +574,65 @@
             this.sexComboBox.Size = new System.Drawing.Size(186, 24);
             this.sexComboBox.TabIndex = 43;
             // 
+            // clearSearchButton
+            // 
+            this.clearSearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.clearSearchButton.Location = new System.Drawing.Point(631, 77);
+            this.clearSearchButton.Name = "clearSearchButton";
+            this.clearSearchButton.Size = new System.Drawing.Size(144, 31);
+            this.clearSearchButton.TabIndex = 44;
+            this.clearSearchButton.Text = "Clear Search";
+            this.clearSearchButton.UseVisualStyleBackColor = true;
+            this.clearSearchButton.Click += new System.EventHandler(this.clearSearchButton_Click);
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(ClinicManagementApp.Model.Patient);
+            // 
+            // patientIDDataGridViewTextBoxColumn
+            // 
+            this.patientIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.patientIDDataGridViewTextBoxColumn.DataPropertyName = "PatientID";
+            this.patientIDDataGridViewTextBoxColumn.HeaderText = "PatientID";
+            this.patientIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.patientIDDataGridViewTextBoxColumn.Name = "patientIDDataGridViewTextBoxColumn";
+            this.patientIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateOfBirthDataGridViewTextBoxColumn
+            // 
+            this.dateOfBirthDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
+            this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // personBindingSource
+            // 
+            this.personBindingSource.DataSource = typeof(ClinicManagementApp.Model.Person);
+            // 
             // UpdatePatientInformationUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.clearSearchButton);
             this.Controls.Add(sexLabel);
             this.Controls.Add(this.sexComboBox);
             this.Controls.Add(this.ssnErrorMessageLabel);
@@ -636,7 +649,7 @@
             this.Controls.Add(this.firstNameErrorLabel);
             this.Controls.Add(this.lastNameErrorLabel);
             this.Controls.Add(this.dateOfBirthResultsDateTimePicker1);
-            this.Controls.Add(this.clearButton);
+            this.Controls.Add(this.clearPatientButton);
             this.Controls.Add(this.dateOfBirthLabel);
             this.Controls.Add(this.updatePatientLabel);
             this.Controls.Add(this.zipTextBox);
@@ -706,7 +719,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateOfBirthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Button clearPatientButton;
         private System.Windows.Forms.DateTimePicker dateOfBirthResultsDateTimePicker1;
         private System.Windows.Forms.Label lastNameErrorLabel;
         private System.Windows.Forms.Label firstNameErrorLabel;
@@ -722,5 +735,6 @@
         private System.Windows.Forms.Label sexErrorMessageLabel;
         private System.Windows.Forms.Label ssnErrorMessageLabel;
         private System.Windows.Forms.ComboBox sexComboBox;
+        private System.Windows.Forms.Button clearSearchButton;
     }
 }

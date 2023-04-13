@@ -39,6 +39,8 @@ namespace ClinicManagementApp.UserControls
             _nurseController = new NurseController();
             _patients = new List<PatientVisit>();
             _labTestController = new LabTestController();
+            appointmentDateTimePicker.MaxDate = DateTime.Now;
+            appointmentDateTimePicker.MinDate = new DateTime(1976, 1, 1);
             setGridComboBoxOptions();
         }
 
@@ -48,11 +50,12 @@ namespace ClinicManagementApp.UserControls
 
             if(_patients.Count > 0)
             {
+                noPatientsLabel.Text = "";
                 patientComboBox.DataSource = _patients;
             }
             else
             {
-                MessageBox.Show("No patients with a visit on " + appointmentDateTimePicker.Value.ToString("dd/MM/yyyy"));
+               noPatientsLabel.Text = "No patients with a visit on " + appointmentDateTimePicker.Value.ToString("MM/dd/yyyy");
             }
         }
 
