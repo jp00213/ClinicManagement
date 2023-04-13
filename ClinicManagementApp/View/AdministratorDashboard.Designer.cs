@@ -48,7 +48,7 @@
             this.administratorTabControl.Location = new System.Drawing.Point(2, 73);
             this.administratorTabControl.Name = "administratorTabControl";
             this.administratorTabControl.SelectedIndex = 0;
-            this.administratorTabControl.Size = new System.Drawing.Size(862, 630);
+            this.administratorTabControl.Size = new System.Drawing.Size(955, 630);
             this.administratorTabControl.TabIndex = 0;
             // 
             // addNurseTab
@@ -57,7 +57,7 @@
             this.addNurseTab.Location = new System.Drawing.Point(4, 33);
             this.addNurseTab.Name = "addNurseTab";
             this.addNurseTab.Padding = new System.Windows.Forms.Padding(3);
-            this.addNurseTab.Size = new System.Drawing.Size(854, 593);
+            this.addNurseTab.Size = new System.Drawing.Size(947, 593);
             this.addNurseTab.TabIndex = 0;
             this.addNurseTab.Text = "Add Nurse";
             this.addNurseTab.UseVisualStyleBackColor = true;
@@ -67,7 +67,7 @@
             this.viewNurseTab.Location = new System.Drawing.Point(4, 33);
             this.viewNurseTab.Name = "viewNurseTab";
             this.viewNurseTab.Padding = new System.Windows.Forms.Padding(3);
-            this.viewNurseTab.Size = new System.Drawing.Size(854, 593);
+            this.viewNurseTab.Size = new System.Drawing.Size(947, 593);
             this.viewNurseTab.TabIndex = 1;
             this.viewNurseTab.Text = "View Nurse";
             this.viewNurseTab.UseVisualStyleBackColor = true;
@@ -77,7 +77,7 @@
             this.updateNurseTab.Location = new System.Drawing.Point(4, 33);
             this.updateNurseTab.Name = "updateNurseTab";
             this.updateNurseTab.Padding = new System.Windows.Forms.Padding(3);
-            this.updateNurseTab.Size = new System.Drawing.Size(854, 593);
+            this.updateNurseTab.Size = new System.Drawing.Size(947, 593);
             this.updateNurseTab.TabIndex = 2;
             this.updateNurseTab.Text = "Update Nurse";
             this.updateNurseTab.UseVisualStyleBackColor = true;
@@ -107,18 +107,20 @@
             // 
             // administratorAddNurse1
             // 
-            this.administratorAddNurse1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.administratorAddNurse1.Location = new System.Drawing.Point(3, 3);
+            this.administratorAddNurse1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.administratorAddNurse1.Location = new System.Drawing.Point(-34, -53);
             this.administratorAddNurse1.Margin = new System.Windows.Forms.Padding(4);
             this.administratorAddNurse1.Name = "administratorAddNurse1";
-            this.administratorAddNurse1.Size = new System.Drawing.Size(848, 587);
+            this.administratorAddNurse1.Size = new System.Drawing.Size(1046, 642);
             this.administratorAddNurse1.TabIndex = 0;
             // 
             // AdministratorDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 701);
+            this.ClientSize = new System.Drawing.Size(959, 701);
             this.Controls.Add(this.logoutLinkLabel);
             this.Controls.Add(this.welcomeUserLabel);
             this.Controls.Add(this.administratorTabControl);
