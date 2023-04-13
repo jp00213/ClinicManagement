@@ -90,5 +90,51 @@ namespace ClinicManagementApp.DAL
             return nurse;
         }
 
+        /// <summary>
+        /// Gets the current nurse based on who is logged in
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public Nurse GetNurseByUsername(string user)
+        {
+            Nurse nurse = new Nurse();
+            if (user == "" || user is null)
+            {
+                throw new ArgumentOutOfRangeException("user", "Username can't be blank or null");
+            }
+
+            string selectStatement =
+                "SELECT n.nurseID, pe.firstName, pe.lastName " +
+                "FROM nurse n " +
+                "JOIN person pe " +
+                "ON n.recordID = pe.recordID " +
+                "WHERE n.username = @username";
+
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@username", System.Data.SqlDbType.VarChar);
+                    selectCommand.Parameters["@username"].Value = user;
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            nurse = new Nurse
+                            {
+                                NurseID = (int)(reader)["nurseID"],
+                                LastName = (string)(reader)["lastName"],
+                                FirstName = (string)(reader)["firstName"],
+                            };
+                        }
+                    }
+                }
+            }
+
+            return nurse;
+        }
+
     }
 }
