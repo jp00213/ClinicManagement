@@ -29,7 +29,10 @@ namespace ClinicManagementApp.Controller
             return this._labTestDAL.GetLabTestListByVisitID(patientIDIn);
         }
 
-
+        /// <summary>
+        /// Gets a list of all the lab test
+        /// </summary>
+        /// <returns></returns>
         public List<LabTest> GetLabTests()
         {
             return this._labTestDAL.GetLabTests();
@@ -41,6 +44,16 @@ namespace ClinicManagementApp.Controller
         /// <returns>success message</returns>
         /// <param name="test"> test object to be updated</param>
         public bool UpdateLabTest(LabTest test) => _labTestDAL.UpdateLabTest(test);
+
+        /// <summary>
+        /// Adds the test to the db
+        /// </summary>
+        /// <param name="test"></param>
+        /// <returns></returns>
+        public bool AddLabTest(LabTest test)
+        {
+            return this._labTestDAL.AddLabTest(test);
+        }
 
     }
 }
