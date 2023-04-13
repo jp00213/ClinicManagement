@@ -200,7 +200,7 @@
             this.appointmentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.appointmentDateTimePicker.Location = new System.Drawing.Point(177, 36);
             this.appointmentDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
-            this.appointmentDateTimePicker.MaxDate = new System.DateTime(2023, 3, 28, 0, 0, 0, 0);
+            this.appointmentDateTimePicker.MaxDate = new System.DateTime(2023, 4, 13, 0, 0, 0, 0);
             this.appointmentDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.appointmentDateTimePicker.Name = "appointmentDateTimePicker";
             this.appointmentDateTimePicker.Size = new System.Drawing.Size(162, 24);
