@@ -72,7 +72,6 @@ namespace ClinicManagementApp.DAL
                             }
 
                             result = affectedRecords > 0;
-                            Console.WriteLine(result);
                             transaction.Commit();
                         }
                     }

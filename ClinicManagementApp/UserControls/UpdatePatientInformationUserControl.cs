@@ -87,12 +87,21 @@ namespace ClinicManagementApp.UserControls
                 {
                     MessageBox.Show("Patient successfully updated!", "Patient Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.ResetForm();
-                } 
+                } else
+                {
+                    MessageBox.Show("Patient not updated");
+                }
             }
 
         }
 
-        private void clearButton_Click(object sender, EventArgs e)
+        private void clearPatientButton_Click(object sender, EventArgs e)
+        {
+            this.ResetIndividualInfo();
+            this.HideInvalidErrorMessages();
+        }
+
+        private void clearSearchButton_Click(object sender, EventArgs e)
         {
             this.ResetForm();
             this.HideInvalidErrorMessages();
@@ -248,6 +257,5 @@ namespace ClinicManagementApp.UserControls
         {
             this.HideInvalidErrorMessages();
         }
-
     }
 }
