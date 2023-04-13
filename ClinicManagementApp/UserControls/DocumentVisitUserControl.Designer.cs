@@ -251,7 +251,7 @@
             this.activeAddressLabel.AutoSize = true;
             this.activeAddressLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "AddressStreet", true));
             this.activeAddressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeAddressLabel.Location = new System.Drawing.Point(536, 108);
+            this.activeAddressLabel.Location = new System.Drawing.Point(536, 117);
             this.activeAddressLabel.Name = "activeAddressLabel";
             this.activeAddressLabel.Size = new System.Drawing.Size(0, 13);
             this.activeAddressLabel.TabIndex = 16;
@@ -844,7 +844,7 @@
             this.zipLabel.AutoSize = true;
             this.zipLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "Zip", true));
             this.zipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipLabel.Location = new System.Drawing.Point(667, 130);
+            this.zipLabel.Location = new System.Drawing.Point(626, 130);
             this.zipLabel.Name = "zipLabel";
             this.zipLabel.Size = new System.Drawing.Size(0, 13);
             this.zipLabel.TabIndex = 70;

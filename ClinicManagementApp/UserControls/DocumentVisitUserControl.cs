@@ -1,18 +1,9 @@
 ﻿using ClinicManagementApp.Controller;
-using ClinicManagementApp.DAL;
 using ClinicManagementApp.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ClinicManagementApp.UserControls
 {
@@ -20,6 +11,7 @@ namespace ClinicManagementApp.UserControls
     {
         private PatientController _patientController;
         private DoctorController _doctorController;
+        private NurseController _nurseController;
         private AppointmentController _appointmentController;
         private VisitController _visitController;
         private LabTestController _labController;
@@ -30,13 +22,15 @@ namespace ClinicManagementApp.UserControls
             InitializeComponent();
             this._patientController = new PatientController();
             this._doctorController = new DoctorController();
-            this._appointmentController= new AppointmentController();
+            this._nurseController = new NurseController();
+            this._appointmentController = new AppointmentController();
             this._visitController = new VisitController();
             this._labController = new LabTestController();
 
             this._patient = null;
             this._appointment = null;
             this.labsListBox.DataSource = _labController.GetLabTests();
+            this.labsListBox.ClearSelected();
         }
 
         private void selectButton_Click(object sender, EventArgs e)
@@ -100,12 +94,16 @@ namespace ClinicManagementApp.UserControls
                 this.ShowInvalidErrorMessages();
             } else
             {
+                
                 if (this.ConfirmNotesAndLabs() == DialogResult.Yes)
                 {
                     Visit visit = new Visit(-1, appointmentID, nurseID, visitDateTime, height, weight, diastolicBloodPressure, systolicBloodPressure, bodyTemperature, pulse, symptoms, initialDiagnosis, finalDiagnosis);
                     int success = this._visitController.AddVisit(visit);
-                    this.OrderLabs(success);
-                    this.ResetForm();
+                    if (success > 0)
+                    {
+                        this.OrderLabsAndCompleteVisit(success);
+                        this.ResetForm();
+                    } 
                 }
             }
         }
@@ -117,7 +115,7 @@ namespace ClinicManagementApp.UserControls
             return feetToCM + inchesToCM;
         }
 
-        private void OrderLabs(int visitID)
+        private void OrderLabsAndCompleteVisit(int visitID)
         {
             List<LabTest> labs = new List<LabTest>();
             List<string> testNames = new List<string>();
@@ -126,28 +124,43 @@ namespace ClinicManagementApp.UserControls
             {
                 labs.Add(lab);
             }
-
-            foreach (LabTest lab in labs)
+            
+            if (labs.Count > 0)
             {
-                LabTest currentLab = new LabTest(visitID, lab.TestCode, DateTime.Now, "PENDING", lab.TestName, 0, DateTime.Now);
-                this._labController.AddLabTest(currentLab);
+                foreach (LabTest lab in labs)
+                {
+                    LabTest currentLab = new LabTest(visitID, lab.TestCode, DateTime.Now, "PENDING", lab.TestName, 0, DateTime.Now);
+                    this._labController.AddLabTest(currentLab);
+                }
+                MessageBox.Show("Visit notes saved and labs have been ordered!", "Visit Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } else
+            {
+                MessageBox.Show("Visit notes successfully saved!", "Visit Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            MessageBox.Show("Visit notes saved and labs have been ordered!", "Visit Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
         }
 
         private DialogResult ConfirmNotesAndLabs()
         {
             List<LabTest> labs = new List<LabTest>();
             List<string> testNames = new List<string>();
-
+            DialogResult dialogResult;
+            
             foreach (LabTest lab in labsListBox.SelectedItems)
             {
                 string name = "\t\u2022   " + "Test code: " + lab.TestCode.ToString() + "  |  " + lab.TestName.ToString();
                 testNames.Add(name);
                 
             }
-            var message = string.Join(Environment.NewLine, testNames);
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to complete the visit notes and order the following test(s) for " + this._patient.FullName + ":\n \n" + message, "Pending Notes and Lab Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (testNames.Count > 0)
+            {
+                var message = string.Join(Environment.NewLine, testNames);
+                dialogResult = MessageBox.Show("Are you sure you want to complete the visit notes and order the following test(s) for " + this._patient.FullName + ":\n \n" + message, "Pending Notes and Lab Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            } else
+            {
+                dialogResult = MessageBox.Show("Are you sure you want to complete the visit notes for " + this._patient.FullName +" with no lab orders?", "Pending Notes and Lab Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            }
 
             return dialogResult;
         }
@@ -164,6 +177,11 @@ namespace ClinicManagementApp.UserControls
                 specialties.Add(doctor.Speciality.ToString());
             }
             this.activeSpecialtyLabel.Text = string.Join(", ", specialties);
+        }
+
+        private void GetNurseForAppointment()
+        {
+            
         }
 
         private void ShowInvalidErrorMessages()
@@ -293,7 +311,8 @@ namespace ClinicManagementApp.UserControls
             foreach (Visit visit in visits)
             {
                 if(visit.AppointmentID == this._appointment.AppointmentID)
-                {          
+                {   
+                    
                     MessageBox.Show("Visit details have already been entered for this patient and cannot be changed. Please choose another patient from the list.", "Visit Already Documented", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     this.saveButton.Enabled = false;
                 }
@@ -301,5 +320,6 @@ namespace ClinicManagementApp.UserControls
             }
            
         }
+
     }
 }
