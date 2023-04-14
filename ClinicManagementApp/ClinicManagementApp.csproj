@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\LabTestController.cs" />
+    <Compile Include="Controller\AdministratorController.cs" />
     <Compile Include="Controller\NurseController.cs" />
     <Compile Include="Controller\AppointmentController.cs" />
     <Compile Include="Controller\AccountController.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\VisitController.cs" />
     <Compile Include="DAL\LabTestDAL.cs" />
+    <Compile Include="DAL\AdministratorDAL.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\AppointmentDAL.cs" />
     <Compile Include="DAL\ClinicManagementDBConnection.cs" />

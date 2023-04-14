@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using ClinicManagementApp.Controller;
+using System;
+using System.Windows.Forms;
 
 namespace ClinicManagementApp.View
 {
@@ -7,6 +9,7 @@ namespace ClinicManagementApp.View
     /// </summary>
     public partial class AdministratorDashboard : Form
     {
+        private readonly AdministratorController _administratorController;
         /// <summary>
         /// Constructor for the Main Dashboard for Administrators
         /// </summary>
@@ -14,6 +17,16 @@ namespace ClinicManagementApp.View
         public AdministratorDashboard(string username)
         {
             InitializeComponent();
+            this._administratorController = new AdministratorController();
+            try
+            {
+                this.welcomeUserLabel.Text = "Welcome " + this._administratorController.GetAdministratorName(username) + " (username: " + username + ")!";
+            }
+            catch (Exception ex)
+            {
+                this.welcomeUserLabel.Text = "Welcome unknown user!";
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void logoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
