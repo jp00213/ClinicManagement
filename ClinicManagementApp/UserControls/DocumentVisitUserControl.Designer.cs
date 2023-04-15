@@ -369,11 +369,10 @@
             // 
             this.activeNurseNameLabel.AutoSize = true;
             this.activeNurseNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeNurseNameLabel.Location = new System.Drawing.Point(532, 168);
+            this.activeNurseNameLabel.Location = new System.Drawing.Point(512, 168);
             this.activeNurseNameLabel.Name = "activeNurseNameLabel";
-            this.activeNurseNameLabel.Size = new System.Drawing.Size(47, 13);
+            this.activeNurseNameLabel.Size = new System.Drawing.Size(0, 13);
             this.activeNurseNameLabel.TabIndex = 28;
-            this.activeNurseNameLabel.Text = "Nurseee";
             // 
             // nurseIDLabel
             // 
@@ -389,11 +388,10 @@
             // 
             this.activeNurseIDLabel.AutoSize = true;
             this.activeNurseIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeNurseIDLabel.Location = new System.Drawing.Point(532, 189);
+            this.activeNurseIDLabel.Location = new System.Drawing.Point(517, 189);
             this.activeNurseIDLabel.Name = "activeNurseIDLabel";
-            this.activeNurseIDLabel.Size = new System.Drawing.Size(19, 13);
+            this.activeNurseIDLabel.Size = new System.Drawing.Size(0, 13);
             this.activeNurseIDLabel.TabIndex = 30;
-            this.activeNurseIDLabel.Text = "11";
             // 
             // saveButton
             // 
@@ -672,7 +670,7 @@
             this.activeLastNameLabel.AutoSize = true;
             this.activeLastNameLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "LastName", true));
             this.activeLastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeLastNameLabel.Location = new System.Drawing.Point(120, 130);
+            this.activeLastNameLabel.Location = new System.Drawing.Point(133, 130);
             this.activeLastNameLabel.Name = "activeLastNameLabel";
             this.activeLastNameLabel.Size = new System.Drawing.Size(0, 13);
             this.activeLastNameLabel.TabIndex = 51;

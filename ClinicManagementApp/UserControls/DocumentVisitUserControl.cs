@@ -2,7 +2,6 @@
 using ClinicManagementApp.Model;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using System.Drawing;
 using System.Windows.Forms;
 
