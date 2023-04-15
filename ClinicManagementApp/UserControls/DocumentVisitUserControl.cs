@@ -17,6 +17,11 @@ namespace ClinicManagementApp.UserControls
         private LabTestController _labController;
         private Patient _patient;
         private Appointment _appointment;
+       
+
+        /// <summary>
+        /// Creates the document visit user control
+        /// </summary>
         public DocumentVisitUserControl()
         {
             InitializeComponent();
@@ -26,11 +31,14 @@ namespace ClinicManagementApp.UserControls
             this._appointmentController = new AppointmentController();
             this._visitController = new VisitController();
             this._labController = new LabTestController();
+            
 
             this._patient = null;
             this._appointment = null;
             this.labsListBox.DataSource = _labController.GetLabTests();
             this.labsListBox.ClearSelected();
+
+            this.saveButton.Enabled = false;
         }
 
         private void selectButton_Click(object sender, EventArgs e)
@@ -56,55 +64,68 @@ namespace ClinicManagementApp.UserControls
             DateTime appointmentDate = this.appointmentDateTimePicker.Value.Date;
             this._appointment = this._appointmentController.GetAppointmentByPatientIDAndDate(activePatientID, appointmentDate);
             this.GetDoctorInfoForAppointment(this._appointment.AppointmentID);
+            this.GetNurseForAppointment();
             this.HasVisitInfoBeenEnteredForAppointmentID();
         }
 
         private void AppointmentDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-
+            this.ResetForm();    
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            int appointmentID = this._appointment.AppointmentID;
-            int nurseID = 4;
-            DateTime visitDateTime = DateTime.Now;
-            Decimal feet = this.feetNumericUpDown.Value;
-            Decimal inches = this.inchesNumericUpDown.Value;
-            Decimal height = this.CalculateHeight(feet, inches);
-            Decimal weight1 = Decimal.Parse(this.weightTextBox.Text.Trim());
-            Decimal weight = Decimal.Parse(this.weightTextBox.Text.Trim());
-            Decimal bodyTemperature = Decimal.Parse(this.temperatureTextBox.Text.Trim());
-
-            int diastolicBloodPressure;
-            int.TryParse(this.diastolicTextBox.Text.Trim(), out diastolicBloodPressure);
-
-            int systolicBloodPressure;
-            int.TryParse(this.systolicTextBox.Text.Trim(), out systolicBloodPressure);
-
-            int pulse; 
-            int.TryParse(this.pulseTextBox.Text.Trim(), out pulse);
-
-            var symptoms = this.symptomsTextBox.Text.Trim();
-            var initialDiagnosis = this.initialDiagnosisTextbox.Text.Trim();
-            var finalDiagnosis = this.finalDiagnosisTextBox.Text.Trim();
-
-            if (appointmentID <= 0 || this._appointment == null || nurseID <= 0 || height < 10 || height > 250 || weight < 0 || weight > 800 || diastolicBloodPressure > 370 || diastolicBloodPressure < 40 || systolicBloodPressure > 360 || systolicBloodPressure < 20 || bodyTemperature > 115 || bodyTemperature < 78 || pulse > 400 || pulse < 55 || string.IsNullOrEmpty(symptoms) || string.IsNullOrEmpty(initialDiagnosis))
+            try
             {
-                this.ShowInvalidErrorMessages();
-            } else
-            {
-                
-                if (this.ConfirmNotesAndLabs() == DialogResult.Yes)
+                int appointmentID = this._appointment.AppointmentID;
+                if (appointmentID <= 0)
                 {
-                    Visit visit = new Visit(-1, appointmentID, nurseID, visitDateTime, height, weight, diastolicBloodPressure, systolicBloodPressure, bodyTemperature, pulse, symptoms, initialDiagnosis, finalDiagnosis);
-                    int success = this._visitController.AddVisit(visit);
-                    if (success > 0)
-                    {
-                        this.OrderLabsAndCompleteVisit(success);
-                        this.ResetForm();
-                    } 
+                    MessageBox.Show("Please select a patient from the list.", "No Appointment Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+                int nurseID = this.GetNurseForAppointment();
+                DateTime visitDateTime = DateTime.Now;
+                Decimal feet = this.feetNumericUpDown.Value;
+                Decimal inches = this.inchesNumericUpDown.Value;
+                Decimal height = this.CalculateHeight(feet, inches);
+                Decimal weight1 = Decimal.Parse(this.weightTextBox.Text.Trim());
+                Decimal weight = Decimal.Parse(this.weightTextBox.Text.Trim());
+                Decimal bodyTemperature = Decimal.Parse(this.temperatureTextBox.Text.Trim());
+
+                int diastolicBloodPressure;
+                int.TryParse(this.diastolicTextBox.Text.Trim(), out diastolicBloodPressure);
+
+                int systolicBloodPressure;
+                int.TryParse(this.systolicTextBox.Text.Trim(), out systolicBloodPressure);
+
+                int pulse;
+                int.TryParse(this.pulseTextBox.Text.Trim(), out pulse);
+
+                var symptoms = this.symptomsTextBox.Text.Trim();
+                var initialDiagnosis = this.initialDiagnosisTextbox.Text.Trim();
+                var finalDiagnosis = this.finalDiagnosisTextBox.Text.Trim();
+
+                if (appointmentID <= 0 || this._appointment == null || nurseID <= 0 || height < 10 || height > 250 || weight < 0 || weight > 800 || diastolicBloodPressure > 370 || diastolicBloodPressure < 40 || systolicBloodPressure > 360 || systolicBloodPressure < 20 || bodyTemperature > 115 || bodyTemperature < 78 || pulse > 400 || pulse < 55 || string.IsNullOrEmpty(symptoms) || string.IsNullOrEmpty(initialDiagnosis))
+                {
+                    this.ShowInvalidErrorMessages();
+                }
+                else
+                {
+
+                    if (this.ConfirmNotesAndLabs() == DialogResult.Yes)
+                    {
+                        Visit visit = new Visit(-1, appointmentID, nurseID, visitDateTime, height, weight, diastolicBloodPressure, systolicBloodPressure, bodyTemperature, pulse, symptoms, initialDiagnosis, finalDiagnosis);
+                        int success = this._visitController.AddVisit(visit);
+                        if (success > 0)
+                        {
+                            this.OrderLabsAndCompleteVisit(success);
+                            this.ResetForm();
+                        }
+                    }
+                }
+            } catch(System.FormatException)
+            {
+                MessageBox.Show("Please input valid visit details for the patient, then press 'Save Appointment'.", "Visit Details Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -179,9 +200,22 @@ namespace ClinicManagementApp.UserControls
             this.activeSpecialtyLabel.Text = string.Join(", ", specialties);
         }
 
-        private void GetNurseForAppointment()
+        private int GetNurseForAppointment()
         {
-            
+            try
+            {
+                string nurseUserName = NurseController.GetUsername();
+                Nurse nurse = this._nurseController.GetNurseByUsername(nurseUserName);
+                this.activeNurseNameLabel.Text = nurse.FullName;
+                this.activeNurseIDLabel.Text = nurse.NurseID.ToString();
+                return nurse.NurseID;
+            } catch(Exception)
+            {
+                MessageBox.Show("You must be an active nurse in our system to input visit notes. Please logout and log back in with valid credentials.", "Invalid Credentials", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                this.saveButton.Enabled = false;
+                return -1;
+            }
+             
         }
 
         private void ShowInvalidErrorMessages()
