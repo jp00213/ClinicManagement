@@ -22,6 +22,7 @@ namespace ClinicManagementApp
             try
             {
                 this.welcomeUserLabel.Text = "Welcome " + this._nurseController.GetNurseName(username) + " (username: " + username + ")!";
+                NurseController.SetUsername(username);
             } 
             catch (Exception ex)
             {

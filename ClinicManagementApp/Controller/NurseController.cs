@@ -9,13 +9,15 @@ namespace ClinicManagementApp.Controller
     public class NurseController
     {
         private readonly NurseDAL _nurseDAL;
-
+        private static CurrentUser currentUser;
+        
         /// <summary>
         /// Create a NurseController object.
         /// </summary>
         public NurseController()
         {
             this._nurseDAL = new NurseDAL();
+            currentUser = new CurrentUser();
         }
 
         /// <summary>
@@ -35,16 +37,27 @@ namespace ClinicManagementApp.Controller
         /// <returns>Nurse</returns>
         public Nurse GetNurseByID(int nurseID) => _nurseDAL.GetNurseByID(nurseID);
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
-        public Nurse StoreNurse(string user)
+        public Nurse GetNurseByUsername(string username)
         {
-            Nurse currentNurse = this._nurseDAL.GetNurseByUsername(user);
-            return currentNurse;
+            return this._nurseDAL.GetNurseByUsername(username);
+        }
 
+        /// <summary>
+        /// Gets the current user's username
+        /// </summary>
+        /// <returns></returns>
+        public static string GetUsername()
+        {
+            return currentUser.userName;
+        }
+
+        /// <summary>
+        /// Sets the current user's username
+        /// </summary>
+        /// <param name="username"></param>
+        public static void SetUsername(string username)
+        {
+            currentUser.userName = username;
         }
     }
 }

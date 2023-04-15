@@ -63,6 +63,7 @@
     <Compile Include="DAL\PersonDAL.cs" />
     <Compile Include="DAL\VisitDAL.cs" />
     <Compile Include="Model\Appointment.cs" />
+    <Compile Include="Model\CurrentUser.cs" />
     <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\LabTest.cs" />
     <Compile Include="Model\Nurse.cs" />
