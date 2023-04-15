@@ -37,6 +37,11 @@ namespace ClinicManagementApp.Controller
         /// <returns>Nurse</returns>
         public Nurse GetNurseByID(int nurseID) => _nurseDAL.GetNurseByID(nurseID);
 
+        /// <summary>
+        /// Gets nurse by username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public Nurse GetNurseByUsername(string username)
         {
             return this._nurseDAL.GetNurseByUsername(username);
