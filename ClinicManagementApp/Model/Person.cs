@@ -17,6 +17,9 @@ namespace ClinicManagementApp.Model
         public string Zip { get; set; }
         public string Phone { get; set; }
 
+        /// <summary>
+        /// Returns person's full name
+        /// </summary>
         public string FullName
         {
             get { return $"{FirstName} {LastName}"; }
