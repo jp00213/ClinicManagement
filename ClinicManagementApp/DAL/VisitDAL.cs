@@ -131,7 +131,8 @@ namespace ClinicManagementApp.DAL
             string updateStatement = "update visitRoutineResults " +
                 "set finalDiagnoses = @finalDiagnosis " +
                 "where visitID = @visitID " +
-                "and finalDiagnoses is null or finalDiagnoses = '' ";
+                "and finalDiagnoses is null " +
+                "or visitID = @visitID and finalDiagnoses = '' ";
             using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
             {
                 connection.Open();
