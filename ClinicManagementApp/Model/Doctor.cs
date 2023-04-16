@@ -10,10 +10,6 @@
         
 
         public string Speciality { get; set; }
-        public string FullName
-        {
-            get { return $"{FirstName} {LastName}"; }
-        }
 
         /// <summary>
         /// Doctor constructor.
