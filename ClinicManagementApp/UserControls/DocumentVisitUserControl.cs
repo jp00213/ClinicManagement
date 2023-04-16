@@ -83,35 +83,38 @@ namespace ClinicManagementApp.UserControls
                     MessageBox.Show("Please select a patient from the list.", "No Appointment Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                this.ShowInvalidErrorMessages();
                 int nurseID = this.GetNurseForAppointment();
                 DateTime visitDateTime = DateTime.Now;
                 Decimal feet = this.feetNumericUpDown.Value;
                 Decimal inches = this.inchesNumericUpDown.Value;
                 Decimal height = this.CalculateHeight(feet, inches);
-                Decimal weight1 = Decimal.Parse(this.weightTextBox.Text.Trim());
-                Decimal weight = Decimal.Parse(this.weightTextBox.Text.Trim());
-                Decimal bodyTemperature = Decimal.Parse(this.temperatureTextBox.Text.Trim());
+
+                Decimal weight;
+                this.CheckForParseErrors(Decimal.TryParse(this.weightTextBox.Text.Trim(), out weight));
+
+                Decimal bodyTemperature;
+                this.CheckForParseErrors(Decimal.TryParse(this.temperatureTextBox.Text.Trim(), out bodyTemperature));
 
                 int diastolicBloodPressure;
-                int.TryParse(this.diastolicTextBox.Text.Trim(), out diastolicBloodPressure);
+                this.CheckForParseErrors(int.TryParse(this.diastolicTextBox.Text.Trim(), out diastolicBloodPressure));
 
                 int systolicBloodPressure;
-                int.TryParse(this.systolicTextBox.Text.Trim(), out systolicBloodPressure);
+                this.CheckForParseErrors(int.TryParse(this.systolicTextBox.Text.Trim(), out systolicBloodPressure));
 
                 int pulse;
-                int.TryParse(this.pulseTextBox.Text.Trim(), out pulse);
+                this.CheckForParseErrors(int.TryParse(this.pulseTextBox.Text.Trim(), out pulse));
 
                 var symptoms = this.symptomsTextBox.Text.Trim();
                 var initialDiagnosis = this.initialDiagnosisTextbox.Text.Trim();
                 var finalDiagnosis = this.finalDiagnosisTextBox.Text.Trim();
 
-                if (appointmentID <= 0 || this._appointment == null || nurseID <= 0 || height < 10 || height > 250 || weight < 0 || weight > 800 || diastolicBloodPressure > 370 || diastolicBloodPressure < 40 || systolicBloodPressure > 360 || systolicBloodPressure < 20 || bodyTemperature > 115 || bodyTemperature < 78 || pulse > 400 || pulse < 55 || string.IsNullOrEmpty(symptoms) || string.IsNullOrEmpty(initialDiagnosis))
+                if (height < 10 || height > 250 || weight < 0 || weight > 800 || diastolicBloodPressure > 370 || diastolicBloodPressure < 40 || systolicBloodPressure > 360 || systolicBloodPressure < 20 || bodyTemperature > 115 || bodyTemperature < 78 || pulse > 400 || pulse < 55 || string.IsNullOrEmpty(symptoms) || string.IsNullOrEmpty(initialDiagnosis))
                 {
                     this.ShowInvalidErrorMessages();
                 }
                 else
                 {
-
                     if (this.ConfirmNotesAndLabs() == DialogResult.Yes)
                     {
                         Visit visit = new Visit(-1, appointmentID, nurseID, visitDateTime, height, weight, diastolicBloodPressure, systolicBloodPressure, bodyTemperature, pulse, symptoms, initialDiagnosis, finalDiagnosis);
@@ -129,11 +132,19 @@ namespace ClinicManagementApp.UserControls
             }
         }
 
+        private void CheckForParseErrors(bool parseable)
+        {
+            if (!parseable)
+            {
+                this.ShowInvalidErrorMessages();
+            }
+        }
+
         private Decimal CalculateHeight(Decimal feet, Decimal inches)
         {
-            Decimal feetToCM = feet * (Decimal)30.48;
-            Decimal inchesToCM = inches * (Decimal)2.54;
-            return feetToCM + inchesToCM;
+            Decimal feetToIn = feet * (Decimal)12.00;
+            Decimal inchesInput = inches;
+            return feetToIn + inchesInput;
         }
 
         private void OrderLabsAndCompleteVisit(int visitID)
@@ -171,7 +182,6 @@ namespace ClinicManagementApp.UserControls
             {
                 string name = "\t\u2022   " + "Test code: " + lab.TestCode.ToString() + "  |  " + lab.TestName.ToString();
                 testNames.Add(name);
-                
             }
 
             if (testNames.Count > 0)
@@ -227,37 +237,37 @@ namespace ClinicManagementApp.UserControls
                 this.generalErrorLabel.ForeColor = Color.Red;
             }
 
-            if (this.CalculateHeight(feetNumericUpDown.Value, inchesNumericUpDown.Value) < 10 || this.CalculateHeight(feetNumericUpDown.Value, inchesNumericUpDown.Value) > 250)
+            if (this.CalculateHeight(feetNumericUpDown.Value, inchesNumericUpDown.Value) < 12 || this.CalculateHeight(feetNumericUpDown.Value, inchesNumericUpDown.Value) > 100)
             {
                 this.heightErrorLabel.Text = "Please enter a valid height.";
                 this.heightErrorLabel.ForeColor = Color.Red;
             }
 
-            if (Decimal.Parse(this.weightTextBox.Text.Trim()) < 0 || Decimal.Parse(this.weightTextBox.Text.Trim()) > 800 || string.IsNullOrEmpty(this.weightTextBox.Text))
+            if (!Decimal.TryParse(this.weightTextBox.Text.Trim(), out _) || Decimal.Parse(this.weightTextBox.Text.Trim()) < 0 || Decimal.Parse(this.weightTextBox.Text.Trim()) > 800 || string.IsNullOrEmpty(this.weightTextBox.Text))
             {
                 this.weightErrorLabel.Text = "Please enter a valid weight.";
                 this.weightErrorLabel.ForeColor = Color.Red;
             }
 
-            if (int.Parse(this.diastolicTextBox.Text.Trim()) < 40 || int.Parse(this.diastolicTextBox.Text.Trim()) > 370 || string.IsNullOrEmpty(this.diastolicTextBox.Text))
+            if (!int.TryParse(this.diastolicTextBox.Text.Trim(), out _) || int.Parse(this.diastolicTextBox.Text.Trim()) < 40 || int.Parse(this.diastolicTextBox.Text.Trim()) > 370 || string.IsNullOrEmpty(this.diastolicTextBox.Text))
             {
-                this.diastolicBloodPressureErrorLabel.Text = "Please enter a valid diastolic blood pressure.";
+                this.diastolicBloodPressureErrorLabel.Text = "Please enter a valid diastolic BP.";
                 this.diastolicBloodPressureErrorLabel.ForeColor = Color.Red;
             }
 
-            if (int.Parse(this.systolicTextBox.Text.Trim()) < 20 || int.Parse(this.systolicTextBox.Text.Trim()) > 360 || string.IsNullOrEmpty(this.systolicTextBox.Text) )
+            if (!int.TryParse(this.systolicTextBox.Text.Trim(), out _) || int.Parse(this.systolicTextBox.Text.Trim()) < 20 || int.Parse(this.systolicTextBox.Text.Trim()) > 360 || string.IsNullOrEmpty(this.systolicTextBox.Text) )
             {
-                this.systolicErrorLabel.Text = "Please enter a valid systolic blood pressure.";
+                this.systolicErrorLabel.Text = "Please enter a valid systolic BP.";
                 this.systolicErrorLabel.ForeColor = Color.Red;
             }
 
-            if (Decimal.Parse(this.temperatureTextBox.Text.Trim()) < 78 || Decimal.Parse(this.temperatureTextBox.Text.Trim()) > 115 || string.IsNullOrEmpty(this.temperatureTextBox.Text))
+            if (!Decimal.TryParse(this.temperatureTextBox.Text.Trim(), out _) || Decimal.Parse(this.temperatureTextBox.Text.Trim()) < 78 || Decimal.Parse(this.temperatureTextBox.Text.Trim()) > 115 || string.IsNullOrEmpty(this.temperatureTextBox.Text))
             {
                 this.bodyTemperatureErrorLabel.Text = "Please enter a valid temperature.";
                 this.bodyTemperatureErrorLabel.ForeColor = Color.Red; 
             }
 
-            if (int.Parse(this.pulseTextBox.Text.Trim()) < 55 || int.Parse(this.pulseTextBox.Text.Trim()) > 400 || string.IsNullOrEmpty(this.pulseTextBox.Text))
+            if (!int.TryParse(this.pulseTextBox.Text.Trim(), out _) || int.Parse(this.pulseTextBox.Text.Trim()) < 55 || int.Parse(this.pulseTextBox.Text.Trim()) > 400 || string.IsNullOrEmpty(this.pulseTextBox.Text))
             {
                 this.pulseErrorLabel.Text = "Please enter a valid pulse.";
                 this.pulseErrorLabel.ForeColor = Color.Red; 
@@ -272,7 +282,7 @@ namespace ClinicManagementApp.UserControls
             if (string.IsNullOrEmpty(this.initialDiagnosisTextbox.Text.Trim()))
             {
                 this.initialDiagnosisErrorLabel.Text = "Please enter an initial diagnosis.";
-                this.initialDiagnosisLabel.ForeColor= Color.Red;
+                this.initialDiagnosisErrorLabel.ForeColor= Color.Red;
             }
 
         }
@@ -321,8 +331,13 @@ namespace ClinicManagementApp.UserControls
 
         private void clearButton_Click(object sender, EventArgs e)
         {
-            this.ResetForm();
-            this.HideInvalidErrorMessages();
+            DialogResult clearForm = MessageBox.Show("Are you sure you want to clear the form? Any unsaved changes will be lost.", "Clear Form", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (clearForm == DialogResult.Yes)
+            {
+                this.ResetForm();
+                this.HideInvalidErrorMessages();
+            }
+            
         }
 
         private void CheckInputIsDigits(object sender, KeyPressEventArgs e)
@@ -341,19 +356,16 @@ namespace ClinicManagementApp.UserControls
         private void HasVisitInfoBeenEnteredForAppointmentID()
         {
             List<Visit> visits = this._visitController.GetVisitInformationListByPatientID(this._patient.PatientID);
-            
+
             foreach (Visit visit in visits)
             {
-                if(visit.AppointmentID == this._appointment.AppointmentID)
-                {   
-                    
+                if (visit.AppointmentID == this._appointment.AppointmentID)
+                {
                     MessageBox.Show("Visit details have already been entered for this patient and cannot be changed. Please choose another patient from the list.", "Visit Already Documented", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     this.saveButton.Enabled = false;
                 }
-               
-            }
-           
-        }
 
+            }
+        }
     }
 }

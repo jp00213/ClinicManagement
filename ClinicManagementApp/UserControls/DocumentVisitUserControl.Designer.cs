@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dateOfApptLabel = new System.Windows.Forms.Label();
             this.appointmentDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.selectButton = new System.Windows.Forms.Button();
@@ -39,7 +39,7 @@
             this.dividerLabel2 = new System.Windows.Forms.Label();
             this.patientInformationLabel = new System.Windows.Forms.Label();
             this.patientNameLabel = new System.Windows.Forms.Label();
-            this.activeFirstNameLabel = new System.Windows.Forms.Label();
+            this.activePatientNameLabel = new System.Windows.Forms.Label();
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dobLabel = new System.Windows.Forms.Label();
             this.activeDOBLabel = new System.Windows.Forms.Label();
@@ -85,7 +85,6 @@
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.activeLastNameLabel = new System.Windows.Forms.Label();
             this.feetLabel = new System.Windows.Forms.Label();
             this.inchesLabel = new System.Windows.Forms.Label();
             this.finalDiagnosisLabel = new System.Windows.Forms.Label();
@@ -182,15 +181,15 @@
             this.patientNameLabel.TabIndex = 9;
             this.patientNameLabel.Text = "Name:";
             // 
-            // activeFirstNameLabel
+            // activePatientNameLabel
             // 
-            this.activeFirstNameLabel.AutoSize = true;
-            this.activeFirstNameLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "FirstName", true));
-            this.activeFirstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeFirstNameLabel.Location = new System.Drawing.Point(83, 130);
-            this.activeFirstNameLabel.Name = "activeFirstNameLabel";
-            this.activeFirstNameLabel.Size = new System.Drawing.Size(0, 13);
-            this.activeFirstNameLabel.TabIndex = 10;
+            this.activePatientNameLabel.AutoSize = true;
+            this.activePatientNameLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "FullName", true));
+            this.activePatientNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activePatientNameLabel.Location = new System.Drawing.Point(83, 130);
+            this.activePatientNameLabel.Name = "activePatientNameLabel";
+            this.activePatientNameLabel.Size = new System.Drawing.Size(0, 13);
+            this.activePatientNameLabel.TabIndex = 10;
             // 
             // patientBindingSource
             // 
@@ -596,14 +595,14 @@
             this.patientDataGridView.AllowUserToDeleteRows = false;
             this.patientDataGridView.AutoGenerateColumns = false;
             this.patientDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.patientDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.patientDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.patientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.patientDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.patientIDDataGridViewTextBoxColumn,
@@ -611,26 +610,26 @@
             this.firstNameDataGridViewTextBoxColumn,
             this.dateOfBirthDataGridViewTextBoxColumn});
             this.patientDataGridView.DataSource = this.patientBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.patientDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.patientDataGridView.DefaultCellStyle = dataGridViewCellStyle5;
             this.patientDataGridView.Location = new System.Drawing.Point(263, 15);
             this.patientDataGridView.MultiSelect = false;
             this.patientDataGridView.Name = "patientDataGridView";
             this.patientDataGridView.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.patientDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.patientDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.patientDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.patientDataGridView.Size = new System.Drawing.Size(468, 80);
             this.patientDataGridView.TabIndex = 50;
@@ -664,16 +663,6 @@
             this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "DateOfBirth";
             this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
             this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // activeLastNameLabel
-            // 
-            this.activeLastNameLabel.AutoSize = true;
-            this.activeLastNameLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "LastName", true));
-            this.activeLastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeLastNameLabel.Location = new System.Drawing.Point(133, 130);
-            this.activeLastNameLabel.Name = "activeLastNameLabel";
-            this.activeLastNameLabel.Size = new System.Drawing.Size(0, 13);
-            this.activeLastNameLabel.TabIndex = 51;
             // 
             // feetLabel
             // 
@@ -869,7 +858,6 @@
             this.Controls.Add(this.finalDiagnosisLabel);
             this.Controls.Add(this.inchesLabel);
             this.Controls.Add(this.feetLabel);
-            this.Controls.Add(this.activeLastNameLabel);
             this.Controls.Add(this.patientDataGridView);
             this.Controls.Add(this.initialDiagnosisTextbox);
             this.Controls.Add(this.initialDiagnosisLabel);
@@ -909,7 +897,7 @@
             this.Controls.Add(this.phoneLabel);
             this.Controls.Add(this.activeDOBLabel);
             this.Controls.Add(this.dobLabel);
-            this.Controls.Add(this.activeFirstNameLabel);
+            this.Controls.Add(this.activePatientNameLabel);
             this.Controls.Add(this.patientNameLabel);
             this.Controls.Add(this.patientInformationLabel);
             this.Controls.Add(this.dividerLabel2);
@@ -937,7 +925,7 @@
         private System.Windows.Forms.Label dividerLabel2;
         private System.Windows.Forms.Label patientInformationLabel;
         private System.Windows.Forms.Label patientNameLabel;
-        private System.Windows.Forms.Label activeFirstNameLabel;
+        private System.Windows.Forms.Label activePatientNameLabel;
         private System.Windows.Forms.Label dobLabel;
         private System.Windows.Forms.Label activeDOBLabel;
         private System.Windows.Forms.Label phoneLabel;
@@ -982,7 +970,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateOfBirthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label activeLastNameLabel;
         private System.Windows.Forms.Label feetLabel;
         private System.Windows.Forms.Label inchesLabel;
         private System.Windows.Forms.Label finalDiagnosisLabel;
