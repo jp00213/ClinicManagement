@@ -1,5 +1,6 @@
 ﻿using ClinicManagementApp.DAL;
 using ClinicManagementApp.Model;
+using System.Collections.Generic;
 
 namespace ClinicManagementApp.Controller
 {
@@ -64,5 +65,13 @@ namespace ClinicManagementApp.Controller
         {
             currentUser.userName = username;
         }
+
+        /// <summary>
+        /// Get all the nurses from the database source.
+        /// </summary>
+        /// <returns>a list of nurse objects based on name and dob</returns>
+        /// <param name="firstName"> first name of nurse</param>
+        /// <param name="lastName"> last name of nurse</param>
+        public List<Nurse> GetNurseByName(string firstName, string lastName) => _nurseDAL.GetNurseByName(firstName, lastName);
     }
 }
