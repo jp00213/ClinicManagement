@@ -34,7 +34,8 @@ namespace ClinicManagementApp.UserControls
             _labTestController = new LabTestController();
             appointmentDateTimePicker.MaxDate = DateTime.Now;
             appointmentDateTimePicker.MinDate = new DateTime(1976, 1, 1);
-            setGridComboBoxOptions();
+            SetGridComboBoxOptions();
+            AdjustCellHeight(30);
         }
 
         private void AppointmentDateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -77,7 +78,7 @@ namespace ClinicManagementApp.UserControls
             }
         }
 
-        private void setGridComboBoxOptions()
+        private void SetGridComboBoxOptions()
         {
             this.resultIsNormalDataGridViewComboBoxColumn.DataSource = new List<Range>
             {
@@ -144,6 +145,11 @@ namespace ClinicManagementApp.UserControls
         {
             MessageBox.Show("Must enter a valid date in the form of YYYY-MM-DD. Ex. 2023-03-11. " +
                     "Must fill out date performed, result, and range to submit.");
+        }
+
+        private void AdjustCellHeight(int cellHeight)
+        {
+            labDataGridView.RowTemplate.Height = cellHeight;
         }
     }
 }
