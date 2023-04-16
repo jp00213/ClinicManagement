@@ -96,7 +96,6 @@ namespace ClinicManagementApp.UserControls
             return false;
         }
 
-
         /// <summary>
         /// setter patientID
         /// </summary>
