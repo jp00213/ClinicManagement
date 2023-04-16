@@ -1,4 +1,5 @@
 ﻿using ClinicManagementApp.Controller;
+using ClinicManagementApp.Model;
 using System;
 using System.Windows.Forms;
 
@@ -21,7 +22,9 @@ namespace ClinicManagementApp
             this._nurseController = new NurseController();
             try
             {
-                this.welcomeUserLabel.Text = "Welcome " + this._nurseController.GetNurseName(username) + " (username: " + username + ")!";
+                Nurse currentNurse = this._nurseController.GetNurseByUsername(username);
+                string fullName = currentNurse.FirstName + " " + currentNurse.LastName;
+                this.welcomeUserLabel.Text = "Welcome " + fullName + " (username: " + username + ")!";
                 NurseController.SetUsername(username);
             } 
             catch (Exception ex)

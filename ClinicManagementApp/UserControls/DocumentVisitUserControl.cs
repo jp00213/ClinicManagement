@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace ClinicManagementApp.UserControls
 {
+    /// <summary>
+    /// Document Visit User Control
+    /// </summary>
     public partial class DocumentVisitUserControl : UserControl
     {
         private PatientController _patientController;

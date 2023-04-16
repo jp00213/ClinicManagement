@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ClinicManagementApp.Model
+﻿namespace ClinicManagementApp.Model
 {
     public class PatientVisit : Patient
     {

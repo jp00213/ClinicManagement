@@ -42,7 +42,6 @@ namespace ClinicManagementApp.Controller
         public Patient GetPatientByID(int patientID) => this._patientDAL.GetPatientByID(patientID);
 
         /// <summary>
-
         /// Adds a patients to the DB
         /// </summary>
         /// <param name="person"></param>
@@ -54,6 +53,21 @@ namespace ClinicManagementApp.Controller
             return this._personDAL.AddPersonAsPatient(person);
         }
 
+        /// <summary>
+        /// Updates patients in DB
+        /// </summary>
+        /// <param name="recordID"></param>
+        /// <param name="lastName"></param>
+        /// <param name="firstName"></param>
+        /// <param name="birthday"></param>
+        /// <param name="addressStreet"></param>
+        /// <param name="city"></param>
+        /// <param name="state"></param>
+        /// <param name="zip"></param>
+        /// <param name="phone"></param>
+        /// <param name="sex"></param>
+        /// <param name="ssn"></param>
+        /// <returns></returns>
         public bool UpdatePatient(int recordID, string lastName, string firstName, DateTime birthday, string addressStreet, string city, string state, string zip, string phone, string sex, string ssn)
         {
             return this._personDAL.UpdatePerson(recordID, lastName, firstName, birthday, addressStreet, city, state, zip, phone, sex, ssn);
@@ -84,7 +98,11 @@ namespace ClinicManagementApp.Controller
 
         }
 
-
+        /// <summary>
+        /// Returns patients by appointment date
+        /// </summary>
+        /// <param name="appointmentDate"></param>
+        /// <returns></returns>
         public List<Patient> GetPatientByAppointmentDate(DateTime appointmentDate)
         {
             return _patientDAL.GetPatientByAppointmentDate(appointmentDate);

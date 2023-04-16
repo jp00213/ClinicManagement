@@ -25,7 +25,11 @@ namespace ClinicManagementApp.Controller
         /// <returns>a list of doctor objects</returns>
         public List<Doctor> GetDoctors() => _doctorDAL.GetDoctors();
 
-
+        /// <summary>
+        /// Get doctor and specialty by appointment ID
+        /// </summary>
+        /// <param name="appointmentID"></param>
+        /// <returns></returns>
         public List<Doctor> GetDoctorAndSpecialtyByAppointmentID(int appointmentID)
         {
             return _doctorDAL.GetDoctorAndSpecialtyByAppointmentID(appointmentID);

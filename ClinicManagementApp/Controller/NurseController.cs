@@ -21,16 +21,6 @@ namespace ClinicManagementApp.Controller
         }
 
         /// <summary>
-        /// Gets full nurse name by username
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
-        public string GetNurseName(string user)
-        {
-            return this._nurseDAL.GetNurseName(user);
-        }
-
-        /// <summary>
         /// Get nurse by id
         /// </summary>
         /// /// <param name="nurseID">id of nurse</param>
