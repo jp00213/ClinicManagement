@@ -96,7 +96,6 @@ namespace ClinicManagementApp.UserControls
             return false;
         }
 
-
         /// <summary>
         /// setter patientID
         /// </summary>
@@ -261,12 +260,12 @@ namespace ClinicManagementApp.UserControls
                         labResultListView.Items[i].SubItems.Add(theTest.TestDate.ToShortDateString());
 
                         string normalOrAbnormal = "";
-                        if (theTest.ResultIsNormal.ToString() == "1")
+                        if (theTest.ResultIsNormal.ToString() == "0")
                         {
 
                             normalOrAbnormal = "Normal";
                         }
-                        else if (theTest.ResultIsNormal.ToString() == "0")
+                        else if (theTest.ResultIsNormal.ToString() == "1")
                         {
                             normalOrAbnormal = "Abnormal";
                         }
