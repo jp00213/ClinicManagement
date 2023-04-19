@@ -1,5 +1,6 @@
 ﻿using ClinicManagementApp.Model;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace ClinicManagementApp.DAL
@@ -20,7 +21,7 @@ namespace ClinicManagementApp.DAL
 
             SqlConnection connection = ClinicManagementDBConnection.GetConnection();
             string selectStatement =
-                "SELECT d.nurseID, pe.firstName, pe.lastName " +
+                "SELECT *" +
                 "FROM nurse d " +
                 "JOIN person pe " +
                 "ON d.recordID = pe.recordID " +
@@ -40,9 +41,20 @@ namespace ClinicManagementApp.DAL
                     {
                         nurse = new Nurse
                         {
-                            NurseID = (int)(reader)["nurseID"],
+                            RecordID = (int)(reader)["recordID"],
                             LastName = (string)(reader)["lastName"],
                             FirstName = (string)(reader)["firstName"],
+                            DateOfBirth = (DateTime)(reader)["birthday"],
+                            AddressStreet = (string)(reader)["addressStreet"],
+                            City = (string)(reader)["city"],
+                            State = (string)(reader)["state"],
+                            Zip = (string)(reader)["zip"],
+                            Phone = (string)(reader)["phoneNumber"],
+                            NurseID = (int)(reader)["nurseID"],
+                            Username = (string)(reader)["username"],
+                            IsActive = Convert.ToInt32((byte)(reader["activeStatus"])),
+                            Sex = (reader)["sex"] != DBNull.Value ? (string)(reader)["sex"] : null,
+                            SSN = (reader)["ssn"] != DBNull.Value ? (string)(reader)["ssn"] : null
                         };
                     }
                 }
@@ -94,6 +106,65 @@ namespace ClinicManagementApp.DAL
             }
 
             return nurse;
+        }
+
+        /// <summary>
+        /// Get all the nurses from the database source.
+        /// </summary>
+        /// <returns>a list of nurse objects based on name and dob</returns>
+        /// <param name="firstName"> first name of nurse</param>
+        /// <param name="lastName"> last name of nurse</param>
+        public List<Nurse> GetNurseByName(string firstName, string lastName)
+        {
+            List<Nurse> nurses = new List<Nurse>();
+            Nurse nurse = new Nurse();
+
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string selectStatement =
+                "SELECT * " +
+                "FROM nurse n " +
+                "JOIN person pe " +
+                "ON n.recordID = pe.recordID " +
+                "WHERE pe.firstName like @firstName " +
+                "AND pe.lastName like @lastName ";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            selectCommand.Parameters.Add("@firstName", System.Data.SqlDbType.VarChar);
+            selectCommand.Parameters["@firstName"].Value = firstName + "%";
+
+            selectCommand.Parameters.Add("@lastName", System.Data.SqlDbType.VarChar);
+            selectCommand.Parameters["@lastName"].Value = lastName + "%";
+
+            using (selectCommand)
+            {
+                connection.Open();
+                using (SqlDataReader reader = selectCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        nurse = new Nurse
+                        {
+                            RecordID = (int)(reader)["recordID"],
+                            LastName = (string)(reader)["lastName"],
+                            FirstName = (string)(reader)["firstName"],
+                            DateOfBirth = (DateTime)(reader)["birthday"],
+                            AddressStreet = (string)(reader)["addressStreet"],
+                            City = (string)(reader)["city"],
+                            State = (string)(reader)["state"],
+                            Zip = (string)(reader)["zip"],
+                            Phone = (string)(reader)["phoneNumber"],
+                            NurseID = (int)(reader)["nurseID"],
+                            Username = (string)(reader)["username"],
+                            IsActive = Convert.ToInt32((byte)(reader["activeStatus"])),
+                            Sex = (reader)["sex"] != DBNull.Value ? (string)(reader)["sex"] : null,
+                            SSN = (reader)["ssn"] != DBNull.Value ? (string)(reader)["ssn"] : null
+                        };
+                        nurses.Add(nurse);
+                    }
+                }
+            }
+            return nurses;
         }
 
     }

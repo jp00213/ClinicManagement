@@ -102,6 +102,12 @@
     <Compile Include="UserControls\UpdatePatientInformationUserControl.Designer.cs">
       <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ViewNurseUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ViewNurseUserControl.Designer.cs">
+      <DependentUpon>ViewNurseUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AdministratorDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UpdatePatientInformationUserControl.resx">
       <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ViewNurseUserControl.resx">
+      <DependentUpon>ViewNurseUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdministratorDashboard.resx">
       <DependentUpon>AdministratorDashboard.cs</DependentUpon>
