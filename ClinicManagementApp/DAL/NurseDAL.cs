@@ -61,7 +61,7 @@ namespace ClinicManagementApp.DAL
 
             SqlConnection connection = ClinicManagementDBConnection.GetConnection();
             string selectStatement =
-                "SELECT d.nurseID, pe.firstName, pe.lastName " +
+                "SELECT *" +
                 "FROM nurse d " +
                 "JOIN person pe " +
                 "ON d.recordID = pe.recordID " +
@@ -81,9 +81,20 @@ namespace ClinicManagementApp.DAL
                     {
                         nurse = new Nurse
                         {
-                            NurseID = (int)(reader)["nurseID"],
+                            RecordID = (int)(reader)["recordID"],
                             LastName = (string)(reader)["lastName"],
                             FirstName = (string)(reader)["firstName"],
+                            DateOfBirth = (DateTime)(reader)["birthday"],
+                            AddressStreet = (string)(reader)["addressStreet"],
+                            City = (string)(reader)["city"],
+                            State = (string)(reader)["state"],
+                            Zip = (string)(reader)["zip"],
+                            Phone = (string)(reader)["phoneNumber"],
+                            NurseID = (int)(reader)["nurseID"],
+                            Username = (string)(reader)["username"],
+                            IsActive = Convert.ToInt32((byte)(reader["activeStatus"])),
+                            Sex = (reader)["sex"] != DBNull.Value ? (string)(reader)["sex"] : null,
+                            SSN = (reader)["ssn"] != DBNull.Value ? (string)(reader)["ssn"] : null
                         };
                     }
                 }

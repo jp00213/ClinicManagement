@@ -31,10 +31,10 @@
             this.administratorTabControl = new System.Windows.Forms.TabControl();
             this.addNurseTabPage = new System.Windows.Forms.TabPage();
             this.viewNurseTabPage = new System.Windows.Forms.TabPage();
+            this.viewNurseUserControl1 = new ClinicManagementApp.UserControls.ViewNurseUserControl();
             this.updateNurseTabPage = new System.Windows.Forms.TabPage();
             this.welcomeUserLabel = new System.Windows.Forms.Label();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.viewNurseUserControl1 = new ClinicManagementApp.UserControls.ViewNurseUserControl();
             this.administratorTabControl.SuspendLayout();
             this.viewNurseTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -46,11 +46,11 @@
             this.administratorTabControl.Controls.Add(this.updateNurseTabPage);
             this.administratorTabControl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.administratorTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.administratorTabControl.Location = new System.Drawing.Point(0, 54);
+            this.administratorTabControl.Location = new System.Drawing.Point(0, 63);
             this.administratorTabControl.Margin = new System.Windows.Forms.Padding(2);
             this.administratorTabControl.Name = "administratorTabControl";
             this.administratorTabControl.SelectedIndex = 0;
-            this.administratorTabControl.Size = new System.Drawing.Size(970, 550);
+            this.administratorTabControl.Size = new System.Drawing.Size(970, 569);
             this.administratorTabControl.TabIndex = 0;
             // 
             // addNurseTabPage
@@ -59,7 +59,7 @@
             this.addNurseTabPage.Margin = new System.Windows.Forms.Padding(2);
             this.addNurseTabPage.Name = "addNurseTabPage";
             this.addNurseTabPage.Padding = new System.Windows.Forms.Padding(2);
-            this.addNurseTabPage.Size = new System.Drawing.Size(962, 481);
+            this.addNurseTabPage.Size = new System.Drawing.Size(962, 538);
             this.addNurseTabPage.TabIndex = 0;
             this.addNurseTabPage.Text = "Add Nurse";
             this.addNurseTabPage.UseVisualStyleBackColor = true;
@@ -76,11 +76,21 @@
             this.viewNurseTabPage.Text = "View Nurse";
             this.viewNurseTabPage.UseVisualStyleBackColor = true;
             // 
+            // viewNurseUserControl1
+            // 
+            this.viewNurseUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewNurseUserControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewNurseUserControl1.Location = new System.Drawing.Point(2, 2);
+            this.viewNurseUserControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.viewNurseUserControl1.Name = "viewNurseUserControl1";
+            this.viewNurseUserControl1.Size = new System.Drawing.Size(958, 515);
+            this.viewNurseUserControl1.TabIndex = 0;
+            // 
             // updateNurseTabPage
             // 
             this.updateNurseTabPage.Location = new System.Drawing.Point(4, 27);
             this.updateNurseTabPage.Name = "updateNurseTabPage";
-            this.updateNurseTabPage.Size = new System.Drawing.Size(962, 481);
+            this.updateNurseTabPage.Size = new System.Drawing.Size(962, 519);
             this.updateNurseTabPage.TabIndex = 2;
             this.updateNurseTabPage.Text = "Update Nurse";
             this.updateNurseTabPage.UseVisualStyleBackColor = true;
@@ -110,21 +120,11 @@
             this.logoutLinkLabel.Text = "Logout";
             this.logoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.logoutLinkLabel_LinkClicked);
             // 
-            // viewNurseUserControl1
-            // 
-            this.viewNurseUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewNurseUserControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewNurseUserControl1.Location = new System.Drawing.Point(2, 2);
-            this.viewNurseUserControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.viewNurseUserControl1.Name = "viewNurseUserControl1";
-            this.viewNurseUserControl1.Size = new System.Drawing.Size(958, 515);
-            this.viewNurseUserControl1.TabIndex = 0;
-            // 
             // AdministratorDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(970, 604);
+            this.ClientSize = new System.Drawing.Size(970, 632);
             this.Controls.Add(this.logoutLinkLabel);
             this.Controls.Add(this.welcomeUserLabel);
             this.Controls.Add(this.administratorTabControl);
