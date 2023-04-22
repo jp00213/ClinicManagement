@@ -96,6 +96,12 @@
     <Compile Include="UserControls\RegisterPatientUserControl.Designer.cs">
       <DependentUpon>RegisterPatientUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UpdateNurseUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UpdateNurseUserControl.Designer.cs">
+      <DependentUpon>UpdateNurseUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UpdatePatientInformationUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RegisterPatientUserControl.resx">
       <DependentUpon>RegisterPatientUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UpdateNurseUserControl.resx">
+      <DependentUpon>UpdateNurseUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UpdatePatientInformationUserControl.resx">
       <DependentUpon>UpdatePatientInformationUserControl.cs</DependentUpon>
