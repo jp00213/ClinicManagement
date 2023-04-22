@@ -10,11 +10,13 @@ namespace ClinicManagementApp.UserControls
     public partial class AdministratorAddNurseUserControl : UserControl
     {
         private NurseController _nurseController;
+        private AccountController _accountController;
 
         public AdministratorAddNurseUserControl()
         {
             InitializeComponent();
             this._nurseController = new NurseController();
+            this._accountController = new AccountController();
             sexComboBox.Items.Insert(0, "--select--");
             sexComboBox.Items.Insert(1, "M");
             sexComboBox.Items.Insert(2, "F");
@@ -33,6 +35,8 @@ namespace ClinicManagementApp.UserControls
             zipTextBox.Clear();
             sexComboBox.SelectedItem = null;
             ssnTextBox.Clear();
+            usernameTextBox.Clear();
+            passwordTextBox.Clear();
         }
 
         private void addNurseButton_Click(object sender, EventArgs e)
@@ -52,7 +56,7 @@ namespace ClinicManagementApp.UserControls
 
             if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || dateOfBirth > DateTime.Now || string.IsNullOrEmpty(address)
                 || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || state.Length != 2 || !IsValidZipCode(zip)
-                || !IsPhoneNumberValid(phone) || !IsSexValid(sex) || !IsSSNValid(ssn))
+                || !IsPhoneNumberValid(phone) || !IsSexValid(sex) || !IsSSNValid(ssn) || !IsUsernameValid(username))
             {
                 this.ShowInvalidErrorMessage();
             }
@@ -138,6 +142,12 @@ namespace ClinicManagementApp.UserControls
                 this.ssnErrorMessageLabel.Text = "Please enter a valid 9 digit SSN, numbers only.";
                 this.ssnErrorMessageLabel.ForeColor = Color.Red;
             }
+
+            if (!IsUsernameValid(usernameTextBox.Text))
+            {
+                this.usernameErrorMessageLabel.Text = "Username already taken.";
+                this.usernameErrorMessageLabel.ForeColor = Color.Red;
+            }
         }
 
         private bool IsValidZipCode(string zip)
@@ -190,6 +200,19 @@ namespace ClinicManagementApp.UserControls
                 validSex = false;
             }
             return validSex;
+        }
+
+        private bool IsUsernameValid(string username)
+        {
+            bool validUsername = true;
+            if (this._accountController.IsUsernameUnique(username))
+            {
+                validUsername = true;
+            } else
+            {
+                validUsername= false;
+            }
+            return validUsername;
         }
 
         private void HideInvalidErrorMessages()

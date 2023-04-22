@@ -39,5 +39,16 @@ namespace ClinicManagementApp.Controller
         {
             return this._accountDAL.IsUsernamePasswordCorrectForAdministrator(user, pass);
         }
+
+        /// <summary>
+        /// Checks if a username is taken in the database already
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns>True if username is NOT in database</returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public bool IsUsernameUnique(string username)
+        {
+            return this._accountDAL.IsUsernameUnique(username);
+        }
     }
 }
