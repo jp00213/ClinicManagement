@@ -120,11 +120,6 @@ namespace ClinicManagementApp.UserControls
                 this.updateMessageLabel.Text = "Date of birth cannot be blank.";
                 canUpdate = false;
             }
-            else if (usernameTextBox.Text.Length == 0)
-            {
-                this.updateMessageLabel.Text = "Username cannot be blank.";
-                canUpdate = false;
-            }
             else if (addressStreetTextBox.Text.Length == 0)
             {
                 this.updateMessageLabel.Text = "Street Address cannot be blank.";
@@ -158,6 +153,29 @@ namespace ClinicManagementApp.UserControls
             else if (isActiveComboBox.Text.Length == 0)
             {
                 this.updateMessageLabel.Text = "Active Status cannot be blank.";
+                canUpdate = false;
+            }
+            return canUpdate;
+        }
+
+        private bool CheckLoginInput()
+        {
+            bool canUpdate = true;
+            this.updateMessageLabel.ForeColor = Color.Red;
+
+            if (String.IsNullOrEmpty(_nurse.LastName))
+            {
+                this.updateMessageLabel.Text = "Nurse is not in database. Please add nurse.";
+                canUpdate = false;
+            }
+            else if (usernameTextBox.Text.Length == 0)
+            {
+                this.updateMessageLabel.Text = "Username cannot be blank.";
+                canUpdate = false;
+            }
+            else if(passwordTextBox.Text.Length == 0)
+            {
+                this.updateMessageLabel.Text = "Password cannot be blank.";
                 canUpdate = false;
             }
             return canUpdate;

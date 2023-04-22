@@ -200,7 +200,6 @@ namespace ClinicManagementApp.DAL
 
             string updateNurseStatement = 
                 "UPDATE nurse SET " +
-                "username = @username, " +
                 "activeStatus = @isActive " +
                 "WHERE nurseID = @nurseID";
             
@@ -243,7 +242,6 @@ namespace ClinicManagementApp.DAL
                                 updateNurseCommand.Transaction = transaction;
 
                                 updateNurseCommand.Parameters.AddWithValue("@nurseID", nurse.NurseID);
-                                updateNurseCommand.Parameters.AddWithValue("@username", nurse.Username);
                                 updateNurseCommand.Parameters.AddWithValue("@isActive", nurse.IsActive);
 
                                 updateNurseCommand.ExecuteNonQuery();

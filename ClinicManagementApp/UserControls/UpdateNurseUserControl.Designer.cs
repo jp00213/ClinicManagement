@@ -131,7 +131,7 @@
             // isActiveLabel
             // 
             isActiveLabel.AutoSize = true;
-            isActiveLabel.Location = new System.Drawing.Point(519, 392);
+            isActiveLabel.Location = new System.Drawing.Point(519, 378);
             isActiveLabel.Name = "isActiveLabel";
             isActiveLabel.Size = new System.Drawing.Size(66, 18);
             isActiveLabel.TabIndex = 91;
@@ -176,7 +176,7 @@
             // sexLabel
             // 
             sexLabel.AutoSize = true;
-            sexLabel.Location = new System.Drawing.Point(112, 405);
+            sexLabel.Location = new System.Drawing.Point(112, 375);
             sexLabel.Name = "sexLabel";
             sexLabel.Size = new System.Drawing.Size(37, 18);
             sexLabel.TabIndex = 103;
@@ -203,7 +203,7 @@
             // usernameLabel
             // 
             usernameLabel.AutoSize = true;
-            usernameLabel.Location = new System.Drawing.Point(112, 375);
+            usernameLabel.Location = new System.Drawing.Point(112, 470);
             usernameLabel.Name = "usernameLabel";
             usernameLabel.Size = new System.Drawing.Size(81, 18);
             usernameLabel.TabIndex = 109;
@@ -293,7 +293,7 @@
             // 
             // updateInfoButton
             // 
-            this.updateInfoButton.Location = new System.Drawing.Point(107, 448);
+            this.updateInfoButton.Location = new System.Drawing.Point(107, 414);
             this.updateInfoButton.Name = "updateInfoButton";
             this.updateInfoButton.Size = new System.Drawing.Size(201, 29);
             this.updateInfoButton.TabIndex = 78;
@@ -307,7 +307,7 @@
             this.updatePasswordButton.Name = "updatePasswordButton";
             this.updatePasswordButton.Size = new System.Drawing.Size(165, 29);
             this.updatePasswordButton.TabIndex = 79;
-            this.updatePasswordButton.Text = "Update Password";
+            this.updatePasswordButton.Text = "Update Login";
             this.updatePasswordButton.UseVisualStyleBackColor = true;
             // 
             // clearButton
@@ -324,7 +324,7 @@
             // 
             this.updateMessageLabel.AutoSize = true;
             this.updateMessageLabel.ForeColor = System.Drawing.Color.Red;
-            this.updateMessageLabel.Location = new System.Drawing.Point(519, 457);
+            this.updateMessageLabel.Location = new System.Drawing.Point(126, 467);
             this.updateMessageLabel.Name = "updateMessageLabel";
             this.updateMessageLabel.Size = new System.Drawing.Size(0, 18);
             this.updateMessageLabel.TabIndex = 81;
@@ -371,7 +371,7 @@
             "",
             "0",
             "1"});
-            this.isActiveComboBox.Location = new System.Drawing.Point(634, 389);
+            this.isActiveComboBox.Location = new System.Drawing.Point(634, 375);
             this.isActiveComboBox.Name = "isActiveComboBox";
             this.isActiveComboBox.Size = new System.Drawing.Size(257, 26);
             this.isActiveComboBox.TabIndex = 92;
@@ -418,7 +418,7 @@
             "",
             "M",
             "F"});
-            this.sexComboBox.Location = new System.Drawing.Point(227, 402);
+            this.sexComboBox.Location = new System.Drawing.Point(227, 372);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(257, 26);
             this.sexComboBox.TabIndex = 104;
@@ -496,7 +496,7 @@
             // usernameTextBox
             // 
             this.usernameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "Username", true));
-            this.usernameTextBox.Location = new System.Drawing.Point(227, 372);
+            this.usernameTextBox.Location = new System.Drawing.Point(227, 467);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(257, 24);
             this.usernameTextBox.TabIndex = 110;
