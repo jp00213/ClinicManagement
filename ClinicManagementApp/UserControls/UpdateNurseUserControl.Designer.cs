@@ -50,6 +50,12 @@
             this.searchFirstNameTextBox = new System.Windows.Forms.TextBox();
             this.searchLastNameTextBox = new System.Windows.Forms.TextBox();
             this.nurseDataGridView = new System.Windows.Forms.DataGridView();
+            this.nurseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isActiveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.updateInfoButton = new System.Windows.Forms.Button();
             this.updatePasswordButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
@@ -68,12 +74,6 @@
             this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
-            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nurseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isActiveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             addressStreetLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
             dateOfBirthLabel = new System.Windows.Forms.Label();
@@ -91,6 +91,132 @@
             ((System.ComponentModel.ISupportInitialize)(this.nurseDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // addressStreetLabel
+            // 
+            addressStreetLabel.AutoSize = true;
+            addressStreetLabel.Location = new System.Drawing.Point(519, 213);
+            addressStreetLabel.Name = "addressStreetLabel";
+            addressStreetLabel.Size = new System.Drawing.Size(109, 18);
+            addressStreetLabel.TabIndex = 81;
+            addressStreetLabel.Text = "Address Street:";
+            // 
+            // cityLabel
+            // 
+            cityLabel.AutoSize = true;
+            cityLabel.Location = new System.Drawing.Point(519, 243);
+            cityLabel.Name = "cityLabel";
+            cityLabel.Size = new System.Drawing.Size(37, 18);
+            cityLabel.TabIndex = 83;
+            cityLabel.Text = "City:";
+            // 
+            // dateOfBirthLabel
+            // 
+            dateOfBirthLabel.AutoSize = true;
+            dateOfBirthLabel.Location = new System.Drawing.Point(112, 247);
+            dateOfBirthLabel.Name = "dateOfBirthLabel";
+            dateOfBirthLabel.Size = new System.Drawing.Size(97, 18);
+            dateOfBirthLabel.TabIndex = 85;
+            dateOfBirthLabel.Text = "Date Of Birth:";
+            // 
+            // firstNameLabel
+            // 
+            firstNameLabel.AutoSize = true;
+            firstNameLabel.Location = new System.Drawing.Point(112, 276);
+            firstNameLabel.Name = "firstNameLabel";
+            firstNameLabel.Size = new System.Drawing.Size(85, 18);
+            firstNameLabel.TabIndex = 87;
+            firstNameLabel.Text = "First Name:";
+            // 
+            // isActiveLabel
+            // 
+            isActiveLabel.AutoSize = true;
+            isActiveLabel.Location = new System.Drawing.Point(519, 392);
+            isActiveLabel.Name = "isActiveLabel";
+            isActiveLabel.Size = new System.Drawing.Size(66, 18);
+            isActiveLabel.TabIndex = 91;
+            isActiveLabel.Text = "Is Active:";
+            // 
+            // lastNameLabel
+            // 
+            lastNameLabel.AutoSize = true;
+            lastNameLabel.Location = new System.Drawing.Point(112, 308);
+            lastNameLabel.Name = "lastNameLabel";
+            lastNameLabel.Size = new System.Drawing.Size(84, 18);
+            lastNameLabel.TabIndex = 93;
+            lastNameLabel.Text = "Last Name:";
+            // 
+            // nurseIDLabel
+            // 
+            nurseIDLabel.AutoSize = true;
+            nurseIDLabel.Location = new System.Drawing.Point(112, 216);
+            nurseIDLabel.Name = "nurseIDLabel";
+            nurseIDLabel.Size = new System.Drawing.Size(70, 18);
+            nurseIDLabel.TabIndex = 95;
+            nurseIDLabel.Text = "Nurse ID:";
+            // 
+            // passwordLabel
+            // 
+            passwordLabel.AutoSize = true;
+            passwordLabel.Location = new System.Drawing.Point(114, 500);
+            passwordLabel.Name = "passwordLabel";
+            passwordLabel.Size = new System.Drawing.Size(79, 18);
+            passwordLabel.TabIndex = 97;
+            passwordLabel.Text = "Password:";
+            // 
+            // phoneLabel
+            // 
+            phoneLabel.AutoSize = true;
+            phoneLabel.Location = new System.Drawing.Point(519, 345);
+            phoneLabel.Name = "phoneLabel";
+            phoneLabel.Size = new System.Drawing.Size(55, 18);
+            phoneLabel.TabIndex = 99;
+            phoneLabel.Text = "Phone:";
+            // 
+            // sexLabel
+            // 
+            sexLabel.AutoSize = true;
+            sexLabel.Location = new System.Drawing.Point(112, 405);
+            sexLabel.Name = "sexLabel";
+            sexLabel.Size = new System.Drawing.Size(37, 18);
+            sexLabel.TabIndex = 103;
+            sexLabel.Text = "Sex:";
+            // 
+            // sSNLabel
+            // 
+            sSNLabel.AutoSize = true;
+            sSNLabel.Location = new System.Drawing.Point(112, 345);
+            sSNLabel.Name = "sSNLabel";
+            sSNLabel.Size = new System.Drawing.Size(43, 18);
+            sSNLabel.TabIndex = 105;
+            sSNLabel.Text = "SSN:";
+            // 
+            // stateLabel
+            // 
+            stateLabel.AutoSize = true;
+            stateLabel.Location = new System.Drawing.Point(519, 279);
+            stateLabel.Name = "stateLabel";
+            stateLabel.Size = new System.Drawing.Size(46, 18);
+            stateLabel.TabIndex = 107;
+            stateLabel.Text = "State:";
+            // 
+            // usernameLabel
+            // 
+            usernameLabel.AutoSize = true;
+            usernameLabel.Location = new System.Drawing.Point(112, 375);
+            usernameLabel.Name = "usernameLabel";
+            usernameLabel.Size = new System.Drawing.Size(81, 18);
+            usernameLabel.TabIndex = 109;
+            usernameLabel.Text = "Username:";
+            // 
+            // zipLabel
+            // 
+            zipLabel.AutoSize = true;
+            zipLabel.Location = new System.Drawing.Point(519, 315);
+            zipLabel.Name = "zipLabel";
+            zipLabel.Size = new System.Drawing.Size(32, 18);
+            zipLabel.TabIndex = 111;
+            zipLabel.Text = "Zip:";
             // 
             // messageLabel
             // 
@@ -165,6 +291,45 @@
             this.nurseDataGridView.TabIndex = 40;
             this.nurseDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.NurseDataGridView_CellClick);
             // 
+            // nurseIDDataGridViewTextBoxColumn
+            // 
+            this.nurseIDDataGridViewTextBoxColumn.DataPropertyName = "NurseID";
+            this.nurseIDDataGridViewTextBoxColumn.HeaderText = "Nurse ID";
+            this.nurseIDDataGridViewTextBoxColumn.Name = "nurseIDDataGridViewTextBoxColumn";
+            this.nurseIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last Name";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "First Name";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // usernameDataGridViewTextBoxColumn
+            // 
+            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
+            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
+            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isActiveDataGridViewTextBoxColumn
+            // 
+            this.isActiveDataGridViewTextBoxColumn.DataPropertyName = "IsActive";
+            this.isActiveDataGridViewTextBoxColumn.HeaderText = "Active Status";
+            this.isActiveDataGridViewTextBoxColumn.Name = "isActiveDataGridViewTextBoxColumn";
+            this.isActiveDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nurseBindingSource
+            // 
+            this.nurseBindingSource.DataSource = typeof(ClinicManagementApp.Model.Nurse);
+            // 
             // updateInfoButton
             // 
             this.updateInfoButton.Location = new System.Drawing.Point(107, 448);
@@ -186,12 +351,13 @@
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(782, 537);
+            this.clearButton.Location = new System.Drawing.Point(780, 537);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(111, 29);
             this.clearButton.TabIndex = 80;
             this.clearButton.Text = "Clear Form";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // updateMessageLabel
             // 
@@ -202,15 +368,6 @@
             this.updateMessageLabel.Size = new System.Drawing.Size(0, 18);
             this.updateMessageLabel.TabIndex = 81;
             // 
-            // addressStreetLabel
-            // 
-            addressStreetLabel.AutoSize = true;
-            addressStreetLabel.Location = new System.Drawing.Point(519, 213);
-            addressStreetLabel.Name = "addressStreetLabel";
-            addressStreetLabel.Size = new System.Drawing.Size(109, 18);
-            addressStreetLabel.TabIndex = 81;
-            addressStreetLabel.Text = "Address Street:";
-            // 
             // addressStreetTextBox
             // 
             this.addressStreetTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "AddressStreet", true));
@@ -218,15 +375,6 @@
             this.addressStreetTextBox.Name = "addressStreetTextBox";
             this.addressStreetTextBox.Size = new System.Drawing.Size(257, 24);
             this.addressStreetTextBox.TabIndex = 82;
-            // 
-            // cityLabel
-            // 
-            cityLabel.AutoSize = true;
-            cityLabel.Location = new System.Drawing.Point(519, 243);
-            cityLabel.Name = "cityLabel";
-            cityLabel.Size = new System.Drawing.Size(37, 18);
-            cityLabel.TabIndex = 83;
-            cityLabel.Text = "City:";
             // 
             // cityTextBox
             // 
@@ -236,15 +384,6 @@
             this.cityTextBox.Size = new System.Drawing.Size(257, 24);
             this.cityTextBox.TabIndex = 84;
             // 
-            // dateOfBirthLabel
-            // 
-            dateOfBirthLabel.AutoSize = true;
-            dateOfBirthLabel.Location = new System.Drawing.Point(112, 247);
-            dateOfBirthLabel.Name = "dateOfBirthLabel";
-            dateOfBirthLabel.Size = new System.Drawing.Size(97, 18);
-            dateOfBirthLabel.TabIndex = 85;
-            dateOfBirthLabel.Text = "Date Of Birth:";
-            // 
             // dateOfBirthDateTimePicker
             // 
             this.dateOfBirthDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.nurseBindingSource, "DateOfBirth", true));
@@ -252,15 +391,6 @@
             this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
             this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(257, 24);
             this.dateOfBirthDateTimePicker.TabIndex = 86;
-            // 
-            // firstNameLabel
-            // 
-            firstNameLabel.AutoSize = true;
-            firstNameLabel.Location = new System.Drawing.Point(112, 276);
-            firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new System.Drawing.Size(85, 18);
-            firstNameLabel.TabIndex = 87;
-            firstNameLabel.Text = "First Name:";
             // 
             // firstNameTextBox
             // 
@@ -270,36 +400,19 @@
             this.firstNameTextBox.Size = new System.Drawing.Size(257, 24);
             this.firstNameTextBox.TabIndex = 88;
             // 
-            // isActiveLabel
-            // 
-            isActiveLabel.AutoSize = true;
-            isActiveLabel.Location = new System.Drawing.Point(519, 392);
-            isActiveLabel.Name = "isActiveLabel";
-            isActiveLabel.Size = new System.Drawing.Size(66, 18);
-            isActiveLabel.TabIndex = 91;
-            isActiveLabel.Text = "Is Active:";
-            // 
             // isActiveComboBox
             // 
             this.isActiveComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "IsActive", true));
             this.isActiveComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.isActiveComboBox.FormattingEnabled = true;
             this.isActiveComboBox.Items.AddRange(new object[] {
+            "",
             "0",
             "1"});
             this.isActiveComboBox.Location = new System.Drawing.Point(634, 389);
             this.isActiveComboBox.Name = "isActiveComboBox";
             this.isActiveComboBox.Size = new System.Drawing.Size(257, 26);
             this.isActiveComboBox.TabIndex = 92;
-            // 
-            // lastNameLabel
-            // 
-            lastNameLabel.AutoSize = true;
-            lastNameLabel.Location = new System.Drawing.Point(112, 308);
-            lastNameLabel.Name = "lastNameLabel";
-            lastNameLabel.Size = new System.Drawing.Size(84, 18);
-            lastNameLabel.TabIndex = 93;
-            lastNameLabel.Text = "Last Name:";
             // 
             // lastNameTextBox
             // 
@@ -308,15 +421,6 @@
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(257, 24);
             this.lastNameTextBox.TabIndex = 94;
-            // 
-            // nurseIDLabel
-            // 
-            nurseIDLabel.AutoSize = true;
-            nurseIDLabel.Location = new System.Drawing.Point(112, 216);
-            nurseIDLabel.Name = "nurseIDLabel";
-            nurseIDLabel.Size = new System.Drawing.Size(70, 18);
-            nurseIDLabel.TabIndex = 95;
-            nurseIDLabel.Text = "Nurse ID:";
             // 
             // nurseIDTextBox
             // 
@@ -327,15 +431,6 @@
             this.nurseIDTextBox.Size = new System.Drawing.Size(257, 24);
             this.nurseIDTextBox.TabIndex = 96;
             // 
-            // passwordLabel
-            // 
-            passwordLabel.AutoSize = true;
-            passwordLabel.Location = new System.Drawing.Point(114, 500);
-            passwordLabel.Name = "passwordLabel";
-            passwordLabel.Size = new System.Drawing.Size(79, 18);
-            passwordLabel.TabIndex = 97;
-            passwordLabel.Text = "Password:";
-            // 
             // passwordTextBox
             // 
             this.passwordTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "Password", true));
@@ -343,15 +438,6 @@
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(257, 24);
             this.passwordTextBox.TabIndex = 98;
-            // 
-            // phoneLabel
-            // 
-            phoneLabel.AutoSize = true;
-            phoneLabel.Location = new System.Drawing.Point(519, 345);
-            phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new System.Drawing.Size(55, 18);
-            phoneLabel.TabIndex = 99;
-            phoneLabel.Text = "Phone:";
             // 
             // phoneTextBox
             // 
@@ -361,36 +447,19 @@
             this.phoneTextBox.Size = new System.Drawing.Size(257, 24);
             this.phoneTextBox.TabIndex = 100;
             // 
-            // sexLabel
-            // 
-            sexLabel.AutoSize = true;
-            sexLabel.Location = new System.Drawing.Point(112, 405);
-            sexLabel.Name = "sexLabel";
-            sexLabel.Size = new System.Drawing.Size(37, 18);
-            sexLabel.TabIndex = 103;
-            sexLabel.Text = "Sex:";
-            // 
             // sexComboBox
             // 
             this.sexComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "Sex", true));
             this.sexComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sexComboBox.FormattingEnabled = true;
             this.sexComboBox.Items.AddRange(new object[] {
+            "",
             "M",
             "F"});
             this.sexComboBox.Location = new System.Drawing.Point(227, 402);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(257, 26);
             this.sexComboBox.TabIndex = 104;
-            // 
-            // sSNLabel
-            // 
-            sSNLabel.AutoSize = true;
-            sSNLabel.Location = new System.Drawing.Point(112, 345);
-            sSNLabel.Name = "sSNLabel";
-            sSNLabel.Size = new System.Drawing.Size(43, 18);
-            sSNLabel.TabIndex = 105;
-            sSNLabel.Text = "SSN:";
             // 
             // sSNTextBox
             // 
@@ -400,21 +469,13 @@
             this.sSNTextBox.Size = new System.Drawing.Size(257, 24);
             this.sSNTextBox.TabIndex = 106;
             // 
-            // stateLabel
-            // 
-            stateLabel.AutoSize = true;
-            stateLabel.Location = new System.Drawing.Point(519, 279);
-            stateLabel.Name = "stateLabel";
-            stateLabel.Size = new System.Drawing.Size(46, 18);
-            stateLabel.TabIndex = 107;
-            stateLabel.Text = "State:";
-            // 
             // stateComboBox
             // 
             this.stateComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "State", true));
             this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.stateComboBox.FormattingEnabled = true;
             this.stateComboBox.Items.AddRange(new object[] {
+            "",
             "AL",
             "AK",
             "AZ",
@@ -470,15 +531,6 @@
             this.stateComboBox.Size = new System.Drawing.Size(257, 26);
             this.stateComboBox.TabIndex = 108;
             // 
-            // usernameLabel
-            // 
-            usernameLabel.AutoSize = true;
-            usernameLabel.Location = new System.Drawing.Point(112, 375);
-            usernameLabel.Name = "usernameLabel";
-            usernameLabel.Size = new System.Drawing.Size(81, 18);
-            usernameLabel.TabIndex = 109;
-            usernameLabel.Text = "Username:";
-            // 
             // usernameTextBox
             // 
             this.usernameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "Username", true));
@@ -487,15 +539,6 @@
             this.usernameTextBox.Size = new System.Drawing.Size(257, 24);
             this.usernameTextBox.TabIndex = 110;
             // 
-            // zipLabel
-            // 
-            zipLabel.AutoSize = true;
-            zipLabel.Location = new System.Drawing.Point(519, 315);
-            zipLabel.Name = "zipLabel";
-            zipLabel.Size = new System.Drawing.Size(32, 18);
-            zipLabel.TabIndex = 111;
-            zipLabel.Text = "Zip:";
-            // 
             // zipTextBox
             // 
             this.zipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "Zip", true));
@@ -503,45 +546,6 @@
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(257, 24);
             this.zipTextBox.TabIndex = 112;
-            // 
-            // nurseBindingSource
-            // 
-            this.nurseBindingSource.DataSource = typeof(ClinicManagementApp.Model.Nurse);
-            // 
-            // nurseIDDataGridViewTextBoxColumn
-            // 
-            this.nurseIDDataGridViewTextBoxColumn.DataPropertyName = "NurseID";
-            this.nurseIDDataGridViewTextBoxColumn.HeaderText = "Nurse ID";
-            this.nurseIDDataGridViewTextBoxColumn.Name = "nurseIDDataGridViewTextBoxColumn";
-            this.nurseIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last Name";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "First Name";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // isActiveDataGridViewTextBoxColumn
-            // 
-            this.isActiveDataGridViewTextBoxColumn.DataPropertyName = "IsActive";
-            this.isActiveDataGridViewTextBoxColumn.HeaderText = "Active Status";
-            this.isActiveDataGridViewTextBoxColumn.Name = "isActiveDataGridViewTextBoxColumn";
-            this.isActiveDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // UpdateNurseUserControl
             // 

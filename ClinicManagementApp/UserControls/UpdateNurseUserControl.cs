@@ -54,7 +54,7 @@ namespace ClinicManagementApp.UserControls
 
         private void UpdateInfoButton_Click(object sender, EventArgs e)
         {
-            if(_nurse != null && CheckUserInput())
+            if(_nurse != null && _nurse.FullName.Length > 0 && CheckUserInput())
             {
                 this.updateMessageLabel.Text = "";
 
@@ -88,6 +88,10 @@ namespace ClinicManagementApp.UserControls
                     this.updateMessageLabel.ForeColor= Color.Red;
                     this.updateMessageLabel.Text = "Nurse not been updated.";
                 }
+            } 
+            else
+            {
+                this.updateMessageLabel.Text = "Nurse is not in database. Please add nurse first.";
             }
         }
 
@@ -151,6 +155,18 @@ namespace ClinicManagementApp.UserControls
                 canUpdate = false;
             }
             return canUpdate;
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            var nurse = new Nurse();
+            nurseBindingSource.DataSource = nurse;
+            nurseBindingSource.ResetBindings(true);
+            stateComboBox.SelectedIndex = 0;
+            sexComboBox.SelectedIndex = 0;
+            isActiveComboBox.SelectedIndex = 0;
+            this.updateMessageLabel.Text = "";
+            this.messageLabel.Text = "";
         }
     }
 }
