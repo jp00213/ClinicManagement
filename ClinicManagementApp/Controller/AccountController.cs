@@ -41,6 +41,17 @@ namespace ClinicManagementApp.Controller
         }
 
         /// <summary>
+        /// Checks if a username is taken in the database already
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns>True if username is NOT in database</returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public bool IsUsernameUnique(string username)
+        {
+            return this._accountDAL.IsUsernameUnique(username);
+        }
+
+        /// <summary>
         ///  Updates username and password in database for a nurse
         /// </summary>
         /// /// /// <param name="nurseID">nurse to update</param>

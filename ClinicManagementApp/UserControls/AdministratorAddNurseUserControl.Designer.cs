@@ -67,6 +67,8 @@
             this.cityErrorMessageLabel = new System.Windows.Forms.Label();
             this.stateErrorMessageLabel = new System.Windows.Forms.Label();
             this.ssnErrorMessageLabel = new System.Windows.Forms.Label();
+            this.usernameErrorMessageLabel = new System.Windows.Forms.Label();
+            this.passwordErrorMessageLabel = new System.Windows.Forms.Label();
             addressStreetLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
             dateOfBirthLabel = new System.Windows.Forms.Label();
@@ -494,10 +496,30 @@
             this.ssnErrorMessageLabel.Size = new System.Drawing.Size(0, 18);
             this.ssnErrorMessageLabel.TabIndex = 60;
             // 
+            // usernameErrorMessageLabel
+            // 
+            this.usernameErrorMessageLabel.AutoSize = true;
+            this.usernameErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameErrorMessageLabel.Location = new System.Drawing.Point(49, 393);
+            this.usernameErrorMessageLabel.Name = "usernameErrorMessageLabel";
+            this.usernameErrorMessageLabel.Size = new System.Drawing.Size(0, 18);
+            this.usernameErrorMessageLabel.TabIndex = 61;
+            // 
+            // passwordErrorMessageLabel
+            // 
+            this.passwordErrorMessageLabel.AutoSize = true;
+            this.passwordErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordErrorMessageLabel.Location = new System.Drawing.Point(400, 393);
+            this.passwordErrorMessageLabel.Name = "passwordErrorMessageLabel";
+            this.passwordErrorMessageLabel.Size = new System.Drawing.Size(0, 18);
+            this.passwordErrorMessageLabel.TabIndex = 62;
+            // 
             // AdministratorAddNurseUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.passwordErrorMessageLabel);
+            this.Controls.Add(this.usernameErrorMessageLabel);
             this.Controls.Add(this.ssnErrorMessageLabel);
             this.Controls.Add(this.stateErrorMessageLabel);
             this.Controls.Add(this.cityErrorMessageLabel);
@@ -571,5 +593,7 @@
         private System.Windows.Forms.Label cityErrorMessageLabel;
         private System.Windows.Forms.Label stateErrorMessageLabel;
         private System.Windows.Forms.Label ssnErrorMessageLabel;
+        private System.Windows.Forms.Label usernameErrorMessageLabel;
+        private System.Windows.Forms.Label passwordErrorMessageLabel;
     }
 }

@@ -182,5 +182,35 @@ namespace ClinicManagementApp.DAL
             }
             return successMessage;
         }
+
+        /// <summary>
+        /// Checks if a username is found in the database already
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns>True if username is NOT in database</returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public bool IsUsernameUnique(string username)
+        {
+            bool result = false;
+            string selectStatement =
+                "SELECT Count(*) " +
+                "FROM Account " +
+                "WHERE Username = @Username";
+
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@Username", System.Data.SqlDbType.VarChar);
+                    selectCommand.Parameters["@Username"].Value = username;
+
+                    Int32 count = (Int32)selectCommand.ExecuteScalar();
+                    if (count <= 0) { result = true; }
+                }
+            }
+
+            return result;
+        }
     }
 }
