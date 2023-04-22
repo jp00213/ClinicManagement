@@ -157,8 +157,6 @@ namespace ClinicManagementApp.DAL
                             updateCommand.Transaction = transaction;
                             if (String.IsNullOrEmpty(password))
                             {
-                                
-
                                 updateCommand.Parameters.AddWithValue("@newUsername", newUsername);
                                 updateCommand.Parameters.AddWithValue("@oldUsername", oldUsername);
                             }
@@ -176,7 +174,6 @@ namespace ClinicManagementApp.DAL
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
                         successMessage = ex.Message;
                         transaction.Rollback();
                         return successMessage;
