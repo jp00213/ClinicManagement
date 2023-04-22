@@ -39,5 +39,15 @@ namespace ClinicManagementApp.Controller
         {
             return this._accountDAL.IsUsernamePasswordCorrectForAdministrator(user, pass);
         }
+
+        /// <summary>
+        ///  Updates username and password in database for a nurse
+        /// </summary>
+        /// /// /// <param name="nurseID">nurse to update</param>
+        /// <param name="newUsername">username to update to</param>
+        /// /// <param name="oldUsername">username before update</param>
+        /// /// <param name="password">password to update to</param>
+        /// <returns>true if updated info succeeds</returns>
+        public string UpdateNurseLogin(int nurseID, string newUsername, string oldUsername, string password) => _accountDAL.UpdateNurseLogin(nurseID, newUsername, oldUsername, password);
     }
 }

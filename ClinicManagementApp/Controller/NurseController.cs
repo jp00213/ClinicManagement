@@ -68,6 +68,13 @@ namespace ClinicManagementApp.Controller
         public List<Nurse> GetNurseByName(string firstName, string lastName) => _nurseDAL.GetNurseByName(firstName, lastName);
 
         /// <summary>
+
+        ///  Updates nurse info in nurse and person tables in db
+        /// </summary>
+        /// <param name="nurse">nurse to update</param>
+        /// <returns>true if updated info succeeds</returns>
+        public bool UpdateNurse(Nurse nurse) => _nurseDAL.UpdateNurse(nurse);
+
         /// Adds a nurse to the DB
         /// </summary>
         /// <param name="person"></param>
@@ -80,5 +87,6 @@ namespace ClinicManagementApp.Controller
             if (password == null) throw new ArgumentNullException("Password cannot be null.");
             return this._personDAL.AddPersonAsNurse(person, username, password);
         }
+
     }
 }
