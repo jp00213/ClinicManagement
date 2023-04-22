@@ -1,6 +1,7 @@
 ﻿using ClinicManagementApp.Model;
 using System;
 using System.Data.SqlClient;
+using System.Text;
 using System.Windows.Forms;
 
 namespace ClinicManagementApp.DAL
@@ -194,6 +195,7 @@ namespace ClinicManagementApp.DAL
             Boolean result = false;
             int record = 0;
             int affectedRecords = 0;
+            string hashedPassword = this.HashPassword(password);
 
             string insertStatementAccount = "INSERT INTO account (username, password) " +
                 "VALUES (@username, @password)";
@@ -220,7 +222,7 @@ namespace ClinicManagementApp.DAL
                             insertCommand.Parameters["@username"].Value = username;
 
                             insertCommand.Parameters.Add("@password", System.Data.SqlDbType.VarChar);
-                            insertCommand.Parameters["@password"].Value = record;
+                            insertCommand.Parameters["@password"].Value = hashedPassword;
 
                             insertCommand.ExecuteNonQuery();
 
@@ -308,6 +310,22 @@ namespace ClinicManagementApp.DAL
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Hashes a given password using SHA512, returns hashed password as a string
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        private string HashPassword(string password)
+        {
+            var bytes = new UTF8Encoding().GetBytes(password);
+            byte[] hashBytes;
+            using (var algorithm = new System.Security.Cryptography.SHA512Managed())
+            {
+                hashBytes = algorithm.ComputeHash(bytes);
+            }
+            return Convert.ToBase64String(hashBytes);
         }
     }
 }
