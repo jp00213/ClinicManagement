@@ -56,7 +56,7 @@ namespace ClinicManagementApp.UserControls
 
             if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName) || dateOfBirth > DateTime.Now || string.IsNullOrEmpty(address)
                 || address.Length < 5 || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || state.Length != 2 || !IsValidZipCode(zip)
-                || !IsPhoneNumberValid(phone) || !IsSexValid(sex) || !IsSSNValid(ssn) || !IsUsernameValid(username))
+                || !IsPhoneNumberValid(phone) || !IsSexValid(sex) || !IsSSNValid(ssn) || !IsUsernameValid(username) || !IsPasswordValid(password))
             {
                 this.ShowInvalidErrorMessage();
             }
@@ -148,6 +148,18 @@ namespace ClinicManagementApp.UserControls
                 this.usernameErrorMessageLabel.Text = "Username already taken.";
                 this.usernameErrorMessageLabel.ForeColor = Color.Red;
             }
+
+            if (string.IsNullOrEmpty(usernameTextBox.Text) || string.IsNullOrWhiteSpace(usernameTextBox.Text))
+            {
+                this.usernameErrorMessageLabel.Text = "Enter a valid username.";
+                this.usernameErrorMessageLabel.ForeColor = Color.Red;
+            }
+
+            if (!IsPasswordValid(passwordTextBox.Text))
+            {
+                this.passwordErrorMessageLabel.Text = "Enter a valid password.";
+                this.passwordErrorMessageLabel.ForeColor = Color.Red;
+            }
         }
 
         private bool IsValidZipCode(string zip)
@@ -215,6 +227,12 @@ namespace ClinicManagementApp.UserControls
             return validUsername;
         }
 
+        private bool IsPasswordValid(string password)
+        {
+            bool validPassword = true;
+            return validPassword;
+        }
+
         private void HideInvalidErrorMessages()
         {
             this.lastNameErrorMessageLabel.Text = "";
@@ -227,6 +245,8 @@ namespace ClinicManagementApp.UserControls
             this.zipErrorMessageLabel.Text = "";
             this.sexErrorMessageLabel.Text = "";
             this.ssnErrorMessageLabel.Text = "";
+            this.usernameErrorMessageLabel.Text = "";
+            this.passwordErrorMessageLabel.Text = "";
         }
 
         private void TextBox_TextChanged(object sender, EventArgs e)
