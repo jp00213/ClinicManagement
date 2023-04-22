@@ -1,5 +1,6 @@
 ﻿using ClinicManagementApp.DAL;
 using ClinicManagementApp.Model;
+using System;
 using System.Collections.Generic;
 
 namespace ClinicManagementApp.Controller
@@ -10,6 +11,7 @@ namespace ClinicManagementApp.Controller
     public class NurseController
     {
         private readonly NurseDAL _nurseDAL;
+        private readonly PersonDAL _personDAL;
         private static CurrentUser currentUser;
         
         /// <summary>
@@ -18,6 +20,7 @@ namespace ClinicManagementApp.Controller
         public NurseController()
         {
             this._nurseDAL = new NurseDAL();
+            this._personDAL = new PersonDAL();
             currentUser = new CurrentUser();
         }
 
@@ -63,5 +66,19 @@ namespace ClinicManagementApp.Controller
         /// <param name="firstName"> first name of nurse</param>
         /// <param name="lastName"> last name of nurse</param>
         public List<Nurse> GetNurseByName(string firstName, string lastName) => _nurseDAL.GetNurseByName(firstName, lastName);
+
+        /// <summary>
+        /// Adds a nurse to the DB
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public bool AddNurse(Person person, string username, string password)
+        {
+            if (person == null) throw new ArgumentNullException("Person cannot be null.");
+            if (username == null) throw new ArgumentNullException("Username cannot be null.");
+            if (password == null) throw new ArgumentNullException("Password cannot be null.");
+            return this._personDAL.AddPersonAsNurse(person, username, password);
+        }
     }
 }

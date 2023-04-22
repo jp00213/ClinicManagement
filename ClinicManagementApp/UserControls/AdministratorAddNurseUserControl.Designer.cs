@@ -44,7 +44,7 @@
             this.nurseInformationLabel = new System.Windows.Forms.Label();
             this.addNurseButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
-            this.addressStreetTextBox = new System.Windows.Forms.TextBox();
+            this.addressTextBox = new System.Windows.Forms.TextBox();
             this.cityTextBox = new System.Windows.Forms.TextBox();
             this.dateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
@@ -52,7 +52,7 @@
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.sexComboBox = new System.Windows.Forms.ComboBox();
-            this.sSNTextBox = new System.Windows.Forms.TextBox();
+            this.ssnTextBox = new System.Windows.Forms.TextBox();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
@@ -209,9 +209,10 @@
             this.addNurseButton.Location = new System.Drawing.Point(423, 418);
             this.addNurseButton.Name = "addNurseButton";
             this.addNurseButton.Size = new System.Drawing.Size(125, 35);
-            this.addNurseButton.TabIndex = 24;
+            this.addNurseButton.TabIndex = 14;
             this.addNurseButton.Text = "Add Nurse";
             this.addNurseButton.UseVisualStyleBackColor = true;
+            this.addNurseButton.Click += new System.EventHandler(this.addNurseButton_Click);
             // 
             // clearButton
             // 
@@ -219,17 +220,18 @@
             this.clearButton.Location = new System.Drawing.Point(181, 418);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(133, 35);
-            this.clearButton.TabIndex = 23;
+            this.clearButton.TabIndex = 13;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
-            // addressStreetTextBox
+            // addressTextBox
             // 
-            this.addressStreetTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "AddressStreet", true));
-            this.addressStreetTextBox.Location = new System.Drawing.Point(496, 89);
-            this.addressStreetTextBox.Name = "addressStreetTextBox";
-            this.addressStreetTextBox.Size = new System.Drawing.Size(200, 22);
-            this.addressStreetTextBox.TabIndex = 26;
+            this.addressTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "AddressStreet", true));
+            this.addressTextBox.Location = new System.Drawing.Point(496, 89);
+            this.addressTextBox.Name = "addressTextBox";
+            this.addressTextBox.Size = new System.Drawing.Size(200, 22);
+            this.addressTextBox.TabIndex = 6;
             // 
             // cityTextBox
             // 
@@ -237,7 +239,7 @@
             this.cityTextBox.Location = new System.Drawing.Point(496, 142);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(200, 22);
-            this.cityTextBox.TabIndex = 28;
+            this.cityTextBox.TabIndex = 7;
             // 
             // dateOfBirthDateTimePicker
             // 
@@ -247,7 +249,7 @@
             this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(135, 190);
             this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
             this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(200, 26);
-            this.dateOfBirthDateTimePicker.TabIndex = 30;
+            this.dateOfBirthDateTimePicker.TabIndex = 3;
             // 
             // firstNameTextBox
             // 
@@ -255,7 +257,7 @@
             this.firstNameTextBox.Location = new System.Drawing.Point(135, 89);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(200, 22);
-            this.firstNameTextBox.TabIndex = 32;
+            this.firstNameTextBox.TabIndex = 1;
             // 
             // lastNameTextBox
             // 
@@ -263,7 +265,7 @@
             this.lastNameTextBox.Location = new System.Drawing.Point(135, 142);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(200, 22);
-            this.lastNameTextBox.TabIndex = 34;
+            this.lastNameTextBox.TabIndex = 2;
             // 
             // passwordTextBox
             // 
@@ -271,7 +273,7 @@
             this.passwordTextBox.Location = new System.Drawing.Point(496, 368);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(200, 22);
-            this.passwordTextBox.TabIndex = 36;
+            this.passwordTextBox.TabIndex = 12;
             // 
             // phoneTextBox
             // 
@@ -279,33 +281,86 @@
             this.phoneTextBox.Location = new System.Drawing.Point(135, 239);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(200, 22);
-            this.phoneTextBox.TabIndex = 38;
+            this.phoneTextBox.TabIndex = 4;
             // 
             // sexComboBox
             // 
             this.sexComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "Sex", true));
+            this.sexComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sexComboBox.FormattingEnabled = true;
             this.sexComboBox.Location = new System.Drawing.Point(135, 285);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(200, 24);
-            this.sexComboBox.TabIndex = 42;
+            this.sexComboBox.TabIndex = 5;
             // 
-            // sSNTextBox
+            // ssnTextBox
             // 
-            this.sSNTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "SSN", true));
-            this.sSNTextBox.Location = new System.Drawing.Point(496, 285);
-            this.sSNTextBox.Name = "sSNTextBox";
-            this.sSNTextBox.Size = new System.Drawing.Size(200, 22);
-            this.sSNTextBox.TabIndex = 44;
+            this.ssnTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "SSN", true));
+            this.ssnTextBox.Location = new System.Drawing.Point(496, 285);
+            this.ssnTextBox.Name = "ssnTextBox";
+            this.ssnTextBox.Size = new System.Drawing.Size(200, 22);
+            this.ssnTextBox.TabIndex = 10;
             // 
             // stateComboBox
             // 
             this.stateComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nurseBindingSource, "State", true));
+            this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.stateComboBox.FormattingEnabled = true;
+            this.stateComboBox.Items.AddRange(new object[] {
+            "AL",
+            "AK",
+            "AZ",
+            "AR",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "FL",
+            "GA",
+            "HI",
+            "ID",
+            "IL",
+            "IN",
+            "IA",
+            "KS",
+            "KY",
+            "LA",
+            "ME",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
+            "MT",
+            "NE",
+            "NV",
+            "NH",
+            "NJ",
+            "NM",
+            "NY",
+            "NC",
+            "ND",
+            "OH",
+            "OK",
+            "OR",
+            "PA",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VT",
+            "VA",
+            "WA",
+            "WV",
+            "WI",
+            "WY"});
             this.stateComboBox.Location = new System.Drawing.Point(496, 190);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(200, 24);
-            this.stateComboBox.TabIndex = 46;
+            this.stateComboBox.TabIndex = 8;
             // 
             // usernameTextBox
             // 
@@ -313,7 +368,7 @@
             this.usernameTextBox.Location = new System.Drawing.Point(135, 368);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(200, 22);
-            this.usernameTextBox.TabIndex = 48;
+            this.usernameTextBox.TabIndex = 11;
             // 
             // zipTextBox
             // 
@@ -321,7 +376,7 @@
             this.zipTextBox.Location = new System.Drawing.Point(496, 239);
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(200, 22);
-            this.zipTextBox.TabIndex = 50;
+            this.zipTextBox.TabIndex = 9;
             // 
             // nurseBindingSource
             // 
@@ -332,7 +387,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(addressStreetLabel);
-            this.Controls.Add(this.addressStreetTextBox);
+            this.Controls.Add(this.addressTextBox);
             this.Controls.Add(cityLabel);
             this.Controls.Add(this.cityTextBox);
             this.Controls.Add(dateOfBirthLabel);
@@ -348,7 +403,7 @@
             this.Controls.Add(sexLabel);
             this.Controls.Add(this.sexComboBox);
             this.Controls.Add(sSNLabel);
-            this.Controls.Add(this.sSNTextBox);
+            this.Controls.Add(this.ssnTextBox);
             this.Controls.Add(stateLabel);
             this.Controls.Add(this.stateComboBox);
             this.Controls.Add(usernameLabel);
@@ -372,7 +427,7 @@
         private System.Windows.Forms.Button addNurseButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.BindingSource nurseBindingSource;
-        private System.Windows.Forms.TextBox addressStreetTextBox;
+        private System.Windows.Forms.TextBox addressTextBox;
         private System.Windows.Forms.TextBox cityTextBox;
         private System.Windows.Forms.DateTimePicker dateOfBirthDateTimePicker;
         private System.Windows.Forms.TextBox firstNameTextBox;
@@ -380,7 +435,7 @@
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.TextBox phoneTextBox;
         private System.Windows.Forms.ComboBox sexComboBox;
-        private System.Windows.Forms.TextBox sSNTextBox;
+        private System.Windows.Forms.TextBox ssnTextBox;
         private System.Windows.Forms.ComboBox stateComboBox;
         private System.Windows.Forms.TextBox usernameTextBox;
         private System.Windows.Forms.TextBox zipTextBox;
