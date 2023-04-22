@@ -63,5 +63,12 @@ namespace ClinicManagementApp.Controller
         /// <param name="firstName"> first name of nurse</param>
         /// <param name="lastName"> last name of nurse</param>
         public List<Nurse> GetNurseByName(string firstName, string lastName) => _nurseDAL.GetNurseByName(firstName, lastName);
+
+        /// <summary>
+        ///  Updates nurse info in nurse and person tables in db
+        /// </summary>
+        /// <param name="nurse">nurse to update</param>
+        /// <returns>true if updated info succeeds</returns>
+        public bool UpdateNurse(Nurse nurse) => _nurseDAL.UpdateNurse(nurse);
     }
 }

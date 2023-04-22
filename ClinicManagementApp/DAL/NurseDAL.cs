@@ -2,14 +2,22 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
 
 namespace ClinicManagementApp.DAL
-{
+{ 
     /// <summary>
     /// The DAL that interacts with a database for Nurse objects. 
     /// </summary>
     public class NurseDAL
     {
+        private readonly PersonDAL _personDAL;
+
+        public NurseDAL()
+        {
+            _personDAL = new PersonDAL();
+        }
         /// <summary>
         /// Get nurse by id
         /// </summary>
@@ -167,5 +175,99 @@ namespace ClinicManagementApp.DAL
             return nurses;
         }
 
+        /// <summary>
+        ///  Updates nurse info in nurse and person tables in db
+        /// </summary>
+        /// <param name="nurse">nurse to update</param>
+        /// <returns>true if updated info succeeds</returns>
+        public bool UpdateNurse(Nurse nurse)
+        {
+            bool result = false;
+            int affectedRecords = 0;
+            string updatePersonStatement = 
+                "UPDATE person SET " + 
+                "lastName = @newLastName, " + 
+                "firstName = @newFirstName, " +
+                "birthday = @newBirthday, " + 
+                "addressStreet = @newAddressStreet, " + 
+                "city = @newCity, " + 
+                "state = @newState, "
+                + "zip = @newZip, " + 
+                "phoneNumber = @newPhone, " + 
+                "sex = @newSex, " + 
+                "ssn = @newSSN " + 
+                "WHERE recordID = @oldRecordID";
+
+            string updateNurseStatement = 
+                "UPDATE nurse SET " +
+                "username = @username, " +
+                "activeStatus = @isActive " +
+                "WHERE nurseID = @nurseID";
+            
+            string selectStatement = "SELECT @@ROWCOUNT";
+
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        using (SqlCommand updateCommand = new SqlCommand(updatePersonStatement, connection))
+                        {
+                            updateCommand.Transaction = transaction;
+
+                            updateCommand.Parameters.AddWithValue("@oldRecordID", nurse.RecordID);
+                            updateCommand.Parameters.AddWithValue("@newLastName", nurse.LastName);
+                            updateCommand.Parameters.AddWithValue("@newFirstName", nurse.FirstName);
+                            updateCommand.Parameters.AddWithValue("@newBirthday", nurse.DateOfBirth);
+                            updateCommand.Parameters.AddWithValue("@newAddressStreet", nurse.AddressStreet);
+                            updateCommand.Parameters.AddWithValue("@newCity", nurse.City);
+                            updateCommand.Parameters.AddWithValue("@newState", nurse.State);
+                            updateCommand.Parameters.AddWithValue("@newZip", nurse.Zip);
+                            updateCommand.Parameters.AddWithValue("@newPhone", nurse.Phone);
+                            updateCommand.Parameters.AddWithValue("@newSex", nurse.Sex);
+                            if (nurse.SSN == "")
+                            {
+                                updateCommand.Parameters.AddWithValue("@newSSN", DBNull.Value);
+                            }
+                            else
+                            {
+                                updateCommand.Parameters.AddWithValue("@newSSN", nurse.SSN);
+                            }
+
+                            updateCommand.ExecuteNonQuery();
+
+                            using(SqlCommand updateNurseCommand = new SqlCommand(updateNurseStatement, connection))
+                            {
+                                updateNurseCommand.Transaction = transaction;
+
+                                updateNurseCommand.Parameters.AddWithValue("@nurseID", nurse.NurseID);
+                                updateNurseCommand.Parameters.AddWithValue("@username", nurse.Username);
+                                updateNurseCommand.Parameters.AddWithValue("@isActive", nurse.IsActive);
+
+                                updateNurseCommand.ExecuteNonQuery();
+                            }
+
+                            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+                            selectCommand.Transaction = transaction;
+                            using (selectCommand)
+                            {
+                                affectedRecords = Convert.ToInt32(selectCommand.ExecuteScalar());
+                            }
+
+                            result = affectedRecords > 0;
+                            transaction.Commit();
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        transaction.Rollback();
+                    }
+                }
+            }
+            return result;
+        }
     }
 }
