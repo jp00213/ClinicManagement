@@ -24,7 +24,7 @@ namespace ClinicManagementApp.UserControls
 
             this.nurseDataGridView.DataSource = nurseList;
 
-            if(nurseList.Count == 0)
+            if (nurseList.Count == 0)
             {
                 messageLabel.Text = "No nurses found.";
             }
@@ -34,16 +34,19 @@ namespace ClinicManagementApp.UserControls
         {
             try
             {
-                var nurseID = nurseDataGridView.SelectedRows[0].Cells[0].Value.ToString();
-                Nurse nurse = this._nurseController.GetNurseByID(Int32.Parse(nurseID));
-
-                if (nurse != null)
+                if (nurseDataGridView.SelectedRows.Count > 0)
                 {
-                    nurseBindingSource1.DataSource = nurse;
-                    nurseBindingSource1.ResetBindings(true);
+                    var nurseID = nurseDataGridView.SelectedRows[0].Cells[0].Value.ToString();
+                    Nurse nurse = this._nurseController.GetNurseByID(Int32.Parse(nurseID));
+
+                    if (nurse != null)
+                    {
+                        nurseBindingSource1.DataSource = nurse;
+                        nurseBindingSource1.ResetBindings(true);
+                    }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

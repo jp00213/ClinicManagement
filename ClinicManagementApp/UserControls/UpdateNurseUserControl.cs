@@ -16,6 +16,7 @@ namespace ClinicManagementApp.UserControls
             InitializeComponent();
             _nurseController = new NurseController();
             _nurse = new Nurse();
+            this.dateOfBirthDateTimePicker.MaxDate = DateTime.Now;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -37,13 +38,16 @@ namespace ClinicManagementApp.UserControls
         {
             try
             {
-                var nurseID = nurseDataGridView.SelectedRows[0].Cells[0].Value.ToString();
-                _nurse = this._nurseController.GetNurseByID(Int32.Parse(nurseID));
-
-                if (_nurse != null)
+                if (nurseDataGridView.SelectedRows.Count > 0)
                 {
-                    nurseBindingSource.DataSource = _nurse;
-                    nurseBindingSource.ResetBindings(true);
+                    var nurseID = nurseDataGridView.SelectedRows[0].Cells[0].Value.ToString();
+                    _nurse = this._nurseController.GetNurseByID(Int32.Parse(nurseID));
+
+                    if (_nurse != null)
+                    {
+                        nurseBindingSource.DataSource = _nurse;
+                        nurseBindingSource.ResetBindings(true);
+                    }
                 }
             }
             catch (Exception ex)
@@ -54,7 +58,7 @@ namespace ClinicManagementApp.UserControls
 
         private void UpdateInfoButton_Click(object sender, EventArgs e)
         {
-            if(_nurse != null && _nurse.FullName.Length > 0 && CheckUserInput())
+            if (CheckUserInput())
             {
                 this.updateMessageLabel.Text = "";
 
@@ -85,13 +89,9 @@ namespace ClinicManagementApp.UserControls
                 }
                 else
                 {
-                    this.updateMessageLabel.ForeColor= Color.Red;
+                    this.updateMessageLabel.ForeColor = Color.Red;
                     this.updateMessageLabel.Text = "Nurse not been updated.";
                 }
-            } 
-            else
-            {
-                this.updateMessageLabel.Text = "Nurse is not in database. Please add nurse first.";
             }
         }
 
@@ -100,17 +100,22 @@ namespace ClinicManagementApp.UserControls
             bool canUpdate = true;
             this.updateMessageLabel.ForeColor = Color.Red;
 
-            if (lastNameTextBox.Text.Length == 0)
+            if(String.IsNullOrEmpty(_nurse.LastName))
+            {
+                this.updateMessageLabel.Text = "Nurse is not in database. Please add nurse.";
+                canUpdate = false;
+            }
+            else if (lastNameTextBox.Text.Length == 0)
             {
                 this.updateMessageLabel.Text = "Last name cannot be blank.";
                 canUpdate = false;
-            } 
-            else if(firstNameTextBox.Text.Length == 0)
+            }
+            else if (firstNameTextBox.Text.Length == 0)
             {
                 this.updateMessageLabel.Text = "First name cannot be blank.";
                 canUpdate = false;
             }
-            else if(dateOfBirthDateTimePicker.Value == DateTime.MinValue)
+            else if (dateOfBirthDateTimePicker.Value == DateTime.MinValue)
             {
                 this.updateMessageLabel.Text = "Date of birth cannot be blank.";
                 canUpdate = false;
@@ -120,36 +125,37 @@ namespace ClinicManagementApp.UserControls
                 this.updateMessageLabel.Text = "Username cannot be blank.";
                 canUpdate = false;
             }
-            else if(addressStreetTextBox.Text.Length == 0)
+            else if (addressStreetTextBox.Text.Length == 0)
             {
                 this.updateMessageLabel.Text = "Street Address cannot be blank.";
                 canUpdate = false;
             }
-            else if(cityTextBox.Text.Length == 0)
+            else if (cityTextBox.Text.Length == 0)
             {
                 this.updateMessageLabel.Text = "City cannot be blank.";
                 canUpdate = false;
             }
-            else if(stateComboBox.Text.Length == 0)
+            else if (stateComboBox.Text.Length == 0)
             {
                 this.updateMessageLabel.Text = "State cannot be blank.";
                 canUpdate = false;
             }
-            else if(zipTextBox.Text.Length == 0 || zipTextBox.Text.Length > 10)
+            else if (zipTextBox.Text.Length == 0 || zipTextBox.Text.Length > 10)
             {
                 this.updateMessageLabel.Text = "Zip code cannot be blank and has maximum 10 characters.";
                 canUpdate = false;
             }
-            else if(sexComboBox.Text.Length == 0)
+            else if (sexComboBox.Text.Length == 0)
             {
                 this.updateMessageLabel.Text = "Sex cannot be blank.";
                 canUpdate = false;
             }
-            else if(phoneTextBox.Text.Length == 0 || phoneTextBox.Text.Length > 10)
+            else if (phoneTextBox.Text.Length == 0 || phoneTextBox.Text.Length > 10)
             {
                 this.updateMessageLabel.Text = "Phone number cannot be blank. Max characters is 10.";
                 canUpdate = false;
-            } else if(isActiveComboBox.Text.Length == 0)
+            }
+            else if (isActiveComboBox.Text.Length == 0)
             {
                 this.updateMessageLabel.Text = "Active Status cannot be blank.";
                 canUpdate = false;

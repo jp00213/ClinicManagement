@@ -50,12 +50,6 @@
             this.searchFirstNameTextBox = new System.Windows.Forms.TextBox();
             this.searchLastNameTextBox = new System.Windows.Forms.TextBox();
             this.nurseDataGridView = new System.Windows.Forms.DataGridView();
-            this.nurseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isActiveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.updateInfoButton = new System.Windows.Forms.Button();
             this.updatePasswordButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
@@ -74,6 +68,12 @@
             this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
+            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nurseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isActiveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             addressStreetLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
             dateOfBirthLabel = new System.Windows.Forms.Label();
@@ -291,45 +291,6 @@
             this.nurseDataGridView.TabIndex = 40;
             this.nurseDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.NurseDataGridView_CellClick);
             // 
-            // nurseIDDataGridViewTextBoxColumn
-            // 
-            this.nurseIDDataGridViewTextBoxColumn.DataPropertyName = "NurseID";
-            this.nurseIDDataGridViewTextBoxColumn.HeaderText = "Nurse ID";
-            this.nurseIDDataGridViewTextBoxColumn.Name = "nurseIDDataGridViewTextBoxColumn";
-            this.nurseIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last Name";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "First Name";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // isActiveDataGridViewTextBoxColumn
-            // 
-            this.isActiveDataGridViewTextBoxColumn.DataPropertyName = "IsActive";
-            this.isActiveDataGridViewTextBoxColumn.HeaderText = "Active Status";
-            this.isActiveDataGridViewTextBoxColumn.Name = "isActiveDataGridViewTextBoxColumn";
-            this.isActiveDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nurseBindingSource
-            // 
-            this.nurseBindingSource.DataSource = typeof(ClinicManagementApp.Model.Nurse);
-            // 
             // updateInfoButton
             // 
             this.updateInfoButton.Location = new System.Drawing.Point(107, 448);
@@ -387,9 +348,10 @@
             // dateOfBirthDateTimePicker
             // 
             this.dateOfBirthDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.nurseBindingSource, "DateOfBirth", true));
+            this.dateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(227, 243);
             this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
-            this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(257, 24);
+            this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(113, 24);
             this.dateOfBirthDateTimePicker.TabIndex = 86;
             // 
             // firstNameTextBox
@@ -546,6 +508,45 @@
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(257, 24);
             this.zipTextBox.TabIndex = 112;
+            // 
+            // nurseBindingSource
+            // 
+            this.nurseBindingSource.DataSource = typeof(ClinicManagementApp.Model.Nurse);
+            // 
+            // nurseIDDataGridViewTextBoxColumn
+            // 
+            this.nurseIDDataGridViewTextBoxColumn.DataPropertyName = "NurseID";
+            this.nurseIDDataGridViewTextBoxColumn.HeaderText = "Nurse ID";
+            this.nurseIDDataGridViewTextBoxColumn.Name = "nurseIDDataGridViewTextBoxColumn";
+            this.nurseIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last Name";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "First Name";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // usernameDataGridViewTextBoxColumn
+            // 
+            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
+            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
+            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isActiveDataGridViewTextBoxColumn
+            // 
+            this.isActiveDataGridViewTextBoxColumn.DataPropertyName = "IsActive";
+            this.isActiveDataGridViewTextBoxColumn.HeaderText = "Active Status";
+            this.isActiveDataGridViewTextBoxColumn.Name = "isActiveDataGridViewTextBoxColumn";
+            this.isActiveDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // UpdateNurseUserControl
             // 
