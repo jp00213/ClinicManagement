@@ -7,11 +7,18 @@ using System.Windows.Forms;
 
 namespace ClinicManagementApp.UserControls
 {
+    /// <summary>
+    /// this class manages usercontrol for updating nurse information
+    /// </summary>
     public partial class UpdateNurseUserControl : UserControl
     {
         private readonly NurseController _nurseController;
         private readonly AccountController _accountController;
         private Nurse _nurse;
+
+        /// <summary>
+        /// create constructors
+        /// </summary>
         public UpdateNurseUserControl()
         {
             InitializeComponent();

@@ -6,9 +6,16 @@ using System.Windows.Forms;
 
 namespace ClinicManagementApp.UserControls
 {
+    /// <summary>
+    /// this class manages usercontrol for viewing nurse information
+    /// </summary>
     public partial class ViewNurseUserControl : UserControl
     {
         private readonly NurseController _nurseController;
+
+        /// <summary>
+        /// create constructors
+        /// </summary>
         public ViewNurseUserControl()
         {
             InitializeComponent();
