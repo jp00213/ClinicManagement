@@ -68,6 +68,7 @@
             this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
+            this.loginMessageLabel = new System.Windows.Forms.Label();
             this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nurseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -203,7 +204,7 @@
             // usernameLabel
             // 
             usernameLabel.AutoSize = true;
-            usernameLabel.Location = new System.Drawing.Point(112, 470);
+            usernameLabel.Location = new System.Drawing.Point(114, 470);
             usernameLabel.Name = "usernameLabel";
             usernameLabel.Size = new System.Drawing.Size(81, 18);
             usernameLabel.TabIndex = 109;
@@ -309,6 +310,7 @@
             this.updatePasswordButton.TabIndex = 79;
             this.updatePasswordButton.Text = "Update Login";
             this.updatePasswordButton.UseVisualStyleBackColor = true;
+            this.updatePasswordButton.Click += new System.EventHandler(this.UpdatePasswordButton_Click);
             // 
             // clearButton
             // 
@@ -324,7 +326,7 @@
             // 
             this.updateMessageLabel.AutoSize = true;
             this.updateMessageLabel.ForeColor = System.Drawing.Color.Red;
-            this.updateMessageLabel.Location = new System.Drawing.Point(126, 467);
+            this.updateMessageLabel.Location = new System.Drawing.Point(519, 422);
             this.updateMessageLabel.Name = "updateMessageLabel";
             this.updateMessageLabel.Size = new System.Drawing.Size(0, 18);
             this.updateMessageLabel.TabIndex = 81;
@@ -368,7 +370,6 @@
             this.isActiveComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.isActiveComboBox.FormattingEnabled = true;
             this.isActiveComboBox.Items.AddRange(new object[] {
-            "",
             "0",
             "1"});
             this.isActiveComboBox.Location = new System.Drawing.Point(634, 375);
@@ -509,6 +510,15 @@
             this.zipTextBox.Size = new System.Drawing.Size(257, 24);
             this.zipTextBox.TabIndex = 112;
             // 
+            // loginMessageLabel
+            // 
+            this.loginMessageLabel.AutoSize = true;
+            this.loginMessageLabel.ForeColor = System.Drawing.Color.Red;
+            this.loginMessageLabel.Location = new System.Drawing.Point(519, 467);
+            this.loginMessageLabel.Name = "loginMessageLabel";
+            this.loginMessageLabel.Size = new System.Drawing.Size(0, 18);
+            this.loginMessageLabel.TabIndex = 113;
+            // 
             // nurseBindingSource
             // 
             this.nurseBindingSource.DataSource = typeof(ClinicManagementApp.Model.Nurse);
@@ -552,6 +562,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.loginMessageLabel);
             this.Controls.Add(addressStreetLabel);
             this.Controls.Add(this.addressStreetTextBox);
             this.Controls.Add(cityLabel);
@@ -635,5 +646,6 @@
         private System.Windows.Forms.ComboBox stateComboBox;
         private System.Windows.Forms.TextBox usernameTextBox;
         private System.Windows.Forms.TextBox zipTextBox;
+        private System.Windows.Forms.Label loginMessageLabel;
     }
 }

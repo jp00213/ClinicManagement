@@ -10,6 +10,7 @@ namespace ClinicManagementApp.UserControls
     public partial class UpdateNurseUserControl : UserControl
     {
         private readonly NurseController _nurseController;
+        private readonly AccountController _accountController;
         private Nurse _nurse;
         public UpdateNurseUserControl()
         {
@@ -17,11 +18,14 @@ namespace ClinicManagementApp.UserControls
             _nurseController = new NurseController();
             _nurse = new Nurse();
             this.dateOfBirthDateTimePicker.MaxDate = DateTime.Now;
+            _accountController = new AccountController();
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
             messageLabel.Text = "";
+            this.updateMessageLabel.Text = "";
+            this.loginMessageLabel.Text = "";
             var firstName = this.searchFirstNameTextBox.Text;
             var lastName = this.searchLastNameTextBox.Text;
             List<Nurse> nurseList = _nurseController.GetNurseByName(firstName, lastName);
@@ -58,6 +62,10 @@ namespace ClinicManagementApp.UserControls
 
         private void UpdateInfoButton_Click(object sender, EventArgs e)
         {
+            messageLabel.Text = "";
+            this.updateMessageLabel.Text = "";
+            this.loginMessageLabel.Text = "";
+
             if (CheckUserInput())
             {
                 this.updateMessageLabel.Text = "";
@@ -84,6 +92,7 @@ namespace ClinicManagementApp.UserControls
 
                 if (updateSuccess)
                 {
+                    SetNurse();
                     this.updateMessageLabel.ForeColor = Color.Green;
                     this.updateMessageLabel.Text = "Nurse has been updated.";
                 }
@@ -100,7 +109,7 @@ namespace ClinicManagementApp.UserControls
             bool canUpdate = true;
             this.updateMessageLabel.ForeColor = Color.Red;
 
-            if(String.IsNullOrEmpty(_nurse.LastName))
+            if (String.IsNullOrEmpty(_nurse.LastName))
             {
                 this.updateMessageLabel.Text = "Nurse is not in database. Please add nurse.";
                 canUpdate = false;
@@ -145,12 +154,17 @@ namespace ClinicManagementApp.UserControls
                 this.updateMessageLabel.Text = "Sex cannot be blank.";
                 canUpdate = false;
             }
+            else if(sSNTextBox.Text.Length > 9)
+            {
+                this.updateMessageLabel.Text = "SSN cannot be more than 9 characters.";
+                canUpdate = false;
+            }
             else if (phoneTextBox.Text.Length == 0 || phoneTextBox.Text.Length > 10)
             {
                 this.updateMessageLabel.Text = "Phone number cannot be blank. Max characters is 10.";
                 canUpdate = false;
             }
-            else if (isActiveComboBox.Text.Length == 0)
+            else if (isActiveComboBox.Text == "")
             {
                 this.updateMessageLabel.Text = "Active Status cannot be blank.";
                 canUpdate = false;
@@ -165,17 +179,12 @@ namespace ClinicManagementApp.UserControls
 
             if (String.IsNullOrEmpty(_nurse.LastName))
             {
-                this.updateMessageLabel.Text = "Nurse is not in database. Please add nurse.";
+                this.loginMessageLabel.Text = "Nurse is not in database. Please add nurse.";
                 canUpdate = false;
             }
             else if (usernameTextBox.Text.Length == 0)
             {
-                this.updateMessageLabel.Text = "Username cannot be blank.";
-                canUpdate = false;
-            }
-            else if(passwordTextBox.Text.Length == 0)
-            {
-                this.updateMessageLabel.Text = "Password cannot be blank.";
+                this.loginMessageLabel.Text = "Username cannot be blank.";
                 canUpdate = false;
             }
             return canUpdate;
@@ -188,9 +197,63 @@ namespace ClinicManagementApp.UserControls
             nurseBindingSource.ResetBindings(true);
             stateComboBox.SelectedIndex = 0;
             sexComboBox.SelectedIndex = 0;
-            isActiveComboBox.SelectedIndex = 0;
             this.updateMessageLabel.Text = "";
+            this.loginMessageLabel.Text = "";
             this.messageLabel.Text = "";
+        }
+
+        private void UpdatePasswordButton_Click(object sender, EventArgs e)
+        {
+            messageLabel.Text = "";
+            this.updateMessageLabel.Text = "";
+            this.loginMessageLabel.Text = "";
+
+            if (CheckLoginInput())
+            {
+                string updateUsernamePassword = _accountController.UpdateNurseLogin(_nurse.NurseID,
+                    this.usernameTextBox.Text, _nurse.Username, this.passwordTextBox.Text);
+
+                if (String.IsNullOrEmpty(updateUsernamePassword) && this.passwordTextBox.Text.Length > 0)
+                {
+                    SetNurse();
+                    this.loginMessageLabel.ForeColor = Color.Green;
+                    this.loginMessageLabel.Text = "Username and Password have been updated.";
+                }
+                else if (String.IsNullOrEmpty(updateUsernamePassword) && this.passwordTextBox.Text.Length == 0)
+                {
+                    SetNurse();
+                    this.loginMessageLabel.ForeColor = Color.Green;
+                    this.loginMessageLabel.Text = "Username has been updated.";
+                }
+                else if (updateUsernamePassword.Contains("duplicate key"))
+                {
+                    this.loginMessageLabel.ForeColor = Color.Red;
+                    this.loginMessageLabel.Text = "Username already exists. Choose another username.";
+                }
+                else
+                {
+                    this.loginMessageLabel.Text = updateUsernamePassword;
+                }
+            }
+        }
+
+        private void SetNurse()
+        {
+            try
+            {
+                var nurseID = this.nurseIDTextBox.Text;
+                _nurse = this._nurseController.GetNurseByID(Int32.Parse(nurseID));
+
+                if (_nurse != null)
+                {
+                    nurseBindingSource.DataSource = _nurse;
+                    nurseBindingSource.ResetBindings(true);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
