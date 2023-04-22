@@ -1,6 +1,7 @@
 ﻿using ClinicManagementApp.Model;
 using System;
 using System.Data.SqlClient;
+using System.Text;
 using System.Windows.Forms;
 
 namespace ClinicManagementApp.DAL
@@ -189,5 +190,142 @@ namespace ClinicManagementApp.DAL
             return result;
         }
 
+        public bool AddPersonAsNurse(Person person, string username, string password)
+        {
+            Boolean result = false;
+            int record = 0;
+            int affectedRecords = 0;
+            string hashedPassword = this.HashPassword(password);
+
+            string insertStatementAccount = "INSERT INTO account (username, password) " +
+                "VALUES (@username, @password)";
+            string insertStatementPerson = "INSERT INTO person " +
+                "(lastName, firstName, birthday, addressStreet, city, state, zip, phoneNumber, sex, ssn) " +
+                "VALUES (@lastName, @firstName, @birthday, @addressStreet, @city, @state, @zip, @phoneNumber, @sex, @ssn)";
+            string selectStatementRecordID = "SELECT IDENT_CURRENT('person') FROM person";
+            string insertStatementPatient = "INSERT INTO nurse (recordID, username, activeStatus) " +
+                "VALUES (@recordID, @username, 1)";
+            string selectStatementCount = "SELECT @@ROWCOUNT";
+
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        using (SqlCommand insertCommand = new SqlCommand(insertStatementAccount, connection))
+                        {
+                            insertCommand.Transaction = transaction;
+
+                            insertCommand.Parameters.Add("@username", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@username"].Value = username;
+
+                            insertCommand.Parameters.Add("@password", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@password"].Value = hashedPassword;
+
+                            insertCommand.ExecuteNonQuery();
+
+                        }
+
+                        using (SqlCommand insertCommand = new SqlCommand(insertStatementPerson, connection))
+                        {
+                            insertCommand.Transaction = transaction;
+
+                            insertCommand.Parameters.Add("@lastName", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@lastName"].Value = person.LastName;
+
+                            insertCommand.Parameters.Add("@firstName", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@firstName"].Value = person.FirstName;
+
+                            insertCommand.Parameters.Add("@birthday", System.Data.SqlDbType.Date);
+                            insertCommand.Parameters["@birthday"].Value = person.DateOfBirth;
+
+                            insertCommand.Parameters.Add("@addressStreet", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@addressStreet"].Value = person.AddressStreet;
+
+                            insertCommand.Parameters.Add("@city", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@city"].Value = person.City;
+
+                            insertCommand.Parameters.Add("@state", System.Data.SqlDbType.Char);
+                            insertCommand.Parameters["@state"].Value = person.State;
+
+                            insertCommand.Parameters.Add("@zip", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@zip"].Value = person.Zip;
+
+                            insertCommand.Parameters.Add("@phoneNumber", System.Data.SqlDbType.Char);
+                            insertCommand.Parameters["@phoneNumber"].Value = person.Phone;
+
+                            insertCommand.Parameters.Add("@sex", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@sex"].Value = person.Sex;
+
+                            insertCommand.Parameters.Add("@ssn", System.Data.SqlDbType.Char);
+                            if (person.SSN == "")
+                            {
+                                insertCommand.Parameters["@ssn"].Value = DBNull.Value;
+                            }
+                            else
+                            {
+                                insertCommand.Parameters["@ssn"].Value = person.SSN;
+                            }
+
+                            insertCommand.ExecuteNonQuery();
+
+                            SqlCommand selectCommand = new SqlCommand(selectStatementRecordID, connection);
+                            selectCommand.Transaction = transaction;
+                            using (selectCommand)
+                            {
+                                record = Convert.ToInt32(selectCommand.ExecuteScalar());
+                            }
+                        }
+
+                        using (SqlCommand insertCommand = new SqlCommand(insertStatementPatient, connection))
+                        {
+                            insertCommand.Transaction = transaction;
+
+                            insertCommand.Parameters.Add("@recordID", System.Data.SqlDbType.Int);
+                            insertCommand.Parameters["@recordID"].Value = record;
+
+                            insertCommand.Parameters.Add("@username", System.Data.SqlDbType.VarChar);
+                            insertCommand.Parameters["@username"].Value = username;
+
+                            insertCommand.ExecuteNonQuery();
+
+                            SqlCommand selectCommand = new SqlCommand(selectStatementCount, connection);
+                            selectCommand.Transaction = transaction;
+                            using (selectCommand)
+                            {
+                                affectedRecords = Convert.ToInt32(selectCommand.ExecuteScalar());
+                            }
+                        }
+
+                        result = affectedRecords > 0;
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Hashes a given password using SHA512, returns hashed password as a string
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        private string HashPassword(string password)
+        {
+            var bytes = new UTF8Encoding().GetBytes(password);
+            byte[] hashBytes;
+            using (var algorithm = new System.Security.Cryptography.SHA512Managed())
+            {
+                hashBytes = algorithm.ComputeHash(bytes);
+            }
+            return Convert.ToBase64String(hashBytes);
+        }
     }
 }
