@@ -144,10 +144,6 @@ namespace ClinicManagementApp.DAL
                 "password = @passwordHash " +
                 "WHERE username = @oldUsername";
             }
-            string updateNurseStatement =
-                "UPDATE nurse SET " +
-                "username = @newUsername " +
-                "WHERE nurseID = @nurseID";
 
             using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
             {
@@ -158,30 +154,29 @@ namespace ClinicManagementApp.DAL
                     {
                         using (SqlCommand updateCommand = new SqlCommand(updateAccountStatement, connection))
                         {
-                            string passwordHash = this.HashPassword(password);
-
                             updateCommand.Transaction = transaction;
-
-                            updateCommand.Parameters.AddWithValue("@newUsername", newUsername);
-                            updateCommand.Parameters.AddWithValue("@passwordHash", passwordHash);
-                            updateCommand.Parameters.AddWithValue("@oldUsername", oldUsername);
-
-                            updateCommand.ExecuteNonQuery();
-
-                            using (SqlCommand updateNurseCommand = new SqlCommand(updateNurseStatement, connection))
+                            if (String.IsNullOrEmpty(password))
                             {
-                                updateNurseCommand.Transaction = transaction;
+                                
 
-                                updateNurseCommand.Parameters.AddWithValue("@nurseID", nurseID);
-                                updateNurseCommand.Parameters.AddWithValue("@newUsername", newUsername);
-
-                                updateNurseCommand.ExecuteNonQuery();
+                                updateCommand.Parameters.AddWithValue("@newUsername", newUsername);
+                                updateCommand.Parameters.AddWithValue("@oldUsername", oldUsername);
                             }
-                            transaction.Commit();
+                            else
+                            {
+                                string passwordHash = this.HashPassword(password);
+
+                                updateCommand.Parameters.AddWithValue("@newUsername", newUsername);
+                                updateCommand.Parameters.AddWithValue("@passwordHash", passwordHash);
+                                updateCommand.Parameters.AddWithValue("@oldUsername", oldUsername);
+                            }
+                            updateCommand.ExecuteNonQuery();
                         }
+                        transaction.Commit();
                     }
                     catch (Exception ex)
                     {
+                        MessageBox.Show(ex.Message);
                         successMessage = ex.Message;
                         transaction.Rollback();
                         return successMessage;

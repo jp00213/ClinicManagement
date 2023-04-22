@@ -7,11 +7,18 @@ using System.Windows.Forms;
 
 namespace ClinicManagementApp.UserControls
 {
+    /// <summary>
+    /// this class manages usercontrol for updating nurse information
+    /// </summary>
     public partial class UpdateNurseUserControl : UserControl
     {
         private readonly NurseController _nurseController;
         private readonly AccountController _accountController;
         private Nurse _nurse;
+
+        /// <summary>
+        /// create constructors
+        /// </summary>
         public UpdateNurseUserControl()
         {
             InitializeComponent();
@@ -210,8 +217,10 @@ namespace ClinicManagementApp.UserControls
 
             if (CheckLoginInput())
             {
+                Nurse nurse = _nurseController.GetNurseByID(_nurse.NurseID);
+
                 string updateUsernamePassword = _accountController.UpdateNurseLogin(_nurse.NurseID,
-                    this.usernameTextBox.Text, _nurse.Username, this.passwordTextBox.Text);
+                    this.usernameTextBox.Text, nurse.Username, this.passwordTextBox.Text);
 
                 if (String.IsNullOrEmpty(updateUsernamePassword) && this.passwordTextBox.Text.Length > 0)
                 {
