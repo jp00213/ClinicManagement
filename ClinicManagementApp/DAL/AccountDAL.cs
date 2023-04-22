@@ -1,6 +1,8 @@
-﻿using System;
+﻿using ClinicManagementApp.Model;
+using System;
 using System.Data.SqlClient;
 using System.Text;
+using System.Windows.Forms;
 
 namespace ClinicManagementApp.DAL
 {
@@ -114,5 +116,79 @@ namespace ClinicManagementApp.DAL
             return result;
         }
 
+        /// <summary>
+        ///  Updates username and password in database for a nurse
+        /// </summary>
+        /// /// /// <param name="nurseID">nurse to update</param>
+        /// <param name="newUsername">username to update to</param>
+        /// /// <param name="oldUsername">username before update</param>
+        /// /// <param name="password">password to update to</param>
+        /// <returns>true if updated info succeeds</returns>
+        public string UpdateNurseLogin(int nurseID, string newUsername, string oldUsername, string password)
+        {
+            string successMessage = "";
+            string updateAccountStatement = "";
+
+            if(String.IsNullOrEmpty(password))
+            {
+                updateAccountStatement =
+                "UPDATE account SET " +
+                "username = @newUsername " +
+                "WHERE username = @oldUsername";
+            } 
+            else
+            {
+                updateAccountStatement =
+                "UPDATE account SET " +
+                "username = @newUsername, " +
+                "password = @passwordHash " +
+                "WHERE username = @oldUsername";
+            }
+            string updateNurseStatement =
+                "UPDATE nurse SET " +
+                "username = @newUsername " +
+                "WHERE nurseID = @nurseID";
+
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        using (SqlCommand updateCommand = new SqlCommand(updateAccountStatement, connection))
+                        {
+                            string passwordHash = this.HashPassword(password);
+
+                            updateCommand.Transaction = transaction;
+
+                            updateCommand.Parameters.AddWithValue("@newUsername", newUsername);
+                            updateCommand.Parameters.AddWithValue("@passwordHash", passwordHash);
+                            updateCommand.Parameters.AddWithValue("@oldUsername", oldUsername);
+
+                            updateCommand.ExecuteNonQuery();
+
+                            using (SqlCommand updateNurseCommand = new SqlCommand(updateNurseStatement, connection))
+                            {
+                                updateNurseCommand.Transaction = transaction;
+
+                                updateNurseCommand.Parameters.AddWithValue("@nurseID", nurseID);
+                                updateNurseCommand.Parameters.AddWithValue("@newUsername", newUsername);
+
+                                updateNurseCommand.ExecuteNonQuery();
+                            }
+                            transaction.Commit();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        successMessage = ex.Message;
+                        transaction.Rollback();
+                        return successMessage;
+                    }
+                }
+            }
+            return successMessage;
+        }
     }
 }
