@@ -210,8 +210,10 @@ namespace ClinicManagementApp.UserControls
 
             if (CheckLoginInput())
             {
+                Nurse nurse = _nurseController.GetNurseByID(_nurse.NurseID);
+
                 string updateUsernamePassword = _accountController.UpdateNurseLogin(_nurse.NurseID,
-                    this.usernameTextBox.Text, _nurse.Username, this.passwordTextBox.Text);
+                    this.usernameTextBox.Text, nurse.Username, this.passwordTextBox.Text);
 
                 if (String.IsNullOrEmpty(updateUsernamePassword) && this.passwordTextBox.Text.Length > 0)
                 {
