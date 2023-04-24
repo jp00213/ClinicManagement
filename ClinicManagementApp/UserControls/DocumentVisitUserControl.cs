@@ -164,7 +164,7 @@ namespace ClinicManagementApp.UserControls
             {
                 foreach (LabTest lab in labs)
                 {
-                    LabTest currentLab = new LabTest(visitID, lab.TestCode, DateTime.Now, "PENDING", lab.TestName, 0, DateTime.Now);
+                    LabTest currentLab = new LabTest(visitID, lab.TestCode, new DateTime(1900, 1, 1), "", lab.TestName, 0, DateTime.Now);
                     this._labController.AddLabTest(currentLab);
                 }
                 MessageBox.Show("Visit notes saved and labs have been ordered!", "Visit Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
