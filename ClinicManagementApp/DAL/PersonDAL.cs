@@ -100,7 +100,6 @@ namespace ClinicManagementApp.DAL
                 "VALUES (@lastName, @firstName, @birthday, @addressStreet, @city, @state, @zip, @phoneNumber, @sex, @ssn)";
             string selectStatementRecordID = "SELECT IDENT_CURRENT('person') FROM person";
             string insertStatementPatient = "INSERT INTO patient (recordID) VALUES (@recordID)";
-            string selectStatementCount = "SELECT @@ROWCOUNT";
 
             using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
             {
@@ -167,14 +166,7 @@ namespace ClinicManagementApp.DAL
                             insertCommand.Parameters.Add("@recordID", System.Data.SqlDbType.Int);
                             insertCommand.Parameters["@recordID"].Value = record;
 
-                            insertCommand.ExecuteNonQuery();
-
-                            SqlCommand selectCommand = new SqlCommand(selectStatementCount, connection);
-                            selectCommand.Transaction = transaction;
-                            using (selectCommand)
-                            {
-                                affectedRecords = Convert.ToInt32(selectCommand.ExecuteScalar());
-                            }
+                            affectedRecords = insertCommand.ExecuteNonQuery();
                         }
 
                         result = affectedRecords > 0;
@@ -288,14 +280,7 @@ namespace ClinicManagementApp.DAL
                             insertCommand.Parameters.Add("@username", System.Data.SqlDbType.VarChar);
                             insertCommand.Parameters["@username"].Value = username;
 
-                            insertCommand.ExecuteNonQuery();
-
-                            SqlCommand selectCommand = new SqlCommand(selectStatementCount, connection);
-                            selectCommand.Transaction = transaction;
-                            using (selectCommand)
-                            {
-                                affectedRecords = Convert.ToInt32(selectCommand.ExecuteScalar());
-                            }
+                            affectedRecords = insertCommand.ExecuteNonQuery();
                         }
 
                         result = affectedRecords > 0;
