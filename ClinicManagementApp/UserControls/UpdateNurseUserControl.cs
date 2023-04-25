@@ -3,6 +3,7 @@ using ClinicManagementApp.Model;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace ClinicManagementApp.UserControls
@@ -183,6 +184,7 @@ namespace ClinicManagementApp.UserControls
         {
             bool canUpdate = true;
             this.updateMessageLabel.ForeColor = Color.Red;
+            string passwordRegEx = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\w!@#$%^&*()_+]{8,}$";
 
             if (String.IsNullOrEmpty(_nurse.LastName))
             {
@@ -193,7 +195,17 @@ namespace ClinicManagementApp.UserControls
             {
                 this.loginMessageLabel.Text = "Username cannot be blank.";
                 canUpdate = false;
+            } 
+            else if (String.IsNullOrEmpty(passwordTextBox.Text)) 
+            {
+                canUpdate = true;
             }
+            else if (!Regex.Match(passwordTextBox.Text, passwordRegEx).Success)
+            {
+                this.loginMessageLabel.Text = "Enter valid password (At least 8 characters. \n1 number, 1 each uppercase and lowercase letter)";
+                canUpdate = false;
+            }
+
             return canUpdate;
         }
 
