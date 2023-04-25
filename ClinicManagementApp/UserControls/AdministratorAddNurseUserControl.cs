@@ -230,6 +230,11 @@ namespace ClinicManagementApp.UserControls
         private bool IsPasswordValid(string password)
         {
             bool validPassword = true;
+            string passwordRegEx = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\w!@#$%^&*()_+]{8,}$";
+            if (!Regex.Match(password, passwordRegEx).Success)
+            {
+                validPassword = false;
+            }
             return validPassword;
         }
 
