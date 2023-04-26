@@ -1,5 +1,6 @@
 ﻿using ClinicManagementApp.DAL;
 using ClinicManagementApp.Model;
+using System;
 using System.Collections.Generic;
 
 namespace ClinicManagementApp.Controller
@@ -55,5 +56,15 @@ namespace ClinicManagementApp.Controller
             return this._labTestDAL.AddLabTest(test);
         }
 
+        /// <summary>
+        /// Get most performed test during dates
+        /// </summary>
+        /// <param name="startDate">start date</param>
+        /// <param name="endDate">end date</param>
+        /// <returns>lab tests</returns>
+        public List<LabTest> GetMostPerformedTestsDuringDates(DateTime startDate, DateTime endDate)
+        {
+            return this._labTestDAL.GetMostPerformedTestsDuringDates(startDate, endDate);
+        }
     }
 }
