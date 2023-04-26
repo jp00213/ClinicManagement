@@ -38,12 +38,25 @@
             this.updateNurseUserControl1 = new ClinicManagementApp.UserControls.UpdateNurseUserControl();
             this.welcomeUserLabel = new System.Windows.Forms.Label();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.labTestStatisticUserControl1 = new ClinicManagementApp.UserControls.LabTestStatisticUserControl();
             labStatisticsTabPage = new System.Windows.Forms.TabPage();
+            labStatisticsTabPage.SuspendLayout();
             this.administratorTabControl.SuspendLayout();
             this.addNurseTabPage.SuspendLayout();
             this.viewNurseTabPage.SuspendLayout();
             this.updateNurseTabPage.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // labStatisticsTabPage
+            // 
+            labStatisticsTabPage.Controls.Add(this.labTestStatisticUserControl1);
+            labStatisticsTabPage.Location = new System.Drawing.Point(4, 27);
+            labStatisticsTabPage.Margin = new System.Windows.Forms.Padding(2);
+            labStatisticsTabPage.Name = "labStatisticsTabPage";
+            labStatisticsTabPage.Size = new System.Drawing.Size(984, 638);
+            labStatisticsTabPage.TabIndex = 3;
+            labStatisticsTabPage.Text = "Lab Statistics";
+            labStatisticsTabPage.UseVisualStyleBackColor = true;
             // 
             // administratorTabControl
             // 
@@ -147,15 +160,12 @@
             this.logoutLinkLabel.Text = "Logout";
             this.logoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.logoutLinkLabel_LinkClicked);
             // 
-            // labStatisticsTabPage
+            // labTestStatisticUserControl1
             // 
-            labStatisticsTabPage.Location = new System.Drawing.Point(4, 27);
-            labStatisticsTabPage.Margin = new System.Windows.Forms.Padding(2);
-            labStatisticsTabPage.Name = "labStatisticsTabPage";
-            labStatisticsTabPage.Size = new System.Drawing.Size(984, 638);
-            labStatisticsTabPage.TabIndex = 3;
-            labStatisticsTabPage.Text = "Lab Statistics";
-            labStatisticsTabPage.UseVisualStyleBackColor = true;
+            this.labTestStatisticUserControl1.Location = new System.Drawing.Point(3, 3);
+            this.labTestStatisticUserControl1.Name = "labTestStatisticUserControl1";
+            this.labTestStatisticUserControl1.Size = new System.Drawing.Size(973, 627);
+            this.labTestStatisticUserControl1.TabIndex = 0;
             // 
             // AdministratorDashboard
             // 
@@ -172,6 +182,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clinic Management Application";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdministratorDashboard_FormClosed);
+            labStatisticsTabPage.ResumeLayout(false);
             this.administratorTabControl.ResumeLayout(false);
             this.addNurseTabPage.ResumeLayout(false);
             this.viewNurseTabPage.ResumeLayout(false);
@@ -194,6 +205,6 @@
         private UserControls.UpdateNurseUserControl updateNurseUserControl1;
 
         private UserControls.AdministratorAddNurseUserControl administratorAddNurseUserControl1;
-
+        private UserControls.LabTestStatisticUserControl labTestStatisticUserControl1;
     }
 }
