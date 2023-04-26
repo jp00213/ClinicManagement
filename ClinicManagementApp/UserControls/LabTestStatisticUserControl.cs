@@ -11,6 +11,7 @@ namespace ClinicManagementApp.UserControls
     /// </summary>
     public partial class LabTestStatisticUserControl : UserControl
     {
+
         private LabTestController _labTestController;
 
         /// <summary>
