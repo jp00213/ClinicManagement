@@ -64,7 +64,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.58695F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.41306F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(749, 496);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(638, 433);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // DateEntryPanel
@@ -79,7 +79,7 @@
             this.DateEntryPanel.Location = new System.Drawing.Point(2, 2);
             this.DateEntryPanel.Margin = new System.Windows.Forms.Padding(2);
             this.DateEntryPanel.Name = "DateEntryPanel";
-            this.DateEntryPanel.Size = new System.Drawing.Size(745, 83);
+            this.DateEntryPanel.Size = new System.Drawing.Size(634, 72);
             this.DateEntryPanel.TabIndex = 0;
             // 
             // labTestReportListView
@@ -96,33 +96,33 @@
             this.age30To39Header,
             this.otherAgesHeader});
             this.labTestReportListView.HideSelection = false;
-            this.labTestReportListView.Location = new System.Drawing.Point(2, 89);
+            this.labTestReportListView.Location = new System.Drawing.Point(2, 78);
             this.labTestReportListView.Margin = new System.Windows.Forms.Padding(2);
             this.labTestReportListView.Name = "labTestReportListView";
-            this.labTestReportListView.Size = new System.Drawing.Size(745, 405);
+            this.labTestReportListView.Size = new System.Drawing.Size(634, 353);
             this.labTestReportListView.TabIndex = 1;
             this.labTestReportListView.UseCompatibleStateImageBehavior = false;
             this.labTestReportListView.View = System.Windows.Forms.View.Details;
             // 
             // testCodeHeader
             // 
-            this.testCodeHeader.Text = "Test Code";
-            this.testCodeHeader.Width = 73;
+            this.testCodeHeader.Text = "Code";
+            this.testCodeHeader.Width = 50;
             // 
             // testNameHeader
             // 
             this.testNameHeader.Text = "Test Name";
-            this.testNameHeader.Width = 95;
+            this.testNameHeader.Width = 105;
             // 
             // timePerformedHeader
             // 
-            this.timePerformedHeader.Text = "Times Total";
-            this.timePerformedHeader.Width = 85;
+            this.timePerformedHeader.Text = "# Qualified Test";
+            this.timePerformedHeader.Width = 100;
             // 
             // allTestTotalHeader
             // 
             this.allTestTotalHeader.Text = "All Test Total";
-            this.allTestTotalHeader.Width = 103;
+            this.allTestTotalHeader.Width = 100;
             // 
             // percentOfAllTestsHeader
             // 
@@ -131,28 +131,28 @@
             // 
             // normalCountHeader
             // 
-            this.normalCountHeader.Text = "Normal Ct";
-            this.normalCountHeader.Width = 83;
+            this.normalCountHeader.Text = "Normal Count";
+            this.normalCountHeader.Width = 110;
             // 
             // abnormalCountHeader
             // 
-            this.abnormalCountHeader.Text = "Abnor. Ct";
-            this.abnormalCountHeader.Width = 92;
+            this.abnormalCountHeader.Text = "Abnor. Count";
+            this.abnormalCountHeader.Width = 100;
             // 
             // age18To29Header
             // 
-            this.age18To29Header.Text = "18 to 29%";
-            this.age18To29Header.Width = 82;
+            this.age18To29Header.Text = "Age18-29%";
+            this.age18To29Header.Width = 90;
             // 
             // age30To39Header
             // 
-            this.age30To39Header.Text = "30 to 39%";
-            this.age30To39Header.Width = 84;
+            this.age30To39Header.Text = "Age30-39%";
+            this.age30To39Header.Width = 90;
             // 
             // otherAgesHeader
             // 
-            this.otherAgesHeader.Text = "Other Ages %";
-            this.otherAgesHeader.Width = 109;
+            this.otherAgesHeader.Text = "Other Ages%";
+            this.otherAgesHeader.Width = 100;
             // 
             // startDateLabel
             // 
@@ -199,6 +199,7 @@
             this.RunReportbutton.TabIndex = 2;
             this.RunReportbutton.Text = "Run Report";
             this.RunReportbutton.UseVisualStyleBackColor = true;
+            this.RunReportbutton.Click += new System.EventHandler(this.RunReportbutton_Click);
             // 
             // statusMessageLabel
             // 
@@ -217,7 +218,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LabTestStatisticUserControl";
-            this.Size = new System.Drawing.Size(755, 502);
+            this.Size = new System.Drawing.Size(643, 436);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.DateEntryPanel.ResumeLayout(false);
             this.DateEntryPanel.PerformLayout();
