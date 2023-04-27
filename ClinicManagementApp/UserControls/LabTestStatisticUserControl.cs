@@ -37,11 +37,13 @@ namespace ClinicManagementApp.UserControls
 
             if (startIn <= endIn)
             {
+                labTestReportListView.Items.Clear();
                 statusMessageLabel.Text = ".";
                 this.LoadReport(startIn, endIn);
             }
             else
             {
+                labTestReportListView.Items.Clear();
                 statusMessageLabel.Text = "Start date cannot later than end date.";
             }
         }
@@ -55,6 +57,7 @@ namespace ClinicManagementApp.UserControls
                 statusMessageLabel.Text = string.Empty;
                 labTestReportListView.Items.Clear();
                 LabTest currentLabTest;
+
                 for (int i = 0; i < labTestReportList.Count; i++)
                 {
                     currentLabTest = labTestReportList[i];
