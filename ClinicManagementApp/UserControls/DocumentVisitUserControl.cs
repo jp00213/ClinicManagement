@@ -248,31 +248,31 @@ namespace ClinicManagementApp.UserControls
 
             if (!Decimal.TryParse(this.weightTextBox.Text.Trim(), out _) || Decimal.Parse(this.weightTextBox.Text.Trim()) < 0 || Decimal.Parse(this.weightTextBox.Text.Trim()) > 800 || string.IsNullOrEmpty(this.weightTextBox.Text))
             {
-                this.weightErrorLabel.Text = "Please enter a valid weight.";
+                this.weightErrorLabel.Text = "Please enter a valid weight. Ex: 167.3";
                 this.weightErrorLabel.ForeColor = Color.Red;
             }
 
             if (!int.TryParse(this.diastolicTextBox.Text.Trim(), out _) || int.Parse(this.diastolicTextBox.Text.Trim()) < 40 || int.Parse(this.diastolicTextBox.Text.Trim()) > 370 || string.IsNullOrEmpty(this.diastolicTextBox.Text))
             {
-                this.diastolicBloodPressureErrorLabel.Text = "Please enter a valid diastolic BP.";
+                this.diastolicBloodPressureErrorLabel.Text = "Please enter a whole number for diastolic BP. Ex: 120";
                 this.diastolicBloodPressureErrorLabel.ForeColor = Color.Red;
             }
 
             if (!int.TryParse(this.systolicTextBox.Text.Trim(), out _) || int.Parse(this.systolicTextBox.Text.Trim()) < 20 || int.Parse(this.systolicTextBox.Text.Trim()) > 360 || string.IsNullOrEmpty(this.systolicTextBox.Text) )
             {
-                this.systolicErrorLabel.Text = "Please enter a valid systolic BP.";
+                this.systolicErrorLabel.Text = "Please enter a whole number for systolic BP. Ex: 80";
                 this.systolicErrorLabel.ForeColor = Color.Red;
             }
 
             if (!Decimal.TryParse(this.temperatureTextBox.Text.Trim(), out _) || Decimal.Parse(this.temperatureTextBox.Text.Trim()) < 78 || Decimal.Parse(this.temperatureTextBox.Text.Trim()) > 115 || string.IsNullOrEmpty(this.temperatureTextBox.Text))
             {
-                this.bodyTemperatureErrorLabel.Text = "Please enter a valid temperature.";
+                this.bodyTemperatureErrorLabel.Text = "Please enter a valid temperature. Ex: 98.6";
                 this.bodyTemperatureErrorLabel.ForeColor = Color.Red; 
             }
 
             if (!int.TryParse(this.pulseTextBox.Text.Trim(), out _) || int.Parse(this.pulseTextBox.Text.Trim()) < 55 || int.Parse(this.pulseTextBox.Text.Trim()) > 400 || string.IsNullOrEmpty(this.pulseTextBox.Text))
             {
-                this.pulseErrorLabel.Text = "Please enter a valid pulse.";
+                this.pulseErrorLabel.Text = "Please enter a whole number for pulse. Ex: 98";
                 this.pulseErrorLabel.ForeColor = Color.Red; 
             }
 

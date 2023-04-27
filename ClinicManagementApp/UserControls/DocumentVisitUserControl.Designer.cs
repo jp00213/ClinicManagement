@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dateOfApptLabel = new System.Windows.Forms.Label();
             this.appointmentDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.selectButton = new System.Windows.Forms.Button();
@@ -103,6 +103,11 @@
             this.cityLabel = new System.Windows.Forms.Label();
             this.stateLabel = new System.Windows.Forms.Label();
             this.zipLabel = new System.Windows.Forms.Label();
+            this.poundsLabel = new System.Windows.Forms.Label();
+            this.dbpMmhgLabel = new System.Windows.Forms.Label();
+            this.sbpMmhgLabel = new System.Windows.Forms.Label();
+            this.fahrenheitLabel = new System.Windows.Forms.Label();
+            this.bpmLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.feetNumericUpDown)).BeginInit();
@@ -114,7 +119,7 @@
             // 
             this.dateOfApptLabel.AutoSize = true;
             this.dateOfApptLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateOfApptLabel.Location = new System.Drawing.Point(87, 16);
+            this.dateOfApptLabel.Location = new System.Drawing.Point(95, 14);
             this.dateOfApptLabel.Name = "dateOfApptLabel";
             this.dateOfApptLabel.Size = new System.Drawing.Size(139, 15);
             this.dateOfApptLabel.TabIndex = 1;
@@ -125,7 +130,7 @@
             this.appointmentDateTimePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointmentDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointmentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.appointmentDateTimePicker.Location = new System.Drawing.Point(90, 35);
+            this.appointmentDateTimePicker.Location = new System.Drawing.Point(98, 33);
             this.appointmentDateTimePicker.Name = "appointmentDateTimePicker";
             this.appointmentDateTimePicker.Size = new System.Drawing.Size(136, 21);
             this.appointmentDateTimePicker.TabIndex = 2;
@@ -133,10 +138,10 @@
             // selectButton
             // 
             this.selectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectButton.Location = new System.Drawing.Point(102, 62);
+            this.selectButton.Location = new System.Drawing.Point(110, 60);
             this.selectButton.Name = "selectButton";
             this.selectButton.Size = new System.Drawing.Size(102, 33);
-            this.selectButton.TabIndex = 5;
+            this.selectButton.TabIndex = 3;
             this.selectButton.Text = "Select";
             this.selectButton.UseVisualStyleBackColor = true;
             this.selectButton.Click += new System.EventHandler(this.selectButton_Click);
@@ -146,39 +151,39 @@
             this.dividerLabel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dividerLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dividerLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.dividerLabel.Location = new System.Drawing.Point(45, 98);
+            this.dividerLabel.Location = new System.Drawing.Point(53, 96);
             this.dividerLabel.Name = "dividerLabel";
             this.dividerLabel.Size = new System.Drawing.Size(686, 3);
-            this.dividerLabel.TabIndex = 6;
+            this.dividerLabel.TabIndex = 5;
             // 
             // dividerLabel2
             // 
             this.dividerLabel2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dividerLabel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dividerLabel2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.dividerLabel2.Location = new System.Drawing.Point(45, 219);
+            this.dividerLabel2.Location = new System.Drawing.Point(53, 217);
             this.dividerLabel2.Name = "dividerLabel2";
             this.dividerLabel2.Size = new System.Drawing.Size(686, 3);
-            this.dividerLabel2.TabIndex = 7;
+            this.dividerLabel2.TabIndex = 31;
             // 
             // patientInformationLabel
             // 
             this.patientInformationLabel.AutoSize = true;
             this.patientInformationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientInformationLabel.Location = new System.Drawing.Point(321, 105);
+            this.patientInformationLabel.Location = new System.Drawing.Point(329, 103);
             this.patientInformationLabel.Name = "patientInformationLabel";
             this.patientInformationLabel.Size = new System.Drawing.Size(135, 16);
-            this.patientInformationLabel.TabIndex = 8;
+            this.patientInformationLabel.TabIndex = 10;
             this.patientInformationLabel.Text = "Patient Information";
             // 
             // patientNameLabel
             // 
             this.patientNameLabel.AutoSize = true;
             this.patientNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientNameLabel.Location = new System.Drawing.Point(42, 130);
+            this.patientNameLabel.Location = new System.Drawing.Point(50, 128);
             this.patientNameLabel.Name = "patientNameLabel";
             this.patientNameLabel.Size = new System.Drawing.Size(38, 13);
-            this.patientNameLabel.TabIndex = 9;
+            this.patientNameLabel.TabIndex = 6;
             this.patientNameLabel.Text = "Name:";
             // 
             // activePatientNameLabel
@@ -186,10 +191,10 @@
             this.activePatientNameLabel.AutoSize = true;
             this.activePatientNameLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "FullName", true));
             this.activePatientNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activePatientNameLabel.Location = new System.Drawing.Point(83, 130);
+            this.activePatientNameLabel.Location = new System.Drawing.Point(91, 128);
             this.activePatientNameLabel.Name = "activePatientNameLabel";
             this.activePatientNameLabel.Size = new System.Drawing.Size(0, 13);
-            this.activePatientNameLabel.TabIndex = 10;
+            this.activePatientNameLabel.TabIndex = 7;
             // 
             // patientBindingSource
             // 
@@ -199,10 +204,10 @@
             // 
             this.dobLabel.AutoSize = true;
             this.dobLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobLabel.Location = new System.Drawing.Point(209, 130);
+            this.dobLabel.Location = new System.Drawing.Point(217, 128);
             this.dobLabel.Name = "dobLabel";
             this.dobLabel.Size = new System.Drawing.Size(36, 13);
-            this.dobLabel.TabIndex = 11;
+            this.dobLabel.TabIndex = 8;
             this.dobLabel.Text = "DOB: ";
             // 
             // activeDOBLabel
@@ -210,19 +215,19 @@
             this.activeDOBLabel.AutoSize = true;
             this.activeDOBLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "DateOfBirth", true));
             this.activeDOBLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeDOBLabel.Location = new System.Drawing.Point(251, 130);
+            this.activeDOBLabel.Location = new System.Drawing.Point(259, 128);
             this.activeDOBLabel.Name = "activeDOBLabel";
             this.activeDOBLabel.Size = new System.Drawing.Size(0, 13);
-            this.activeDOBLabel.TabIndex = 12;
+            this.activeDOBLabel.TabIndex = 9;
             // 
             // phoneLabel
             // 
             this.phoneLabel.AutoSize = true;
             this.phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneLabel.Location = new System.Drawing.Point(343, 130);
+            this.phoneLabel.Location = new System.Drawing.Point(351, 128);
             this.phoneLabel.Name = "phoneLabel";
             this.phoneLabel.Size = new System.Drawing.Size(41, 13);
-            this.phoneLabel.TabIndex = 13;
+            this.phoneLabel.TabIndex = 11;
             this.phoneLabel.Text = "Phone:";
             // 
             // activePhoneLabel
@@ -230,19 +235,19 @@
             this.activePhoneLabel.AutoSize = true;
             this.activePhoneLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "Phone", true));
             this.activePhoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activePhoneLabel.Location = new System.Drawing.Point(391, 130);
+            this.activePhoneLabel.Location = new System.Drawing.Point(399, 128);
             this.activePhoneLabel.Name = "activePhoneLabel";
             this.activePhoneLabel.Size = new System.Drawing.Size(0, 13);
-            this.activePhoneLabel.TabIndex = 14;
+            this.activePhoneLabel.TabIndex = 12;
             // 
             // addressLabel
             // 
             this.addressLabel.AutoSize = true;
             this.addressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addressLabel.Location = new System.Drawing.Point(482, 130);
+            this.addressLabel.Location = new System.Drawing.Point(490, 128);
             this.addressLabel.Name = "addressLabel";
             this.addressLabel.Size = new System.Drawing.Size(48, 13);
-            this.addressLabel.TabIndex = 15;
+            this.addressLabel.TabIndex = 13;
             this.addressLabel.Text = "Address:";
             // 
             // activeAddressLabel
@@ -250,52 +255,52 @@
             this.activeAddressLabel.AutoSize = true;
             this.activeAddressLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "AddressStreet", true));
             this.activeAddressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeAddressLabel.Location = new System.Drawing.Point(536, 117);
+            this.activeAddressLabel.Location = new System.Drawing.Point(544, 115);
             this.activeAddressLabel.Name = "activeAddressLabel";
             this.activeAddressLabel.Size = new System.Drawing.Size(0, 13);
-            this.activeAddressLabel.TabIndex = 16;
+            this.activeAddressLabel.TabIndex = 14;
             // 
             // doctorInformationLabel
             // 
             this.doctorInformationLabel.AutoSize = true;
             this.doctorInformationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doctorInformationLabel.Location = new System.Drawing.Point(193, 150);
+            this.doctorInformationLabel.Location = new System.Drawing.Point(201, 148);
             this.doctorInformationLabel.Name = "doctorInformationLabel";
             this.doctorInformationLabel.Size = new System.Drawing.Size(133, 16);
-            this.doctorInformationLabel.TabIndex = 17;
+            this.doctorInformationLabel.TabIndex = 19;
             this.doctorInformationLabel.Text = "Doctor Information";
             // 
             // doctorNameLabel
             // 
             this.doctorNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doctorNameLabel.Location = new System.Drawing.Point(200, 166);
+            this.doctorNameLabel.Location = new System.Drawing.Point(208, 164);
             this.doctorNameLabel.Name = "doctorNameLabel";
             this.doctorNameLabel.Size = new System.Drawing.Size(45, 15);
-            this.doctorNameLabel.TabIndex = 18;
+            this.doctorNameLabel.TabIndex = 20;
             this.doctorNameLabel.Text = "Name:";
             // 
             // activeDoctorNameLabel
             // 
             this.activeDoctorNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeDoctorNameLabel.Location = new System.Drawing.Point(242, 166);
+            this.activeDoctorNameLabel.Location = new System.Drawing.Point(250, 164);
             this.activeDoctorNameLabel.Name = "activeDoctorNameLabel";
             this.activeDoctorNameLabel.Size = new System.Drawing.Size(100, 15);
-            this.activeDoctorNameLabel.TabIndex = 19;
+            this.activeDoctorNameLabel.TabIndex = 23;
             // 
             // dividerLabel3
             // 
             this.dividerLabel3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dividerLabel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dividerLabel3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.dividerLabel3.Location = new System.Drawing.Point(45, 149);
+            this.dividerLabel3.Location = new System.Drawing.Point(53, 147);
             this.dividerLabel3.Name = "dividerLabel3";
             this.dividerLabel3.Size = new System.Drawing.Size(686, 2);
-            this.dividerLabel3.TabIndex = 20;
+            this.dividerLabel3.TabIndex = 18;
             // 
             // doctorIDNumberLabel
             // 
             this.doctorIDNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doctorIDNumberLabel.Location = new System.Drawing.Point(179, 181);
+            this.doctorIDNumberLabel.Location = new System.Drawing.Point(187, 179);
             this.doctorIDNumberLabel.Name = "doctorIDNumberLabel";
             this.doctorIDNumberLabel.Size = new System.Drawing.Size(62, 13);
             this.doctorIDNumberLabel.TabIndex = 21;
@@ -304,18 +309,18 @@
             // activeDoctorIDLabel
             // 
             this.activeDoctorIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeDoctorIDLabel.Location = new System.Drawing.Point(242, 181);
+            this.activeDoctorIDLabel.Location = new System.Drawing.Point(250, 179);
             this.activeDoctorIDLabel.Name = "activeDoctorIDLabel";
             this.activeDoctorIDLabel.Size = new System.Drawing.Size(58, 13);
-            this.activeDoctorIDLabel.TabIndex = 22;
+            this.activeDoctorIDLabel.TabIndex = 24;
             // 
             // specialtyLabel
             // 
             this.specialtyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.specialtyLabel.Location = new System.Drawing.Point(185, 196);
+            this.specialtyLabel.Location = new System.Drawing.Point(193, 194);
             this.specialtyLabel.Name = "specialtyLabel";
             this.specialtyLabel.Size = new System.Drawing.Size(60, 23);
-            this.specialtyLabel.TabIndex = 23;
+            this.specialtyLabel.TabIndex = 22;
             this.specialtyLabel.Text = "Specialty:";
             // 
             // labsListBox
@@ -325,11 +330,11 @@
             this.labsListBox.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labsListBox.FormattingEnabled = true;
             this.labsListBox.ItemHeight = 14;
-            this.labsListBox.Location = new System.Drawing.Point(506, 249);
+            this.labsListBox.Location = new System.Drawing.Point(539, 249);
             this.labsListBox.Name = "labsListBox";
             this.labsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.labsListBox.Size = new System.Drawing.Size(225, 270);
-            this.labsListBox.TabIndex = 24;
+            this.labsListBox.TabIndex = 44;
             this.labsListBox.ValueMember = "TestCode";
             // 
             // labTestBindingSource
@@ -339,7 +344,7 @@
             // activeSpecialtyLabel
             // 
             this.activeSpecialtyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeSpecialtyLabel.Location = new System.Drawing.Point(242, 196);
+            this.activeSpecialtyLabel.Location = new System.Drawing.Point(250, 194);
             this.activeSpecialtyLabel.Name = "activeSpecialtyLabel";
             this.activeSpecialtyLabel.Size = new System.Drawing.Size(214, 23);
             this.activeSpecialtyLabel.TabIndex = 25;
@@ -348,7 +353,7 @@
             // 
             this.nurseInfoLabel.AutoSize = true;
             this.nurseInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nurseInfoLabel.Location = new System.Drawing.Point(450, 152);
+            this.nurseInfoLabel.Location = new System.Drawing.Point(458, 150);
             this.nurseInfoLabel.Name = "nurseInfoLabel";
             this.nurseInfoLabel.Size = new System.Drawing.Size(128, 16);
             this.nurseInfoLabel.TabIndex = 26;
@@ -358,7 +363,7 @@
             // 
             this.nurseNameLabel.AutoSize = true;
             this.nurseNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nurseNameLabel.Location = new System.Drawing.Point(465, 168);
+            this.nurseNameLabel.Location = new System.Drawing.Point(473, 166);
             this.nurseNameLabel.Name = "nurseNameLabel";
             this.nurseNameLabel.Size = new System.Drawing.Size(41, 13);
             this.nurseNameLabel.TabIndex = 27;
@@ -368,26 +373,26 @@
             // 
             this.activeNurseNameLabel.AutoSize = true;
             this.activeNurseNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeNurseNameLabel.Location = new System.Drawing.Point(512, 168);
+            this.activeNurseNameLabel.Location = new System.Drawing.Point(520, 166);
             this.activeNurseNameLabel.Name = "activeNurseNameLabel";
             this.activeNurseNameLabel.Size = new System.Drawing.Size(0, 13);
-            this.activeNurseNameLabel.TabIndex = 28;
+            this.activeNurseNameLabel.TabIndex = 29;
             // 
             // nurseIDLabel
             // 
             this.nurseIDLabel.AutoSize = true;
             this.nurseIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nurseIDLabel.Location = new System.Drawing.Point(445, 189);
+            this.nurseIDLabel.Location = new System.Drawing.Point(453, 187);
             this.nurseIDLabel.Name = "nurseIDLabel";
             this.nurseIDLabel.Size = new System.Drawing.Size(61, 13);
-            this.nurseIDLabel.TabIndex = 29;
+            this.nurseIDLabel.TabIndex = 28;
             this.nurseIDLabel.Text = "ID Number:";
             // 
             // activeNurseIDLabel
             // 
             this.activeNurseIDLabel.AutoSize = true;
             this.activeNurseIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeNurseIDLabel.Location = new System.Drawing.Point(517, 189);
+            this.activeNurseIDLabel.Location = new System.Drawing.Point(525, 187);
             this.activeNurseIDLabel.Name = "activeNurseIDLabel";
             this.activeNurseIDLabel.Size = new System.Drawing.Size(0, 13);
             this.activeNurseIDLabel.TabIndex = 30;
@@ -398,7 +403,7 @@
             this.saveButton.Location = new System.Drawing.Point(427, 535);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(225, 36);
-            this.saveButton.TabIndex = 31;
+            this.saveButton.TabIndex = 46;
             this.saveButton.Text = "Save Appointment";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -429,7 +434,7 @@
             this.weightTextBox.Location = new System.Drawing.Point(352, 252);
             this.weightTextBox.Name = "weightTextBox";
             this.weightTextBox.Size = new System.Drawing.Size(139, 20);
-            this.weightTextBox.TabIndex = 35;
+            this.weightTextBox.TabIndex = 37;
             this.weightTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.weightTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckInputIsDigits);
             // 
@@ -449,7 +454,7 @@
             this.diastolicTextBox.Location = new System.Drawing.Point(102, 293);
             this.diastolicTextBox.Name = "diastolicTextBox";
             this.diastolicTextBox.Size = new System.Drawing.Size(139, 20);
-            this.diastolicTextBox.TabIndex = 37;
+            this.diastolicTextBox.TabIndex = 38;
             this.diastolicTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.diastolicTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckInputIsDigits);
             // 
@@ -548,7 +553,7 @@
             0});
             this.feetNumericUpDown.Name = "feetNumericUpDown";
             this.feetNumericUpDown.Size = new System.Drawing.Size(63, 20);
-            this.feetNumericUpDown.TabIndex = 46;
+            this.feetNumericUpDown.TabIndex = 35;
             this.feetNumericUpDown.Value = new decimal(new int[] {
             1,
             0,
@@ -566,7 +571,7 @@
             0});
             this.inchesNumericUpDown.Name = "inchesNumericUpDown";
             this.inchesNumericUpDown.Size = new System.Drawing.Size(63, 20);
-            this.inchesNumericUpDown.TabIndex = 47;
+            this.inchesNumericUpDown.TabIndex = 36;
             this.inchesNumericUpDown.Click += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // initialDiagnosisLabel
@@ -586,7 +591,7 @@
             this.initialDiagnosisTextbox.Multiline = true;
             this.initialDiagnosisTextbox.Name = "initialDiagnosisTextbox";
             this.initialDiagnosisTextbox.Size = new System.Drawing.Size(139, 62);
-            this.initialDiagnosisTextbox.TabIndex = 49;
+            this.initialDiagnosisTextbox.TabIndex = 43;
             this.initialDiagnosisTextbox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // patientDataGridView
@@ -595,14 +600,14 @@
             this.patientDataGridView.AllowUserToDeleteRows = false;
             this.patientDataGridView.AutoGenerateColumns = false;
             this.patientDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.patientDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.patientDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.patientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.patientDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.patientIDDataGridViewTextBoxColumn,
@@ -610,29 +615,29 @@
             this.firstNameDataGridViewTextBoxColumn,
             this.dateOfBirthDataGridViewTextBoxColumn});
             this.patientDataGridView.DataSource = this.patientBindingSource;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.patientDataGridView.DefaultCellStyle = dataGridViewCellStyle5;
-            this.patientDataGridView.Location = new System.Drawing.Point(263, 15);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.patientDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.patientDataGridView.Location = new System.Drawing.Point(271, 13);
             this.patientDataGridView.MultiSelect = false;
             this.patientDataGridView.Name = "patientDataGridView";
             this.patientDataGridView.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.patientDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.patientDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.patientDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.patientDataGridView.Size = new System.Drawing.Size(468, 80);
-            this.patientDataGridView.TabIndex = 50;
+            this.patientDataGridView.TabIndex = 4;
             this.patientDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.patientDataGridView_CellClick);
             this.patientDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.patientDataGridView_CellClick);
             // 
@@ -671,7 +676,7 @@
             this.feetLabel.Location = new System.Drawing.Point(120, 237);
             this.feetLabel.Name = "feetLabel";
             this.feetLabel.Size = new System.Drawing.Size(24, 12);
-            this.feetLabel.TabIndex = 52;
+            this.feetLabel.TabIndex = 33;
             this.feetLabel.Text = "Feet";
             // 
             // inchesLabel
@@ -681,7 +686,7 @@
             this.inchesLabel.Location = new System.Drawing.Point(193, 237);
             this.inchesLabel.Name = "inchesLabel";
             this.inchesLabel.Size = new System.Drawing.Size(33, 12);
-            this.inchesLabel.TabIndex = 53;
+            this.inchesLabel.TabIndex = 34;
             this.inchesLabel.Text = "Inches";
             // 
             // finalDiagnosisLabel
@@ -702,7 +707,7 @@
             this.finalDiagnosisTextBox.Multiline = true;
             this.finalDiagnosisTextBox.Name = "finalDiagnosisTextBox";
             this.finalDiagnosisTextBox.Size = new System.Drawing.Size(139, 62);
-            this.finalDiagnosisTextBox.TabIndex = 55;
+            this.finalDiagnosisTextBox.TabIndex = 45;
             // 
             // clearButton
             // 
@@ -710,7 +715,7 @@
             this.clearButton.Location = new System.Drawing.Point(123, 535);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(208, 36);
-            this.clearButton.TabIndex = 57;
+            this.clearButton.TabIndex = 47;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
@@ -791,16 +796,16 @@
             // 
             this.generalErrorLabel.AutoSize = true;
             this.generalErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.generalErrorLabel.Location = new System.Drawing.Point(163, 222);
+            this.generalErrorLabel.Location = new System.Drawing.Point(171, 220);
             this.generalErrorLabel.Name = "generalErrorLabel";
             this.generalErrorLabel.Size = new System.Drawing.Size(0, 13);
-            this.generalErrorLabel.TabIndex = 66;
+            this.generalErrorLabel.TabIndex = 32;
             // 
             // labTestsLabel
             // 
             this.labTestsLabel.AutoSize = true;
             this.labTestsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labTestsLabel.Location = new System.Drawing.Point(562, 231);
+            this.labTestsLabel.Location = new System.Drawing.Point(597, 231);
             this.labTestsLabel.Name = "labTestsLabel";
             this.labTestsLabel.Size = new System.Drawing.Size(112, 15);
             this.labTestsLabel.TabIndex = 67;
@@ -811,35 +816,95 @@
             this.cityLabel.AutoSize = true;
             this.cityLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "City", true));
             this.cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityLabel.Location = new System.Drawing.Point(536, 130);
+            this.cityLabel.Location = new System.Drawing.Point(544, 128);
             this.cityLabel.Name = "cityLabel";
             this.cityLabel.Size = new System.Drawing.Size(0, 13);
-            this.cityLabel.TabIndex = 68;
+            this.cityLabel.TabIndex = 15;
             // 
             // stateLabel
             // 
             this.stateLabel.AutoSize = true;
             this.stateLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "State", true));
             this.stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateLabel.Location = new System.Drawing.Point(597, 130);
+            this.stateLabel.Location = new System.Drawing.Point(605, 128);
             this.stateLabel.Name = "stateLabel";
             this.stateLabel.Size = new System.Drawing.Size(0, 13);
-            this.stateLabel.TabIndex = 69;
+            this.stateLabel.TabIndex = 16;
             // 
             // zipLabel
             // 
             this.zipLabel.AutoSize = true;
             this.zipLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientBindingSource, "Zip", true));
             this.zipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipLabel.Location = new System.Drawing.Point(626, 130);
+            this.zipLabel.Location = new System.Drawing.Point(634, 128);
             this.zipLabel.Name = "zipLabel";
             this.zipLabel.Size = new System.Drawing.Size(0, 13);
-            this.zipLabel.TabIndex = 70;
+            this.zipLabel.TabIndex = 17;
+            // 
+            // poundsLabel
+            // 
+            this.poundsLabel.AutoSize = true;
+            this.poundsLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.poundsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.poundsLabel.Location = new System.Drawing.Point(458, 256);
+            this.poundsLabel.Name = "poundsLabel";
+            this.poundsLabel.Size = new System.Drawing.Size(23, 13);
+            this.poundsLabel.TabIndex = 68;
+            this.poundsLabel.Text = "lbs.";
+            // 
+            // dbpMmhgLabel
+            // 
+            this.dbpMmhgLabel.AutoSize = true;
+            this.dbpMmhgLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.dbpMmhgLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dbpMmhgLabel.Location = new System.Drawing.Point(193, 296);
+            this.dbpMmhgLabel.Name = "dbpMmhgLabel";
+            this.dbpMmhgLabel.Size = new System.Drawing.Size(40, 13);
+            this.dbpMmhgLabel.TabIndex = 69;
+            this.dbpMmhgLabel.Text = "mm/hg";
+            // 
+            // sbpMmhgLabel
+            // 
+            this.sbpMmhgLabel.AutoSize = true;
+            this.sbpMmhgLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.sbpMmhgLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sbpMmhgLabel.Location = new System.Drawing.Point(441, 296);
+            this.sbpMmhgLabel.Name = "sbpMmhgLabel";
+            this.sbpMmhgLabel.Size = new System.Drawing.Size(40, 13);
+            this.sbpMmhgLabel.TabIndex = 70;
+            this.sbpMmhgLabel.Text = "mm/hg";
+            // 
+            // fahrenheitLabel
+            // 
+            this.fahrenheitLabel.AutoSize = true;
+            this.fahrenheitLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.fahrenheitLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fahrenheitLabel.Location = new System.Drawing.Point(209, 339);
+            this.fahrenheitLabel.Name = "fahrenheitLabel";
+            this.fahrenheitLabel.Size = new System.Drawing.Size(17, 13);
+            this.fahrenheitLabel.TabIndex = 71;
+            this.fahrenheitLabel.Text = "°F";
+            // 
+            // bpmLabel
+            // 
+            this.bpmLabel.AutoSize = true;
+            this.bpmLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.bpmLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bpmLabel.Location = new System.Drawing.Point(454, 337);
+            this.bpmLabel.Name = "bpmLabel";
+            this.bpmLabel.Size = new System.Drawing.Size(27, 13);
+            this.bpmLabel.TabIndex = 72;
+            this.bpmLabel.Text = "bpm";
             // 
             // DocumentVisitUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
+            this.Controls.Add(this.bpmLabel);
+            this.Controls.Add(this.fahrenheitLabel);
+            this.Controls.Add(this.sbpMmhgLabel);
+            this.Controls.Add(this.dbpMmhgLabel);
+            this.Controls.Add(this.poundsLabel);
             this.Controls.Add(this.zipLabel);
             this.Controls.Add(this.stateLabel);
             this.Controls.Add(this.cityLabel);
@@ -989,5 +1054,10 @@
         private System.Windows.Forms.Label cityLabel;
         private System.Windows.Forms.Label stateLabel;
         private System.Windows.Forms.Label zipLabel;
+        private System.Windows.Forms.Label poundsLabel;
+        private System.Windows.Forms.Label dbpMmhgLabel;
+        private System.Windows.Forms.Label sbpMmhgLabel;
+        private System.Windows.Forms.Label fahrenheitLabel;
+        private System.Windows.Forms.Label bpmLabel;
     }
 }
