@@ -32,8 +32,8 @@ namespace ClinicManagementApp.UserControls
 
         private void RunReportbutton_Click(object sender, EventArgs e)
         {
-            DateTime startIn = startDateTimePicker.Value;
-            DateTime endIn = endDateTimePicker.Value;
+            DateTime startIn = startDateTimePicker.Value.Date;
+            DateTime endIn = endDateTimePicker.Value.Date;
 
             if (startIn <= endIn)
             {
