@@ -65,5 +65,13 @@ namespace ClinicManagementApp.View
         {
             Application.Exit();
         }
+
+        private void PressEnterToLogin (object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar.Equals(Convert.ToChar(13)))
+            {
+                this.loginButton_Click(sender, e);
+            }
+        }
     }
 }
