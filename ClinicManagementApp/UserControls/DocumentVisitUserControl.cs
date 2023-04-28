@@ -153,20 +153,18 @@ namespace ClinicManagementApp.UserControls
         private void OrderLabsAndCompleteVisit(int visitID)
         {
             List<LabTest> labs = new List<LabTest>();
-            List<string> testNames = new List<string>();
 
             foreach (LabTest lab in labsListBox.SelectedItems)
             {
-                labs.Add(lab);
+                LabTest currentLab = new LabTest();
+                currentLab.VisitID = visitID;
+                currentLab.TestCode = lab.TestCode;
+                labs.Add(currentLab);
             }
-            
+
             if (labs.Count > 0)
             {
-                foreach (LabTest lab in labs)
-                {
-                    LabTest currentLab = new LabTest(visitID, lab.TestCode, new DateTime(1900, 1, 1), "", lab.TestName, 0, DateTime.Now);
-                    this._labController.AddLabTest(currentLab);
-                }
+                this._labController.AddLabTest(labs);
                 MessageBox.Show("Visit notes saved and labs have been ordered!", "Visit Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } else
             {

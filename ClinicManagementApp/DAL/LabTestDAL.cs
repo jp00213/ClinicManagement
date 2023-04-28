@@ -188,45 +188,58 @@ namespace ClinicManagementApp.DAL
         /// <summary>
         /// Adds new test ordered from visit
         /// </summary>
-        /// <param name="test"></param>
+        /// <param name="orderedTests"></param>
         /// <returns></returns>
-        public bool AddLabTest(LabTest test)
+        public bool AddLabTest(List<LabTest> orderedTests)
         {
-            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            int affectedRows = 0;
+            Console.WriteLine(affectedRows);
             string insertStatement =
                 "INSERT INTO visit_has_test " +
                 "(visitID, testCode, testDate, result, resultIsNormal) " +
                 "VALUES (@visitID, @testCode, @testDate, @result, @resultIsNormal)";
 
-            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-
-            insertCommand.Parameters.Add("@visitID", System.Data.SqlDbType.Int);
-            insertCommand.Parameters["@visitID"].Value = test.VisitID;
-
-            insertCommand.Parameters.Add("@testCode", System.Data.SqlDbType.Int);
-            insertCommand.Parameters["@testCode"].Value = test.TestCode;
-
-            insertCommand.Parameters.Add("@testDate", System.Data.SqlDbType.DateTime);
-            insertCommand.Parameters["@testDate"].Value = test.TestDate;
-
-            insertCommand.Parameters.Add("@result", System.Data.SqlDbType.VarChar);
-            insertCommand.Parameters["@result"].Value = test.Result;
-
-            insertCommand.Parameters.Add("@resultIsNormal", System.Data.SqlDbType.TinyInt);
-            insertCommand.Parameters["@resultIsNormal"].Value = test.ResultIsNormal;
-
-            using (insertCommand)
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
             {
                 connection.Open();
-                int rowsAffected = insertCommand.ExecuteNonQuery();
-                if (rowsAffected > 0)
+                using (SqlTransaction transaction = connection.BeginTransaction())
                 {
-                    return true;
+                    try
+                    {
+                        foreach (LabTest test in orderedTests)
+                        {
+                            using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                           {
+                                insertCommand.Transaction = transaction;
+
+                                insertCommand.Parameters.Add("@visitID", System.Data.SqlDbType.Int);
+                                insertCommand.Parameters["@visitID"].Value = test.VisitID;
+
+                                insertCommand.Parameters.Add("@testCode", System.Data.SqlDbType.Int);
+                                insertCommand.Parameters["@testCode"].Value = test.TestCode;
+
+                                insertCommand.Parameters.Add("@testDate", System.Data.SqlDbType.DateTime);
+                                insertCommand.Parameters["@testDate"].Value = new DateTime(1900, 1, 1);
+
+                                insertCommand.Parameters.Add("@result", System.Data.SqlDbType.VarChar);
+                                insertCommand.Parameters["@result"].Value = "";
+
+                                insertCommand.Parameters.Add("@resultIsNormal", System.Data.SqlDbType.TinyInt);
+                                insertCommand.Parameters["@resultIsNormal"].Value = 0;
+
+                                insertCommand.ExecuteNonQuery();
+                            }
+                        }
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
                 }
-                else
-                {
-                    return false;
-                }
+
             }
         }
     }
