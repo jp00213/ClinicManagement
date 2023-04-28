@@ -92,6 +92,52 @@ namespace ClinicManagementApp.DAL
             return labTests;
         }
 
+        /// <summary>
+        /// Get most performed tests during dates
+        /// </summary>
+        /// <param name="startDate">start date</param>
+        /// <param name="endDate">end date</param>
+        /// <returns>lab tests</returns>
+        public List<LabTest> GetMostPerformedTestsDuringDates(DateTime startDate, DateTime endDate)
+        {
+            List<LabTest> labTests = new List<LabTest>();
+            LabTest labTest = new LabTest();
+
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
+            {
+                SqlCommand command = new SqlCommand("dbo.spGetMostPerformedTestsDuringDates", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@startDate", startDate);
+                command.Parameters.AddWithValue("@endDate", endDate);
+
+                command.Connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        labTest = new LabTest
+                        {
+                            TestCode = (int)(reader)["testCode"],
+                            TestName = (string)(reader)["testName"],
+                            TimesPerformed = (int)(reader)["timesPerformed"],
+                            AllTestTotal = (int)(reader)["allTestTotal"],
+                            PercentOfAllTests = (string)(reader)["percentOfAllTests"],
+                            NormalCount = (int)(reader)["normalCount"],
+                            AbnormalCount = (int)(reader)["abnormalCount"],
+                            Age18To29 = (string)(reader)["age18To29"],
+                            Age30To39 = (string)(reader)["age30To39"],
+                            OtherAges = (string)(reader)["otherAges"],
+                        };
+                        labTests.Add(labTest);
+                    }
+                }
+
+            }
+            return labTests;
+            
+        }
+
         /// Update lab test details
         /// </summary>
         /// <returns>success message</returns>

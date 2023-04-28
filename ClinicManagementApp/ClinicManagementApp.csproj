@@ -98,6 +98,12 @@
     <Compile Include="UserControls\LabsUserControl.Designer.cs">
       <DependentUpon>LabsUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\LabTestStatisticUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\LabTestStatisticUserControl.Designer.cs">
+      <DependentUpon>LabTestStatisticUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\RegisterPatientUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -186,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\LabsUserControl.resx">
       <DependentUpon>LabsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\LabTestStatisticUserControl.resx">
+      <DependentUpon>LabTestStatisticUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RegisterPatientUserControl.resx">
       <DependentUpon>RegisterPatientUserControl.cs</DependentUpon>

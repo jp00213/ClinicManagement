@@ -403,9 +403,9 @@
             this.weightLabel.Location = new System.Drawing.Point(0, 26);
             this.weightLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.weightLabel.Name = "weightLabel";
-            this.weightLabel.Size = new System.Drawing.Size(44, 13);
+            this.weightLabel.Size = new System.Drawing.Size(61, 13);
             this.weightLabel.TabIndex = 3;
-            this.weightLabel.Text = "Weight:";
+            this.weightLabel.Text = "Weight (lb):";
             // 
             // heightLabel
             // 
@@ -414,9 +414,9 @@
             this.heightLabel.Location = new System.Drawing.Point(0, 13);
             this.heightLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.heightLabel.Name = "heightLabel";
-            this.heightLabel.Size = new System.Drawing.Size(41, 13);
+            this.heightLabel.Size = new System.Drawing.Size(56, 13);
             this.heightLabel.TabIndex = 2;
-            this.heightLabel.Text = "Height:";
+            this.heightLabel.Text = "Height (ft):";
             // 
             // enteredByLabel
             // 
