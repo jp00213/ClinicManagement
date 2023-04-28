@@ -203,8 +203,8 @@
             // 
             // age30To39Header
             // 
-            this.age30To39Header.Text = "Age30-39 %";
-            this.age30To39Header.Width = 91;
+            this.age30To39Header.Text = "Age 30-39 %";
+            this.age30To39Header.Width = 95;
             // 
             // otherAgesHeader
             // 
