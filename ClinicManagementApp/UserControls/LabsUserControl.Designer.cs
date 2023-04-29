@@ -83,6 +83,8 @@
             this.fullNameTextBox1 = new System.Windows.Forms.TextBox();
             this.nurseIDTextBox = new System.Windows.Forms.TextBox();
             this.noPatientsLabel = new System.Windows.Forms.Label();
+            this.appointmentTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             addressStreetLabel = new System.Windows.Forms.Label();
             cityLabel = new System.Windows.Forms.Label();
             dateOfBirthLabel = new System.Windows.Forms.Label();
@@ -99,6 +101,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.doctorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // addressStreetLabel
@@ -199,7 +202,7 @@
             // appointmentDateTimePicker
             // 
             this.appointmentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.appointmentDateTimePicker.Location = new System.Drawing.Point(177, 36);
+            this.appointmentDateTimePicker.Location = new System.Drawing.Point(102, 36);
             this.appointmentDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.appointmentDateTimePicker.MaxDate = new System.DateTime(2023, 4, 13, 0, 0, 0, 0);
             this.appointmentDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
@@ -582,10 +585,26 @@
             this.noPatientsLabel.Size = new System.Drawing.Size(0, 18);
             this.noPatientsLabel.TabIndex = 106;
             // 
+            // appointmentTimeDateTimePicker
+            // 
+            this.appointmentTimeDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.appointmentBindingSource, "AppointmentDatetime", true));
+            this.appointmentTimeDateTimePicker.Enabled = false;
+            this.appointmentTimeDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appointmentTimeDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.appointmentTimeDateTimePicker.Location = new System.Drawing.Point(271, 36);
+            this.appointmentTimeDateTimePicker.Name = "appointmentTimeDateTimePicker";
+            this.appointmentTimeDateTimePicker.Size = new System.Drawing.Size(110, 24);
+            this.appointmentTimeDateTimePicker.TabIndex = 107;
+            // 
+            // appointmentBindingSource
+            // 
+            this.appointmentBindingSource.DataSource = typeof(ClinicManagementApp.Model.Appointment);
+            // 
             // LabsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.appointmentTimeDateTimePicker);
             this.Controls.Add(this.noPatientsLabel);
             this.Controls.Add(nurseFullNameLabel);
             this.Controls.Add(this.fullNameTextBox1);
@@ -636,6 +655,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.doctorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -685,5 +705,7 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn resultIsNormalDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn UpdateLabTestButton;
         private System.Windows.Forms.Label noPatientsLabel;
+        private System.Windows.Forms.DateTimePicker appointmentTimeDateTimePicker;
+        private System.Windows.Forms.BindingSource appointmentBindingSource;
     }
 }

@@ -66,6 +66,7 @@ namespace ClinicManagementApp.UserControls
             int activePatientID = this._patient.PatientID;
             DateTime appointmentDate = this.appointmentDateTimePicker.Value.Date;
             this._appointment = this._appointmentController.GetAppointmentByPatientIDAndDate(activePatientID, appointmentDate);
+            appointmentBindingSource.DataSource = _appointment;
             this.GetDoctorInfoForAppointment(this._appointment.AppointmentID);
             this.GetNurseForAppointment();
             this.HasVisitInfoBeenEnteredForAppointmentID();
@@ -359,16 +360,50 @@ namespace ClinicManagementApp.UserControls
         private void HasVisitInfoBeenEnteredForAppointmentID()
         {
             List<Visit> visits = this._visitController.GetVisitInformationListByPatientID(this._patient.PatientID);
-
+            MessageBox.Show(visits.Count.ToString());
+            Visit currentvisit = null;
             foreach (Visit visit in visits)
             {
                 if (visit.AppointmentID == this._appointment.AppointmentID)
                 {
-                    MessageBox.Show("Visit details have already been entered for this patient and cannot be changed. Please choose another patient from the list.", "Visit Already Documented", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.saveButton.Enabled = false;
+                    currentvisit = this._visitController.GetVisitInformationByVisitID(visit.VisitID);
+                    /*if (currentvisit.VisitID.ToString() == "")
+                    {
+                        MessageBox.Show("No visit!");
+                        this.saveButton.Text = "Save Appointment";
+                    }*/
+                    if (string.IsNullOrEmpty(visit.FinalDiagnoses))
+                    {
+                        
+                        visitBindingSource.DataSource = currentvisit;
+                        this.RecallVisitInformation(currentvisit);
+                        
+                    } else
+                    {
+                        MessageBox.Show("A final diagnosis has already been entered for this patient. The visit details cannot be changed. Please choose another patient from the list.", "Final Diagnosis Documented", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        this.saveButton.Enabled = false;
+                    }
+                    
                 }
 
             }
+        }
+
+        private void RecallVisitInformation(Visit visit)
+        {
+            Decimal heightFt = Math.Floor(visit.Height / 12);
+            Decimal heightInches = Math.Floor(visit.Height % 12);
+            MessageBox.Show(heightFt.ToString() +"'" + heightInches.ToString());
+            this.feetNumericUpDown.Value = heightFt;
+            this.inchesNumericUpDown.Value = heightInches;
+            this.weightTextBox.Text = visit.Weight.ToString();
+            this.diastolicTextBox.Text = visit.BloodPressureDiastolic.ToString();
+            this.systolicTextBox.Text = visit.BloodPressureSystolic.ToString();
+            this.symptomsTextBox.Text = visit.Symptoms.ToString();
+            this.temperatureTextBox.Text = visit.BodyTemperature.ToString();
+            this.pulseTextBox.Text = visit.Pulse.ToString();
+            this.initialDiagnosisTextbox.Text = visit.InitialDiagnoses.ToString();
+            this.saveButton.Text = "Update Appointment";
         }
     }
 }

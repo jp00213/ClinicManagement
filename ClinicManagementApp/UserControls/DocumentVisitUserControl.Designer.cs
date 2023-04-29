@@ -108,18 +108,23 @@
             this.sbpMmhgLabel = new System.Windows.Forms.Label();
             this.fahrenheitLabel = new System.Windows.Forms.Label();
             this.bpmLabel = new System.Windows.Forms.Label();
+            this.appointmentTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.visitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.feetNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inchesNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dateOfApptLabel
             // 
             this.dateOfApptLabel.AutoSize = true;
             this.dateOfApptLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateOfApptLabel.Location = new System.Drawing.Point(95, 14);
+            this.dateOfApptLabel.Location = new System.Drawing.Point(94, 13);
             this.dateOfApptLabel.Name = "dateOfApptLabel";
             this.dateOfApptLabel.Size = new System.Drawing.Size(139, 15);
             this.dateOfApptLabel.TabIndex = 1;
@@ -130,17 +135,17 @@
             this.appointmentDateTimePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointmentDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointmentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.appointmentDateTimePicker.Location = new System.Drawing.Point(98, 33);
+            this.appointmentDateTimePicker.Location = new System.Drawing.Point(50, 33);
             this.appointmentDateTimePicker.Name = "appointmentDateTimePicker";
-            this.appointmentDateTimePicker.Size = new System.Drawing.Size(136, 21);
+            this.appointmentDateTimePicker.Size = new System.Drawing.Size(113, 21);
             this.appointmentDateTimePicker.TabIndex = 2;
             // 
             // selectButton
             // 
             this.selectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectButton.Location = new System.Drawing.Point(110, 60);
+            this.selectButton.Location = new System.Drawing.Point(112, 60);
             this.selectButton.Name = "selectButton";
-            this.selectButton.Size = new System.Drawing.Size(102, 33);
+            this.selectButton.Size = new System.Drawing.Size(91, 33);
             this.selectButton.TabIndex = 3;
             this.selectButton.Text = "Select";
             this.selectButton.UseVisualStyleBackColor = true;
@@ -896,10 +901,31 @@
             this.bpmLabel.TabIndex = 72;
             this.bpmLabel.Text = "bpm";
             // 
+            // appointmentTimeDateTimePicker
+            // 
+            this.appointmentTimeDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.appointmentBindingSource, "AppointmentDatetime", true));
+            this.appointmentTimeDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.appointmentBindingSource, "AppointmentDatetime", true));
+            this.appointmentTimeDateTimePicker.Enabled = false;
+            this.appointmentTimeDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appointmentTimeDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.appointmentTimeDateTimePicker.Location = new System.Drawing.Point(174, 33);
+            this.appointmentTimeDateTimePicker.Name = "appointmentTimeDateTimePicker";
+            this.appointmentTimeDateTimePicker.Size = new System.Drawing.Size(91, 21);
+            this.appointmentTimeDateTimePicker.TabIndex = 73;
+            // 
+            // appointmentBindingSource
+            // 
+            this.appointmentBindingSource.DataSource = typeof(ClinicManagementApp.Model.Appointment);
+            // 
+            // visitBindingSource
+            // 
+            this.visitBindingSource.Position = 0;
+            // 
             // DocumentVisitUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
+            this.Controls.Add(this.appointmentTimeDateTimePicker);
             this.Controls.Add(this.bpmLabel);
             this.Controls.Add(this.fahrenheitLabel);
             this.Controls.Add(this.sbpMmhgLabel);
@@ -977,6 +1003,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.feetNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inchesNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1059,5 +1087,8 @@
         private System.Windows.Forms.Label sbpMmhgLabel;
         private System.Windows.Forms.Label fahrenheitLabel;
         private System.Windows.Forms.Label bpmLabel;
+        private System.Windows.Forms.DateTimePicker appointmentTimeDateTimePicker;
+        private System.Windows.Forms.BindingSource appointmentBindingSource;
+        private System.Windows.Forms.BindingSource visitBindingSource;
     }
 }

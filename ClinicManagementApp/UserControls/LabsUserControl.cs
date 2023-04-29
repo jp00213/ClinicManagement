@@ -16,6 +16,7 @@ namespace ClinicManagementApp.UserControls
         private readonly DoctorController _doctorController;
         private readonly NurseController _nurseController;
         private readonly LabTestController _labTestController;
+        private readonly AppointmentController _appointmentController;
         private int _visitID;
         private List<PatientVisit> _patients;
 
@@ -30,6 +31,7 @@ namespace ClinicManagementApp.UserControls
             _visitController = new VisitController(); 
             _doctorController = new DoctorController();
             _nurseController = new NurseController();
+            _appointmentController = new AppointmentController();
             _patients = new List<PatientVisit>();
             _labTestController = new LabTestController();
             appointmentDateTimePicker.MaxDate = DateTime.Now;
@@ -73,6 +75,9 @@ namespace ClinicManagementApp.UserControls
 
                 nurseBindingSource.Clear();
                 nurseBindingSource.DataSource = _nurseController.GetNurseByID(visit.NurseID);
+
+                appointmentBindingSource.Clear();
+                appointmentBindingSource.DataSource = _appointmentController.GetAppointmentByID(visit.AppointmentID);
 
                 labDataGridView.DataSource = _labTestController.GetLabTestListByVisitID(_visitID);
             }
