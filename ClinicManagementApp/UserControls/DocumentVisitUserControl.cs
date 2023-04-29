@@ -361,27 +361,33 @@ namespace ClinicManagementApp.UserControls
             Visit currentvisit = null;
             foreach (Visit visit in visits)
             {
+                /*Maybe come back and create a getvisitbyappointmentID, and remove foreach*/
                 if (visit.AppointmentID == this._appointment.AppointmentID)
                 {
+                    /*MessageBox.Show("Visit and appointment ID are same-same." + " " + visit.AppointmentID + "|" + this._appointment.AppointmentID);*/
                     currentvisit = this._visitController.GetVisitInformationByVisitID(visit.VisitID);
-                    /*if (currentvisit.VisitID.ToString() == "")
+                    if (currentvisit.VisitID > 0)
                     {
-                        MessageBox.Show("No visit!");
-                        this.saveButton.Text = "Save Appointment";
-                    }*/
-                    if (string.IsNullOrEmpty(visit.FinalDiagnoses))
-                    {
-                        
-                        visitBindingSource.DataSource = currentvisit;
-                        this.RecallVisitInformation(currentvisit);
-                        
-                    } else
-                    {
-                        MessageBox.Show("A final diagnosis has already been entered for this patient. The visit details cannot be changed. Please choose another patient from the list.", "Final Diagnosis Documented", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        this.saveButton.Enabled = false;
-                    }
-                    
+                        /*MessageBox.Show("Current Visit ID is greater than 0" + " " + currentvisit.VisitID);*/
+                        if (string.IsNullOrEmpty(visit.FinalDiagnoses))
+                        {
+                            /*MessageBox.Show("Final diagnosis is empty or null");*/
+                            visitBindingSource.DataSource = currentvisit;
+                            this.RecallVisitInformation(currentvisit);
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("A final diagnosis has already been entered for this patient. The visit details cannot be changed. Please choose another patient from the list.", "Final Diagnosis Documented", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            this.saveButton.Enabled = false;
+                        }
+                    } 
+                } else
+                {
+                    /*MessageBox.Show("No visit!");
+                    this.saveButton.Text = "Save Appointment";*/
                 }
+
 
             }
         }

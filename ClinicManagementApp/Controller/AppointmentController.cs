@@ -85,6 +85,16 @@ namespace ClinicManagementApp.Controller
         }
 
         /// <summary>
+        /// Deletes appointment with the corresponding appointmentID
+        /// </summary>
+        /// <param name="appointmentID"></param>
+        /// <returns></returns>
+        public bool DeleteAppointment(int appointmentID)
+        {
+            return this._appointmentDAL.DeleteAppointmentByAppointmentID(appointmentID);
+        }
+
+        /// <summary>
         /// Gets the appointment based on the patient id and date
         /// </summary>
         /// <param name="patientIDIn"></param>

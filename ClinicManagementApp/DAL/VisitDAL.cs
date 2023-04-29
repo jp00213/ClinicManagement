@@ -224,5 +224,41 @@ namespace ClinicManagementApp.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// Gets a list of visits based on appointment id
+        /// </summary>
+        /// <param name="appointmentIDIn"></param>
+        /// <returns></returns>
+        public List<Visit> GetVisitInformationListByAppointmentID(int appointmentIDIn)
+        {
+            List<Visit> visits = new List<Visit>();
+            string selectStatement =
+                " SELECT v.visitID, v.appointmentID " +
+                " FROM appointment a, visitRoutineResults v " +
+                " where v.appointmentID = @appointmentIDIn ";
+
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@appointmentIDIn", appointmentIDIn);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Visit visit = new Visit();
+
+                            visit.VisitID = (int)(reader)["VisitID"];
+                            visit.AppointmentID = (int)(reader)["appointmentID"];
+                            visits.Add(visit);
+                        }
+                    }
+                }
+            }
+            return visits;
+        }
     }
 }

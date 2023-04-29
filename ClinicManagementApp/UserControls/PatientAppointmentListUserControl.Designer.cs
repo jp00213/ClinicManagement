@@ -66,6 +66,7 @@
             this.showFutureRadioButton = new System.Windows.Forms.RadioButton();
             this.pastAppointmentRadioButton = new System.Windows.Forms.RadioButton();
             this.AppoinmentUserControlLabel = new System.Windows.Forms.Label();
+            this.deletePastAppointmentButton = new System.Windows.Forms.Button();
             this.appointmentTableLayout.SuspendLayout();
             this.FutureAppointmentPanel.SuspendLayout();
             this.pastAppointmentPanel.SuspendLayout();
@@ -208,6 +209,7 @@
             this.deleteAppointmentButton.TabIndex = 13;
             this.deleteAppointmentButton.Text = "Delete Appointment";
             this.deleteAppointmentButton.UseVisualStyleBackColor = true;
+            this.deleteAppointmentButton.Click += new System.EventHandler(this.deleteAppointmentButton_Click);
             // 
             // reasonTextArea
             // 
@@ -336,6 +338,7 @@
             // 
             // pastAppointmentPanel
             // 
+            this.pastAppointmentPanel.Controls.Add(this.deletePastAppointmentButton);
             this.pastAppointmentPanel.Controls.Add(this.pastAppointmentMessageLabel);
             this.pastAppointmentPanel.Controls.Add(this.pastAppointmentReasonTextArea);
             this.pastAppointmentPanel.Controls.Add(this.pastAppointmentDateTextBox);
@@ -505,6 +508,17 @@
             this.AppoinmentUserControlLabel.TabIndex = 25;
             this.AppoinmentUserControlLabel.Text = "Patient Appointments Details";
             // 
+            // deletePastAppointmentButton
+            // 
+            this.deletePastAppointmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deletePastAppointmentButton.Location = new System.Drawing.Point(120, 141);
+            this.deletePastAppointmentButton.Name = "deletePastAppointmentButton";
+            this.deletePastAppointmentButton.Size = new System.Drawing.Size(135, 30);
+            this.deletePastAppointmentButton.TabIndex = 37;
+            this.deletePastAppointmentButton.Text = "Delete Appointment";
+            this.deletePastAppointmentButton.UseVisualStyleBackColor = true;
+            this.deletePastAppointmentButton.Click += new System.EventHandler(this.deletePastAppointmentButton_Click);
+            // 
             // PatientAppointmentListUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -567,5 +581,6 @@
         private System.Windows.Forms.ComboBox doctorNameComboBox;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button deletePastAppointmentButton;
     }
 }
