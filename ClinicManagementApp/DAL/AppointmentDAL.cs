@@ -62,7 +62,7 @@ namespace ClinicManagementApp.DAL
 
             SqlConnection connection = ClinicManagementDBConnection.GetConnection();
             string selectStatement =
-                "SELECT CAST(appointmentDatetime AS time) AS TimeOption " + 
+                "SELECT CAST(appointmentDatetime AS time) AS TimeOption " +
                 "FROM appointment " +
                 "WHERE CAST(appointmentDatetime AS date) = @date " +
                 "AND doctorID = @doctorID";
@@ -274,7 +274,7 @@ namespace ClinicManagementApp.DAL
                 "and a.patientID = @patientIDIn " +
                 "and CONVERT(VARCHAR(10), a.appointmentDatetime, 101) = @appointmentDateIn " +
                 "order by a.appointmentDatetime ";
-            
+
             using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
             {
                 connection.Open();
@@ -340,6 +340,38 @@ namespace ClinicManagementApp.DAL
                 {
                     return false;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Deletes an appointment based on the appointment id
+        /// </summary>
+        /// <param name="appointmentIDIn"></param>
+        /// <returns></returns>
+        public bool DeleteAppointmentByAppointmentID(int appointmentIDIn)
+        {
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string deleteStatement =
+                "DELETE FROM appointment " +
+                "WHERE appointmentID = @appointmentIDIn ";
+
+            SqlCommand deleteCommand = new SqlCommand(deleteStatement, connection);
+
+            deleteCommand.Parameters.AddWithValue("@appointmentIDIn", appointmentIDIn);
+
+            using (deleteCommand)
+            {
+                connection.Open();
+                int rowsAffected = deleteCommand.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
             }
         }
     }
