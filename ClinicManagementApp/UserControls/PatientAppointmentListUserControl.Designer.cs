@@ -208,6 +208,7 @@
             this.deleteAppointmentButton.TabIndex = 13;
             this.deleteAppointmentButton.Text = "Delete Appointment";
             this.deleteAppointmentButton.UseVisualStyleBackColor = true;
+            this.deleteAppointmentButton.Click += new System.EventHandler(this.deleteAppointmentButton_Click);
             // 
             // reasonTextArea
             // 

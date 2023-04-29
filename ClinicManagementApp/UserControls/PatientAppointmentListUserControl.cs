@@ -14,6 +14,7 @@ namespace ClinicManagementApp.UserControls
     {
         private readonly AppointmentController _appointmentController;
         private readonly DoctorController _doctorController;
+        private readonly VisitController _visitController;
 
         /// <summary>
         /// create constructors
@@ -23,6 +24,7 @@ namespace ClinicManagementApp.UserControls
             InitializeComponent();
             this._appointmentController = new AppointmentController();
             this._doctorController = new DoctorController();
+            this._visitController = new VisitController();
             appointmentDateTimePicker.CustomFormat = "yyyy / MM / dd";
             this.SetTimeComboBox();
             this.showFutureRadioButton.Checked = true;
@@ -390,6 +392,28 @@ namespace ClinicManagementApp.UserControls
                 string date = this.appointmentDateTimePicker.Value.ToString("yyyy-MM-dd");
                 this.UpdateTimeOptions(date, doctorID);
             }
+        }
+
+        private void deleteAppointmentButton_Click(object sender, EventArgs e)
+        {
+            int currentAppointmentID = int.Parse(this.theFutureAppointmentNumberTextBox.Text);
+            List<Visit> visits= this._visitController.GetVisitInformationListByAppointmentID(currentAppointmentID);
+            MessageBox.Show(visits.Count.ToString());
+            if (visits.Count == 0) 
+            {
+                bool deleteSuccess = this._appointmentController.DeleteAppointment(currentAppointmentID);
+                if (deleteSuccess)
+                {
+                    MessageBox.Show("Appointment successfully deleted.", "Delete Appointment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else
+                {
+                    MessageBox.Show("Something went wrong. Appointment was not deleted.", "Delete Appointment", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            } else
+            {
+                MessageBox.Show("Patient visit information is associated with the selected appointment. This appointment cannot be deleted.", "Delete Appointment", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }
