@@ -397,7 +397,6 @@ namespace ClinicManagementApp.UserControls
         private void DeleteAppointment(int appointmentID)
         {
             List<Visit> visits = this._visitController.GetVisitInformationListByAppointmentID(appointmentID);
-            MessageBox.Show(visits.Count.ToString());
             if (visits.Count == 0)
             {
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this appointment?", "Pending Appointment Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
