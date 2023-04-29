@@ -66,6 +66,7 @@ namespace ClinicManagementApp.UserControls
             int activePatientID = this._patient.PatientID;
             DateTime appointmentDate = this.appointmentDateTimePicker.Value.Date;
             this._appointment = this._appointmentController.GetAppointmentByPatientIDAndDate(activePatientID, appointmentDate);
+            appointmentBindingSource.DataSource = _appointment;
             this.GetDoctorInfoForAppointment(this._appointment.AppointmentID);
             this.GetNurseForAppointment();
             this.HasVisitInfoBeenEnteredForAppointmentID();
@@ -246,31 +247,31 @@ namespace ClinicManagementApp.UserControls
 
             if (!Decimal.TryParse(this.weightTextBox.Text.Trim(), out _) || Decimal.Parse(this.weightTextBox.Text.Trim()) < 0 || Decimal.Parse(this.weightTextBox.Text.Trim()) > 800 || string.IsNullOrEmpty(this.weightTextBox.Text))
             {
-                this.weightErrorLabel.Text = "Please enter a valid weight.";
+                this.weightErrorLabel.Text = "Please enter a valid weight. Ex: 167.3";
                 this.weightErrorLabel.ForeColor = Color.Red;
             }
 
             if (!int.TryParse(this.diastolicTextBox.Text.Trim(), out _) || int.Parse(this.diastolicTextBox.Text.Trim()) < 40 || int.Parse(this.diastolicTextBox.Text.Trim()) > 370 || string.IsNullOrEmpty(this.diastolicTextBox.Text))
             {
-                this.diastolicBloodPressureErrorLabel.Text = "Please enter a valid diastolic BP.";
+                this.diastolicBloodPressureErrorLabel.Text = "Please enter a whole number for diastolic BP. Ex: 120";
                 this.diastolicBloodPressureErrorLabel.ForeColor = Color.Red;
             }
 
             if (!int.TryParse(this.systolicTextBox.Text.Trim(), out _) || int.Parse(this.systolicTextBox.Text.Trim()) < 20 || int.Parse(this.systolicTextBox.Text.Trim()) > 360 || string.IsNullOrEmpty(this.systolicTextBox.Text) )
             {
-                this.systolicErrorLabel.Text = "Please enter a valid systolic BP.";
+                this.systolicErrorLabel.Text = "Please enter a whole number for systolic BP. Ex: 80";
                 this.systolicErrorLabel.ForeColor = Color.Red;
             }
 
             if (!Decimal.TryParse(this.temperatureTextBox.Text.Trim(), out _) || Decimal.Parse(this.temperatureTextBox.Text.Trim()) < 78 || Decimal.Parse(this.temperatureTextBox.Text.Trim()) > 115 || string.IsNullOrEmpty(this.temperatureTextBox.Text))
             {
-                this.bodyTemperatureErrorLabel.Text = "Please enter a valid temperature.";
+                this.bodyTemperatureErrorLabel.Text = "Please enter a valid temperature. Ex: 98.6";
                 this.bodyTemperatureErrorLabel.ForeColor = Color.Red; 
             }
 
             if (!int.TryParse(this.pulseTextBox.Text.Trim(), out _) || int.Parse(this.pulseTextBox.Text.Trim()) < 55 || int.Parse(this.pulseTextBox.Text.Trim()) > 400 || string.IsNullOrEmpty(this.pulseTextBox.Text))
             {
-                this.pulseErrorLabel.Text = "Please enter a valid pulse.";
+                this.pulseErrorLabel.Text = "Please enter a whole number for pulse. Ex: 98";
                 this.pulseErrorLabel.ForeColor = Color.Red; 
             }
 
@@ -357,16 +358,50 @@ namespace ClinicManagementApp.UserControls
         private void HasVisitInfoBeenEnteredForAppointmentID()
         {
             List<Visit> visits = this._visitController.GetVisitInformationListByPatientID(this._patient.PatientID);
-
+            MessageBox.Show(visits.Count.ToString());
+            Visit currentvisit = null;
             foreach (Visit visit in visits)
             {
                 if (visit.AppointmentID == this._appointment.AppointmentID)
                 {
-                    MessageBox.Show("Visit details have already been entered for this patient and cannot be changed. Please choose another patient from the list.", "Visit Already Documented", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.saveButton.Enabled = false;
+                    currentvisit = this._visitController.GetVisitInformationByVisitID(visit.VisitID);
+                    /*if (currentvisit.VisitID.ToString() == "")
+                    {
+                        MessageBox.Show("No visit!");
+                        this.saveButton.Text = "Save Appointment";
+                    }*/
+                    if (string.IsNullOrEmpty(visit.FinalDiagnoses))
+                    {
+                        
+                        visitBindingSource.DataSource = currentvisit;
+                        this.RecallVisitInformation(currentvisit);
+                        
+                    } else
+                    {
+                        MessageBox.Show("A final diagnosis has already been entered for this patient. The visit details cannot be changed. Please choose another patient from the list.", "Final Diagnosis Documented", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        this.saveButton.Enabled = false;
+                    }
+                    
                 }
 
             }
+        }
+
+        private void RecallVisitInformation(Visit visit)
+        {
+            Decimal heightFt = Math.Floor(visit.Height / 12);
+            Decimal heightInches = Math.Floor(visit.Height % 12);
+            MessageBox.Show(heightFt.ToString() +"'" + heightInches.ToString());
+            this.feetNumericUpDown.Value = heightFt;
+            this.inchesNumericUpDown.Value = heightInches;
+            this.weightTextBox.Text = visit.Weight.ToString();
+            this.diastolicTextBox.Text = visit.BloodPressureDiastolic.ToString();
+            this.systolicTextBox.Text = visit.BloodPressureSystolic.ToString();
+            this.symptomsTextBox.Text = visit.Symptoms.ToString();
+            this.temperatureTextBox.Text = visit.BodyTemperature.ToString();
+            this.pulseTextBox.Text = visit.Pulse.ToString();
+            this.initialDiagnosisTextbox.Text = visit.InitialDiagnoses.ToString();
+            this.saveButton.Text = "Update Appointment";
         }
     }
 }

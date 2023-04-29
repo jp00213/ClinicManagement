@@ -75,7 +75,7 @@
             sexLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             sexLabel.Location = new System.Drawing.Point(119, 305);
             sexLabel.Name = "sexLabel";
-            sexLabel.Size = new System.Drawing.Size(47, 25);
+            sexLabel.Size = new System.Drawing.Size(36, 20);
             sexLabel.TabIndex = 35;
             sexLabel.Text = "Sex";
             // 
@@ -107,7 +107,7 @@
             this.patientInformationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.patientInformationLabel.Location = new System.Drawing.Point(293, 32);
             this.patientInformationLabel.Name = "patientInformationLabel";
-            this.patientInformationLabel.Size = new System.Drawing.Size(261, 31);
+            this.patientInformationLabel.Size = new System.Drawing.Size(210, 25);
             this.patientInformationLabel.TabIndex = 2;
             this.patientInformationLabel.Text = "Patient Information";
             this.patientInformationLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -118,7 +118,7 @@
             this.lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lastNameLabel.Location = new System.Drawing.Point(74, 101);
             this.lastNameLabel.Name = "lastNameLabel";
-            this.lastNameLabel.Size = new System.Drawing.Size(106, 25);
+            this.lastNameLabel.Size = new System.Drawing.Size(86, 20);
             this.lastNameLabel.TabIndex = 3;
             this.lastNameLabel.Text = "Last Name";
             // 
@@ -128,7 +128,7 @@
             this.firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.firstNameLabel.Location = new System.Drawing.Point(74, 152);
             this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(106, 25);
+            this.firstNameLabel.Size = new System.Drawing.Size(86, 20);
             this.firstNameLabel.TabIndex = 4;
             this.firstNameLabel.Text = "First Name";
             // 
@@ -138,7 +138,7 @@
             this.dateOfBirthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateOfBirthLabel.Location = new System.Drawing.Point(58, 201);
             this.dateOfBirthLabel.Name = "dateOfBirthLabel";
-            this.dateOfBirthLabel.Size = new System.Drawing.Size(123, 25);
+            this.dateOfBirthLabel.Size = new System.Drawing.Size(102, 20);
             this.dateOfBirthLabel.TabIndex = 5;
             this.dateOfBirthLabel.Text = "Date Of Birth";
             // 
@@ -148,7 +148,7 @@
             this.phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.phoneLabel.Location = new System.Drawing.Point(105, 255);
             this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(69, 25);
+            this.phoneLabel.Size = new System.Drawing.Size(55, 20);
             this.phoneLabel.TabIndex = 6;
             this.phoneLabel.Text = "Phone";
             // 
@@ -158,7 +158,7 @@
             this.addressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addressLabel.Location = new System.Drawing.Point(421, 98);
             this.addressLabel.Name = "addressLabel";
-            this.addressLabel.Size = new System.Drawing.Size(85, 25);
+            this.addressLabel.Size = new System.Drawing.Size(68, 20);
             this.addressLabel.TabIndex = 7;
             this.addressLabel.Text = "Address";
             // 
@@ -168,7 +168,7 @@
             this.cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cityLabel.Location = new System.Drawing.Point(431, 149);
             this.cityLabel.Name = "cityLabel";
-            this.cityLabel.Size = new System.Drawing.Size(46, 25);
+            this.cityLabel.Size = new System.Drawing.Size(35, 20);
             this.cityLabel.TabIndex = 8;
             this.cityLabel.Text = "City";
             // 
@@ -178,7 +178,7 @@
             this.stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stateLabel.Location = new System.Drawing.Point(431, 199);
             this.stateLabel.Name = "stateLabel";
-            this.stateLabel.Size = new System.Drawing.Size(58, 25);
+            this.stateLabel.Size = new System.Drawing.Size(48, 20);
             this.stateLabel.TabIndex = 9;
             this.stateLabel.Text = "State";
             // 
@@ -188,7 +188,7 @@
             this.zipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.zipLabel.Location = new System.Drawing.Point(435, 251);
             this.zipLabel.Name = "zipLabel";
-            this.zipLabel.Size = new System.Drawing.Size(39, 25);
+            this.zipLabel.Size = new System.Drawing.Size(31, 20);
             this.zipLabel.TabIndex = 10;
             this.zipLabel.Text = "Zip";
             // 
@@ -196,7 +196,7 @@
             // 
             this.lastNameTextBox.Location = new System.Drawing.Point(167, 101);
             this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(228, 22);
+            this.lastNameTextBox.Size = new System.Drawing.Size(228, 20);
             this.lastNameTextBox.TabIndex = 11;
             this.lastNameTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
@@ -204,7 +204,7 @@
             // 
             this.firstNameTextBox.Location = new System.Drawing.Point(167, 151);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(228, 22);
+            this.firstNameTextBox.Size = new System.Drawing.Size(228, 20);
             this.firstNameTextBox.TabIndex = 12;
             this.firstNameTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
@@ -212,7 +212,7 @@
             // 
             this.phoneTextBox.Location = new System.Drawing.Point(167, 254);
             this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(228, 22);
+            this.phoneTextBox.Size = new System.Drawing.Size(228, 20);
             this.phoneTextBox.TabIndex = 14;
             this.phoneTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
@@ -220,7 +220,7 @@
             // 
             this.addressTextBox.Location = new System.Drawing.Point(495, 98);
             this.addressTextBox.Name = "addressTextBox";
-            this.addressTextBox.Size = new System.Drawing.Size(227, 22);
+            this.addressTextBox.Size = new System.Drawing.Size(227, 20);
             this.addressTextBox.TabIndex = 16;
             this.addressTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
@@ -228,7 +228,7 @@
             // 
             this.cityTextBox.Location = new System.Drawing.Point(495, 147);
             this.cityTextBox.Name = "cityTextBox";
-            this.cityTextBox.Size = new System.Drawing.Size(227, 22);
+            this.cityTextBox.Size = new System.Drawing.Size(227, 20);
             this.cityTextBox.TabIndex = 17;
             this.cityTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
@@ -236,7 +236,7 @@
             // 
             this.zipTextBox.Location = new System.Drawing.Point(495, 251);
             this.zipTextBox.Name = "zipTextBox";
-            this.zipTextBox.Size = new System.Drawing.Size(227, 22);
+            this.zipTextBox.Size = new System.Drawing.Size(227, 20);
             this.zipTextBox.TabIndex = 19;
             this.zipTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
@@ -246,7 +246,7 @@
             this.lastNameErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lastNameErrorMessageLabel.Location = new System.Drawing.Point(164, 132);
             this.lastNameErrorMessageLabel.Name = "lastNameErrorMessageLabel";
-            this.lastNameErrorMessageLabel.Size = new System.Drawing.Size(0, 18);
+            this.lastNameErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
             this.lastNameErrorMessageLabel.TabIndex = 21;
             // 
             // dateOfBirthDateTimePicker
@@ -256,7 +256,7 @@
             this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(166, 199);
             this.dateOfBirthDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
-            this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(228, 26);
+            this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(228, 22);
             this.dateOfBirthDateTimePicker.TabIndex = 13;
             this.dateOfBirthDateTimePicker.Value = new System.DateTime(2023, 3, 23, 0, 0, 0, 0);
             this.dateOfBirthDateTimePicker.DropDown += new System.EventHandler(this.TextBox_TextChanged);
@@ -267,7 +267,7 @@
             this.firstNameErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.firstNameErrorMessageLabel.Location = new System.Drawing.Point(164, 181);
             this.firstNameErrorMessageLabel.Name = "firstNameErrorMessageLabel";
-            this.firstNameErrorMessageLabel.Size = new System.Drawing.Size(0, 18);
+            this.firstNameErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
             this.firstNameErrorMessageLabel.TabIndex = 23;
             // 
             // phoneErrorMessageLabel
@@ -276,7 +276,7 @@
             this.phoneErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.phoneErrorMessageLabel.Location = new System.Drawing.Point(166, 278);
             this.phoneErrorMessageLabel.Name = "phoneErrorMessageLabel";
-            this.phoneErrorMessageLabel.Size = new System.Drawing.Size(0, 18);
+            this.phoneErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
             this.phoneErrorMessageLabel.TabIndex = 24;
             // 
             // addressErrorMessageLabel
@@ -285,7 +285,7 @@
             this.addressErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addressErrorMessageLabel.Location = new System.Drawing.Point(495, 129);
             this.addressErrorMessageLabel.Name = "addressErrorMessageLabel";
-            this.addressErrorMessageLabel.Size = new System.Drawing.Size(0, 18);
+            this.addressErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
             this.addressErrorMessageLabel.TabIndex = 25;
             // 
             // cityErrorMessageLabel
@@ -294,7 +294,7 @@
             this.cityErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cityErrorMessageLabel.Location = new System.Drawing.Point(495, 175);
             this.cityErrorMessageLabel.Name = "cityErrorMessageLabel";
-            this.cityErrorMessageLabel.Size = new System.Drawing.Size(0, 18);
+            this.cityErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
             this.cityErrorMessageLabel.TabIndex = 26;
             // 
             // stateErrorMessageLabel
@@ -303,7 +303,7 @@
             this.stateErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stateErrorMessageLabel.Location = new System.Drawing.Point(495, 226);
             this.stateErrorMessageLabel.Name = "stateErrorMessageLabel";
-            this.stateErrorMessageLabel.Size = new System.Drawing.Size(0, 18);
+            this.stateErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
             this.stateErrorMessageLabel.TabIndex = 27;
             // 
             // zipErrorMessageLabel
@@ -312,7 +312,7 @@
             this.zipErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.zipErrorMessageLabel.Location = new System.Drawing.Point(495, 278);
             this.zipErrorMessageLabel.Name = "zipErrorMessageLabel";
-            this.zipErrorMessageLabel.Size = new System.Drawing.Size(0, 18);
+            this.zipErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
             this.zipErrorMessageLabel.TabIndex = 28;
             // 
             // DOBErrorLabel
@@ -321,7 +321,7 @@
             this.DOBErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DOBErrorLabel.Location = new System.Drawing.Point(166, 228);
             this.DOBErrorLabel.Name = "DOBErrorLabel";
-            this.DOBErrorLabel.Size = new System.Drawing.Size(0, 18);
+            this.DOBErrorLabel.Size = new System.Drawing.Size(0, 15);
             this.DOBErrorLabel.TabIndex = 29;
             // 
             // stateComboBox
@@ -381,7 +381,7 @@
             "WY"});
             this.stateComboBox.Location = new System.Drawing.Point(495, 202);
             this.stateComboBox.Name = "stateComboBox";
-            this.stateComboBox.Size = new System.Drawing.Size(227, 24);
+            this.stateComboBox.Size = new System.Drawing.Size(227, 21);
             this.stateComboBox.TabIndex = 18;
             this.stateComboBox.SelectedValueChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
@@ -389,7 +389,7 @@
             // 
             this.ssnTextBox.Location = new System.Drawing.Point(494, 301);
             this.ssnTextBox.Name = "ssnTextBox";
-            this.ssnTextBox.Size = new System.Drawing.Size(227, 22);
+            this.ssnTextBox.Size = new System.Drawing.Size(227, 20);
             this.ssnTextBox.TabIndex = 20;
             this.ssnTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
@@ -399,7 +399,7 @@
             this.ssnLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ssnLabel.Location = new System.Drawing.Point(434, 301);
             this.ssnLabel.Name = "ssnLabel";
-            this.ssnLabel.Size = new System.Drawing.Size(62, 25);
+            this.ssnLabel.Size = new System.Drawing.Size(48, 20);
             this.ssnLabel.TabIndex = 31;
             this.ssnLabel.Text = "SSN*";
             // 
@@ -409,7 +409,7 @@
             this.sexErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sexErrorMessageLabel.Location = new System.Drawing.Point(174, 329);
             this.sexErrorMessageLabel.Name = "sexErrorMessageLabel";
-            this.sexErrorMessageLabel.Size = new System.Drawing.Size(0, 18);
+            this.sexErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
             this.sexErrorMessageLabel.TabIndex = 34;
             // 
             // ssnErrorMessageLabel
@@ -418,7 +418,7 @@
             this.ssnErrorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ssnErrorMessageLabel.Location = new System.Drawing.Point(495, 329);
             this.ssnErrorMessageLabel.Name = "ssnErrorMessageLabel";
-            this.ssnErrorMessageLabel.Size = new System.Drawing.Size(0, 18);
+            this.ssnErrorMessageLabel.Size = new System.Drawing.Size(0, 15);
             this.ssnErrorMessageLabel.TabIndex = 35;
             // 
             // sexComboBox
@@ -428,8 +428,8 @@
             this.sexComboBox.FormattingEnabled = true;
             this.sexComboBox.Location = new System.Drawing.Point(167, 305);
             this.sexComboBox.Name = "sexComboBox";
-            this.sexComboBox.Size = new System.Drawing.Size(228, 24);
-            this.sexComboBox.TabIndex = 36;
+            this.sexComboBox.Size = new System.Drawing.Size(228, 21);
+            this.sexComboBox.TabIndex = 15;
             this.sexComboBox.SelectedIndexChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // patientBindingSource

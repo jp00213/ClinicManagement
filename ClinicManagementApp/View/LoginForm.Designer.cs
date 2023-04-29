@@ -40,29 +40,34 @@
             // usernameTextBox
             // 
             this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.usernameTextBox.Location = new System.Drawing.Point(419, 115);
+            this.usernameTextBox.Location = new System.Drawing.Point(314, 93);
+            this.usernameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(100, 29);
+            this.usernameTextBox.Size = new System.Drawing.Size(76, 24);
             this.usernameTextBox.TabIndex = 0;
             this.usernameTextBox.TextChanged += new System.EventHandler(this.usernameTextBox_TextChanged);
+            this.usernameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PressEnterToLogin);
             // 
             // passwordTextBox
             // 
             this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.passwordTextBox.Location = new System.Drawing.Point(419, 162);
+            this.passwordTextBox.Location = new System.Drawing.Point(314, 132);
+            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
-            this.passwordTextBox.Size = new System.Drawing.Size(100, 29);
+            this.passwordTextBox.Size = new System.Drawing.Size(76, 24);
             this.passwordTextBox.TabIndex = 1;
             this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
+            this.passwordTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PressEnterToLogin);
             // 
             // usernameLabel
             // 
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.usernameLabel.Location = new System.Drawing.Point(290, 115);
+            this.usernameLabel.Location = new System.Drawing.Point(218, 93);
+            this.usernameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(97, 24);
+            this.usernameLabel.Size = new System.Drawing.Size(77, 18);
             this.usernameLabel.TabIndex = 2;
             this.usernameLabel.Text = "Username";
             // 
@@ -70,18 +75,20 @@
             // 
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.passwordLabel.Location = new System.Drawing.Point(295, 165);
+            this.passwordLabel.Location = new System.Drawing.Point(221, 134);
+            this.passwordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(92, 24);
+            this.passwordLabel.Size = new System.Drawing.Size(75, 18);
             this.passwordLabel.TabIndex = 3;
             this.passwordLabel.Text = "Password";
             // 
             // loginButton
             // 
             this.loginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.loginButton.Location = new System.Drawing.Point(367, 235);
+            this.loginButton.Location = new System.Drawing.Point(275, 191);
+            this.loginButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(104, 45);
+            this.loginButton.Size = new System.Drawing.Size(78, 37);
             this.loginButton.TabIndex = 4;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
@@ -92,9 +99,10 @@
             this.errorMessageLabel.AutoSize = true;
             this.errorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.errorMessageLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorMessageLabel.Location = new System.Drawing.Point(280, 326);
+            this.errorMessageLabel.Location = new System.Drawing.Point(210, 265);
+            this.errorMessageLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(0, 24);
+            this.errorMessageLabel.Size = new System.Drawing.Size(0, 18);
             this.errorMessageLabel.TabIndex = 6;
             // 
             // welcomeLabel
@@ -102,17 +110,18 @@
             this.welcomeLabel.AutoSize = true;
             this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.welcomeLabel.ForeColor = System.Drawing.Color.DarkGreen;
-            this.welcomeLabel.Location = new System.Drawing.Point(180, 47);
+            this.welcomeLabel.Location = new System.Drawing.Point(135, 38);
+            this.welcomeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.welcomeLabel.Name = "welcomeLabel";
-            this.welcomeLabel.Size = new System.Drawing.Size(483, 29);
+            this.welcomeLabel.Size = new System.Drawing.Size(378, 25);
             this.welcomeLabel.TabIndex = 7;
             this.welcomeLabel.Text = "Welcome To The Clinic Management App";
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.welcomeLabel);
             this.Controls.Add(this.errorMessageLabel);
             this.Controls.Add(this.loginButton);
@@ -120,6 +129,7 @@
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.usernameTextBox);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoginForm";
