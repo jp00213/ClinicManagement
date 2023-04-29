@@ -1,6 +1,7 @@
 ﻿using ClinicManagementApp.DAL;
 using ClinicManagementApp.Model;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 
 namespace ClinicManagementApp.Controller
@@ -115,6 +116,14 @@ namespace ClinicManagementApp.Controller
         /// <returns>patient list</returns>
         public List<PatientVisit> GetPatientsByVisitDate(DateTime visitDate) => this._patientDAL.GetPatientsByVisitDate(visitDate);
 
-
+        /// <summary>
+        /// Deletes appointment with the corresponding 
+        /// </summary>
+        /// <param name="patientIDIn"></param>
+        /// <returns></returns>
+        public bool DeletePatientByPatientID(int patientIDIn)
+        {
+            return this._patientDAL.DeletePatientByPatientID(patientIDIn);
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ClinicManagementApp.Controller;
 using ClinicManagementApp.Model;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -12,6 +13,7 @@ namespace ClinicManagementApp.UserControls
     {
         private PatientController _patientController;
         private Patient _patient;
+        private AppointmentController _appointmentController;
         /// <summary>
         /// Initializes the User Control
         /// </summary>
@@ -19,12 +21,14 @@ namespace ClinicManagementApp.UserControls
         {
             InitializeComponent();
             this._patientController= new PatientController();
+            this._appointmentController = new AppointmentController();
             this._patient = null;
             sexComboBox.Items.Insert(0, "--select--");
             sexComboBox.Items.Insert(1, "M");
             sexComboBox.Items.Insert(2, "F");
             sexComboBox.SelectedIndex = 0;
             this.updatePatientButton.Enabled = false;
+            this.deletePatientButton.Enabled = false;
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -48,6 +52,7 @@ namespace ClinicManagementApp.UserControls
                 patientBindingSource.DataSource = _patient;
                 patientBindingSource.ResetBindings(true);
                 this.updatePatientButton.Enabled = true;
+                this.deletePatientButton.Enabled = true;
             }
         }
 
@@ -122,6 +127,7 @@ namespace ClinicManagementApp.UserControls
             this._patient = null;
             this.patientBindingSource.DataSource = this._patientController.GetPatientByNameDOB("", "", DateTime.Now);
             this.updatePatientButton.Enabled = false;
+            this.deletePatientButton.Enabled = false;
         }
 
         private void ShowInvalidErrorMessage()
@@ -256,6 +262,33 @@ namespace ClinicManagementApp.UserControls
         private void TextBox_TextChanged(object sender, EventArgs e)
         {
             this.HideInvalidErrorMessages();
+        }
+
+        private void deletePatientButton_Click(object sender, EventArgs e)
+        {
+            List<Appointment> currentAppointments = this._appointmentController.GetAppointmentsByID_NowOn(this._patient.PatientID);
+            List<Appointment> pastAppointments = this._appointmentController.GetAppointmentsByID_Past(this._patient.PatientID);
+            bool haveAppointment = (currentAppointments.Count + pastAppointments.Count) > 0;
+            if (!haveAppointment)
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this patient?", "Pending Patient Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    bool deleteSuccess = this._patientController.DeletePatientByPatientID(this._patient.PatientID);
+                    if (deleteSuccess)
+                    {
+                        MessageBox.Show("Patient successfully deleted.", "Delete Patient", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.ResetForm();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Something went wrong. Patient was not deleted.", "Delete Patient", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }                    
+            } else
+            {
+                MessageBox.Show("Appointment information is associated with this patient. The patient cannot be deleted at this time.", "Delete Patient", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

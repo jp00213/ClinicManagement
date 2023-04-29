@@ -391,6 +391,38 @@ namespace ClinicManagementApp.DAL
             return patients;
         }
 
+        /// <summary>
+        /// Deletes the patient with the corresponding patient id
+        /// </summary>
+        /// <param name="patientIDIn"></param>
+        /// <returns></returns>
+        public bool DeletePatientByPatientID(int patientIDIn)
+        {
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string deleteStatement =
+                "DELETE FROM patient " +
+                "WHERE patientID = @patientIDIn ";
+
+            SqlCommand deleteCommand = new SqlCommand(deleteStatement, connection);
+
+            deleteCommand.Parameters.AddWithValue("@patientIDIn", patientIDIn);
+
+            using (deleteCommand)
+            {
+                connection.Open();
+                int rowsAffected = deleteCommand.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+        }
+
     }
 
 }
