@@ -394,26 +394,47 @@ namespace ClinicManagementApp.UserControls
             }
         }
 
-        private void deleteAppointmentButton_Click(object sender, EventArgs e)
+        private void DeleteAppointment(int appointmentID)
         {
-            int currentAppointmentID = int.Parse(this.theFutureAppointmentNumberTextBox.Text);
-            List<Visit> visits= this._visitController.GetVisitInformationListByAppointmentID(currentAppointmentID);
+            List<Visit> visits = this._visitController.GetVisitInformationListByAppointmentID(appointmentID);
             MessageBox.Show(visits.Count.ToString());
-            if (visits.Count == 0) 
+            if (visits.Count == 0)
             {
-                bool deleteSuccess = this._appointmentController.DeleteAppointment(currentAppointmentID);
-                if (deleteSuccess)
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this appointment?", "Pending Appointment Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("Appointment successfully deleted.", "Delete Appointment", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } else
-                {
-                    MessageBox.Show("Something went wrong. Appointment was not deleted.", "Delete Appointment", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            } else
+                    bool deleteSuccess = this._appointmentController.DeleteAppointment(appointmentID);
+                    if (deleteSuccess)
+                    {
+                        MessageBox.Show("Appointment successfully deleted.", "Delete Appointment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.ClearAllFutureAppointmentDetails();
+                        this.ClearAllPastAppointmentDetails();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Something went wrong. Appointment was not deleted.", "Delete Appointment", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                } 
+            }
+            else
             {
                 MessageBox.Show("Patient visit information is associated with the selected appointment. This appointment cannot be deleted.", "Delete Appointment", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void deleteAppointmentButton_Click(object sender, EventArgs e)
+        {
+            int currentAppointmentID = int.Parse(this.theFutureAppointmentNumberTextBox.Text);
+            this.DeleteAppointment(currentAppointmentID);
 
         }
+
+        private void deletePastAppointmentButton_Click(object sender, EventArgs e)
+        {
+            int currentAppointmentID = int.Parse(this.pastAppointmentNumberTextBox.Text);
+            this.DeleteAppointment(currentAppointmentID);
+        }
+
+
     }
 }
