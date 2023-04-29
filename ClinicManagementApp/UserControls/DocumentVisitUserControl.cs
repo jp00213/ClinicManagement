@@ -358,7 +358,6 @@ namespace ClinicManagementApp.UserControls
         private void HasVisitInfoBeenEnteredForAppointmentID()
         {
             List<Visit> visits = this._visitController.GetVisitInformationListByPatientID(this._patient.PatientID);
-            MessageBox.Show(visits.Count.ToString());
             Visit currentvisit = null;
             foreach (Visit visit in visits)
             {
@@ -391,7 +390,6 @@ namespace ClinicManagementApp.UserControls
         {
             Decimal heightFt = Math.Floor(visit.Height / 12);
             Decimal heightInches = Math.Floor(visit.Height % 12);
-            MessageBox.Show(heightFt.ToString() +"'" + heightInches.ToString());
             this.feetNumericUpDown.Value = heightFt;
             this.inchesNumericUpDown.Value = heightInches;
             this.weightTextBox.Text = visit.Weight.ToString();
