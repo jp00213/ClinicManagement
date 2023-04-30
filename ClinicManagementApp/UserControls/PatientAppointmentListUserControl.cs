@@ -224,6 +224,7 @@ namespace ClinicManagementApp.UserControls
         private void ClearAllFutureAppointmentDetails()
         {
             this.theFutureAppointmentNumberTextBox.Text = string.Empty;
+            
             this.doctorNameComboBox.Text = "";
             this.reasonTextArea.Text = "";
             this.appointmentDateTimePicker.CustomFormat = "yyyy / MM / dd";
@@ -259,7 +260,7 @@ namespace ClinicManagementApp.UserControls
                 }
                 else
                 {
-                    MessageBox.Show("This appointment is within 24 hours from now and cannot be edited.");
+                    MessageBox.Show("This appointment is within 24 hours from now and cannot be edited.", "Uneditable Appointment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -425,15 +426,15 @@ namespace ClinicManagementApp.UserControls
         {
             int currentAppointmentID = int.Parse(this.theFutureAppointmentNumberTextBox.Text);
             this.DeleteAppointment(currentAppointmentID);
-
+            appointListComboBox.DataSource = this._appointmentController.GetAppointmentsByID_NowOn(int.Parse(patientIDTextBox.Text));
         }
 
         private void deletePastAppointmentButton_Click(object sender, EventArgs e)
         {
             int currentAppointmentID = int.Parse(this.pastAppointmentNumberTextBox.Text);
             this.DeleteAppointment(currentAppointmentID);
+            pastAppointmentComboBox.DataSource = this._appointmentController.GetAppointmentsByID_Past(int.Parse(patientIDTextBox.Text));
         }
-
 
     }
 }

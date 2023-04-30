@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ClinicManagementApp.DAL
 {
@@ -399,9 +400,9 @@ namespace ClinicManagementApp.DAL
         /// </summary>
         /// <param name="patientIDIn"></param>
         /// <returns></returns>
-        public bool DeletePatientByPatientID(int patientIDIn)
+        public bool DeletePatientByPatientID(Patient patient)
         {
-            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            /*SqlConnection connection = ClinicManagementDBConnection.GetConnection();
             string deleteStatement =
                 "DELETE FROM patient " +
                 "WHERE patientID = @patientIDIn ";
@@ -423,7 +424,61 @@ namespace ClinicManagementApp.DAL
                     return false;
                 }
 
+            }*/
+            bool result = false;
+            int affectedRecords = 0; 
+            string deletePatientStatement =
+                "DELETE FROM patient " +
+                "WHERE patientID = @patientID ";
+
+            string deletePersonStatement =
+                "DELETE FROM person " +
+                "WHERE recordID = @recordID";
+
+            string selectStatement = "SELECT @@ROWCOUNT";
+
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        using (SqlCommand deleteCommand = new SqlCommand(deletePatientStatement, connection))
+                        {
+                            deleteCommand.Transaction = transaction;
+
+                            deleteCommand.Parameters.AddWithValue("@patientID", patient.PatientID);
+                           
+                            deleteCommand.ExecuteNonQuery();
+
+                            using (SqlCommand deletePersonCommand = new SqlCommand(deletePersonStatement, connection))
+                            {
+                                deletePersonCommand.Transaction = transaction;
+
+                                deletePersonCommand.Parameters.AddWithValue("@recordID", patient.RecordID);
+
+                                deletePersonCommand.ExecuteNonQuery();
+                            }
+
+                            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+                            selectCommand.Transaction = transaction;
+                            using (selectCommand)
+                            {
+                                affectedRecords = Convert.ToInt32(selectCommand.ExecuteScalar());
+                            }
+
+                            result = affectedRecords > 0;
+                            transaction.Commit();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        transaction.Rollback();
+                    }
+                }
             }
+            return result;
         }
 
     }

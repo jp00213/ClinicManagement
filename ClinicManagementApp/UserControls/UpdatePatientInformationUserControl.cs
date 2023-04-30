@@ -274,7 +274,7 @@ namespace ClinicManagementApp.UserControls
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this patient?", "Pending Patient Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    bool deleteSuccess = this._patientController.DeletePatientByPatientID(this._patient.PatientID);
+                    bool deleteSuccess = this._patientController.DeletePatientByPatientID(this._patient);
                     if (deleteSuccess)
                     {
                         MessageBox.Show("Patient successfully deleted.", "Delete Patient", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -282,7 +282,7 @@ namespace ClinicManagementApp.UserControls
                     }
                     else
                     {
-                        MessageBox.Show("Something went wrong. Patient was not deleted.", "Delete Patient", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Patient not deleted. Please verify this person does not serve other roles in the clinic before attempting to delete.", "Delete Patient", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }                    
             } else

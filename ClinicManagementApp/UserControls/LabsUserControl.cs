@@ -114,11 +114,11 @@ namespace ClinicManagementApp.UserControls
                         result == null || string.IsNullOrEmpty(result.ToString()) ||
                             range == null || string.IsNullOrEmpty(range.ToString()))
                     {
-                        MessageBox.Show("Must fill out date performed, result, and range to submit.");
+                        MessageBox.Show("Must fill out date performed, result, and range to submit.", "Incomplete Lab Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else if (!DateTime.TryParse(datePerformed.ToString(), out DateTime parsedDate))
                     {
-                        MessageBox.Show("Must enter a valid date in the form of YYYY-MM-DD. Ex. 2023-03-11");
+                        MessageBox.Show("Must enter a valid date in the form of YYYY-MM-DD. Ex. 2023-03-11", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     } 
                     else
                     {
@@ -127,31 +127,31 @@ namespace ClinicManagementApp.UserControls
 
                         if(success)
                         {
-                            MessageBox.Show("Lab test successfully updated.");
+                            MessageBox.Show("Lab test successfully updated.", "Lab Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
                             MessageBox.Show("Warning: Lab Test not updated. Please check the entered values and try again. " +
                                 "Range: " + testToUpdate.ResultIsNormal + " Date Performed: " + testToUpdate.TestDate + " Result: " + testToUpdate.Result
-                            + " visitID: " + testToUpdate.VisitID + " Test Code: " + testToUpdate.TestCode);
+                            + " visitID: " + testToUpdate.VisitID + " Test Code: " + testToUpdate.TestCode, "Incomplete Lab Update", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
             }
             catch (FormatException fe)
             {
-                MessageBox.Show("Must enter a valid date in the form of YYYY-MM-DD. Ex. 2023-03-11");
+                MessageBox.Show("Must enter a valid date in the form of YYYY-MM-DD. Ex. 2023-03-11", "Lab Date Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Lab Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void LabDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             MessageBox.Show("Must enter a valid date in the form of YYYY-MM-DD. Ex. 2023-03-11. " +
-                    "Must fill out date performed, result, and range to submit.");
+                    "Must fill out date performed, result, and range to submit.", "Incomplete Lab Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void AdjustCellHeight(int cellHeight)
