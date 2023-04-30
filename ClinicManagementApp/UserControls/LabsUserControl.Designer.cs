@@ -211,7 +211,7 @@
             this.appointmentDateTimePicker.Size = new System.Drawing.Size(162, 29);
             this.appointmentDateTimePicker.TabIndex = 25;
             this.appointmentDateTimePicker.Value = new System.DateTime(2023, 3, 28, 0, 0, 0, 0);
-            this.appointmentDateTimePicker.ValueChanged += new System.EventHandler(this.AppointmentDateTimePicker_ValueChanged);
+            this.appointmentDateTimePicker.CloseUp += new System.EventHandler(this.AppointmentDateTimePicker_ValueChanged);
             this.appointmentDateTimePicker.DropDown += new System.EventHandler(this.appointmentDateTimePicker_DropDown);
             // 
             // dateLabel
