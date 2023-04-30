@@ -666,6 +666,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LabsUserControl";
             this.Size = new System.Drawing.Size(969, 571);
+            this.VisibleChanged += new System.EventHandler(this.appointmentDateTimePicker_DropDown);
             ((System.ComponentModel.ISupportInitialize)(this.patientVisitBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).EndInit();
