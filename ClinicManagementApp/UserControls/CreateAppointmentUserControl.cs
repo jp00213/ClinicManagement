@@ -103,7 +103,7 @@ namespace ClinicManagementApp.UserControls
                 
                 if (success >= 0)
                 {
-                    MessageBox.Show("Appointment has been added.");
+                    MessageBox.Show("Appointment has been added.", "Appointment Successfully Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.ResetForm();
                 }
             }
@@ -145,17 +145,17 @@ namespace ClinicManagementApp.UserControls
                     doctorID = (int)this.doctorComboBox.SelectedValue;
                 } else
                 {
-                    MessageBox.Show("No doctors available for appointments");
+                    MessageBox.Show("No doctors available for appointments", "No Available Doctors", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 this.UpdateTimeOptions(date, doctorID);
             }
             catch (NullReferenceException)
             {
-                MessageBox.Show("No doctors available for appointments");
+                MessageBox.Show("No doctors available for appointments", "No Available Doctors", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
