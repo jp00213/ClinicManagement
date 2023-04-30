@@ -59,6 +59,17 @@ namespace ClinicManagementApp.UserControls
 
             if (_patient != null)
             {
+                this.feetNumericUpDown.Value = 1;
+                this.inchesNumericUpDown.Value = 0;
+                this.weightTextBox.Text = "";
+                this.diastolicTextBox.Text = "";
+                this.systolicTextBox.Text = "";
+                this.symptomsTextBox.Text = "";
+                this.initialDiagnosisTextbox.Text = "";
+                this.finalDiagnosisTextBox.Text = "";
+                this.pulseTextBox.Text = "";
+                this.temperatureTextBox.Text = "";
+
                 patientBindingSource.DataSource = _patient;
                 patientBindingSource.ResetBindings(true);
                 this.saveButton.Enabled = true;
