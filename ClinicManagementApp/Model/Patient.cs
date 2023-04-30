@@ -1,4 +1,6 @@
-﻿namespace ClinicManagementApp.Model
+﻿using System;
+
+namespace ClinicManagementApp.Model
 {
     /// <summary>
     /// The Patient model class.
@@ -6,6 +8,7 @@
     public class Patient : Person
     {
         public int PatientID { get; set; }
+        public DateTime AppointmentDateTime { get; set; }
 
         /// <summary>
         /// Patient constructor.

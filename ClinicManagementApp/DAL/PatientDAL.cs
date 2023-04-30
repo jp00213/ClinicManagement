@@ -322,7 +322,8 @@ namespace ClinicManagementApp.DAL
                                 State = (string)(reader)["state"],
                                 Zip = (string)(reader)["zip"],
                                 Phone = (string)(reader)["phoneNumber"],
-                                PatientID = (int)(reader)["patientID"]
+                                PatientID = (int)(reader)["patientID"], 
+                                AppointmentDateTime = (DateTime)(reader)["appointmentDatetime"]
                             };
                             patients.Add(patient);
                         }

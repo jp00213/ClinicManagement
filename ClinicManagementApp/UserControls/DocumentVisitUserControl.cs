@@ -54,6 +54,7 @@ namespace ClinicManagementApp.UserControls
         {
 
             var patientID = patientDataGridView.SelectedRows[0].Cells[0].Value.ToString();
+            DateTime appointmentDate = (DateTime)patientDataGridView.SelectedRows[0].Cells[1].Value;
             this._patient = this._patientController.GetPatientByID(Int32.Parse(patientID));
 
             if (_patient != null)
@@ -64,7 +65,6 @@ namespace ClinicManagementApp.UserControls
             }
  
             int activePatientID = this._patient.PatientID;
-            DateTime appointmentDate = this.appointmentDateTimePicker.Value.Date;
             this._appointment = this._appointmentController.GetAppointmentByPatientIDAndDate(activePatientID, appointmentDate);
             appointmentBindingSource.DataSource = _appointment;
             this.GetDoctorInfoForAppointment(this._appointment.AppointmentID);
