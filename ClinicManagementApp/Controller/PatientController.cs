@@ -121,9 +121,9 @@ namespace ClinicManagementApp.Controller
         /// </summary>
         /// <param name="patientIDIn"></param>
         /// <returns></returns>
-        public bool DeletePatientByPatientID(int patientIDIn)
+        public bool DeletePatientByPatientID(Patient patient)
         {
-            return this._patientDAL.DeletePatientByPatientID(patientIDIn);
+            return this._patientDAL.DeletePatientByPatientID(patient);
         }
     }
 }
