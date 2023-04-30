@@ -282,7 +282,7 @@ namespace ClinicManagementApp.UserControls
                     }
                     else
                     {
-                        MessageBox.Show("Something went wrong. Patient was not deleted.", "Delete Patient", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Patient not deleted. Please verify this person does not serve other roles in the clinic before attempting to delete.", "Delete Patient", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }                    
             } else
