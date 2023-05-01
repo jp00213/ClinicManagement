@@ -177,49 +177,30 @@ namespace ClinicManagementApp.UserControls
         private void OrderLabsAndCompleteVisit(int visitID)
         {
             List<LabTest> labs = new List<LabTest>();
-
             Visit currentVisit = this._visitController.GetVisitInformationByAppointmentID(this._appointment.AppointmentID);
-            LabTest currentLab = null;
 
             foreach (LabTest lab in labsListBox.SelectedItems)
             {
                 LabTest currentLab = new LabTest();
-                currentLab.VisitID = visitID;
+                currentLab.VisitID = currentVisit.VisitID;
                 currentLab.TestCode = lab.TestCode;
                 labs.Add(currentLab);
             }
 
             if (labs.Count > 0)
             {
-
-                foreach (LabTest lab in labs)
+                if (this._labController.AddLabTest(labs))
                 {
-                   try
-                    {
-                        if(this._needsUpdate)
-                        {
-                            currentLab = new LabTest(currentVisit.VisitID, lab.TestCode, new DateTime(1900, 1, 1), "", lab.TestName, 0, DateTime.Now);
-                        } else
-                        {
-                            currentLab = new LabTest(visitID, lab.TestCode, new DateTime(1900, 1, 1), "", lab.TestName, 0, DateTime.Now);
-                        }
-                        this._labController.AddLabTest(currentLab);
-                    }
-                   catch (Exception)
-                    {
-                        MessageBox.Show("Patient already has an order for " + currentLab.TestName.ToString() + " associated with this appointment. To re-order this lab please schedule or select a different appointment with the patient.", "Duplicate Lab Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    
+                    MessageBox.Show("Visit notes saved and labs have been ordered!", "Visit Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else
+                {
+                    MessageBox.Show("Tests not added. Check for duplicate test orders.");
                 }
-                MessageBox.Show("Visit notes saved and lab(s) have been ordered!", "Visit Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                this._labController.AddLabTest(labs);
-                
-            } else
+            }
+            else
             {
                 MessageBox.Show("Visit notes successfully saved!", "Visit Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            
         }
 
         private DialogResult ConfirmNotesAndLabs()
