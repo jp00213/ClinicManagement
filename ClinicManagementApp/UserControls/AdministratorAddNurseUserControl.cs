@@ -7,11 +7,17 @@ using System.Windows.Forms;
 
 namespace ClinicManagementApp.UserControls
 {
+    /// <summary>
+    /// Add Nurse User Control
+    /// </summary>
     public partial class AdministratorAddNurseUserControl : UserControl
     {
         private NurseController _nurseController;
         private AccountController _accountController;
 
+        /// <summary>
+        /// Constructor for user control
+        /// </summary>
         public AdministratorAddNurseUserControl()
         {
             InitializeComponent();

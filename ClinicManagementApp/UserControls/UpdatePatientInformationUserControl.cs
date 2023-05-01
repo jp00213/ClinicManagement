@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace ClinicManagementApp.UserControls
 {
+    /// <summary>
+    /// Update Patient Information User Control
+    /// </summary>
     public partial class UpdatePatientInformationUserControl : UserControl
     {
         private PatientController _patientController;
