@@ -101,7 +101,16 @@ namespace ClinicManagementApp.UserControls
                 }
                 this.ShowInvalidErrorMessages();
                 int nurseID = this.GetNurseForAppointment();
-                DateTime visitDateTime = DateTime.Now;
+                Visit currentVisit = this._visitController.GetVisitInformationByAppointmentID(this._appointment.AppointmentID);
+                DateTime visitDateTime;
+                if (currentVisit.VisitID == 0)
+                {
+                    visitDateTime = DateTime.Now;
+                } else
+                {
+                    visitDateTime = currentVisit.VisitDatetime;
+                }
+
                 Decimal feet = this.feetNumericUpDown.Value;
                 Decimal inches = this.inchesNumericUpDown.Value;
                 Decimal height = this.CalculateHeight(feet, inches);
