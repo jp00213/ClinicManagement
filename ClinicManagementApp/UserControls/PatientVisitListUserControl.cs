@@ -296,7 +296,8 @@ namespace ClinicManagementApp.UserControls
             string warningMessage = "Once the final diagnosis is entered, no more change is allowed. Do you want to continue?";
             string title = "Final Diagnosis Warning!";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(warningMessage, title, buttons);
+            MessageBoxIcon icon = MessageBoxIcon.Exclamation;
+            DialogResult result = MessageBox.Show(warningMessage, title, buttons, icon);
 
             if (result == DialogResult.Yes)
             {
