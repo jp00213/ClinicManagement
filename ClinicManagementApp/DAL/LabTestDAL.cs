@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 
 namespace ClinicManagementApp.DAL
 {
@@ -193,8 +192,6 @@ namespace ClinicManagementApp.DAL
         /// <returns></returns>
         public bool AddLabTest(List<LabTest> orderedTests)
         {
-            int affectedRows = 0;
-            Console.WriteLine(affectedRows);
             string insertStatement =
                 "INSERT INTO visit_has_test " +
                 "(visitID, testCode, testDate, result, resultIsNormal) " +
