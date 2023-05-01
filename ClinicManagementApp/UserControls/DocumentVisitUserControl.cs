@@ -2,6 +2,7 @@
 using ClinicManagementApp.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -20,6 +21,7 @@ namespace ClinicManagementApp.UserControls
         private LabTestController _labController;
         private Patient _patient;
         private Appointment _appointment;
+        private bool _needsUpdate;
        
 
         /// <summary>
@@ -69,7 +71,7 @@ namespace ClinicManagementApp.UserControls
             appointmentBindingSource.DataSource = _appointment;
             this.GetDoctorInfoForAppointment(this._appointment.AppointmentID);
             this.GetNurseForAppointment();
-            this.HasVisitInfoBeenEnteredForAppointmentID();
+            this._needsUpdate = this.HasVisitInfoBeenEnteredForAppointmentID();
         }
 
         private void AppointmentDateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -122,7 +124,7 @@ namespace ClinicManagementApp.UserControls
                     if (this.ConfirmNotesAndLabs() == DialogResult.Yes)
                     {
                         Visit visit = new Visit(-1, appointmentID, nurseID, visitDateTime, height, weight, diastolicBloodPressure, systolicBloodPressure, bodyTemperature, pulse, symptoms, initialDiagnosis, finalDiagnosis);
-                        int success = this._visitController.AddVisit(visit);
+                        int success = this.VisitHasVitalInformationEntered(this._needsUpdate, visit);
                         if (success > 0)
                         {
                             this.OrderLabsAndCompleteVisit(success);
@@ -133,6 +135,17 @@ namespace ClinicManagementApp.UserControls
             } catch(System.FormatException)
             {
                 MessageBox.Show("Please input valid visit details for the patient, then press 'Save Appointment'.", "Visit Details Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        
+        private int VisitHasVitalInformationEntered(bool entered, Visit visit)
+        {
+            if (entered)
+            {
+                return this._visitController.UpdateVisit(visit);
+            } else
+            {
+                return this._visitController.AddVisit(visit);
             }
         }
 
@@ -154,7 +167,8 @@ namespace ClinicManagementApp.UserControls
         private void OrderLabsAndCompleteVisit(int visitID)
         {
             List<LabTest> labs = new List<LabTest>();
-            List<string> testNames = new List<string>();
+            Visit currentVisit = this._visitController.GetVisitInformationByAppointmentID(this._appointment.AppointmentID);
+            LabTest currentLab = null;
 
             foreach (LabTest lab in labsListBox.SelectedItems)
             {
@@ -165,10 +179,24 @@ namespace ClinicManagementApp.UserControls
             {
                 foreach (LabTest lab in labs)
                 {
-                    LabTest currentLab = new LabTest(visitID, lab.TestCode, new DateTime(1900, 1, 1), "", lab.TestName, 0, DateTime.Now);
-                    this._labController.AddLabTest(currentLab);
+                   try
+                    {
+                        if(this._needsUpdate)
+                        {
+                            currentLab = new LabTest(currentVisit.VisitID, lab.TestCode, new DateTime(1900, 1, 1), "", lab.TestName, 0, DateTime.Now);
+                        } else
+                        {
+                            currentLab = new LabTest(visitID, lab.TestCode, new DateTime(1900, 1, 1), "", lab.TestName, 0, DateTime.Now);
+                        }
+                        this._labController.AddLabTest(currentLab);
+                    }
+                   catch (Exception)
+                    {
+                        MessageBox.Show("Patient already has an order for " + currentLab.TestName.ToString() + " associated with this appointment. To re-order this lab please schedule or select a different appointment with the patient.", "Duplicate Lab Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
                 }
-                MessageBox.Show("Visit notes saved and labs have been ordered!", "Visit Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Visit notes saved and lab(s) have been ordered!", "Visit Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } else
             {
                 MessageBox.Show("Visit notes successfully saved!", "Visit Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -178,7 +206,6 @@ namespace ClinicManagementApp.UserControls
 
         private DialogResult ConfirmNotesAndLabs()
         {
-            List<LabTest> labs = new List<LabTest>();
             List<string> testNames = new List<string>();
             DialogResult dialogResult;
             
@@ -316,6 +343,14 @@ namespace ClinicManagementApp.UserControls
             activeDoctorIDLabel.Text = "";
             activeSpecialtyLabel.Text = "";
 
+            this.ClearInputFields();
+
+            this.saveButton.Enabled = false;
+
+        }
+
+        private void ClearInputFields()
+        {
             this.feetNumericUpDown.Value = 1;
             this.inchesNumericUpDown.Value = 0;
             this.weightTextBox.Text = "";
@@ -328,9 +363,6 @@ namespace ClinicManagementApp.UserControls
             this.temperatureTextBox.Text = "";
 
             this.labsListBox.ClearSelected();
-
-            this.saveButton.Enabled = false;
-
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -357,41 +389,32 @@ namespace ClinicManagementApp.UserControls
             this.HideInvalidErrorMessages();
         }
 
-        private void HasVisitInfoBeenEnteredForAppointmentID()
+        private bool HasVisitInfoBeenEnteredForAppointmentID()
         {
-            List<Visit> visits = this._visitController.GetVisitInformationListByPatientID(this._patient.PatientID);
-            Visit currentvisit = null;
-            foreach (Visit visit in visits)
+            this.ClearInputFields();
+            bool isUpdate = false;
+            Visit currentVisit = this._visitController.GetVisitInformationByAppointmentID(this._appointment.AppointmentID);
+            if (currentVisit.AppointmentID > 0)
             {
-                /*Maybe come back and create a getvisitbyappointmentID, and remove foreach*/
-                if (visit.AppointmentID == this._appointment.AppointmentID)
+                isUpdate = true;
+                if (string.IsNullOrEmpty(currentVisit.FinalDiagnoses))
                 {
-                    /*MessageBox.Show("Visit and appointment ID are same-same." + " " + visit.AppointmentID + "|" + this._appointment.AppointmentID);*/
-                    currentvisit = this._visitController.GetVisitInformationByVisitID(visit.VisitID);
-                    if (currentvisit.VisitID > 0)
-                    {
-                        /*MessageBox.Show("Current Visit ID is greater than 0" + " " + currentvisit.VisitID);*/
-                        if (string.IsNullOrEmpty(visit.FinalDiagnoses))
-                        {
-                            /*MessageBox.Show("Final diagnosis is empty or null");*/
-                            visitBindingSource.DataSource = currentvisit;
-                            this.RecallVisitInformation(currentvisit);
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("A final diagnosis has already been entered for this patient. The visit details cannot be changed. Please choose another patient from the list.", "Final Diagnosis Documented", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            this.saveButton.Enabled = false;
-                        }
-                    } 
-                } else
-                {
-                    /*MessageBox.Show("No visit!");
-                    this.saveButton.Text = "Save Appointment";*/
+                    visitBindingSource.DataSource = currentVisit;
+                    this.RecallVisitInformation(currentVisit);
                 }
-
-
+                else
+                {
+                    MessageBox.Show("A final diagnosis has already been entered for this patient. The visit details cannot be changed. Please choose another patient from the list.", "Final Diagnosis Documented", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    visitBindingSource.DataSource = currentVisit;
+                    this.RecallVisitInformation(currentVisit);
+                    this.saveButton.Enabled = false;
+                }
+            } else
+            {
+                this.saveButton.Text = "Save Appointment";
             }
+
+            return isUpdate;
         }
 
         private void RecallVisitInformation(Visit visit)
@@ -407,6 +430,7 @@ namespace ClinicManagementApp.UserControls
             this.temperatureTextBox.Text = visit.BodyTemperature.ToString();
             this.pulseTextBox.Text = visit.Pulse.ToString();
             this.initialDiagnosisTextbox.Text = visit.InitialDiagnoses.ToString();
+            this.finalDiagnosisTextBox.Text = visit.FinalDiagnoses.ToString();
             this.saveButton.Text = "Update Appointment";
         }
     }
