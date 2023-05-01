@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ClinicManagementApp.DAL
 {
@@ -259,6 +260,139 @@ namespace ClinicManagementApp.DAL
                 }
             }
             return visits;
+        }
+
+        /// <summary>
+        /// Returns the visit based on the visit id
+        /// </summary>
+        /// <param name="appointmentIDIn"></param>
+        /// <returns></returns>
+        public Visit GetVisitInformationByAppointmentID(int appointmentIDIn)
+        {
+            Visit visit = new Visit();
+            string selectStatement =
+                "select a.appointmentID, v.visitID, v.visitDatetime, " +
+                "p1.lastName as doctorLastName, p1.firstName as doctorFirstName, d.doctorID, n.nurseID, " +
+                "p2.lastName as nurseLastName, p2.firstName as nurseFirstName, " +
+                "p3.lastName as patientLastName, p3.firstName as patientFirstname, " +
+                " CONVERT(VARCHAR(20), CAST( round( v.height, 0) as int) /12) + '''' + CONVERT(VARCHAR(20),CAST( round( v.height, 0) as int) %12) as formattedHeight , " +
+                "v.height, v.weight, v.bloodPressureSystolic, v.bloodPressureDiastolic, v.bodyTemperature, v.pulse, v.symptoms, a.reason, isnull(initialDiagnoses, '') as initialDiagnoses, isnull(finalDiagnoses, '') as finalDiagnoses, p.patientID, " +
+                " 'Visit: ' + convert(varchar, v.visitDatetime, 101) + ', ' + FORMAT(v.visitDatetime, 'hh:mm tt') + ', Dr. ' + p1.lastName as visitSummary " +
+                "from appointment a, visitRoutineResults v, " +
+                "doctor d, person p1, " +
+                "nurse n, person p2, " +
+                "patient p, person p3 " +
+                "where a.appointmentID = v.appointmentID " +
+                "and a.doctorID = d.doctorID " +
+                "and d.recordID = p1.recordID " +
+                "and v.nurseID = n.nurseID " +
+                "and n.recordID = p2.recordID " +
+                "and a.patientID = p.patientID " +
+                "and p.recordID = p3.recordID " +
+                "and v.appointmentID = @appointmentIDIn ";
+            using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@appointmentIDIn", appointmentIDIn);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            visit.AppointmentID = (int)(reader)["appointmentID"];
+                            visit.VisitID = (int)(reader)["VisitID"];
+                            visit.VisitDatetime = (DateTime)(reader)["visitDatetime"];
+                            visit.DoctorLastName = (string)(reader)["doctorLastName"];
+                            visit.DoctorFirstName = (string)(reader)["doctorFirstName"];
+                            visit.NurseLastName = (string)(reader)["nurseLastName"];
+                            visit.NurseFirstName = (string)(reader)["nurseFirstName"];
+                            visit.PatientLastName = (string)(reader)["patientLastName"];
+                            visit.PatientFirstName = (string)(reader)["patientFirstName"];
+                            visit.Height = (decimal)(reader)["height"];
+                            visit.Weight = (decimal)(reader)["weight"];
+                            visit.BloodPressureSystolic = (int)(reader)["bloodPressureSystolic"];
+                            visit.BloodPressureDiastolic = (int)(reader)["bloodPressureDiastolic"];
+                            visit.BodyTemperature = (decimal)(reader)["bodyTemperature"];
+                            visit.Pulse = (int)(reader)["pulse"];
+                            visit.Symptoms = (string)(reader)["symptoms"];
+                            visit.AppointmentReason = (string)(reader)["reason"];
+                            visit.InitialDiagnoses = (string)(reader)["initialDiagnoses"];
+                            visit.FinalDiagnoses = (string)(reader)["finalDiagnoses"];
+                            visit.PatientID = (int)(reader)["patientID"];
+                            visit.VisitSummary = (string)(reader)["visitSummary"];
+                            visit.HeightFormatted = (string)(reader)["formattedHeight"];
+                            visit.DoctorID = (int)(reader)["doctorID"];
+                            visit.NurseID = (int)(reader)["nurseID"];
+                        }
+                    }
+                }
+            }
+            return visit;
+        }
+
+        /// <summary>
+        /// Updates visit information before the final diagnosis is input
+        /// </summary>
+        /// <param name="visit"></param>
+        /// <returns></returns>
+        public int UpdateVisit(Visit visit)
+        {
+            SqlConnection connection = ClinicManagementDBConnection.GetConnection();
+            string updateStatement =
+                "UPDATE visitRoutineResults " +
+                "SET nurseID = @nurseID, visitDatetime = @visitDatetime, " +
+                "height = @height, weight = @weight, bloodPressureDiastolic = @bloodPressureDiastolic, " +
+                "bloodPressureSystolic = @bloodPressureSystolic, bodyTemperature = @bodyTemperature, " +
+                "pulse = @pulse, symptoms = @symptoms, initialDiagnoses = @initialDiagnoses, " +
+                "finalDiagnoses = @finalDiagnoses " +
+                "WHERE appointmentID = @appointmentID ";
+
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+
+            updateCommand.Parameters.Add("@appointmentID", System.Data.SqlDbType.Int);
+            updateCommand.Parameters["@appointmentID"].Value = visit.AppointmentID;
+
+            updateCommand.Parameters.Add("@nurseID", System.Data.SqlDbType.Int);
+            updateCommand.Parameters["@nurseID"].Value = visit.NurseID;
+
+            updateCommand.Parameters.Add("@visitDatetime", System.Data.SqlDbType.DateTime);
+            updateCommand.Parameters["@visitDatetime"].Value = visit.VisitDatetime;
+
+            updateCommand.Parameters.Add("@height", System.Data.SqlDbType.Decimal);
+            updateCommand.Parameters["@height"].Value = visit.Height;
+
+            updateCommand.Parameters.Add("@weight", System.Data.SqlDbType.Decimal);
+            updateCommand.Parameters["@weight"].Value = visit.Weight;
+
+            updateCommand.Parameters.Add("@bloodPressureDiastolic", System.Data.SqlDbType.Int);
+            updateCommand.Parameters["@bloodPressureDiastolic"].Value = visit.BloodPressureDiastolic;
+
+            updateCommand.Parameters.Add("@bloodPressureSystolic", System.Data.SqlDbType.Int);
+            updateCommand.Parameters["@bloodPressureSystolic"].Value = visit.BloodPressureSystolic;
+
+            updateCommand.Parameters.Add("@bodyTemperature", System.Data.SqlDbType.Decimal);
+            updateCommand.Parameters["@bodyTemperature"].Value = visit.BodyTemperature;
+
+            updateCommand.Parameters.Add("@pulse", System.Data.SqlDbType.Int);
+            updateCommand.Parameters["@pulse"].Value = visit.Pulse;
+
+            updateCommand.Parameters.Add("@symptoms", System.Data.SqlDbType.VarChar);
+            updateCommand.Parameters["@symptoms"].Value = visit.Symptoms;
+
+            updateCommand.Parameters.Add("@initialDiagnoses", System.Data.SqlDbType.VarChar);
+            updateCommand.Parameters["@initialDiagnoses"].Value = visit.InitialDiagnoses;
+
+            updateCommand.Parameters.Add("@finalDiagnoses", System.Data.SqlDbType.VarChar);
+            updateCommand.Parameters["@finalDiagnoses"].Value = visit.FinalDiagnoses;
+
+            using (updateCommand)
+            {
+                connection.Open();
+                int rowsAffected = updateCommand.ExecuteNonQuery();
+                return rowsAffected;
+            }
         }
     }
 }

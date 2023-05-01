@@ -68,5 +68,25 @@ namespace ClinicManagementApp.Controller
         {
             return this._visitDAL.GetVisitInformationListByAppointmentID(appointmentIDIn);
         }
+
+        /// <summary>
+        /// Gets the visit infomation based on the appointment ID
+        /// </summary>
+        /// <param name="appointmentIDIn"></param>
+        /// <returns></returns>
+        public Visit GetVisitInformationByAppointmentID(int appointmentIDIn)
+        {
+            return this._visitDAL.GetVisitInformationByAppointmentID(appointmentIDIn);
+        }
+
+        /// <summary>
+        /// Updates the visit information
+        /// </summary>
+        /// <param name="visit"></param>
+        /// <returns></returns>
+        public int UpdateVisit(Visit visit)
+        {
+            return this._visitDAL.UpdateVisit(visit);
+        }
     }
 }
