@@ -125,7 +125,7 @@ namespace ClinicManagementApp.UserControls
                 var initialDiagnosis = this.initialDiagnosisTextbox.Text.Trim();
                 var finalDiagnosis = this.finalDiagnosisTextBox.Text.Trim();
 
-                if (height < 10 || height > 250 || weight < 0 || weight > 800 || diastolicBloodPressure > 370 || diastolicBloodPressure < 40 || systolicBloodPressure > 360 || systolicBloodPressure < 20 || bodyTemperature > 115 || bodyTemperature < 78 || pulse > 400 || pulse < 55 || string.IsNullOrEmpty(symptoms) || string.IsNullOrEmpty(initialDiagnosis))
+                if (height < 10 || height > 250 || weight < 10 || weight > 800 || diastolicBloodPressure > 370 || diastolicBloodPressure < 40 || systolicBloodPressure > 360 || systolicBloodPressure < 20 || bodyTemperature > 115 || bodyTemperature < 78 || pulse > 400 || pulse < 55 || string.IsNullOrEmpty(symptoms) || string.IsNullOrEmpty(initialDiagnosis))
                 {
                     this.ShowInvalidErrorMessages();
                 }
@@ -179,7 +179,7 @@ namespace ClinicManagementApp.UserControls
             List<LabTest> labs = new List<LabTest>();
 
             Visit currentVisit = this._visitController.GetVisitInformationByAppointmentID(this._appointment.AppointmentID);
-            LabTest currentLab = null;
+            LabTest currentLab1 = null;
 
             foreach (LabTest lab in labsListBox.SelectedItems)
             {
@@ -198,16 +198,16 @@ namespace ClinicManagementApp.UserControls
                     {
                         if(this._needsUpdate)
                         {
-                            currentLab = new LabTest(currentVisit.VisitID, lab.TestCode, new DateTime(1900, 1, 1), "", lab.TestName, 0, DateTime.Now);
+                            currentLab1 = new LabTest(currentVisit.VisitID, lab.TestCode, new DateTime(1900, 1, 1), "", lab.TestName, 0, DateTime.Now);
                         } else
                         {
-                            currentLab = new LabTest(visitID, lab.TestCode, new DateTime(1900, 1, 1), "", lab.TestName, 0, DateTime.Now);
+                            currentLab1 = new LabTest(visitID, lab.TestCode, new DateTime(1900, 1, 1), "", lab.TestName, 0, DateTime.Now);
                         }
-                        this._labController.AddLabTest(currentLab);
+                        /*labs.Add(currentLab1);*/
                     }
                    catch (Exception)
                     {
-                        MessageBox.Show("Patient already has an order for " + currentLab.TestName.ToString() + " associated with this appointment. To re-order this lab please schedule or select a different appointment with the patient.", "Duplicate Lab Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Patient already has an order for " + currentLab1.TestName.ToString() + " associated with this appointment. To re-order this lab please schedule or select a different appointment with the patient.", "Duplicate Lab Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     
                 }
