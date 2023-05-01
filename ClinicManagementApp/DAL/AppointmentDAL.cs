@@ -262,6 +262,12 @@ namespace ClinicManagementApp.DAL
             return appointment;
         }
 
+        /// <summary>
+        /// Returns appointment information fom a patient's ID and datetime
+        /// </summary>
+        /// <param name="patientIDIn"></param>
+        /// <param name="appointmentDateIn"></param>
+        /// <returns></returns>
         public Appointment GetAppointmentByPatientIDAndDate(int patientIDIn, DateTime appointmentDateIn)
         {
             Appointment appointment = new Appointment();

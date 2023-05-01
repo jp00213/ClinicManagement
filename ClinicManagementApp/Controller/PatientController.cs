@@ -1,7 +1,6 @@
 ﻿using ClinicManagementApp.DAL;
 using ClinicManagementApp.Model;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 
 namespace ClinicManagementApp.Controller
