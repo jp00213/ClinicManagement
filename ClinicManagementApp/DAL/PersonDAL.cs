@@ -181,6 +181,13 @@ namespace ClinicManagementApp.DAL
             return result;
         }
 
+        /// <summary>
+        /// Adds a nurse to the database with status set to active
+        /// </summary>
+        /// <param name="person"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public bool AddPersonAsNurse(Person person, string username, string password)
         {
             Boolean result = false;
@@ -196,7 +203,6 @@ namespace ClinicManagementApp.DAL
             string selectStatementRecordID = "SELECT IDENT_CURRENT('person') FROM person";
             string insertStatementPatient = "INSERT INTO nurse (recordID, username, activeStatus) " +
                 "VALUES (@recordID, @username, 1)";
-            string selectStatementCount = "SELECT @@ROWCOUNT";
 
             using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
             {

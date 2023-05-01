@@ -323,7 +323,8 @@ namespace ClinicManagementApp.DAL
                                 State = (string)(reader)["state"],
                                 Zip = (string)(reader)["zip"],
                                 Phone = (string)(reader)["phoneNumber"],
-                                PatientID = (int)(reader)["patientID"]
+                                PatientID = (int)(reader)["patientID"], 
+                                AppointmentDateTime = (DateTime)(reader)["appointmentDatetime"]
                             };
                             patients.Add(patient);
                         }
@@ -345,7 +346,7 @@ namespace ClinicManagementApp.DAL
             SqlConnection connection = ClinicManagementDBConnection.GetConnection();
             string selectStatement =
                   "SELECT pe.firstName, pe.lastName, pe.birthday, pe.phoneNumber, pe.addressStreet, pe.recordID, p.patientID, " +
-                  "pe.city, pe.state, pe.zip, v.visitID " +
+                  "pe.city, pe.state, pe.zip, v.visitID, a.appointmentDateTime " +
                   "FROM visitRoutineResults v " +
                   "join appointment a " +
                   "on a.appointmentID = v.appointmentID " +
@@ -353,7 +354,8 @@ namespace ClinicManagementApp.DAL
                   "on p.patientID = a.patientID " +
                   "join person pe " +
                   "on pe.recordID = p.recordID " +
-                  "where v.visitDatetime between @visitDate and @visitDateEnd";
+                  "where v.visitDatetime between @visitDate and @visitDateEnd " +
+                  "order by a.appointmentDateTime ";
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
 
@@ -382,7 +384,8 @@ namespace ClinicManagementApp.DAL
                             Zip = (string)(reader)["zip"],
                             Phone = (string)(reader)["phoneNumber"],
                             PatientID = (int)(reader)["patientID"],
-                            VisitID = (int)(reader)["visitID"]
+                            VisitID = (int)(reader)["visitID"],
+                            AppointmentDateTime = (DateTime)(reader)["appointmentDateTime"]
                         };
                         patients.Add(patient);
 

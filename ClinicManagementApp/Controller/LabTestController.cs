@@ -1,5 +1,6 @@
 ﻿using ClinicManagementApp.DAL;
 using ClinicManagementApp.Model;
+using System;
 using System.Collections.Generic;
 
 namespace ClinicManagementApp.Controller
@@ -46,14 +47,24 @@ namespace ClinicManagementApp.Controller
         public bool UpdateLabTest(LabTest test) => _labTestDAL.UpdateLabTest(test);
 
         /// <summary>
-        /// Adds the test to the db
+        /// Adds all tests ordered to the db
         /// </summary>
         /// <param name="test"></param>
         /// <returns></returns>
-        public bool AddLabTest(LabTest test)
+        public bool AddLabTest(List<LabTest> orderedLabs)
         {
-            return this._labTestDAL.AddLabTest(test);
+            return this._labTestDAL.AddLabTest(orderedLabs);
         }
 
+        /// <summary>
+        /// Get most performed test during dates
+        /// </summary>
+        /// <param name="startDate">start date</param>
+        /// <param name="endDate">end date</param>
+        /// <returns>lab tests</returns>
+        public List<LabTest> GetMostPerformedTestsDuringDates(DateTime startDate, DateTime endDate)
+        {
+            return this._labTestDAL.GetMostPerformedTestsDuringDates(startDate, endDate);
+        }
     }
 }

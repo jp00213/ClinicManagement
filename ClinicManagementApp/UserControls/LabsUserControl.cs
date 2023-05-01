@@ -38,6 +38,7 @@ namespace ClinicManagementApp.UserControls
             appointmentDateTimePicker.MinDate = new DateTime(1976, 1, 1);
             SetGridComboBoxOptions();
             AdjustCellHeight(30);
+            patientComboBox.DataSource = _patients;
         }
 
         private void AppointmentDateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -57,7 +58,8 @@ namespace ClinicManagementApp.UserControls
 
         private void patientComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Patient selectedPatient = this.patientComboBox.SelectedItem as Patient;
+            this.appointmentTimeTextBox.Text = selectedPatient.AppointmentDateTime.ToString("HH:mm");
         }
 
         private void SelectButton_Click(object sender, EventArgs e)
@@ -155,6 +157,12 @@ namespace ClinicManagementApp.UserControls
         private void AdjustCellHeight(int cellHeight)
         {
             labDataGridView.RowTemplate.Height = cellHeight;
+        }
+
+        private void appointmentDateTimePicker_DropDown(object sender, EventArgs e)
+        {
+            patientComboBox.DataSource = new List<PatientVisit>();
+            this.appointmentTimeTextBox.Text = "";
         }
     }
 }

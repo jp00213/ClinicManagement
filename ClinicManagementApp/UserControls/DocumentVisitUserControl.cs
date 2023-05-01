@@ -55,17 +55,28 @@ namespace ClinicManagementApp.UserControls
         {
 
             var patientID = patientDataGridView.SelectedRows[0].Cells[0].Value.ToString();
+            DateTime appointmentDate = (DateTime)patientDataGridView.SelectedRows[0].Cells[1].Value;
             this._patient = this._patientController.GetPatientByID(Int32.Parse(patientID));
 
             if (_patient != null)
             {
+                this.feetNumericUpDown.Value = 1;
+                this.inchesNumericUpDown.Value = 0;
+                this.weightTextBox.Text = "";
+                this.diastolicTextBox.Text = "";
+                this.systolicTextBox.Text = "";
+                this.symptomsTextBox.Text = "";
+                this.initialDiagnosisTextbox.Text = "";
+                this.finalDiagnosisTextBox.Text = "";
+                this.pulseTextBox.Text = "";
+                this.temperatureTextBox.Text = "";
+
                 patientBindingSource.DataSource = _patient;
                 patientBindingSource.ResetBindings(true);
                 this.saveButton.Enabled = true;
             }
  
             int activePatientID = this._patient.PatientID;
-            DateTime appointmentDate = this.appointmentDateTimePicker.Value.Date;
             this._appointment = this._appointmentController.GetAppointmentByPatientIDAndDate(activePatientID, appointmentDate);
             appointmentBindingSource.DataSource = _appointment;
             this.GetDoctorInfoForAppointment(this._appointment.AppointmentID);
@@ -166,16 +177,21 @@ namespace ClinicManagementApp.UserControls
         private void OrderLabsAndCompleteVisit(int visitID)
         {
             List<LabTest> labs = new List<LabTest>();
+
             Visit currentVisit = this._visitController.GetVisitInformationByAppointmentID(this._appointment.AppointmentID);
             LabTest currentLab = null;
 
             foreach (LabTest lab in labsListBox.SelectedItems)
             {
-                labs.Add(lab);
+                LabTest currentLab = new LabTest();
+                currentLab.VisitID = visitID;
+                currentLab.TestCode = lab.TestCode;
+                labs.Add(currentLab);
             }
-            
+
             if (labs.Count > 0)
             {
+
                 foreach (LabTest lab in labs)
                 {
                    try
@@ -196,6 +212,9 @@ namespace ClinicManagementApp.UserControls
                     
                 }
                 MessageBox.Show("Visit notes saved and lab(s) have been ordered!", "Visit Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                this._labController.AddLabTest(labs);
+                
             } else
             {
                 MessageBox.Show("Visit notes successfully saved!", "Visit Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);

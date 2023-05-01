@@ -20,6 +20,24 @@ namespace ClinicManagementApp.Model
         public int ResultIsNormal { get; set; }
         public DateTime DateOrdered { get; set; } //date test was ordered (the date of the visit)
 
+        public int TimesPerformed { get; set; }
+
+        public int AllTestTotal { get; set; }
+
+        public string PercentOfAllTests { get; set; }
+
+        public int NormalCount { get; set; }
+
+        public int AbnormalCount { get; set; }  
+
+        public string Age18To29 { get; set; }
+
+        public string Age30To39 { get; set; }
+
+        public string OtherAges { get; set; }
+
+
+
         /// <summary>
         /// Default constructor
         /// </summary>

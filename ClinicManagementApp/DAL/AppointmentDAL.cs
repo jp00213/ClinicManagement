@@ -266,13 +266,13 @@ namespace ClinicManagementApp.DAL
         {
             Appointment appointment = new Appointment();
             string selectStatement =
-                "select d.doctorID, a.appointmentID, a.appointmentDatetime,   CONVERT(VARCHAR(10), a.appointmentDatetime, 101) as shortTime  , " +
+                "select d.doctorID, a.appointmentID, a.appointmentDatetime, CONVERT(VARCHAR(10), a.appointmentDatetime, 101) as shortTime  , " +
                 "a.reason, e.firstName + ' ' + e.lastName as doctorLastName  " +
                 "from appointment a,  doctor d, person e " +
                 "where a.doctorID = d.doctorID " +
                 "and d.recordID = e.recordID " +
                 "and a.patientID = @patientIDIn " +
-                "and CONVERT(VARCHAR(10), a.appointmentDatetime, 101) = @appointmentDateIn " +
+                "and a.appointmentDatetime = @appointmentDateIn " +
                 "order by a.appointmentDatetime ";
 
             using (SqlConnection connection = ClinicManagementDBConnection.GetConnection())
