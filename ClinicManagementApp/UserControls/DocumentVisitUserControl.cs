@@ -203,7 +203,7 @@ namespace ClinicManagementApp.UserControls
                     MessageBox.Show("Visit notes saved and labs have been ordered!", "Visit Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 } else
                 {
-                    MessageBox.Show("Tests not added. Check for duplicate test orders.");
+                    MessageBox.Show("Tests not added. Check for duplicate test orders.", "Test Order Not Submitted", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
