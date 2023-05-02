@@ -84,7 +84,6 @@ namespace ClinicManagementApp.UserControls
             int doctorID = (int)this.doctorComboBox.SelectedValue;
             string time = this.timeComboBox.Text;
             string reason = this.reasonTextBox.Text;
-            Console.Write(reason);
             int patientID = Int32.Parse(this.patientIDTextBox.Text);
 
             string format = "yyyy-MM-dd HH:mm:ss";
